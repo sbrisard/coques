@@ -5,4 +5,4 @@ Lecture notes by Sébastien Brisard: “Théorie des coques élastiques” (in F
 Licences
 
 - (quarto) source files: MIT
-- Published content (see XXX): CC-BY
+- Published content (see [https://sbrisard.github.io/coques/](https://sbrisard.github.io/coques/)): CC-BY
