@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.280">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Théorie des coques élastiques - 4&nbsp; Transformations d’une coque</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./membranes.html" rel="next">
+<link href="./courbure_des_surfaces.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformations d’une coque</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Théorie des coques élastiques</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Bienvenue</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./courbure_des_surfaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Courbure des surfaces</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./transformations_d_une_coque.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformations d’une coque</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./membranes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Membranes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./coques_en_equilibre_membranaire.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Coques en équilibre membranaire</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./coques_en_flexion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Coques en flexion</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Annexes</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rappels_de_geometrie_differentielle.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Rappels de géométrie différentielle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./complements_d_algebre_lineaire.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Compléments d’algèbre linéaire</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table des matières</h2>
+   
+  <ul>
+  <li><a href="#points-matériels-2d" id="toc-points-matériels-2d" class="nav-link active" data-scroll-target="#points-matériels-2d"><span class="toc-section-number">4.1</span>  Points matériels 2D</a></li>
+  <li><a href="#coordonnées-matérielles-des-points-de-la-coque" id="toc-coordonnées-matérielles-des-points-de-la-coque" class="nav-link" data-scroll-target="#coordonnées-matérielles-des-points-de-la-coque"><span class="toc-section-number">4.2</span>  Coordonnées matérielles des points de la coque</a></li>
+  <li><a href="#déplacement" id="toc-déplacement" class="nav-link" data-scroll-target="#déplacement"><span class="toc-section-number">4.3</span>  Déplacement</a></li>
+  <li><a href="#transport-dun-vecteur-matériel" id="toc-transport-dun-vecteur-matériel" class="nav-link" data-scroll-target="#transport-dun-vecteur-matériel"><span class="toc-section-number">4.4</span>  Transport d’un vecteur matériel</a></li>
+  <li><a href="#déformations-membranaires-de-la-coque" id="toc-déformations-membranaires-de-la-coque" class="nav-link" data-scroll-target="#déformations-membranaires-de-la-coque"><span class="toc-section-number">4.5</span>  Déformations membranaires de la coque</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-20230314085944" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformations d’une coque</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div>
+<p><span class="math display">\[
+\DeclareMathOperator{\asym}{\symbfsf{asym}}
+\newcommand{\altvec}[1]{\overrightarrow{#1}}
+\newcommand{\D}{{\mathrm d}}
+\newcommand{\dbldot}{\mathbin{\mathord{:}}}
+\let\div\undefined
+\newcommand{\div}{\operatorname{div}}
+\newcommand{\Div}{\operatorname{Div}}
+\newcommand{\external}{\mathrm{ext}}
+\newcommand{\Eta}{\mathrm{H}}
+\newcommand{\Grad}{\operatorname{Grad}}
+\newcommand{\grad}{\operatorname{grad}}
+\newcommand{\tgrad}{\operatorname{\symbfsf{grad}}}
+\newcommand{\tGrad}{\operatorname{\symbfsf{Grad}}}
+\newcommand{\internal}{\mathrm{int}}
+\newcommand{\KL}{\mathrm{KL}}
+\newcommand{\kl}{\mathrm{kl}}
+\newcommand{\PI}{\symup{\pi}}
+\newcommand{\point}[1]{\symsf{#1}}
+\newcommand{\power}{\mathcal{P}}
+\newcommand{\reals}{\mathbb R}
+\newcommand{\Span}{\operatorname{Vect}}
+\newcommand{\sym}{\operatorname{\symbfsf{sym}}}
+\newcommand{\tens}[1]{\symbfsf{#1}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\transpose}{\mathsf{T}}
+\renewcommand{\vec}[1]{\symbf{#1}}
+\]</span></p>
+</div>
+<p>Une coque est une structure dont l’une des dimensions (<strong>l’épaisseur</strong>) est grande devant les deux autres. Il est alors naturel de chercher à décrire l’état de la coque par un ensemble de champs construits sur son <strong>feuillet de référence</strong> seulement. On construit ainsi une théorie surfacique de coque. La plus simple de ces théories est la théorie de Kirchhoff–Love, dans laquelle on suppose que l’état mécanique de la coque est complètement défini par les changements de géométrie de son feuillet de référence. Dans ce chapitre, on définit donc des grandeurs tensorielles permettant de mesurer ces changements de géométrie. On veillera à ce que les <strong>déformations généralisées</strong> ainsi définies permettent bien d’identifier les mouvements de corps solides.</p>
+<section id="points-matériels-2d" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="points-matériels-2d"><span class="header-section-number">4.1</span> Points matériels 2D</h2>
+<p>Vue comme un solide tridimensionnel, la coque est constituée de <strong>points matériels 3D</strong>, qui correspondent aux points matériels classiques de la mécanique des milieux continus. Si le matériau constitutif de la coque est standard (de Cauchy), <strong>chaque point matériel 3D possède 3 degrés de liberté de translation</strong>.</p>
+<p>Vue comme un solide surfacique, la coque est constituée de <strong>points matériels 2D</strong>. Un point matériel 2D correspond mathématiquement à un point géométrique du feuillet de référence et physiquement à <strong>l’ensemble des points matériels 3D</strong> de la coque (vue comme un solide tridimensionnel) <strong>situés sur la même normale au feuillet de référence</strong> (voir <a href="#fig-20230302052722">Figure&nbsp;<span>4.1</span></a>).</p>
+<p>La translation d’ensemble des points matériels 3D permet de définir une translation du point matériel 2D, soit <strong>3 degrés de liberté de translation</strong>.</p>
+<p>La translation <strong>relative</strong> des points matériels 3D permet également de définir <strong>2 degrés de liberté de rotation</strong> supplémentaires. Les points matériels 2D ne possèdent pas de degré de liberté en rotation selon la normale au feuillet de référence.</p>
+<div id="fig-20230302052722" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="croquis/blanc.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4.1: Un point matériel 2D correspond à un ensemble de points matériels 3D, tous situés initialement sur la même fibre. Le mouvement d’ensemble des points matériels 3D définit la translation du point matériel 2D&nbsp;; leur mouvement relatif définit deux rotations du point matériel 2D.</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="coordonnées-matérielles-des-points-de-la-coque" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="coordonnées-matérielles-des-points-de-la-coque"><span class="header-section-number">4.2</span> Coordonnées matérielles des points de la coque</h2>
+<p>On notera <span class="math inline">\(\Sigma\)</span> et <span class="math inline">\(\varsigma\)</span> les feuillets de référence de la coque dans les configurations initiale et actuelle, respectivement. Ces surfaces sont définies par les paramétrages <span class="math display">\[
+(\Xi, \Eta) \mapsto \point{M} = \point{F}(\Xi, \Eta) \in \Sigma
+\quad \text{et} \quad
+(\xi, \eta) \mapsto \point{m} = \point{f}(\xi, \eta) \in \varsigma.
+\]</span> (noter l’utilisation des majuscules sur la configuration initiale et des minuscules sur la configuration actuelle). Le mouvement de la coque peut alors être défini par la transformation des coordonnées curvilignes <span class="math display">\[
+(\Xi, \Eta) \mapsto (\xi, \eta) = \Phi(\Xi, \Eta).
+\]</span></p>
+<p>On peut ainsi, pour tout point matériel de la coque, associer à sa position <span class="math inline">\(\point{M} \in \Sigma\)</span> sur la configuration initiale, sa position <span class="math inline">\(\point{m} \in&nbsp;\varsigma\)</span> sur la configuration actuelle de la façon suivante <span class="math display">\[
+\point{M} = \point{F}(\Xi, \Eta) \quad \mapsto \quad \point{m} = \point{f} [ \Phi(\Xi, \Eta) ].
+\]</span></p>
+<p>La représentation précédente de la transformation de la coque est d’une grande généralité, mais conduit à certaines lourdeurs mathématiques. On conviendra dans ce cours que les fonctions <span class="math inline">\(\point{F}\)</span> et <span class="math inline">\(\point{f}\)</span> sont choisies de sorte <span class="math inline">\(\xi = \Xi\)</span> et <span class="math inline">\(\eta = \Eta\)</span>. Ainsi, <span class="math inline">\((\xi, \eta)\)</span> sont les coordonnées curvilignes du <strong>même point matériel</strong>, dans les deux configurations. On parle de <strong>coordonnées matérielles</strong>&nbsp;; elles permettent d’identifier un point matériel. Ainsi, le point matériel de coordonnées matérielles <span class="math inline">\((\xi, \eta)\)</span> occupe la position <span class="math inline">\(\point{M} = \point{F}(\xi, \eta) \in \Sigma\)</span> dans la configuration initiale. Il est transporté en <span class="math inline">\(\point{m} = \point{f}(\xi, \eta) \in \varsigma\)</span> dans la configuration actuelle (voir <a href="#fig-20230302053622">Figure&nbsp;<span>4.2</span></a>).</p>
+<div id="fig-20230302053622" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="croquis/blanc.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4.2: On utilise les mêmes coordonnées curvilignes <span class="math inline">\(\xi\)</span> et <span class="math inline">\(\eta\)</span> pour paramétrer les configurations initiale <span class="math inline">\(\Sigma\)</span> et actuelle <span class="math inline">\(\varsigma\)</span>. Ces coordonnées curvilignes sont des coordonnées <strong>matérielles</strong>.</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="déplacement" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="déplacement"><span class="header-section-number">4.3</span> Déplacement</h2>
+<p>Soit un point matériel de la coque occupant les positions <span class="math inline">\(\point{M}\)</span> et <span class="math inline">\(\point{m}\)</span> dans les configurations initiale et actuelle. Le <strong>déplacement</strong> de ce point matériel est par définition le vecteur (voir <a href="#fig-20230302053622">Figure&nbsp;<span>4.2</span></a>) <span class="math display">\[
+\vec{u}(\point{M}) = \altvec{\point{Mm}} = \point{m} - \point{M}.
+\]</span></p>
+<p>Il correspond à la translation du point matériel entre les deux configurations. Le champ de déplacement ainsi défini est une quantité lagrangienne (définie sur la configuration de référence). On peut aussi considérer le champ des déplacements comme une fonction des coordonnées matérielles <span class="math inline">\(\xi\)</span> et <span class="math inline">\(\eta\)</span> <span class="math display">\[
+\vec{u}(\xi, \eta) = \point{f}(\xi, \eta) - \point{F}(\xi, \eta).
+\]</span></p>
+<p>La configuration actuelle de la coque est ainsi complètement définie par la configuration initiale et le champ des déplacements, puisque la relation précédente s’inverse trivialement <span class="math display">\[
+\point{f}(\xi, \eta) = \point{F}(\xi, \eta) + \vec{u}(\xi, \eta).
+\]</span></p>
+<p>En particulier, on peut exprimer les vecteurs <span class="math inline">\((\vec{a}_\xi, \vec{a}_\eta)\)</span> de la base locale naturelle actuelle en fonction des vecteurs <span class="math inline">\(\vec{A}_\xi\)</span> et <span class="math inline">\(\vec{A}_\eta\)</span> de la base locale naturelle initiale <span class="math display">\[
+\vec{a}_\xi(\xi, \eta) = \partial_\xi \point{f}(\xi, \eta) = \partial_\xi \point{F}(\xi, \eta) + \partial_\xi \vec{u}(\xi, \eta) = \vec{A}_\xi(\xi, \eta) + \partial_\xi \vec{u}(\xi, \eta).
+\]</span></p>
+<p>On omettra souvent la dépendance en <span class="math inline">\(\xi\)</span> et <span class="math inline">\(\eta\)</span> en écrivant simplement <span id="eq-20230314094617"><span class="math display">\[
+\vec{a}_\xi = \vec{A}_\xi + \partial_\xi \vec{u} \quad \text{et} \quad \vec{a}_\eta = \vec{A}_\eta + \partial_\eta \vec{u}.
+\tag{4.1}\]</span></span></p>
+</section>
+<section id="transport-dun-vecteur-matériel" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="transport-dun-vecteur-matériel"><span class="header-section-number">4.4</span> Transport d’un vecteur matériel</h2>
+<p>Soient deux points matériels infiniment proches, de coordonnées matérielles <span class="math inline">\((\xi, \eta)\)</span> et <span class="math inline">\((\xi_1 = \xi + \D\xi, \eta_1 = \eta + \D\eta)\)</span> (voir <a href="#fig-20230302054334">Figure&nbsp;<span>4.3</span></a>). Le <em>vecteur matériel</em> constitué par ces deux points correspond dans la position initiale au vecteur géométrique suivant <span class="math display">\[
+\D\altvec{\point{M}} = \altvec{\point{MM}_1} = \point{M}_1 - \point{M},
+\]</span> avec <span class="math display">\[
+\point{M} = \point{F}(\xi, \eta)\]</span> et <span class="math display">\[
+\begin{aligned}[b]
+\point{M}_1 &amp;= \point{F}(\xi_1, \eta_1) = \point{F}(\xi + \D\xi, \eta + \D\eta) = \point{F}(\xi, \eta) + \partial_\xi \point{F}(\xi, \eta) \, \D\xi + \partial_\eta \point{F}(\xi, \eta) \, \D\eta\\
+&amp;= \point{M} + \vec{A}_\xi \, \D \xi + \vec{A}_\eta \, \D \eta,
+\end{aligned}
+\]</span> soit, en regroupant les résultats précédents <span id="eq-20230301170119"><span class="math display">\[
+\D \altvec{\point{M}} = \vec{A}_\xi \, \D \xi + \vec{A}_\eta \, \D \eta.
+\tag{4.2}\]</span></span></p>
+<p>En d’autres termes, <span class="math inline">\(\D\xi\)</span> et <span class="math inline">\(\D\eta\)</span> sont les coordonnées du vecteur matériel <span class="math inline">\(\D\altvec{\point{M}}\)</span> dans la base <span class="math inline">\((\vec{A}_\xi, \vec{A}_\eta)\)</span>. Cette base n’est en général <strong>pas orthonormée</strong>. Il n’est donc en général pas vrai que <span class="math display">\[
+\D \xi = \vec{A}_\xi \cdot \D \altvec{\point{M}}, \quad \text{ni que} \quad \D \eta = \vec{A}_\eta \cdot \D \altvec{\point{M}}.
+\]</span></p>
+<p>Pour retrouver des formules de ce type, il est nécessaire d’introduire la <strong>base duale</strong> <span class="math inline">\((\vec{A}_\xi^\ast, \vec{A}_\eta^\ast)\)</span> de la base locale naturelle, définie par les relations suivantes <span id="eq-20230301165727"><span class="math display">\[
+\vec{A}_\xi^\ast \cdot \vec{A}_\xi = \vec{A}_\eta^\ast \cdot \vec{A}_\eta = 1
+\quad \text{et} \quad
+\vec{A}_\xi^\ast \cdot \vec{A}_\eta = \vec{A}_\eta^\ast \cdot \vec{A}_\xi = 0,
+\tag{4.3}\]</span></span> ainsi que <span class="math display">\[
+\vec{A}_\xi^\ast \cdot \vec{N} = \vec{A}_\eta^\ast \cdot \vec{N} = 0.
+\]</span></p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Les relations (<a href="#eq-20230301165727"><span>4.3</span></a>) définissent bien de manière unique deux vecteurs <span class="math inline">\(\vec{A}_\xi^\ast\)</span> et <span class="math inline">\(\vec{A}_\eta^\ast\)</span>, dont on peut montrer qu’ils sont linéairement indépendants si <span class="math inline">\(\vec{A}_\xi\)</span> et <span class="math inline">\(\vec{A}_\eta\)</span> le sont.</p>
+<p>Lorsqu’on utilise la convention de sommation d’Einstein, il est courant de noter ces vecteurs avec un indice supérieur (indice <strong>contravariant</strong>) <span class="math display">\[
+\vec{A}_\xi^\ast = \vec{A}^\xi \quad \text{et} \quad \vec{A}_\eta^\ast = \vec{A}^\eta.
+\]</span></p>
+<p>Nous n’utiliserons pas cette convention, ni les notations associées dans le présent cours.</p>
+</div>
+</div>
+<p>On peut montrer les relations suivantes <span id="eq-20230302061921"><span class="math display">\[
+\vec{A}_\xi^\ast = \lVert \vec{A}_\xi \times \vec{A}_\eta \rVert^{-1} \, \bigl( \vec{A}_\eta \times \vec{N}\bigr),
+\tag{4.4}\]</span></span> <span id="eq-20230302062030"><span class="math display">\[
+\vec{A}_\eta^\ast = -\lVert \vec{A}_\xi \times \vec{A}_\eta \rVert^{-1} \, \bigl( \vec{A}_\xi \times \vec{N}\bigr),
+\tag{4.5}\]</span></span> <span id="eq-20230302062218"><span class="math display">\[
+\tens{A}
+= \vec{A}_\xi^\ast \otimes \vec{A}_\xi + \vec{A}_\eta^\ast \otimes \vec{A}_\eta
+= \vec{A}_\xi \otimes \vec{A}_\xi^\ast +\vec{A}_\eta \otimes \vec{A}_\eta^\ast,
+\tag{4.6}\]</span></span> <span id="eq-20230302062229"><span class="math display">\[
+\begin{aligned}[b]
+\tens{E}
+&amp;= \lVert \vec{A}_\xi \times \vec{A}_\eta \rVert \, \bigl( \vec{A}_\xi^\ast \otimes \vec{A}_\eta^\ast - \vec{A}_\eta^\ast \otimes \vec{A}_\xi^\ast \bigr)\\
+&amp;= \lVert \vec{A}_\xi \times \vec{A}_\eta \rVert^{-1} \, \bigl( \vec{A}_\xi \otimes \vec{A}_\eta - \vec{A}_\eta \otimes \vec{A}_\xi \bigr).
+\end{aligned}
+\tag{4.7}\]</span></span></p>
+<p>En combinant les relations (<a href="#eq-20230301170119"><span>4.2</span></a>) et (<a href="#eq-20230301165727"><span>4.3</span></a>), on obtient alors les expressions <span id="eq-20230301170457"><span class="math display">\[
+\D \xi = \vec{A}_\xi^\ast \cdot \D \altvec{\point{M}} \quad \text{et} \quad \D \eta = \vec{A}_\eta^\ast \cdot \D \altvec{\point{M}},
+\tag{4.8}\]</span></span> qui montrent l’intérêt de la base duale. L’expression (<a href="#eq-20230301170119"><span>4.2</span></a>) est par ailleurs vraie également dans la configuration actuelle, où le vecteur matériel correspond alors au vecteur géométrique <span class="math display">\[
+\D \altvec{\point{m}} = \vec{a}_\xi \, \D \xi + \vec{a}_\eta \, \D \eta,
+\]</span> soit, en introduisant les relations (<a href="#eq-20230301170457"><span>4.8</span></a>) <span id="eq-20230301171229"><span class="math display">\[
+\D \altvec{\point{m}} = \vec{a}_\xi \, \bigl( \vec{A}_\xi^\ast \cdot \D \altvec{\point{M}} \bigr) + \vec{a}_\eta \, \bigl( \vec{A}_\eta^\ast \cdot \D \altvec{\point{M}} \bigr) = \tens{F} \cdot \D \altvec{\point{M}},
+\tag{4.9}\]</span></span> où <strong>l’application linéaire tangente <span class="math inline">\(\tens{F}\)</span></strong> est définie de la façon suivante <span id="eq-20230314094713"><span class="math display">\[
+\tens{F} = \vec{a}_\xi \otimes \vec{A}_\xi^\ast + \vec{a}_\eta \otimes \vec{A}_\eta^\ast.
+\tag{4.10}\]</span></span></p>
+<p>L’application linéaire tangente <span class="math inline">\(\tens{F}\)</span> permet d’exprimer le transport d’un vecteur matériel entre les configurations initiale et actuelle à l’aide de la relation (<a href="#eq-20230301171229"><span>4.9</span></a>). Il joue donc le même rôle que le tenseur du même nom de la mécanique des milieux continus. On prendra garde néanmoins au fait que <span class="math inline">\(\tens{F}\)</span> n’est pas un tenseur inversible de l’espace. En effet <span class="math display">\[
+\tens{F} \cdot \vec{N} = \vec{n} \cdot \tens{F} = \vec{0},
+\]</span> ce qui montre que <span class="math inline">\(\tens{F}\)</span> représente un endomorphisme du plan tangent <span class="math inline">\(\mathcal{T}(\point{M}, \Sigma)\)</span> vers le plan tangent <span class="math inline">\(\mathcal{T}(\point{m}, \varsigma)\)</span>.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ainsi définie, <span class="math inline">\(\tens{F}\)</span> apparaît comme une fonction des coordonnées matérielles <span class="math inline">\(\xi\)</span> et <span class="math inline">\(\eta\)</span>&nbsp;: <span class="math inline">\(\tens{F}(\xi, \eta)\)</span>. On peut vérifier que <span class="math inline">\(\tens{F}\)</span> est en fait une grandeur intrinsèque (qui ne dépend pas du paramétrage de la coque). Il est donc légitime d’écrire, en représentation lagrangienne, <span class="math inline">\(\tens{F}(\point{M})\)</span>.</p>
+</div>
+</div>
+<div id="fig-20230302054334" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="croquis/blanc.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4.3: L’application linéaire tangente <span class="math inline">\(\tens{F}\)</span> transporte le vecteur matériel <span class="math inline">\((\D\xi, \D\eta)\)</span> de la configuration initiale (<span class="math inline">\(\D\altvec{\point{M}}\)</span>) vers la configuration actuelle (<span class="math inline">\(\D\altvec{\point{m}}\)</span>).</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="déformations-membranaires-de-la-coque" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="déformations-membranaires-de-la-coque"><span class="header-section-number">4.5</span> Déformations membranaires de la coque</h2>
+<p>Par analogie avec la mécanique des milieux continus, on mesure les déformations de la coque au cours de sa transformation par la variation du produit scalaire entre deux vecteurs matériels construits au même point. En d’autres termes, on considère les trois points matériels voisins suivants (voir <a href="#fig-20230302055151">Figure&nbsp;<span>4.4</span></a>) <span class="math display">\[
+(\xi, \eta), \quad (\xi_1 = \xi + \D \xi_1, \eta_1 = \eta + \D \eta_1)
+\quad \text{et} \quad
+(\xi_2 = \xi + \D \xi_2, \eta_2 = \eta + \D \eta_2)
+\]</span> et on construit les vecteurs matériels <span class="math inline">\((\D \xi_1, \D \eta_1)\)</span> et <span class="math inline">\((\D \xi_2, \D \eta_2)\)</span>. En configuration initiale, ces vecteurs matériels sont représentés par <span class="math display">\[
+\D\altvec{\point{M}}_1 = \vec{A}_\xi \, \D \xi_1 + \vec{A}_\eta \, \D \eta_1
+\quad \text{et} \quad
+\D\altvec{\point{M}}_2 = \vec{A}_\xi \, \D \xi_2 + \vec{A}_\eta \, \D \eta_2,
+\]</span> tandis que, en configuration actuelle <span class="math display">\[
+\D\altvec{\point{m}}_1 = \vec{a}_\xi \, \D \xi_1 + \vec{a}_\eta \, \D \eta_1
+\quad \text{et} \quad
+\D\altvec{\point{m}}_2 = \vec{a}_\xi \, \D \xi_2 + \vec{a}_\eta \, \D \eta_2.
+\]</span></p>
+<p>La relation de transport (<a href="#eq-20230301171229"><span>4.9</span></a>) permet alors d’exprimer la variation du produit scalaire de ces deux vecteurs matériels <span class="math display">\[
+\begin{aligned}[b]
+\D\altvec{\point{m}}_1 \cdot \D\altvec{\point{m}}_2 - \D\altvec{\point{M}}_1 \cdot \D\altvec{\point{M}}_2
+&amp;= \bigl(\tens{F} \cdot \D\altvec{\point{M}}_1 \bigr) \cdot \bigl(\tens{F} \cdot \D\altvec{\point{M}}_2 \bigr) - \D\altvec{\point{M}}_1 \cdot \D\altvec{\point{M}}_2\\
+&amp;= \D\altvec{\point{M}}_1 \cdot \tens{F}^\transpose \cdot \tens{F} \cdot \D\altvec{\point{M}}_2 - \D\altvec{\point{M}}_1 \cdot \D\altvec{\point{M}}_2.
+\end{aligned}
+\]</span></p>
+<p>Le tenseur <span class="math inline">\(\tens{F}^\transpose \cdot \tens{F}\)</span> est un tenseur symétrique du plan tangent <span class="math inline">\(\mathcal{T}(\point{M}, \Sigma)\)</span> (puisque <span class="math inline">\(\tens{F} \cdot \vec{N} = \vec{0}\)</span>). Les vecteurs <span class="math inline">\(\D\altvec{\point{M}}_1\)</span> et <span class="math inline">\(\D\altvec{\point{M}}_2\)</span> étant eux-mêmes des vecteurs de ce plan tangent, on peut écrire <span class="math display">\[
+\D\altvec{\point{m}}_1 \cdot \D\altvec{\point{m}}_2 - \D\altvec{\point{M}}_1 \cdot \D\altvec{\point{M}}_2 = \D\altvec{\point{M}}_1 \cdot \bigl( \tens{F}^\transpose \cdot \tens{F} - \tens{A} \bigr) \cdot \D\altvec{\point{M}}_2.
+\]</span></p>
+<p>On introduit alors le <strong>tenseur des déformations membranaires</strong> <span id="eq-20230301174444"><span class="math display">\[
+\tens{E} = \tfrac{1}{2} \bigl( \tens{F}^\transpose \cdot \tens{F} - \tens{A} \bigr),
+\tag{4.11}\]</span></span> de sorte que <span class="math display">\[
+\D\altvec{\point{M}}_1 \cdot \tens{E} \cdot \D\altvec{\point{M}}_2 = \tfrac{1}{2} \bigl( \D\altvec{\point{m}}_1 \cdot \D\altvec{\point{m}}_2 - \D\altvec{\point{M}}_1 \cdot \D\altvec{\point{M}}_2 \bigr).
+\]</span></p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Le tenseur ainsi introduit joue le même rôle que le tenseur de Green–Lagrange de la mécanique des milieux continus. L’interprétation de ses coefficients est identique (dans le plan tangent).</p>
+</div>
+</div>
+<div id="fig-20230302055151" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="croquis/blanc.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4.4: Le transport de deux vecteurs matériels construits au même point permet de définir le tenseur des déformations membranaires.</figcaption><p></p>
+</figure>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copié");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copié");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./courbure_des_surfaces.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Courbure des surfaces</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./membranes.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Membranes</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
