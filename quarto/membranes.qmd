@@ -1,0 +1,7 @@
+# Membranes {#sec-20230328142259}
+
+::: {.content-visible when-format="html"}
+{{< include macros_html.tex >}}
+:::
+
+On établit dans ce chapitre la théorie des **membranes**, c'est-à-dire des coques sans raideur à la flexion. On fait l'hypothèse que l'état de contraintes des membranes est complètement défini par la mesure des **déformations membranaires** introduites au chapitre @sec-20230314085944.

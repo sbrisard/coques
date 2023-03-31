@@ -1,0 +1,50 @@
+project:
+  type: book
+  output-dir: ../docs
+
+lang: fr
+
+book:
+  title: "Théorie des coques élastiques"
+  author: "Sébastien Brisard"
+  date: last-modified
+  chapters:
+    - index.qmd
+    - introduction.qmd
+    - courbure_des_surfaces.qmd
+    - transformations_d_une_coque.qmd
+    - membranes.qmd
+    - coques_en_equilibre_membranaire.qmd
+    - coques_en_flexion.qmd
+  appendices:
+    - rappels_de_geometrie_differentielle.qmd
+    - complements_d_algebre_lineaire.qmd
+
+bibliography: COQ-Notes_de_cours.bib
+
+format:
+  html:
+    theme: cosmo
+    html-math-method: mathjax
+    default-image-extension: svg
+    #include-before-body: macros_html.tex
+  pdf:
+    pdf-engine: xelatex
+    keep-tex: true
+#    classoption: DIV=18
+    papersize: A4
+    mainfont: TeX Gyre Pagella
+    mathfont: Asana Math
+
+    include-in-header: macros_latex.tex
+    default-image-extension: pdf
+
+crossref:
+  eq-prefix: ""
+  # There is a known bug with sec-prefix
+  # https://github.com/quarto-dev/quarto-cli/discussions/2287
+  # We therefore use the language trick
+  # sec-prefix: ""
+
+language:
+  crossref-sec-prefix: "§"

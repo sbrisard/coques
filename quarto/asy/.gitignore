@@ -1,0 +1,6 @@
+fig*.pdf
+fig*.png
+fig*.svg
+*.aux
+*.dvi
+*.log

@@ -1,0 +1,16 @@
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.upa
+*.upb
+
+auto
+.ipynb_checkpoints
+
+# Asymptote
+asy.exe.stackdump

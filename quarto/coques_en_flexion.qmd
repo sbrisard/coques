@@ -1,0 +1,314 @@
+# Coques en flexion
+
+::: {.content-visible when-format="html"}
+{{< include macros_html.tex >}}
+:::
+
+Dans ce chapitre, on présente le modèle de Kirchhoff–Love. C'est le modèle de coques le plus simple qui permette de rendre compte de couplages membrane-flexion. Le modèle de membrane a été formulé au @sec-20230328142259 sous les hypothèses suivantes : (1) seuls les degrés de liberté de translation des points de la coque interviennent dans l'expression de la puissance des efforts extérieurs et (2) la puissance des efforts intérieurs est une forme linéaire du seul tenseur des déformations membranaires. Ces hypothèses très restrictives conduisent à un modèle qui n'a pas de raideur en flexion. On lève successivement ces deux hypothèses dans le présent chapitre, organisé comme suit. L'hypothèse de Kirchhoff–Love est introduite au @sec-20230330121445. Cette hypothèse permet de définir une rotation sans introduire de degrés de libertés supplémentaires, et donc de prendre en compte des moments extérieurs. On introduit ensuite au paragraphe @sec-20230328153349 le tenseur des variations des courbures, qui complète le tenseur des déformations membranaires : à eux deux, ils caractérisent les mouvements de corps rigides. Le modèle de Kirchhoff–Love est construit par la méthode des puissances virtuelles au @sec-20230330121852. Il est complété au @sec-20230330135827 par les relations de comportement pour un matériau constitutif de Kirchhoff–Saint-Venant. Finalement, une synthèse des équations du modèle est présentée au @sec-20230330140022.
+
+
+## L'hypothèse de Kirchhoff–Love {#sec-20230330121445}
+
+Dans le modèle de Kirchhoff–Love, les points matériels n'ont par construction que **trois degrés de liberté** de translation. Afin de rendre compte de phénomènes de flexion dans la coque, il est nécessaire de faire travailler les moments contre une **rotation**. Celle-ci est nécessairement **liée à la translation**, afin de ne pas introduire de nouveaux degrés de liberté. On se place ici dans l'hypothèse de Kirchhoff–Love : **la rotation des points matériels coïncide avec celle de la normale**.
+
+Dans ce paragraphe, on établit donc l'expression de la vitesse de rotation instantanée de la normale. Celle-ci interviendra dans l'expression de la puissance des moments extérieurs (voir @sec-20230329114426). Le point de départ du calcul de cette vitesse instantanée de rotation est l'expression suivante de la dérivée temporelle de la normale $\dot{\vec{n}}$
+$$
+\dot{\vec{n}} = - \mathring{\vec{ϕ}}, \quad \text{avec} \quad \mathring{\vec{ϕ}} = \vec{n} ⋅ \tgrad{\dot{\vec{u}}}.
+$$ {#eq-20230329065926}
+
+::: {.callout-tip collapse="true"}
+## Démonstration
+
+Soit un point matériel $(ξ, η)$ de la coque, occupant la position $\point{m}$ sur la configuration actuelle $ς$. On considère le vecteur matériel $(\D ξ, \D η)$ issu de ce point, représenté par $\D \altvec{\point{m}}$ en configuration actuelle. On a déjà vu que **RÉFÉRENCE**
+$$
+\D\dot{\altvec{\point{m}}} = \tgrad \dot{\vec{u}} ⋅ \D\altvec{\point{m}}.
+$$
+
+Or $\vec{n} ⋅ \D \altvec{\point{m}} = 0$ à chaque instant, puisque $\D \altvec{\point{m}}$ est tangent à la configuration actuelle. En dérivant par rapport au temps, on obtient donc,
+$$
+\dot{\vec{n}} ⋅ \D \altvec{\point{m}} = - \vec{n} ⋅ \D\dot{\altvec{\point{m}}} = -\vec{n} ⋅ \tgrad{\dot{\vec{u}}} ⋅ \D \altvec{\point{m}} = -\mathring{\vec{ϕ}} ⋅ \D \altvec{\point{m}},
+\quad \text{soit} \quad
+\dot{\vec{n}} ⋅ \vec{v} = - \mathring{\vec{ϕ}} ⋅ \vec{v},
+$$
+**pour tout vecteur $\vec{v}$ du plan tangent à $ς$.** Puisque $\dot{\vec{n}}$ et $\mathring{\vec{ϕ}}$ sont tous deux des vecteurs du plan tangent ($\dot{\vec{n}} ⋅ \vec{n} = 0$ et $\tgrad \ldots ⋅ \vec{n} = 0$), on obtient bien l'expression (@eq-20230329065926).
+
+:::
+
+En remarquant que $\vec{n}$ est un vecteur unitaire, donc $\vec{n} ⋅ \dot{\vec{n}} = 0$, on a par ailleurs
+$$
+\bigl(\vec{n} \wedge \dot{\vec{n}} \bigr) \wedge \vec{n} = -\vec{n} \wedge \bigl( \vec{n} \wedge \dot{\vec{n}} \bigr) = -\bigl( \vec{n} ⋅ \dot{\vec{n}} \bigr) \, \vec{n} + \bigl( \vec{n} ⋅ \vec{n} \bigr) \, \dot{\vec{n}} = \dot{\vec{n}}.
+$$
+
+En d'autres termes, la dérivée temporelle de la normale s'exprime de la façon suivante
+$$
+\dot{\vec{n}} = \bigl( \mathring{\vec{ϕ}} \wedge \vec{n} \bigr) \wedge \vec{n},
+$$
+où le vecteur $\mathring{\vec{ϕ}} \wedge \vec{n}$ apparaît donc comme la vitesse instantanée de rotation de la normale. De même, pour un mouvement virtuel, la vitesse virtuelle instantanée de rotation de la normale est $\hat{\vec{ϕ}} \wedge \vec{n}$, avec
+$$
+\hat{\vec{ϕ}} = \vec{n} ⋅ \tgrad{\hat{\vec{u}}}.
+$$
+
+## Tenseur des variations des courbures {#sec-20230328153349}
+
+::: {.callout-note}
+## Exemple
+
+Considérons la transformation d'une feuille de papier, initialement plane, en un cylindre. On peut vérifier expérimentalement que dans cette transformation, les déformations membranaires sont nulles. Pour autant, la transformation n'est pas un mouvement rigidifiant, car la courbure de la feuille a changé. Les déformations membranaires ne permettent donc pas à elles seules de caractériser les mouvements rigidifiants et il faut lui associer au moins une autre variable de déformation.
+:::
+
+Compte-tenu de l'exemple qui précède, on pressent que la nouvelle variable de déformation à définir sera liée au changement de courbure de la coque. Il s'agit donc de comparer les courbures initiale et actuelle, $\tens{B}$ et $\tens{b}$. Bien entendu, former la différence $\tens{B} - \tens{b}$ n'a pas de sens, puisque les tenseurs $\tens{B}$ et $\tens{b}$ ne vivent pas dans le même plan tangent. On doit donc par exemple transporter le tenseur $\tens{b}$ dans le plan tangent $\mathcal{T}(\point{M}, \Sigma)$ avant de former la différence avec la courbure initiale.
+
+À cet effet, on peut s'inspirer de la définition du tenseur des déformations membranaires
+$$
+\tens{E} = \tfrac{1}{2} \bigl( \tens{F}^\transpose ⋅ \tens{F} - \tens{A} \bigr)
+= \tfrac{1}{2} \bigl( \tens{F}^\transpose ⋅ \tens{a} ⋅ \tens{F} - \tens{A} \bigr),
+$$
+qui montre que le tenseur des déformations membranaires permet de mesurer les changements de métriques entre les configurations initiale ($\tens{A}$) et actuelle ($\tens{a}$). Par analogie, Koiter a ainsi introduit le tenseur suivant, dit **tenseur des variations des courbures**
+$$
+\tens{K} = \tens{F}^\transpose \cdot \tens{b} \cdot \tens{F} - \tens{B}.
+$$
+Ce tenseur est un **tenseur du plan tangent à la configuration initiale, symétrique**.
+
+Dans l'exemple précédent, on a $\tens{E} = \tens{0}$, mais $\tens{K} \neq \tens{0}$. On peut en fait montrer que les déformations généralisées $\tens{E}$ et $\tens{K}$ **caractérisent les mouvements de corps solides** de la coque. En d'autres termes, la coque subit un mouvement de corps solide si, et seulement si, $\tens{E} = \tens{0}$ et $\tens{K} = \tens{0}$. **⚠ À FAIRE : ajouter la preuve ⚠**
+
+Les tenseurs $\tens{E}$ et $\tens{K}$ ainsi definis constituent les déformations généralisées intervenant dans la théorie de Kirchhoff–Love des coques. Ces déformations généralisées ne font intervenir que les variations de géométrie du feuillet de référence, c'est-à-dire le champ des déplacements $\vec{u}$.
+
+En vue d'écrire la puissance des efforts intérieurs, il faut évaluer le **tenseur des taux des variation des courbure**, c'est-à-dire la dérivée de $\tens{K}$ par rapport au temps, qui s'exprime de la façon suivante
+$$
+\dot{\tens{K}} = \tens{F}^\transpose ⋅ \mathring{\tens{κ}} ⋅ \tens{F},
+\quad \text{avec} \quad
+\mathring{\tens{κ}} = \tgrad^\transpose{\dot{\vec{u}}} ⋅ \tens{b} + \tens{a} ⋅ \tgrad{\mathring{\vec{ϕ}}}.
+$$ {#eq-20230329064705}
+
+::: {.callout-tip collapse="true"}
+## Démonstration
+
+En utilisant la formule de transport du gradient
+$$
+\tens{K} = \tens{F}^\transpose ⋅ \tens{b} ⋅ \tens{F} - \tens{B} = -\tens{F}^\transpose ⋅ \tgrad{\vec{n}} ⋅ \tens{F} - \tens{B} = -\tens{F}^\transpose ⋅ \tGrad{\vec{n}} - \tens{B},
+$$
+soit en dérivant par rapport au temps
+$$
+\dot{\tens{K}} = -\dot{\tens{F}}^\transpose ⋅ \tGrad{\vec{n}} - \tens{F}^\transpose ⋅ \dot{\overline{\tGrad{\vec{n}}}}.
+$$
+
+L'opérateur $\tGrad$ étant lagrangien, il commute avec la dérivée par rapport au temps : $\dot{\overline{\tGrad{\vec{n}}}} = \tGrad{\dot{\vec{n}}}$
+donc
+$$
+\begin{aligned}
+\dot{\tens{K}} &= -\dot{\tens{F}}^\transpose ⋅ \tGrad{\vec{n}} - \tens{F}^\transpose ⋅ \tGrad{\dot{\vec{n}}} = -\dot{\tens{F}}^\transpose ⋅ \tgrad{\vec{n}} ⋅ \tens{F} - \tens{F}^\transpose ⋅ \tgrad{\dot{\vec{n}}} ⋅ \tens{F}\\
+&= \dot{\tens{F}}^\transpose ⋅ \tens{b} ⋅ \tens{F} - \tens{F}^\transpose ⋅ \tgrad{\dot{\vec{n}}} ⋅ \tens{F},
+\end{aligned}
+$$
+en utilisant une nouvelle fois la formule de transport du gradient. On remarque maintenant que
+$$
+\tens{F} = \tens{A} + \tGrad{\vec{u}},
+\quad \text{soit} \quad
+\dot{\tens{F}} = \tGrad{\dot{\vec{u}}} = \tgrad{\dot{\vec{u}}} ⋅ \tens{F}
+$$
+et finalement
+$$
+\dot{\tens{K}} = \tens{F}^\transpose ⋅ \tgrad^\transpose{\dot{\vec{u}}} ⋅ \tens{b} ⋅ \tens{F} - \tens{F}^\transpose ⋅ \tgrad{\dot{\vec{n}}} ⋅ \tens{F} = \tens{F}^\transpose ⋅ \bigl( \tgrad^\transpose{\dot{\vec{u}}} ⋅ \tens{b} - \tgrad{\dot{\vec{n}}} \bigr) ⋅ \tens{F}.
+$$
+
+Dans l'expression précédente, $\tgrad^\transpose{\dot{\vec{u}}} ⋅ \tens{b}$ est un tenseur du plan tangent à la configuration actuelle, mais pas $\tgrad{\dot{\vec{n}}}$. Néanmoins, compte-tenu de la contraction à gauche avec $\tens{F}$, on peut remplacer $\tgrad{\dot{\vec{n}}}$ par $\tens{a} ⋅ \tgrad{\dot{\vec{n}}}$
+$$
+\mathring{\tens{κ}} = \tgrad^\transpose{\dot{\vec{u}}} ⋅ \tens{b} - \tens{a} ⋅ \tgrad{\dot{\vec{n}}}
+$$
+et on déduit (@eq-20230329064705) de (@eq-20230329065926).
+:::
+
+Le tenseur $\mathring{\tens{κ}}$ ainsi introduit est le **tenseur des taux eulériens des variations des courbures**. Il peut également être mis sous la forme suivante
+$$
+\mathring{\tens{κ}} = \tens{a} ⋅ \bigl( \vec{n} ⋅ \tgrad \tgrad \dot{\vec{u}} \bigr).
+$$ {#eq-20230329082951}
+
+::: {.callout-tip collapse="true"}
+## Démonstration
+
+
+En combinant les relations (@eq-20230329064705) et (@eq-20230329065926) (qui sera démontrée au @sec-20230329114426) on obtient
+$$
+\mathring{\tens{κ}} = \tgrad^\transpose{\dot{\vec{u}}} ⋅ \tens{b} + \tens{a} ⋅ \tgrad \bigl( \vec{n} ⋅ \tgrad{\dot{\vec{u}}} \bigr),
+$$ {#eq-20230329082744}
+puis, par définition de l'opérateur $\tgrad$,
+$$
+\begin{aligned}[b]
+\tgrad \bigl( \vec{n} ⋅ \tgrad{\dot{\vec{u}}} \bigr)
+&= \sum_α ∂_α \bigl( \vec{n} ⋅ \tgrad{\dot{\vec{u}}} \bigr) ⊗ \vec{a}_α^\ast\\
+&= \sum_α \bigl( ∂_α \vec{n} ⋅ \tgrad{\dot{\vec{u}}} + \vec{n} ⋅ ∂_α \tgrad{\dot{\vec{u}}} \bigr) ⊗ \vec{a}_α^\ast\\
+&= \sum_α \bigl( \tgrad^\transpose{\dot{\vec{u}}} ⋅ ∂_α \vec{n} \bigr) ⊗ \vec{a}_α^\ast + \vec{n} ⋅ ∑_α ∂_α \tgrad{\dot{\vec{u}}} ⊗ \vec{a}_α^\ast\\
+&= \sum_α \bigl( \tgrad^\transpose{\dot{\vec{u}}} ⋅ ∂_α \vec{n} \bigr) ⊗ \vec{a}_α^\ast + \vec{n} ⋅ \tgrad \tgrad \dot{\vec{u}}
+\end{aligned}
+$$ {#eq-20230329082636}
+et en utilisant la formule de Weingarten **RÉFÉRENCE**
+$$
+\begin{aligned}[b]
+\sum_α \bigl( \tgrad^\transpose{\dot{\vec{u}}} ⋅ ∂_α \vec{n} \bigr) ⊗ \vec{a}_α^\ast
+&= -\sum_α \bigl( \tgrad^\transpose{\dot{\vec{u}}} ⋅ \tens{b} ⋅ \vec{a}_α \bigr) ⊗ \vec{a}_α^\ast\\
+&= - \tgrad^\transpose{\dot{\vec{u}}} ⋅ \tens{b} ⋅ \sum_α \vec{a}_α ⊗ \vec{a}_α^\ast\\
+&= - \tgrad^\transpose{\dot{\vec{u}}} ⋅ \tens{b} ⋅ \tens{a} = - \tgrad^\transpose{\dot{\vec{u}}} ⋅ \tens{b}.
+\end{aligned}
+$$ {#eq-20230329082559}
+
+La relation (@eq-20230329082951) est finalement obtenue en combinant (@eq-20230329082744),  (@eq-20230329082636) et (@eq-20230329082559).
+
+:::
+
+Une conséquence importante de l'expression (@eq-20230329082951) est que le tenseur des taux eulériens des variations des courbures est un **tenseur symétrique du plan tangent à la configuration actuelle**.
+
+Pour un champ $\hat{\vec{u}}$ de vitesses virtuelles, on peut également définir les taux virtuels lagrangien $\hat{\tens{K}}$ et eulérien $\hat{\tens{κ}}$ de la façon suivante
+$$
+\hat{\tens{K}} = \tens{F}^\transpose ⋅ \hat{\tens{κ}} ⋅ \tens{F},
+$$ {#eq-20230329110842}
+avec
+$$
+\hat{\tens{κ}}  = \tgrad^\transpose \hat{\vec{u}} ⋅ \tens{b} + \tens{a} ⋅ \tgrad \hat{\vec{ϕ}} = \tens{a} ⋅ \bigl( \vec{n} ⋅ \tgrad \tgrad \hat{\vec{u}} \bigr).
+$$
+
+## Construction du modèle par les puissances virtuelles {#sec-20230330121852}
+
+### Puissance virtuelle des efforts intérieurs {#sec-20230328153516}
+
+Les déformations de la coque sont caractérisées par les tenseurs $\tens{E}$ et $\tens{K}$. On postule donc que la puissance virtuelle des efforts intérieurs est une forme linéaire des taux virtuels de ces deux tenseurs
+$$
+\mathcal{P}_\internal(\hat{\vec{u}}) = -∫_Σ \bigl( \tens{N}^\KL \dbldot \hat{\tens{E}} + \tens{M}^\KL \dbldot \hat{\tens{K}} \bigr) \, \D A,
+$$
+où les contraintes généralisées duales $\tens{N}^\KL$ et $\tens{M}^\KL$ sont le **tenseur des efforts membranaires** et le **tenseur des moments fléchissants**, respectivement. Comme $\hat{\tens{E}}$ et $\hat{\tens{K}}$ sont des tenseurs symétriques du plan tangent à la configuration initiale, les tenseurs $\tens{N}^\KL$ et $\tens{M}^\KL$ sont également des **tenseurs symétriques du plan tangent à la configuration initiale** (on ne saurait pas faire travailler des composantes hors-plan ou antisymétriques de ces tenseurs).
+
+Les composantes du tenseur des efforts membranaires sont homogènes à une force par unité de longueur, tandis que les composantes du tenseur des moments fléchissants sont homogènes à un moment par unité de longueur (c'est-à-dire, une force). Ces tenseurs permettent d'écrire la puissance des efforts intérieurs sur la configuration initiale : ils jouent donc le même rôle que le **tenseur de Piola–Kirchhoff de seconde espèce** de la mécanique des milieux continus.
+
+Exprimée sur la configuration actuelle, la puissance des efforts intérieurs s'écrit également comme suit
+$$
+\mathcal{P}_\internal = -∫_ς \bigl( \tens{N}^\kl \dbldot \hat{\tens{ε}} + \tens{M}^\KL \dbldot \hat{\tens{κ}} \bigr) \, \D a,
+$$ {#eq-20230329144253}
+où les tenseurs $\tens{N}^\kl$ et $\tens{M}^\kl$ sont des **tenseurs symétriques du plan tangent à la configuration actuelle** et jouent le même rôle (du point de vue de la puissance des efforts intérieurs, pas du point de vue des efforts intérieurs eux-mêmes) que le **tenseur de Cauchy** de la mécanique des milieux continus. Leur expression est donnée par les formules suivantes
+$$
+\tens{N}^\kl = J^{-1} \, \tens{F} ⋅ \tens{N}^\KL ⋅ \tens{F}^\transpose
+\quad \text{et} \quad
+\tens{M}^\kl = J^{-1} \, \tens{F} ⋅ \tens{M}^\KL ⋅ \tens{F}^\transpose.
+$$ {#eq-20230329092641}
+
+::: {.callout-tip collapse="true"}
+## Démonstration
+
+On utilise la formule de transport de l'élément d'aire **RÉFÉRENCE** ainsi que les expressions **RÉFÉRENCE** et (@eq-20230329110842)
+
+$$
+\mathcal{P}_\internal = -∫_ς \bigl[ \tens{N}^\KL \dbldot \bigl( \tens{F}^\transpose ⋅ \hat{\tens{ε}} ⋅ \tens{F} \bigr)  + \tens{M}^\KL \dbldot \bigl( \tens{F}^\transpose ⋅ \hat{\tens{κ}} ⋅ \tens{F} \bigr) \bigr] \, J^{-1} \, \D a,
+$$
+d'où l'on déduit les expressions (@eq-20230329092641) en appliquant l'identité
+$$
+\tens{A} \dbldot \bigl( \tens{B} \cdot \tens{C} \bigr) = \bigl( \tens{A} \cdot \tens{C}^\transpose \bigr) \dbldot \tens{B} = \bigl( \tens{B}^\transpose \cdot \tens{A} \bigr) \dbldot \tens{C}.
+$$
+:::
+
+Dans la théorie de Kirchhoff–Love des coques, il est difficile de donner une interprétation physique aux tenseurs $\tens{N}^\kl$ et $\tens{M}^\kl$, qui, contrairement aux membranes, ne donnent pas directement accés aux résultantes et aux moments s'exerçant sur une facette orientée. On retiendra néanmoins que $\tens{N}^\kl ⋅ \vec{g} \, \D s$ correspond « à peu près » à la composante dans le plan de la résultante des efforts intérieurs exercés sur la facette $\vec{g} \, \D s$, tandis $\tens{M}^\kl ⋅ \vec{g} \, \D s$ correspond « à peu près » au moment des efforts intérieurs exercés sur cette facette.
+
+### Puissance virtuelle des efforts extérieurs {#sec-20230329114426}
+
+La coque est soumise aux efforts suivants
+
+- forces surfaciques appliquées à $ς$, de densité $\vec{p}$,
+- forces linéiques appliquées à $∂ς$, de densité $\vec{q}$,
+- couples surfaciques appliquées à $ς$, de densité $\vec{c}$,
+- couples linéiques appliqués à $∂ς$, de densité $\vec{m}$.
+
+Toutes ces densités sont exprimées par unité de surface ou de longueur mesurées **sur la configuration actuelle**. Dans l'hypothèse de Kirchhoff–Love, chaque point matériel de la coque est animé d'une vitesse virtuelle de translation $\hat{\vec{u}}$ et une vitesse virtuelle instantanée de rotation $\hat{\vec{ϕ}} \wedge \vec{n}$. La puissance virtuelle des efforts extérieurs a donc pour expression
+$$
+\mathcal{P}_\external(\hat{\vec{u}})=
+∫_ς \bigl[ \vec{p} ⋅ \hat{\vec{u}} + \vec{c} ⋅ \bigl( \hat{\vec{ϕ}} \wedge \vec{n} \bigr) \bigr] \, \D a
++ ∫_{∂ς} \bigl[ \vec{q} ⋅ \hat{\vec{u}} + \vec{m} ⋅ \bigl( \hat{\vec{ϕ}} \wedge \vec{n} \bigr) \bigr] \, \D s.
+$$ {#eq-20230329144447}
+
+### Équations d'équilibre
+
+On obtient les équations d'équilibre portant sur les contraintes généralisées $\tens{N}^\kl$ et $\tens{M}^\kl$ en écrivant le principe des puissances virtuelles **sur la configuration actuelle**
+$$
+\mathcal{P}_\internal(\hat{\vec{u}}) + \mathcal{P}_\external(\hat{\vec{u}}) = 0 \quad \text{pour tout mouvement virtuel } \hat{\vec{u}},
+$$
+où les puissances virtuelles des efforts intérieurs et extérieurs sont données par les expressions (@eq-20230329144253) et (@eq-20230329144447), respectivement. En procédant aux nécessaires intégrations par parties, on peut en principe en déduire la forme forte des équations d'équilibre. Néanmoins, ces équations sont peu commodes à manipuler et ne permettent pas (contrairement aux membranes par exemple) de déterminer la signification physique précise des contraintes généralisées $\tens{N}^\kl$ et $\tens{M}^\kl$. Dans le présent cours, on renoncera donc à établir ces équations d'équilibre. Ainsi, pour tout problème de flexion d'une coque, on devra écrire le principe des puissances virtuelles pour déterminer l'ensemble des champs de contraintes généralisées statiquement admissibles.
+
+
+## Comportement des coques de Kirchhoff–Love {#sec-20230330135827}
+
+Dans l'approche bidimensionnelle suivie ici, il n'est pas possible d'établir les relations de comportement de la coque. Une analyse tridimensionnelle est nécessaire pour faire le lien entre contraintes de Cauchy et contraintes généralisées de Kirchhoff–Love. Nous admettrons dans ce cours les relations de comportement suivantes, valables pour une **coque mince, en grandes transformations mais petites déformations**
+$$
+\tens{N}^\KL = K \bigl[ \bigl( 1 - \nu \bigr) \, \tens{E} + \nu \, \bigl( \tr \tens{E} \bigr) \, \tens{A} \bigr]
+\quad \text{et} \quad
+\tens{M}^\KL = D \bigl[ \bigl( 1 - \nu \bigr) \, \tens{K} + \nu \, \bigl( \tr \tens{K} \bigr) \, \tens{A} \bigr],
+$$
+où $K$ et $D$ désignent la raideur membranaire et la raideur en flexion, respectivement
+$$
+K = \frac{E \, h}{1 - \nu^2} \quad \text{et} \quad D = \frac{E \, h^3}{12 \, \bigl( 1 - \nu^2 \bigr)}.
+$$
+
+Ces relations négligent les **couplages flexion-membrane** et ne sont donc valables en toute rigueur que pour des coques très minces.
+
+::: {.callout-note}
+La coque est en **grandes transformations et petites déformations**. En particulier, les déplacements ne sont pas nécessairement petits, ni les variations de courbures. En revanche, les **déformations locales** (tridimensionnelles) sont supposées petites, ce qui explique pourquoi la loi de comportement peut être supposée élastique, linéaire.
+:::
+
+
+## Équilibre élastique des coques de Kirchhoff–Love {#sec-20230330140022}
+
+On s'intéresse ici au problème de l'équilibre d'une coque de Kirchhoff–Love élastique. Cette coque est soumise à un chargement $\vec{p}$, $\vec{q}$, $\vec{c}$ et $\vec{m}$ ainsi qu'à des conditions aux limites cinématiques au bord. On souhaite alors déterminer la **figure d'équilibre** (c'est-à-dire, la configuration déformée – les déplacements suffisent) ainsi que l'**état de contraintes** de la coque. On présente dans ce paragraphe une synthèse de toutes les équations nécessaires à la résolution de ce problème. On supposera que la densité surfacique de couples $\vec{c}$ est nulle.
+
+### Équations générales
+
+On obtient les équations d'équilibre en écrivant le PPV **sur la configuration actuelle**
+$$
+∫_ς \bigl( -\tens{N}^\kl \dbldot \hat{\tens{ε}} - \tens{M}^\kl \dbldot \hat{\tens{κ}} + \vec{p} ⋅ \hat{\vec{u}} \bigr) \, \D a + ∫_{∂ς} \bigl[ \vec{q} ⋅ \hat{\vec{u}} + \vec{m} ⋅ \bigl( \hat{\vec{ϕ}}  \wedge \vec{n} \bigr) \bigr] \, \D s = 0,
+$$
+avec
+$$
+\tens{\hat{ε}} = \sym \bigl( \tens{a} ⋅ \tgrad \hat{\vec{u}} \bigr), \quad
+\hat{\tens{κ}} = \tgrad^\transpose \hat{\vec{u}} ⋅ \tens{b} + \tens{a} ⋅ \tgrad \hat{\vec{ϕ}}
+\quad \text{et} \quad
+\hat{\vec{ϕ}} = \vec{n} ⋅ \tgrad \hat{\vec{u}}.
+$$
+
+Les déformations généralisées s'écrivent par ailleurs en fonction des déplacements généralisées (relations de « compatibilité géométrique »).
+$$
+\tens{F} = \tens{A} + \tGrad \vec{u}, \quad \tens{E} = \tfrac{1}{2} \bigl( \tens{F}^\transpose ⋅ \tens{F} - \tens{A} \bigr) \quad \text{et} \quad \tens{K} = \tens{F}^\transpose ⋅ \tens{b} ⋅ \tens{F} - \tens{B}.
+$$
+
+Enfin, les relations de comportement s'écrivent **sur la configuration initiale**
+$$
+\tens{N}^\KL = K \bigl[ \bigl( 1 - \nu \bigr) \, \tens{E} + \nu \, \bigl( \tr \tens{E} \bigr) \, \tens{A} \bigr]
+\quad \text{et} \quad
+\tens{M}^\KL = D \bigl[ \bigl( 1 - \nu \bigr) \, \tens{K} + \nu \, \bigl( \tr \tens{K} \bigr) \, \tens{A} \bigr],
+$$
+avec les relations de transport
+$$
+\tens{N}^\kl = J^{-1} \, \tens{F} ⋅ \tens{N}^\KL ⋅ \tens{F}^\transpose
+\quad \text{et} \quad
+\tens{M}^\kl = J^{-1} \, \tens{F} ⋅ \tens{M}^\KL ⋅ \tens{F}^\transpose.
+$$
+
+Contrairement aux équations d'équilibre, établies par le PPV sur la configuration actuelle, ces relations de comportement sont écrites sur la configuration initiale et font intervenir les grandeurs lagrangiennes $\tens{E}$, $\tens{K}$, $\tens{N}^\KL$ et $\tens{M}^\KL$.
+
+### Équations dans l'hypothèse des petites perturbations
+
+Dans l'hypothèse des petites perturbations, le déplacement et les déformations sont « petits ». On linéarise toutes les expressions vis-à-vis du dépacement $\vec{u}$. Il n'y a alors plus lieu de distinguer les configurations initiale ou actuelle, ni les contraintes généralisées lagrangiennes ($\tens{N}^\KL$, $\tens{M}^\KL$) ou eulériennes ($\tens{N}^\kl$, $\tens{M}^\kl$). Les équations précédentes se simplifient de la façon suivante
+
+$$
+∫_ς \bigl( -\tens{N} \dbldot \hat{\tens{ε}} - \tens{M} \dbldot \hat{\tens{κ}} + \vec{p} ⋅ \hat{\vec{u}} \bigr) \, \D a + ∫_{∂ς} \bigl[ \vec{q} ⋅ \hat{\vec{u}} + \vec{m} ⋅ \bigl( \hat{\vec{ϕ}}  \wedge \vec{n} \bigr) \bigr] \, \D s = 0,
+$$
+$$
+\tens{\hat{ε}} = \sym \bigl( \tens{a} ⋅ \tgrad \hat{\vec{u}} \bigr), \quad
+\hat{\tens{κ}} = \tgrad^\transpose \hat{\vec{u}} ⋅ \tens{b} + \tens{a} ⋅ \tgrad \hat{\vec{ϕ}}
+\quad \text{et} \quad
+\hat{\vec{ϕ}} = \vec{n} ⋅ \tgrad \hat{\vec{u}},
+$$
+$$
+\tens{ε} = \sym \bigl( \tens{a} ⋅ \tgrad \vec{u} \bigr), \quad
+\tens{κ} = \tgrad^\transpose \vec{u} ⋅ \tens{b} + \tens{a} ⋅ \tgrad \vec{ϕ}
+\quad \text{et} \quad
+\vec{ϕ} = \vec{n} ⋅ \tgrad \vec{u},
+$$
+$$
+\tens{N} = K \bigl[ \bigl( 1 - \nu \bigr) \, \tens{ε} + \nu \, \bigl( \tr \tens{ε} \bigr) \, \tens{a} \bigr]
+\quad \text{et} \quad
+\tens{M} = D \bigl[ \bigl( 1 - \nu \bigr) \, \tens{κ} + \nu \, \bigl( \tr \tens{κ} \bigr) \, \tens{a} \bigr].
+$$

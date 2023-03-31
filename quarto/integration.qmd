@@ -1,0 +1,22 @@
+Dans ce chapitre, on introduit les outils de calcul différentiel et intégral sur une surface paramétrée. L'intégration sur une surface sera utilisée pour établir la forme faible des équations des coques. La dérivation (et notamment la formule de Stokes) sera quant à elle utilisée pour établir la forme forte de ces équations.
+
+## Intégration sur une surface
+
+Pour clore ce chapitre, on montre comment intégrer un champ de tenseurs sur une surface paramétrique. Le champ de tenseurs $\tens{T}$ étant défini sur la surface $\Sigma$, on souhaite calculer l'intégrale $\int_\Sigma \tens{T} \, \D a$, où $\D a$ désigne l'élément d'aire mesuré sur la surface $\Sigma$. On introduit pour cela un paramétrage de la surface
+$$
+(\xi, \eta) \in \mathcal{D} \subset \reals^2 \mapsto \point{f}(\xi, \eta) \in \Sigma \subset \reals^3
+$$
+de la surface. On souhaite exprimer l'élément d'aire $\D a$ en fonction de $\point f$ et des variations $\D\xi$ et $\D\eta$ des paramètres.
+
+Soit $\point{m} = \point{f}(\xi, \eta)$. Lorsque le paramètre $\xi$ (respectivement, $\eta$) varie d'un incrément $\D\xi$ (respectivement, $\D\eta$), le point $\point{m}$ se déplace sur la surface $\Sigma$ de $\vec{a}_{\xi} \, \D\xi$ (respectivement, $\vec{a}_{\eta} \, \D\eta$). L'élément d'aire correspondant vaut donc
+$$
+\D a = \lVert \bigl( \vec{a}_{\xi} \, \D\xi \bigr) \times \bigl( \vec{a}_{\eta} \, \D\eta \bigr) \rVert = \lVert \vec{a}_{\xi} \times \vec{a}_{\eta} \rVert \D\xi \, \D\eta = \vec{n} \cdot \bigl( \vec{a}_{\xi} \times \vec{a}_{\eta} \bigr) \D\xi \, \D\eta,
+$$
+où l'on a utilisé la définition (@eq-20230214053253) de la normale. On remarque que le produit mixte $\vec{n} \cdot \bigl(\vec{a}_{\xi} \times \vec{a}_{\eta} \bigr)$ est par construction positif. L'intégrale sur $\Sigma$ peut donc s'exprimer comme une intégrale sur l'espace des paramètres $\mathcal D$
+$$
+\begin{aligned}
+\int_\Sigma \tens{T} \, \D a
+& = \int_{\mathcal{D}}\tens{T}[\point{f}(\xi, \eta)] \lVert \vec{a}_{\xi}(\xi, \eta) \times \vec{a}_{\eta}(\xi, \eta) \rVert \D \xi \, \D \eta,\\
+& = \int_{\mathcal{D}}\tens{T}[\point{f}(\xi, \eta)] \, \vec{n}[\point{f}(\xi, \eta)] \cdot \bigl[ \vec{a}_{\xi}(\xi, \eta) \times \vec{a}_{\eta}(\xi, \eta) \bigr] \D\xi \, \D\eta.
+\end{aligned}
+$$

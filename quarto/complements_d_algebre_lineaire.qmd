@@ -1,0 +1,94 @@
+# Compléments d'algèbre linéaire
+
+::: {.content-visible when-format="html"}
+{{< include macros_html.tex >}}
+:::
+
+## Application linéaire entre deux plans de l'espace {#sec-20230213110532}
+
+Dans ce paragraphe, on considère *deux* plans de l'espace, $\Pi$ et $\pi$, leurs normales unitaires $\vec N$ et $\vec n$ et les opérateurs de projection associés $\tens A$ et $\tens a$. Soit $\vec{f}$ une application linéaire de $\Pi$ sur $\pi$. Pour tout $\vec V \in \Pi$, on a $\vec n \cdot \vec{f}(\vec V) = 0$, puisque $\vec{f}(\vec V) \in \pi$ par construction. L'application linéaire $\vec{f}$, définie seulement sur $\Pi$, peut être prolongée sur l'espace $\reals^3$ tout entier en convenant que $\vec{f}(\vec N) = \vec{0}$. En d'autres termes, on pose
+$$
+\vec{f}(\vec{V}) = \vec{f}(\tens A \cdot \vec{V}) \quad (\vec V \in \reals^3).
+$$
+
+On a ainsi défini un *endomorphisme* de l'espace $\reals^3$, auquel on peut associer le tenseur $\tens F$. Par construction, $\vec{f}(\vec{N}) = \vec{0}$; par ailleurs, l'image par $\vec{f}$ de tout vecteur de l'espace est contenue dans le plan $\pi$. En d'autres termes, pour tout $\vec{V} \in \reals^3$, $\vec{n} \cdot \vec{f}(\vec V) = \vec{0}$. On en déduit donc les relations importantes
+$$
+\tens F \cdot \vec N = \vec n \cdot \tens F = \vec 0.
+$$ {#eq-20230210152426}
+
+Inversement, un tenseur $\tens F$ d'ordre deux de l'espace satisfaisant les relations précédentes peut être vu comme une application linéaire de $\Pi$ sur $\pi$.
+
+Compte-tenu de la première des relations (@eq-20230210152426), le tenseur $\tens F$ n'est bien sûr pas inversible dans l'espace. Son déterminant n'apporte donc aucune information, puisqu'il est nul. On montrera en revanche que le déterminant du tenseur $\tens F + \vec n \otimes \vec N$ permet de mesurer des variations d'aire au cours de la transformation d'une coque. On a en effet la relation suivante, valable pour tous vecteurs $\vec{V}, \vec{W} \in \reals^3$ de l'espace
+$$
+\vec n \cdot \bigl[ \bigl( \tens F \cdot \vec V \bigr) \times \bigl( \tens F \cdot \vec W \bigr) \bigr]
+= \vec N \cdot \bigl( \vec V \times \vec W \bigr) \, \det\bigl( \tens F + \vec n \otimes \vec N \bigr).
+$$
+
+::: {.callout-tip appearance="minimal"}
+Soient $\tens{F}^\sharp = \tens{F} + \vec{n} \otimes \vec{N}$ et $\vec{V}$ et $\vec{W}$ deux vecteurs quelconques de l'espace. Par construction de $\tens{F}$, on a $\tens{F} \cdot \vec{V} = \tens{F} \cdot \bigl( \tens A \cdot \vec{V} \bigr)$. Puisque $\tens{A} \cdot \vec{V} \in \Pi$, on a $\tens{F}^\sharp \cdot \bigl( \tens{A} \cdot \vec{V} \bigr) = \tens{F} \cdot \bigl( \tens{A} \cdot \vec{V} \bigr) = \tens{F} \cdot \vec{V}$ (relations similaires pour $\vec{W}$). En observant par ailleurs que $\tens{F}^\sharp \cdot \vec{N} = \vec{n}$ et en reconnaissant un produit mixte, on obtient
+$$
+\begin{aligned}
+\vec{n} \cdot \bigl[ \bigl( \tens{F} \cdot \vec{V} \bigr) \times \bigl( \tens{F} \cdot \vec{W} \bigr) \bigr]
+&= \bigl[\tens{F}^\sharp \cdot \vec{N}, \tens{F}^\sharp \cdot \bigl( \tens{A} \cdot \vec{V} \bigr), \tens{F}^\sharp \cdot \bigl( \tens{A} \cdot \vec{W} \bigr) \bigr]\\
+&= \bigl[ \vec{N}, \tens{A} \cdot \vec{V}, \tens{A} \cdot \vec{W} \bigr] \, \det \tens F^\sharp.
+\end{aligned}
+$$
+
+Enfin, en remarquant que $\tens{A} \cdot \vec{V} = \vec{V} - \bigl( \vec{V} \cdot \vec N \bigr) \, \vec{N}$
+$$
+\begin{aligned}
+\bigl[ \vec{N}, \tens{A} \cdot \vec{V}, \tens{A} \cdot \vec{W} \bigr]
+= {} &
+\bigl[ \vec{N}, \vec{V} - \bigl( \vec{V} \cdot \vec N \bigr) \, \vec{N}, \vec{W} - \bigl( \vec{W} \cdot \vec N \bigr) \, \vec{N} \bigr]\\
+= {} & \bigl[ \vec{N}, \vec{V}, \vec{W} \bigr] - \bigl( \vec{V} \cdot \vec N \bigr) \, \bigl[ \vec{N}, \vec{N}, \vec{W} \bigr] - \bigl( \vec{W} \cdot \vec N \bigr) \, \bigl[ \vec{N}, \vec{V}, \vec{N} \bigr]\\
+	& + \bigl( \vec{V} \cdot \vec N \bigr) \, \bigl( \vec{W} \cdot \vec N \bigr) \, \bigl[ \vec{N}, \vec{N}, \vec{N} \bigr] =  \bigl[ \vec{N}, \vec{V}, \vec{W} \bigr],
+\end{aligned}
+$$
+puisque $\bigl[ \vec{N}, \vec{N}, \vec{W} \bigr] = \bigl[ \vec{N}, \vec{V}, \vec{N} \bigr] = \bigl[ \vec{N}, \vec{N}, \vec{N} \bigr] = 0$.
+:::
+
+Vu comme un endomorphisme de l'espace, $\tens{F}$ n'est *jamais inversible*. En revanche, il peut être le représentant d'une application linéaire inversible entre les plans $\Pi$ et $\pi$. On notera $\tens F^\dagger$ son inverse. En d'autres termes, pour tous $\vec{V} \in \Pi$ et $\vec{v} \in \pi$, on a
+$$
+\vec{v} = \tens{F} \cdot \vec{V} \quad \text{ssi} \quad \vec{V} = \tens{F}^\dagger \cdot \vec{v},
+$$
+que l'on peut également résumer par les relations suivantes
+$$
+\tens{F}^\dagger \cdot \tens{F} = \tens{A} \quad \text{et} \quad \tens{F} \cdot \tens{F}^\dagger = \tens{a}.
+$$
+
+::: {.callout-note}
+Le tenseur $\tens{F}^\dagger$ n'est pas l'inverse du tenseur (de l'espace) $\tens{F}$. C'est l'extension à tout l'espace de l'inverse de la restriction de $\tens{F}$ aux plans $\Pi$ (espace de départ) et $\pi$ (espace d'arrivée). On parle alors de **pseudo-inverse**[^fn-1] de $\tens{F}$.
+
+On peut facilement montrer que $\tens{F}$ admet une pseudo-inverse si, et seulement si, $\tens{F} + \vec{n} \otimes \vec{N}$ est inversible, c'est-à-dire $\det\bigl( \tens F + \vec n \otimes \vec N \bigr) \neq 0$. Dans ce cas, on a
+$$
+\bigl( \tens{F} + \vec{n} \otimes \vec{N} \bigr)^{-1} = \tens{F}^\dagger + \vec{N} \otimes \vec{n}.
+$$
+:::
+
+[^fn-1]: [https://fr.wikipedia.org/wiki/Pseudo-inverse](https://fr.wikipedia.org/wiki/Pseudo-inverse), visité le 10/02/2023.
+
+::: {.callout-tip appearance="minimal"}
+Il suffit de former les produits suivants
+$$
+\begin{aligned}
+\bigl( \tens{F} + \vec{n} \otimes \vec{N} \bigr) \cdot \bigl( \tens{F}^\dagger + \vec{N} \otimes \vec{n} \bigr)
+&= \tens{F} \cdot \tens{F}^\dagger + \bigl( \tens{F} \cdot \vec{N} \bigr) \otimes \vec{n} + \vec{n} \otimes \bigl( \vec{N} \cdot \tens{F}^\dagger \bigr) + \vec{n} \otimes \vec{n}\\
+&= \tens{a} + \vec{n} \otimes \vec{n} = \tens{I},
+\end{aligned}
+$$
+et
+$$
+\begin{aligned}
+\bigl( \tens{F}^\dagger + \vec{N} \otimes \vec{n} \bigr) \cdot \bigl( \tens{F} + \vec{n} \otimes \vec{N} \bigr)
+&= \tens{F}^\dagger \cdot \tens{F} +\bigl( \tens{F}^\dagger \cdot \vec{n} \bigr) \otimes \vec{N} + \vec{N} \otimes \bigl( \vec{n} \cdot \tens{F} \bigr) + \vec{N} \otimes \vec{N}\\
+&= \tens{A} + \vec{N} \otimes \vec{N} = \tens{I}.
+\end{aligned}
+$$
+:::
+
+::: {.callout-note}
+Lorsque les plans $\Pi$ et $\pi$ sont confondus, le tenseur $\tens{F}$ peut être vu comme un *endomorphisme* du plan, pour lequel la notion de déterminant ($2 \times 2$) a un sens. Dans ce cas
+$$
+\det_{2 \times 2} \tens F = \det_{3 \times 3} \bigl( \tens F + \vec N \otimes \vec N \bigr).
+$$
+:::

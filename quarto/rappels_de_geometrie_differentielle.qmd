@@ -1,0 +1,167 @@
+# Rappels de géométrie différentielle {#sec-20230213121713}
+
+::: {.content-visible when-format="html"}
+{{< include macros_html.tex >}}
+:::
+
+## Courbes paramétrées
+
+### Définition
+
+Une courbe paramétrée $\Gamma$ du plan $\reals^2$ ou de l'espace $\reals^3$ est l'ensemble des points $\point{M} = \point{f}(t)$ de $\reals^d$ ($d = 2, 3$) images par l'application $\point{f} \colon [a, b] \longrightarrow \reals^d$, du paramètre réel $a \leq t \leq b$ (voir @fig-20230207150452)
+$$
+\Gamma = \bigl\{ \point{M} \in \reals^d | \exists t \in [a, b]: \point{M} = \point{f}(t) \bigr\}.
+$$
+
+![La courbe $\Gamma$ est paramétrée par $\point{f}$.](asy/fig20230207150452){#fig-20230207150452}
+
+On supposera dans ce qui suit l'application $\point{f}$ suffisamment régulière (en général, au moins une fois continûment dérivable par morceaux) pour que toutes les relations faisant intervenir $\point{f}$ et ses dérivées aient un sens. En particulier, l'application $\point{f}$ est *continue*: la courbe décrite par $\point{f}$ dans $\reals^d$ est donc elle-même continue au sens usuel du terme : on trace cette courbe sans lever le crayon.
+
+Le choix du paramétrage $t \mapsto \point{f}(t)$ définit naturellement une *orientation* de la courbe $\Gamma$, de son *origine* $\point{A} = \point{f}(a)$ vers son extrémité $\point{B} = \point{f}(b)$. Toute application $\Phi\colon [a', b'] \longleftrightarrow [a, b]$ strictement croissante et régulière permet de définir le nouveau paramétrage $\point{f} \circ \Phi$ de la courbe $\Gamma$. Dans ce changement de paramètre, l'orientation de la courbe est préservée.
+
+:::{.callout-note}
+Dans le plan ($d = 2$) et dans l'espace ($d = 3$), respectivement, l'application $\point{f}$ est définie par les *équations paramétriques* $(x(t), y(t))$ et $x(t), y(t), z(t)$, respectivement, de la courbe $\Gamma$
+$$
+\point{f}(t) = \begin{bmatrix} x(t) \\ y(t) \end{bmatrix}
+\quad \text{et} \quad
+\point{f}(t) = \begin{bmatrix} x(t) \\ y(t) \\ z(t) \end{bmatrix}.
+$$
+:::
+
+### Tangente
+
+Notion intuitive : soit $\point{M} = \point{f}(t) \in \Gamma$ fixé. On considère le point $\point{M'} = \point{f}(t')$, voisin de $\point{M}$. La droite $(\point{MM}')$ définit une *sécante* à la courbe $\Gamma$. Lorsque $\point{M}'$ &laquo;&nbsp;se rapproche de $\point{M}$&nbsp;&raquo; (voir @fig-20230207155607   ), cette sécante se rapproche de la *tangente* à $\Gamma$ en $\point{M}$ qui est donc définie comme la droite passant par $\point{M}$ et de vecteur directeur
+$$
+\lim_{t' \to t} \frac{\altvec{\point{MM}'}}{t' - t} = \lim_{t' \to t} \frac{\point{M'} - \point{M}}{t' - t} = \dot{\point{f}}(t),
+$$
+où le point désigne la dérivée par rapport au paramètre $t$. Le vecteur $\dot{\point{f}}(t)$ est donc un vecteur tangent au point $\point{f}(t)$ de la courbe $\Gamma$.
+
+![Construction de la tangente à la courbe $\Gamma$ au point $\point{M}$.](asy/fig20230207155607){#fig-20230207155607}
+
+:::{.callout-note}
+On vérifie aisément que la droite tangente ainsi définie est invariante par changement de paramètre.
+:::
+
+:::{.callout-note}
+Les coordonnées du vecteur tangent, sont en dimensions 2 et 3, respectivement
+$$
+\dot{\point{f}}(t) = \begin{bmatrix} \dot{x}(t) \\ \dot{y}(t) \end{bmatrix}
+\quad \text{et} \quad
+\dot{\point{f}}(t) = \begin{bmatrix} \dot{x}(t) \\ \dot{y}(t) \\ \dot{z}(t) \end{bmatrix}.
+$$
+:::
+
+### Rectification d'une courbe
+
+On cherche à calculer la longueur de l'arc $\point{AB}$. À cet effet, on approxime l'arc par une ligne polygonale $\point{M}_0 = \point{A}, \point{M_1}, \ldots, \point{M_n} = \point{B}$, où $\point{M}_k$ est le point de $\Gamma$ d'antécédent $t_k$ par $\point{f}$ ($t_0 < t_1 < \cdots < t_n$). La longueur de cette ligne polygonale est (voir @fig-20230207181908)
+
+$$
+\sum _ {k = 0} ^ {n - 1} \bigl \lVert \point{M} _ {k+1} - \point{M} _ k \bigr \rVert
+= \sum _ {k = 0} ^ {n - 1} \bigl \lVert  \point{f}(t _ {k+1}) - \point{M}(t _ k) \bigr \rVert
+$$
+
+![Approximation de l'arc $\point{AB}$ construit sur $\Gamma$ par une ligne brisée.](asy/fig20230207181908){#fig-20230207181908}
+
+Si les points $\point{M}_k$ sont suffisamment rapprochés, on peut remplacer la sécante par la tangente
+$$
+\sum _ {k = 0} ^ {n - 1} \bigl \lVert \point{M} _ {k+1} - \point{M} _ k \bigr \rVert
+\simeq \sum _ {k = 0} ^ {n - 1} \bigl \lVert \dot{\point{f}}(t _ k) \bigr \rVert \, \bigl ( t _ {k+1} - t _ k \bigr)
+$$
+et la somme discrète par une intégrale
+$$
+\sum _ {k = 0} ^ {n - 1} \bigl \lVert \point{M} _ {k+1} - \point{M} _ k \bigr \rVert
+\simeq \int _ {a} ^ {b} \bigl \lVert  \dot{\point{f}}(t) \bigr \rVert \, \D t.
+$$
+
+L'intégrale ci-dessus est la longueur de l'arc $\point{AB}$ tracé sur la courbe $\Gamma$
+$$
+\mathcal{L} _ \Gamma(\point{A}, \point{B}) = \int _ {a} ^ {b} \bigl \lVert  \dot{\point{f}}(t) \bigr \rVert \, \D t.
+$$ {#eq-20230207112239}
+
+:::{.callout-note}
+On vérifie aisément que cette expression est invariante par changement de paramètre.
+:::
+
+On peut de même mesurer pour tout point $\point{M}$ situé entre $\point{A}$ et $\point{B}$, la longueur de l'arc $\point{AB}$ : c'est *l'abscisse curviligne* $s$ du point $\point{M}$, l'origine étant fixée en $\point{A}$ : $s = \mathcal{L}_\Gamma(\point{A}, \point{M})$. On définit ainsi une application $\Psi \colon [a, b] \longrightarrow [0, L]$
+$$
+ s = \Psi(t) = \int_a^t \bigl \lVert  \dot{\point{f}}(u) \bigr \rVert \, \D u.
+$$
+
+La fonction ainsi définie étant croissante et suffisamment régulière, elle est inversible : $t = \Phi(s)$. L'application $\point{f} \circ \Phi$ définit un paramétrage particulier de la courbe par l'abscisse curviligne $s$. On dit qu'on a *rectifié* la courbe $\Gamma$.
+
+:::{.callout-note}
+La définition (@eq-20230207112239) est *algébrique*. Plus précisément, si on choisit pour origine des abscisses curvilignes le point $\point{C}$ de paramètre $c$ ($a < c < b$), alors l'abscisse curviligne $\int_c^t \lVert \dot{\point{f}}(t) \rVert \, \D t$ du point $\point{M} = \point{f}(t)$ est *négative* si $\point{M}$ est entre $\point{A}$ et $\point{C}$ ($a \leq t \leq c$), et *positive* si $\point{M}$ est entre $\point{C}$ et $\point{B}$ ($c \leq t \leq b$).
+:::
+
+### Vecteur tangent unitaire {#sec-20230207114551}
+
+On suppose la courbe $\Gamma$ rectifiée, et on note $s \mapsto \point{f}(s)$ le paramétrage associé. Le vecteur $\vec{t} = \point{f}'(s)$ est *tangent* à $\Gamma$ au point $\point{M} = \point{f}(s)$ (voir @).
+
+![Les vecteurs unitaires $\vec t$ et $\vec n$ forment la base de Frénet. Le point $C$ est le centre de courbure, et le cercle bleu est le cercle osculateur en $\point{M}$.](asy/fig20230207190019){#fig-20230207190019}
+
+On vérifie aisément que ce vecteur est unitaire. En effet, la longueur de l'arc $\point{AM}$ tracé sur $\Gamma$ s'écrit
+$$
+\mathcal{L}_\Gamma(\point{A}, \point{M}) = \int_a^s \bigl \lVert  \dot{\point{f}}(u) \bigr \rVert \, \D u.
+$$
+où le paramètre est l'abscisse curviligne $s$, qui est par définition égale ) $\mathcal{L}_\Gamma(\point{A}, \point{M})$. On a donc, pour tout $s$
+$$
+s = \int_a^s \bigl \lVert  \dot{\point{f}}(u) \bigr \rVert \, \D u,
+$$
+d'où il résulte que $\lVert \vec t \rVert = 1$. Le vecteur $\vec t$ est le *vecteur tangent unitaire* à la courbe $\Gamma$ au point $\point{M}$.  Il sera parfois commode de repérer ce vecteur par l'angle $\theta$ qu'il fait par rapport à une direction fixe arbitraire (typiquement, $\vec e_x$)
+$$
+\vec t(s) = \cos \theta(s) \, \vec e_x + \sin \theta(s) \, \vec e_y.
+$$ {#eq-20230207121436}
+
+## Courbure des courbes planes {#sec-20230214055209}
+
+Dans ce paragraphe, on considère le cas d'une courbe plane ($d = 2$), dont on définit la *courbure*. Les résultats présentés peuvent être étendus aux courbes *gauches* ($d = 3$) en introduisant également la notion de *torsion*, dont nous n'aurons pas besoin dans ce cours.
+
+Le vecteur tangent $\vec t$ unitaire étant défini en tout point de la courbe, on peut également définir le *vecteur normal unitaire* $\vec n$, qui lui est perpendiculaire.
+
+:::{.callout-note}
+Deux orientations sont possibles pour le vecteur $\vec n$. Il est important de remarquer qu'il n'y a pas de choix *canonique* : il sera donc toujours nécessaire de **préciser l'orientation de la normale**.
+:::
+
+### Première formule de Frénet
+
+Au point $\point{M}$ de la courbe $\Gamma$, le vecteur $\vec{t}$ défini au §@sec-20230207114551 est unitaire. Sa dérivée $\vec{t}'$ lui est perpendiculaire. En effet
+$$
+\vec t \cdot \vec t = 1 \quad \text{donc} \quad 0 = \frac{\D}{\D s} \bigl( \vec t \cdot \vec t \bigr) = 2 \vec t \cdot \vec t'.
+$$
+
+En d'autres termes, $\vec t'$ est porté par $\vec n$. On introduit le scalaire $\kappa$ tel que
+$$
+\vec t' = \frac{\D \vec{t}}{\D s} = \kappa \, \vec n
+$$
+(première formule de Frénet). $\kappa$ est homogène à l'inverse d'une longueur. C'est la *courbure de $\Gamma$ en $\point{M}$*. Son inverse, $r = \kappa^{-1}$ est le *rayon de courbure*. On montre en effet que le cercle de centre $\point{M} + r \, \vec{n}$ et de rayon $\lvert r \rvert$ est celui qui approche le mieux la courbe $\Gamma$ au voisinage de $\point{M}$ (cercle osculateur).
+
+:::{.callout-note}
+La courbure est une grandeur *algébrique*, dont **le signe n'est pas intrinsèque** : il dépend de l'orientation de la normale $\vec n$, qui est arbitraire. En effet, changer $\vec n$ en $-\vec n$ conduit à remplacer la courbure $\kappa$ par son opposé $-\kappa$.
+
+Les vecteurs $\kappa \, \vec n$ et $r \, \vec n$ sont quant à eux bien intrinsèques. Ils pointent vers le centre de courbure.
+
+**Traiter l'exemple du cercle en cours**
+:::
+
+### Deuxième formule de Frénet
+
+Par construction, le vecteur normal unitaire $\vec n$ est de norme constante : sa dérivée lui est donc perpendiculaire, et $\vec n'$ est parallèle à $\vec t$. On introduit le scalaire $\alpha$ tel que $\vec n' = \alpha \, \vec t$. Comme $\vec t$ et $\vec n$ sont perpendiculaires, on a $\vec t \cdot \vec n = 0$, soit, en dérivant
+$$
+0 = \vec t' \cdot \vec n + \vec t \cdot \vec n' = \kappa \, \vec n \cdot \vec n + \alpha \, \vec t \cdot \vec t = \kappa + \alpha
+$$
+et $\alpha = -\kappa$. On a ainsi obtenu la deuxième formule de Frénet
+$$
+\vec n' = \frac{\D \vec{n}}{\D s} = -\kappa \, \vec t.
+$$
+
+### Lien avec la direction de la tangente
+
+L'angle $\theta(s)$ a été défini plus haut par la relation (@eq-20230207121436). En dérivant cette relation, on obtient
+$$
+\kappa \, \vec n = \vec t' = \theta'(s) \, \bigl[ -\sin \theta(s) \, \vec e_x + \cos \theta(s) \, \vec e_y \bigr]
+$$
+
+Le vecteur entre crochets est un vecteur unitaire, *directement perpendiculaire* à $\vec t$. Donc
+
+- $\kappa = \theta'$ si $(\vec t, \vec n)$ est une base directe,
+- $\kappa = -\theta'$ si $(\vec n, \vec t)$ est une base directe.
