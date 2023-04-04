@@ -115,26 +115,6 @@ $$
 Nous n'utiliserons pas cette convention, ni les notations associées dans le présent cours.
 :::
 
-On peut montrer les relations suivantes
-$$
-\vec{A}_\xi^\ast = \lVert \vec{A}_\xi \times \vec{A}_\eta \rVert^{-1} \, \bigl( \vec{A}_\eta \times \vec{N}\bigr),
-$$ {#eq-20230302061921}
-$$
-\vec{A}_\eta^\ast = -\lVert \vec{A}_\xi \times \vec{A}_\eta \rVert^{-1} \, \bigl( \vec{A}_\xi \times \vec{N}\bigr),
-$$ {#eq-20230302062030}
-$$
-\tens{A}
-= \vec{A}_\xi^\ast \otimes \vec{A}_\xi + \vec{A}_\eta^\ast \otimes \vec{A}_\eta
-= \vec{A}_\xi \otimes \vec{A}_\xi^\ast +\vec{A}_\eta \otimes \vec{A}_\eta^\ast,
-$$ {#eq-20230302062218}
-$$
-\begin{aligned}[b]
-\tens{E}
-&= \lVert \vec{A}_\xi \times \vec{A}_\eta \rVert \, \bigl( \vec{A}_\xi^\ast \otimes \vec{A}_\eta^\ast - \vec{A}_\eta^\ast \otimes \vec{A}_\xi^\ast \bigr)\\
-&= \lVert \vec{A}_\xi \times \vec{A}_\eta \rVert^{-1} \, \bigl( \vec{A}_\xi \otimes \vec{A}_\eta - \vec{A}_\eta \otimes \vec{A}_\xi \bigr).
-\end{aligned}
-$$ {#eq-20230302062229}
-
 
 En combinant les relations (@eq-20230301170119) et (@eq-20230301165727), on obtient alors les expressions
 $$

@@ -1,0 +1,218 @@
+# Dérivation et intégration sur une surface
+
+::: {.content-visible when-format="html"}
+{{< include macros_html.tex >}}
+:::
+
+On considère dans ce chapitre une surface $ς$ et sa représentation paramétrique $(ξ, η) ∈ \mathcal{D} ⊂ ℝ^2 ↦ \point{f}(ξ, η) ∈ ℝ^3$. La base locale naturelle $(\vec{a}_ξ, \vec{a}_η)$ et la normale $\vec{n}$ ont été introduites au chapitre précédent
+$$
+\vec{a}_ξ(ξ, η) = ∂_ξ \point{f}(ξ, η), \quad \vec{a}_η(ξ, η) = ∂_η \point{f}(ξ, η) \quad \text{et} \quad \vec{n} = \vec{n}(ξ, η) = \frac{\vec{a}_ξ(ξ, η) \wedge \vec{a}_η(ξ, η)}{\lVert \vec{a}_ξ(ξ, η) \wedge \vec{a}_η(ξ, η) \rVert}.
+$$
+
+## Base duale et notations de Ricci
+
+Dans une base cartésienne otrhonormée $(\vec{e}_1, \vec{e}_2, \vec{e}_3)$, le produit scalaire avec les vecteurs de la base permet d'extraire les coordonnées d'un vecteur. Ainsi, pour tout vecteur $\vec{v} ∈ ℝ^3$
+$$
+\vec{v} = \bigl( \vec{v} ⋅ \vec{e}_1 \bigr) \, \vec{e}_2 + \bigl( \vec{v} ⋅ \vec{e}_2 \bigr) \, \vec{e}_2 + \bigl( \vec{v} ⋅ \vec{e}_3 \bigr) \, \vec{e}_3.
+$$
+
+La base locale naturelle n'est en général **ni orthogonale, ni normée** et **la relation précédente ne s'applique pas**
+$$
+\vec{v} ≠ \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) \, \vec{a}_ξ + \bigl( \vec{v} ⋅ \vec{a}_η \bigr) \, \vec{a}_η + \bigl( \vec{v} ⋅ \vec{n} \bigr) \, \vec{n}.
+$$
+
+On souhaite construire trois vecteurs $\vec{a}^ξ$,  $\vec{a}^η$ et $\vec{n}^*$ (attention à la position des indices !), tels que la relation suivante soit, elle, vraie pour tout $\vec{v} ∈ ℝ^3$
+$$
+\vec{v} = \bigl( \vec{v} ⋅ \vec{a}^ξ \bigr) \, \vec{a}_ξ + \bigl( \vec{v} ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{v} ⋅ \vec{n}^* \bigr) \, \vec{n}.
+$$ {#eq-20230404144735}
+
+Les vecteurs suivants satisfont bien cette relation et on peut vérifier que ce sont les seuls
+$$
+\vec{a}^ξ = \frac{ \vec{a}_η \wedge \vec{n} }{ \lVert \vec{a}_ξ \wedge \vec{a}_η \rVert}, \quad
+\vec{a}^η = - \frac{ \bigl( \vec{a}_ξ \wedge \vec{n} }{ \lVert \vec{a}_ξ \wedge \vec{a}_η \rVert}
+\quad \text{et} \quad \vec{n}^* = \vec{n}.
+$$ {#eq-20230404160223}
+
+::: {.callout-tip collapse="true"}
+# Démonstration
+
+On raisonne par analyse et synthèse, en supposant que les vecteurs cherchés existent. On écrit alors la relation (@eq-20230404144735) successivement pour $\vec{v} = \vec{a}_ξ$, puis $\vec{v} = \vec{a}_η$, enfin $\vec{v} = \vec{n}$. On obtient ainsi
+$$
+\left\{
+\begin{aligned}
+\vec{a}_ξ &= \bigl( \vec{a}_ξ ⋅ \vec{a}^ξ \bigr) \, \vec{a}_ξ + \bigl( \vec{a}_ξ ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{a}_ξ ⋅ \vec{n}^* \bigr) \, \vec{n},\\
+\vec{a}_η &= \bigl( \vec{a}_η ⋅ \vec{a}^ξ \bigr) \, \vec{a}_η + \bigl( \vec{a}_η ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{a}_η ⋅ \vec{n}^* \bigr) \, \vec{n},\\
+\vec{n} &= \bigl( \vec{n} ⋅ \vec{a}^ξ \bigr) \, \vec{n} + \bigl( \vec{n} ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{n} ⋅ \vec{n}^* \bigr) \, \vec{n}
+\end{aligned}
+\right.
+$$
+et, puisque les vecteurs $\vec{a}_ξ$, $\vec{a}_η$ et $\vec{n}$ forment une base
+$$
+\begin{aligned}
+\vec{a}_ξ ⋅ \vec{a}^ξ &= 1, & \vec{a}_ξ ⋅ \vec{a}^η &= 0, & \vec{a}_ξ ⋅ \vec{n}^* &= 0,\\
+\vec{a}_η ⋅ \vec{a}^ξ &= 0, & \vec{a}_η ⋅ \vec{a}^η &= 1, & \vec{a}_η ⋅ \vec{n}^* &= 0,\\
+\vec{n}   ⋅ \vec{a}^ξ &= 0, & \vec{n}   ⋅ \vec{a}^η &= 0, & \vec{n}   ⋅ \vec{n}^* &= 1.
+\end{aligned}
+$$
+
+Ces relations définissent de manière unique les vecteurs $\vec{a}^ξ$, $\vec{a}^η$ et $\vec{n}^*$ (le vérifier !). Inversement, on vérifie que les vecteurs donnés par la relation (@eq-20230404160223) satisfont bien la relation (@eq-20230404144735).
+:::
+
+::: {.callout-warning}
+## Remarque
+
+Une démonstration plus générale est possible (en dimension quelconque), en considérant l'isomorphisme canonique qui existe entre un espace euclidien et son dual.
+:::
+
+On peut montrer que les vecteurs $\vec{a}^1$, $\vec{a}^2$ et $\vec{n}^*$ **linéairement indépendants** et forment une base, nommée **base duale de la base locale naturelle**.
+
+::: {.callout-tip collapse="true"}
+## Démonstration
+
+Soit $V = \Span(\vec{a}^ξ, \vec{a}^η, \vec{a^3}) ⊂ ℝ^3$ le sous-espace engendré par les vecteurs $\vec{a}^ξ$, $\vec{a}^η$ et $\vec{n}^*$. On considère $\vec{v} ∈ V^\perp$, c'est-à-dire que $\vec{v} ⋅ \vec{a}^ξ = \vec{v} ⋅ \vec{a}^η = \vec{v} ⋅ \vec{n}^* = \vec{0}$. En appliquant la relation (@eq-20230404144735), supposée vraie, on trouve que nécessairement $\vec{v} = \vec{0}$. L'orthogonal de $V$ est donc réduit au vecteur-nul, c'est-à-dire que $V = ℝ^3$. Donc $V$ est de dimension 3 ; comme par construction, $V$ est engendré par trois vecteurs, ceux-ci sont linéairement indépendants.
+:::
+
+La relation (@eq-20230404144735) permet également d'obtenir la relation symétrique suivante, vraie pour tout $\vec{v} ∈ ℝ^3$
+$$
+\vec{v} = \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) \, \vec{a}^ξ + \bigl( \vec{v} ⋅ \vec{a}_η \bigr) \, \vec{a}^η + \bigl( \vec{v} ⋅ \vec{n} \bigr) \, \vec{n}^*.
+$$ {#eq-20230404154755}
+
+::: {.callout-tip collapse="true"}
+## Démonstration
+
+Soient $\vec{v} ∈ ℝ^3$ quelconques, et $\tilde{\vec{v}} = ( \vec{v} ⋅ \vec{a}_ξ ) \, \vec{a}^ξ + ( \vec{v} ⋅ \vec{a}_η ) \, \vec{a}^η + ( \vec{v} ⋅ \vec{n} ) \, \vec{n}^*$. On souhaite montrer que $\tilde{\vec{v}} = \vec{v}$. Il suffit de montrer que $\tilde{\vec{v}} ⋅ \vec{w} = \vec{v} ⋅ \vec{w}$ pour tout $\vec{w} ∈ ℝ^3$. L'identité (@eq-20230404144735) s'écrit, pour $\vec{w}$ arbitraire
+$$
+\vec{w} = \bigl( \vec{w} ⋅ \vec{a}^ξ \bigr) \, \vec{a}_ξ + \bigl( \vec{w} ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{w} ⋅ \vec{n}^* \bigr) \, \vec{n},
+$$
+soit, en prenant le produit scalaire avec $\vec{v}$
+$$
+\begin{aligned}
+\vec{w} ⋅ \vec{v} &= \bigl( \vec{w} ⋅ \vec{a}^ξ \bigr) \, \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) + \bigl( \vec{w} ⋅ \vec{a}^η \bigr) \, \bigl( \vec{v} ⋅ \vec{a}_η \bigr) + \bigl( \vec{w} ⋅ \vec{n}^* \bigr) \, \bigl( \vec{v} ⋅ \vec{n} \bigr)\\
+&= \bigl( \vec{w} ⋅ \vec{a}^ξ \bigr) \, \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) + \bigl( \vec{w} ⋅ \vec{a}^η \bigr) \, \bigl( \vec{v} ⋅ \vec{a}_η \bigr) + \bigl( \vec{w} ⋅ \vec{n}^* \bigr) \, \bigl( \vec{v} ⋅ \vec{n} \bigr)\\
+&= \vec{w} ⋅ \bigl[ \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) \, \vec{a}^ξ + \bigl( \vec{v} ⋅ \vec{a}_η \bigr) \, \vec{a}^η + \bigl( \vec{v} ⋅ \vec{n} \bigr) \, \vec{n}^* \bigr]\\
+&= \vec{w} ⋅ \tilde{\vec{v}} \qquad \text{CQFD.}
+\end{aligned}
+$$
+:::
+
+On déduit des relations (@eq-20230404144735) et (@eq-20230404154755) que
+$$
+\tens{I} = \vec{a}^ξ ⊗ \vec{a}_ξ + \vec{a}^η ⊗ \vec{a}_η + \vec{n} ⊗ \vec{n} = \vec{a}_ξ ⊗ \vec{a}^ξ + \vec{a}_η ⊗ \vec{a}^η + \vec{n} ⊗ \vec{n},
+$$
+soit
+$$
+\tens{a} = \tens{I} - \vec{n} ⊗ \vec{n} = \vec{a}^ξ ⊗ \vec{a}_ξ + \vec{a}^η ⊗ \vec{a}_η = \vec{a}_ξ ⊗ \vec{a}^ξ + \vec{a}_η ⊗ \vec{a}^η,
+$$ {#eq-20230302062218}
+
+En convenant dans le reste de ce livre que les indices muets grecs ($α$, $β$, …) parcourent l'ensemble $\{ξ, η\}$, les relations (@eq-20230302062218) s'écrivent
+$$
+\tens{a} = \sum_α \vec{a}^α ⊗ \vec{a}_α = \sum_α \vec{a}_α ⊗ \vec{a}^α.
+$$
+
+Dans l'expression ci-dessus, on s'aperçoit que l'indice muet $α$ apparaît **exactement deux fois**, et dans des **positions différentes** : une fois en position inférieure, une fois en position supérieure. **Lorsque ces deux conditions sont remplies**, et uniquement dans ce cas, on pourra utiliser la convention de sommation d'Einstein
+$$
+\tens{a} = \vec{a}^α ⊗ \vec{a}_α = \vec{a}_α ⊗ \vec{a}^α.
+$$
+
+::: {.callout-warning}
+## Remarque importante
+
+Il est important de ne jamais sommer sur deux indices répétés dans la même position (on parle d'indices de **même variance**). Ainsi, les expressions $\vec{a}_α ⊗ \vec{a}_α$ et $\vec{a}^α ⊗ \vec{a}^α$ n'ont pas de sens, car elles ne sont **pas invariantes par changement de base**. Plus précisément, soient $(\vec{a}_ξ', \vec{a}_η')$ une autre base du plan tangent et $(\vec{a}'^ξ, \vec{a}'^η)$ la base duale associée. Alors, en général
+$$
+\vec{a}_ξ ⊗ \vec{a}_ξ + \vec{a}_η ⊗ \vec{a}_η ≠ \vec{a}'_ξ ⊗ \vec{a}'_ξ + \vec{a}'_η ⊗ \vec{a}'_η
+\quad \text{et} \quad
+\vec{a}^ξ ⊗ \vec{a}^ξ + \vec{a}^η ⊗ \vec{a}^η ≠ \vec{a}'^ξ ⊗ \vec{a}'^ξ + \vec{a}'^η ⊗ \vec{a}'^η
+$$
+:::
+
+::: {.callout-warning}
+## À faire
+
+Expression du tenseur antisymétrique fondamental ?
+:::
+
+## Gradient d'un champ de tenseurs
+
+Soient $\point{m} = \point{f}(ξ, η)$ et $\point{m'} = \point{f}(ξ + \D ξ, η + \D η)$ deux points infiniment proches de la surface $ς$, de sorte que
+$$
+\begin{aligned}[b]
+\D \altvec{\point{m}}
+&= \altvec{\point{mm}'} = \point{m}' - \point{m} = \point{f}(ξ + \D ξ, η + \D η) - \point{f}(ξ, η)\\
+&= ∂_ξ \point{f}(ξ, η) \, \D ξ + ∂_η \point{f}(ξ, η) \, \D η.
+\end{aligned}
+$$
+
+En reconnaissant les vecteurs de la base locale naturelle, et en utilisant la relation (@eq-20230404144735), on obtient donc
+$$
+\D \altvec{\point{m}} = \vec{a}_ξ \, \D ξ + \vec{a}_η \, \D η, \quad \text{soit} \quad \D ξ = \vec{a}^ξ ⋅ \D \altvec{\point{m}} \quad \text{et} \quad \D η = \vec{a}^η ⋅ \D \altvec{\point{m}}
+$$ {#eq-20230404183949}
+
+Soit alors $\tens{T}(\point{m})$ un champ de tenseurs d'ordre quelconque, défini sur la surface $ς$. En composant par la représentation paramétrique $\point{f}$ de la surface, on définit une application $(ξ, η) ↦ \tens{T} \circ \point{f}(ξ, η)$ définie sur l'espace des paramètres $\mathcal{D}$. On souhaite évaluer la variation $\D \tens{T}$ du champ $\tens{T}$ entre les points $\point{m}$ et $\point{m}' = \point{m} + \D \altvec{\point{m}}$
+$$
+\begin{aligned}[b]
+\D \tens{T} &= \tens{T}(\point{m} + \D\altvec{\point{m}}) - \tens{T}(\point{m}) = \tens{T} \circ \point{f}(ξ + \D ξ, η + \D η) - \tens{T} \circ \point{f}(ξ, η)\\
+&= ∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) \, \D ξ + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) \, \D η,
+\end{aligned}
+$$
+soit, en utilisant les relations (@eq-20230404183949)
+$$
+\D \tens{T} = ∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) \, \bigl( \vec{a}^ξ ⋅ \D \altvec{\point{m}} \bigr) + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) \, \bigl( \vec{a}^η ⋅ \D \altvec{\point{m}} \bigr) = \tilde{\tens{G}}(ξ, η) ⋅ \D \altvec{\point{m}},
+$$
+en posant
+$$
+\tilde{\tens{G}} = ∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^ξ + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^η,
+$$
+où on remarque que l'application $(ξ, η) ↦ \tilde{\tens{G}}$ est **définie sur l'espace des paramètres $\mathcal{D}$**. On définit alors le champ de tenseurs $\tens{G}$ sur $ς$ de la façon suivante
+$$
+\tens{G} = \tilde{\tens{G}} \circ \point{f}^{-1} \quad \text{soit} \quad \tens{G}(\point{m}) = \tilde{\tens{G}}(ξ, η) \quad \text{pour} \quad \point{m} = \point{f}(ξ, η).
+$$
+
+On a ainsi mis la variation $\D \tens{T}$ sous la forme intrinsèque suivante
+$$
+\D \tens{T} = \tens{T}(\point{m} + \D \altvec{\point{m}}) - \tens{T}(\point{m}) = \tens{G}(\point{m}) ⋅ \D \altvec{\point{m}}.$$
+
+On reconnaît la définition usuelle d'un gradient~: le champ $\tens{G}$ ainsi défini est le **gradient surfacique** de $\tens{T}$ ; on le note $\tgrad\tens{T}$
+$$
+\tgrad \tens{T}(\point{m}) = ∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^ξ + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^η
+\quad \text{avec},
+$$
+où $\vec{a}^ξ$, $\vec{a}^η$, $\tens{T} \circ \point{f}$ et ses dérivées sont implicitement évalués en $(ξ, η)$ tels que $\point{f}(ξ, η) = \point{m}$. Si $\tens{T}$ est un champ de tenseurs d'ordre $n$, alors $\tgrad \tens{T}$ est un champ de tenseurs d'ordre $n + 1$. On a de plus toujours, par construction
+$$
+\tgrad{\tens{T}} ⋅ \vec{n} = \tens{0}.
+$$
+
+::: {.callout-note}
+## Remarque
+
+La définition précédente du gradient fait intervenir un paramétrage particulier $(ξ, η) ↦ \point{f}(ξ, η)$ de la surface. Pour autant, le champ $\tgrad \tens{T}$ ainsi construit est bien intrinsèque. Ainsi, on peut vérifier que si $(φ, ψ) ↦ \point{g}(φ, ψ)$ désigne un second paramétrage de la surface, alors
+$$
+∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^ξ + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^η
+= ∂_φ \bigl( \tens{T} \circ \point{g} \bigr) ⊗ \vec{a}^φ + ∂_ψ \bigl( \tens{T} \circ \point{g} \bigr) ⊗ \vec{a}^ψ,
+$$
+où $\vec{a}^ξ$, $\vec{a}^η$, $\tens{T} \circ \point{f}$ et ses dérivées sont implicitement évalués en $(ξ, η)$, tandis que $\vec{a}^φ$, $\vec{a}^ψ$, $\tens{T} \circ \point{g}$ et ses dérivées sont implicitement évalués en $(φ, ψ)$ tels que $\point{f}(ξ, η) = \point{g}(φ, ψ) = \point{m}$.
+:::
+
+L'opérateur gradient ainsi défini est un **opérateur linéaire** dont les propriétés sont proches de celles du gradient usuel. On peut également définir la **divergence surfacique** d'un champ de tenseurs $\tens{T}$ d'ordre $n ≥ 1$
+$$
+\tdiv \tens{T} = \tgrad \tens{T} \dbldot \tens{a},
+$$
+c'est un champ de tenseurs d'ordre $n - 1$.
+
+::: {.callout-warning}
+## Remarque importante
+
+Les développements précédents permettent d'assurer que la définition du gradient proposée est intrinsèque. En pratique néanmoins, il sera commode de travailler directement avec le champ surfacique $\tens{T} \circ \point{f}$ qui est alors une fonction des fonctions des paramètres $ξ$ et $η$ (plutôt que comme une fonction du point $\point{m} ∈ ς$). Par abus de langage, on écrira, comme c'est l'habitude, $\tens{T}(ξ, η)$ plutôt que $\tens{T} \circ \point{f}(ξ, η)$. En revanche, on écrira explicitement $∂_α\tens{T} ⊗ \vec{a}^α$ et $∂_α\tens{T} ⋅ \vec{a}^α$ plutôt que $\tgrad \tens{T}$ et $\tdiv \tens{T}$ (noter l'utilisation de la convention d'Einstein, possible car l'indice $α$ apparaît une fois en position inférieure et une fois en position supérieure).
+:::
+
+
+::: {.callout-warning}
+## À faire
+
+Proposer les propriétés du gradient en exercice.
+:::
+
+## Lien avec la courbure
+
+::: {.callout-warning}
+## À faire
+:::
