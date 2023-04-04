@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Théorie des coques élastiques - 5&nbsp; Dérivation et intégration sur une surface</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./membranes.html" rel="next">
+<link href="./transformations_d_une_coque.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dérivation et intégration sur une surface</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Théorie des coques élastiques</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Bienvenue</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./courbure_des_surfaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Courbure des surfaces</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./transformations_d_une_coque.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformations d’une coque</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./derivation_et_integration_sur_une_surface.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dérivation et intégration sur une surface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./membranes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Membranes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./coques_en_equilibre_membranaire.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Coques en équilibre membranaire</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./coques_en_flexion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Coques en flexion</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Annexes</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rappels_de_geometrie_differentielle.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Rappels de géométrie différentielle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./complements_d_algebre_lineaire.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Compléments d’algèbre linéaire</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table des matières</h2>
+   
+  <ul>
+  <li><a href="#base-duale-et-notations-de-ricci" id="toc-base-duale-et-notations-de-ricci" class="nav-link active" data-scroll-target="#base-duale-et-notations-de-ricci"><span class="toc-section-number">5.1</span>  Base duale et notations de Ricci</a></li>
+  <li><a href="#gradient-dun-champ-de-tenseurs" id="toc-gradient-dun-champ-de-tenseurs" class="nav-link" data-scroll-target="#gradient-dun-champ-de-tenseurs"><span class="toc-section-number">5.2</span>  Gradient d’un champ de tenseurs</a></li>
+  <li><a href="#lien-avec-la-courbure" id="toc-lien-avec-la-courbure" class="nav-link" data-scroll-target="#lien-avec-la-courbure"><span class="toc-section-number">5.3</span>  Lien avec la courbure</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dérivation et intégration sur une surface</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div>
+<p><span class="math display">\[
+\DeclareMathOperator{\asym}{\symbfsf{asym}}
+\newcommand{\altvec}[1]{\overrightarrow{#1}}
+\newcommand{\D}{{\mathrm d}}
+\newcommand{\dbldot}{\mathbin{\mathord{:}}}
+\let\div\undefined
+\newcommand{\div}{\operatorname{div}}
+\newcommand{\tdiv}{\operatorname{\symbfsf{div}}}
+\newcommand{\Div}{\operatorname{Div}}
+\newcommand{\external}{\mathrm{ext}}
+\newcommand{\Eta}{\mathrm{H}}
+\newcommand{\Grad}{\operatorname{Grad}}
+\newcommand{\grad}{\operatorname{grad}}
+\newcommand{\tgrad}{\operatorname{\symbfsf{grad}}}
+\newcommand{\tGrad}{\operatorname{\symbfsf{Grad}}}
+\newcommand{\internal}{\mathrm{int}}
+\newcommand{\KL}{\mathrm{KL}}
+\newcommand{\kl}{\mathrm{kl}}
+\newcommand{\PI}{\symup{\pi}}
+\newcommand{\point}[1]{\symsf{#1}}
+\newcommand{\power}{\mathcal{P}}
+\newcommand{\reals}{\mathbb R}
+\newcommand{\Span}{\operatorname{Vect}}
+\newcommand{\sym}{\operatorname{\symbfsf{sym}}}
+\newcommand{\tens}[1]{\symbfsf{#1}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\transpose}{\mathsf{T}}
+\renewcommand{\vec}[1]{\symbf{#1}}
+\]</span></p>
+</div>
+<p>On considère dans ce chapitre une surface <span class="math inline">\(ς\)</span> et sa représentation paramétrique <span class="math inline">\((ξ, η) ∈ \mathcal{D} ⊂ ℝ^2 ↦ \point{f}(ξ, η) ∈ ℝ^3\)</span>. La base locale naturelle <span class="math inline">\((\vec{a}_ξ, \vec{a}_η)\)</span> et la normale <span class="math inline">\(\vec{n}\)</span> ont été introduites au chapitre précédent <span class="math display">\[
+\vec{a}_ξ(ξ, η) = ∂_ξ \point{f}(ξ, η), \quad \vec{a}_η(ξ, η) = ∂_η \point{f}(ξ, η) \quad \text{et} \quad \vec{n} = \vec{n}(ξ, η) = \frac{\vec{a}_ξ(ξ, η) \wedge \vec{a}_η(ξ, η)}{\lVert \vec{a}_ξ(ξ, η) \wedge \vec{a}_η(ξ, η) \rVert}.
+\]</span></p>
+<section id="base-duale-et-notations-de-ricci" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="base-duale-et-notations-de-ricci"><span class="header-section-number">5.1</span> Base duale et notations de Ricci</h2>
+<p>Dans une base cartésienne otrhonormée <span class="math inline">\((\vec{e}_1, \vec{e}_2, \vec{e}_3)\)</span>, le produit scalaire avec les vecteurs de la base permet d’extraire les coordonnées d’un vecteur. Ainsi, pour tout vecteur <span class="math inline">\(\vec{v} ∈ ℝ^3\)</span> <span class="math display">\[
+\vec{v} = \bigl( \vec{v} ⋅ \vec{e}_1 \bigr) \, \vec{e}_2 + \bigl( \vec{v} ⋅ \vec{e}_2 \bigr) \, \vec{e}_2 + \bigl( \vec{v} ⋅ \vec{e}_3 \bigr) \, \vec{e}_3.
+\]</span></p>
+<p>La base locale naturelle n’est en général <strong>ni orthogonale, ni normée</strong> et <strong>la relation précédente ne s’applique pas</strong> <span class="math display">\[
+\vec{v} ≠ \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) \, \vec{a}_ξ + \bigl( \vec{v} ⋅ \vec{a}_η \bigr) \, \vec{a}_η + \bigl( \vec{v} ⋅ \vec{n} \bigr) \, \vec{n}.
+\]</span></p>
+<p>On souhaite construire trois vecteurs <span class="math inline">\(\vec{a}^ξ\)</span>, <span class="math inline">\(\vec{a}^η\)</span> et <span class="math inline">\(\vec{n}^*\)</span> (attention à la position des indices&nbsp;!), tels que la relation suivante soit, elle, vraie pour tout <span class="math inline">\(\vec{v} ∈ ℝ^3\)</span> <span id="eq-20230404144735"><span class="math display">\[
+\vec{v} = \bigl( \vec{v} ⋅ \vec{a}^ξ \bigr) \, \vec{a}_ξ + \bigl( \vec{v} ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{v} ⋅ \vec{n}^* \bigr) \, \vec{n}.
+\tag{5.1}\]</span></span></p>
+<p>Les vecteurs suivants satisfont bien cette relation et on peut vérifier que ce sont les seuls <span id="eq-20230404160223"><span class="math display">\[
+\vec{a}^ξ = \frac{ \vec{a}_η \wedge \vec{n} }{ \lVert \vec{a}_ξ \wedge \vec{a}_η \rVert}, \quad
+\vec{a}^η = - \frac{ \bigl( \vec{a}_ξ \wedge \vec{n} }{ \lVert \vec{a}_ξ \wedge \vec{a}_η \rVert}
+\quad \text{et} \quad \vec{n}^* = \vec{n}.
+\tag{5.2}\]</span></span></p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Démonstration
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On raisonne par analyse et synthèse, en supposant que les vecteurs cherchés existent. On écrit alors la relation (<a href="#eq-20230404144735"><span>5.1</span></a>) successivement pour <span class="math inline">\(\vec{v} = \vec{a}_ξ\)</span>, puis <span class="math inline">\(\vec{v} = \vec{a}_η\)</span>, enfin <span class="math inline">\(\vec{v} = \vec{n}\)</span>. On obtient ainsi <span class="math display">\[
+\left\{
+\begin{aligned}
+\vec{a}_ξ &amp;= \bigl( \vec{a}_ξ ⋅ \vec{a}^ξ \bigr) \, \vec{a}_ξ + \bigl( \vec{a}_ξ ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{a}_ξ ⋅ \vec{n}^* \bigr) \, \vec{n},\\
+\vec{a}_η &amp;= \bigl( \vec{a}_η ⋅ \vec{a}^ξ \bigr) \, \vec{a}_η + \bigl( \vec{a}_η ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{a}_η ⋅ \vec{n}^* \bigr) \, \vec{n},\\
+\vec{n} &amp;= \bigl( \vec{n} ⋅ \vec{a}^ξ \bigr) \, \vec{n} + \bigl( \vec{n} ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{n} ⋅ \vec{n}^* \bigr) \, \vec{n}
+\end{aligned}
+\right.
+\]</span> et, puisque les vecteurs <span class="math inline">\(\vec{a}_ξ\)</span>, <span class="math inline">\(\vec{a}_η\)</span> et <span class="math inline">\(\vec{n}\)</span> forment une base <span class="math display">\[
+\begin{aligned}
+\vec{a}_ξ ⋅ \vec{a}^ξ &amp;= 1, &amp; \vec{a}_ξ ⋅ \vec{a}^η &amp;= 0, &amp; \vec{a}_ξ ⋅ \vec{n}^* &amp;= 0,\\
+\vec{a}_η ⋅ \vec{a}^ξ &amp;= 0, &amp; \vec{a}_η ⋅ \vec{a}^η &amp;= 1, &amp; \vec{a}_η ⋅ \vec{n}^* &amp;= 0,\\
+\vec{n}   ⋅ \vec{a}^ξ &amp;= 0, &amp; \vec{n}   ⋅ \vec{a}^η &amp;= 0, &amp; \vec{n}   ⋅ \vec{n}^* &amp;= 1.
+\end{aligned}
+\]</span></p>
+<p>Ces relations définissent de manière unique les vecteurs <span class="math inline">\(\vec{a}^ξ\)</span>, <span class="math inline">\(\vec{a}^η\)</span> et <span class="math inline">\(\vec{n}^*\)</span> (le vérifier&nbsp;!). Inversement, on vérifie que les vecteurs donnés par la relation (<a href="#eq-20230404160223"><span>5.2</span></a>) satisfont bien la relation (<a href="#eq-20230404144735"><span>5.1</span></a>).</p>
+</div>
+</div>
+</div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Remarque
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Une démonstration plus générale est possible (en dimension quelconque), en considérant l’isomorphisme canonique qui existe entre un espace euclidien et son dual.</p>
+</div>
+</div>
+<p>On peut montrer que les vecteurs <span class="math inline">\(\vec{a}^1\)</span>, <span class="math inline">\(\vec{a}^2\)</span> et <span class="math inline">\(\vec{n}^*\)</span> <strong>linéairement indépendants</strong> et forment une base, nommée <strong>base duale de la base locale naturelle</strong>.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Démonstration
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Soit <span class="math inline">\(V = \Span(\vec{a}^ξ, \vec{a}^η, \vec{a^3}) ⊂ ℝ^3\)</span> le sous-espace engendré par les vecteurs <span class="math inline">\(\vec{a}^ξ\)</span>, <span class="math inline">\(\vec{a}^η\)</span> et <span class="math inline">\(\vec{n}^*\)</span>. On considère <span class="math inline">\(\vec{v} ∈ V^\perp\)</span>, c’est-à-dire que <span class="math inline">\(\vec{v} ⋅ \vec{a}^ξ = \vec{v} ⋅ \vec{a}^η = \vec{v} ⋅ \vec{n}^* = \vec{0}\)</span>. En appliquant la relation (<a href="#eq-20230404144735"><span>5.1</span></a>), supposée vraie, on trouve que nécessairement <span class="math inline">\(\vec{v} = \vec{0}\)</span>. L’orthogonal de <span class="math inline">\(V\)</span> est donc réduit au vecteur-nul, c’est-à-dire que <span class="math inline">\(V = ℝ^3\)</span>. Donc <span class="math inline">\(V\)</span> est de dimension 3&nbsp;; comme par construction, <span class="math inline">\(V\)</span> est engendré par trois vecteurs, ceux-ci sont linéairement indépendants.</p>
+</div>
+</div>
+</div>
+<p>La relation (<a href="#eq-20230404144735"><span>5.1</span></a>) permet également d’obtenir la relation symétrique suivante, vraie pour tout <span class="math inline">\(\vec{v} ∈ ℝ^3\)</span> <span id="eq-20230404154755"><span class="math display">\[
+\vec{v} = \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) \, \vec{a}^ξ + \bigl( \vec{v} ⋅ \vec{a}_η \bigr) \, \vec{a}^η + \bigl( \vec{v} ⋅ \vec{n} \bigr) \, \vec{n}^*.
+\tag{5.3}\]</span></span></p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Démonstration
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Soient <span class="math inline">\(\vec{v} ∈ ℝ^3\)</span> quelconques, et <span class="math inline">\(\tilde{\vec{v}} = ( \vec{v} ⋅ \vec{a}_ξ ) \, \vec{a}^ξ + ( \vec{v} ⋅ \vec{a}_η ) \, \vec{a}^η + ( \vec{v} ⋅ \vec{n} ) \, \vec{n}^*\)</span>. On souhaite montrer que <span class="math inline">\(\tilde{\vec{v}} = \vec{v}\)</span>. Il suffit de montrer que <span class="math inline">\(\tilde{\vec{v}} ⋅ \vec{w} = \vec{v} ⋅ \vec{w}\)</span> pour tout <span class="math inline">\(\vec{w} ∈ ℝ^3\)</span>. L’identité (<a href="#eq-20230404144735"><span>5.1</span></a>) s’écrit, pour <span class="math inline">\(\vec{w}\)</span> arbitraire <span class="math display">\[
+\vec{w} = \bigl( \vec{w} ⋅ \vec{a}^ξ \bigr) \, \vec{a}_ξ + \bigl( \vec{w} ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{w} ⋅ \vec{n}^* \bigr) \, \vec{n},
+\]</span> soit, en prenant le produit scalaire avec <span class="math inline">\(\vec{v}\)</span> <span class="math display">\[
+\begin{aligned}
+\vec{w} ⋅ \vec{v} &amp;= \bigl( \vec{w} ⋅ \vec{a}^ξ \bigr) \, \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) + \bigl( \vec{w} ⋅ \vec{a}^η \bigr) \, \bigl( \vec{v} ⋅ \vec{a}_η \bigr) + \bigl( \vec{w} ⋅ \vec{n}^* \bigr) \, \bigl( \vec{v} ⋅ \vec{n} \bigr)\\
+&amp;= \bigl( \vec{w} ⋅ \vec{a}^ξ \bigr) \, \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) + \bigl( \vec{w} ⋅ \vec{a}^η \bigr) \, \bigl( \vec{v} ⋅ \vec{a}_η \bigr) + \bigl( \vec{w} ⋅ \vec{n}^* \bigr) \, \bigl( \vec{v} ⋅ \vec{n} \bigr)\\
+&amp;= \vec{w} ⋅ \bigl[ \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) \, \vec{a}^ξ + \bigl( \vec{v} ⋅ \vec{a}_η \bigr) \, \vec{a}^η + \bigl( \vec{v} ⋅ \vec{n} \bigr) \, \vec{n}^* \bigr]\\
+&amp;= \vec{w} ⋅ \tilde{\vec{v}} \qquad \text{CQFD.}
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+<p>On déduit des relations (<a href="#eq-20230404144735"><span>5.1</span></a>) et (<a href="#eq-20230404154755"><span>5.3</span></a>) que <span class="math display">\[
+\tens{I} = \vec{a}^ξ ⊗ \vec{a}_ξ + \vec{a}^η ⊗ \vec{a}_η + \vec{n} ⊗ \vec{n} = \vec{a}_ξ ⊗ \vec{a}^ξ + \vec{a}_η ⊗ \vec{a}^η + \vec{n} ⊗ \vec{n},
+\]</span> soit <span id="eq-20230302062218"><span class="math display">\[
+\tens{a} = \tens{I} - \vec{n} ⊗ \vec{n} = \vec{a}^ξ ⊗ \vec{a}_ξ + \vec{a}^η ⊗ \vec{a}_η = \vec{a}_ξ ⊗ \vec{a}^ξ + \vec{a}_η ⊗ \vec{a}^η,
+\tag{5.4}\]</span></span></p>
+<p>En convenant dans le reste de ce livre que les indices muets grecs (<span class="math inline">\(α\)</span>, <span class="math inline">\(β\)</span>, …) parcourent l’ensemble <span class="math inline">\(\{ξ, η\}\)</span>, les relations (<a href="#eq-20230302062218"><span>5.4</span></a>) s’écrivent <span class="math display">\[
+\tens{a} = \sum_α \vec{a}^α ⊗ \vec{a}_α = \sum_α \vec{a}_α ⊗ \vec{a}^α.
+\]</span></p>
+<p>Dans l’expression ci-dessus, on s’aperçoit que l’indice muet <span class="math inline">\(α\)</span> apparaît <strong>exactement deux fois</strong>, et dans des <strong>positions différentes</strong>&nbsp;: une fois en position inférieure, une fois en position supérieure. <strong>Lorsque ces deux conditions sont remplies</strong>, et uniquement dans ce cas, on pourra utiliser la convention de sommation d’Einstein <span class="math display">\[
+\tens{a} = \vec{a}^α ⊗ \vec{a}_α = \vec{a}_α ⊗ \vec{a}^α.
+\]</span></p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Remarque importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il est important de ne jamais sommer sur deux indices répétés dans la même position (on parle d’indices de <strong>même variance</strong>). Ainsi, les expressions <span class="math inline">\(\vec{a}_α ⊗ \vec{a}_α\)</span> et <span class="math inline">\(\vec{a}^α ⊗ \vec{a}^α\)</span> n’ont pas de sens, car elles ne sont <strong>pas invariantes par changement de base</strong>. Plus précisément, soient <span class="math inline">\((\vec{a}_ξ', \vec{a}_η')\)</span> une autre base du plan tangent et <span class="math inline">\((\vec{a}'^ξ, \vec{a}'^η)\)</span> la base duale associée. Alors, en général <span class="math display">\[
+\vec{a}_ξ ⊗ \vec{a}_ξ + \vec{a}_η ⊗ \vec{a}_η ≠ \vec{a}'_ξ ⊗ \vec{a}'_ξ + \vec{a}'_η ⊗ \vec{a}'_η
+\quad \text{et} \quad
+\vec{a}^ξ ⊗ \vec{a}^ξ + \vec{a}^η ⊗ \vec{a}^η ≠ \vec{a}'^ξ ⊗ \vec{a}'^ξ + \vec{a}'^η ⊗ \vec{a}'^η
+\]</span></p>
+</div>
+</div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+À faire
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Expression du tenseur antisymétrique fondamental ?</p>
+</div>
+</div>
+</section>
+<section id="gradient-dun-champ-de-tenseurs" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="gradient-dun-champ-de-tenseurs"><span class="header-section-number">5.2</span> Gradient d’un champ de tenseurs</h2>
+<p>Soient <span class="math inline">\(\point{m} = \point{f}(ξ, η)\)</span> et <span class="math inline">\(\point{m'} = \point{f}(ξ + \D ξ, η + \D η)\)</span> deux points infiniment proches de la surface <span class="math inline">\(ς\)</span>, de sorte que <span class="math display">\[
+\begin{aligned}[b]
+\D \altvec{\point{m}}
+&amp;= \altvec{\point{mm}'} = \point{m}' - \point{m} = \point{f}(ξ + \D ξ, η + \D η) - \point{f}(ξ, η)\\
+&amp;= ∂_ξ \point{f}(ξ, η) \, \D ξ + ∂_η \point{f}(ξ, η) \, \D η.
+\end{aligned}
+\]</span></p>
+<p>En reconnaissant les vecteurs de la base locale naturelle, et en utilisant la relation (<a href="#eq-20230404144735"><span>5.1</span></a>), on obtient donc <span id="eq-20230404183949"><span class="math display">\[
+\D \altvec{\point{m}} = \vec{a}_ξ \, \D ξ + \vec{a}_η \, \D η, \quad \text{soit} \quad \D ξ = \vec{a}^ξ ⋅ \D \altvec{\point{m}} \quad \text{et} \quad \D η = \vec{a}^η ⋅ \D \altvec{\point{m}}
+\tag{5.5}\]</span></span></p>
+<p>Soit alors <span class="math inline">\(\tens{T}(\point{m})\)</span> un champ de tenseurs d’ordre quelconque, défini sur la surface <span class="math inline">\(ς\)</span>. En composant par la représentation paramétrique <span class="math inline">\(\point{f}\)</span> de la surface, on définit une application <span class="math inline">\((ξ, η) ↦ \tens{T} \circ \point{f}(ξ, η)\)</span> définie sur l’espace des paramètres <span class="math inline">\(\mathcal{D}\)</span>. On souhaite évaluer la variation <span class="math inline">\(\D \tens{T}\)</span> du champ <span class="math inline">\(\tens{T}\)</span> entre les points <span class="math inline">\(\point{m}\)</span> et <span class="math inline">\(\point{m}' = \point{m} + \D \altvec{\point{m}}\)</span> <span class="math display">\[
+\begin{aligned}[b]
+\D \tens{T} &amp;= \tens{T}(\point{m} + \D\altvec{\point{m}}) - \tens{T}(\point{m}) = \tens{T} \circ \point{f}(ξ + \D ξ, η + \D η) - \tens{T} \circ \point{f}(ξ, η)\\
+&amp;= ∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) \, \D ξ + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) \, \D η,
+\end{aligned}
+\]</span> soit, en utilisant les relations (<a href="#eq-20230404183949"><span>5.5</span></a>) <span class="math display">\[
+\D \tens{T} = ∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) \, \bigl( \vec{a}^ξ ⋅ \D \altvec{\point{m}} \bigr) + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) \, \bigl( \vec{a}^η ⋅ \D \altvec{\point{m}} \bigr) = \tilde{\tens{G}}(ξ, η) ⋅ \D \altvec{\point{m}},
+\]</span> en posant <span class="math display">\[
+\tilde{\tens{G}} = ∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^ξ + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^η,
+\]</span> où on remarque que l’application <span class="math inline">\((ξ, η) ↦ \tilde{\tens{G}}\)</span> est <strong>définie sur l’espace des paramètres <span class="math inline">\(\mathcal{D}\)</span></strong>. On définit alors le champ de tenseurs <span class="math inline">\(\tens{G}\)</span> sur <span class="math inline">\(ς\)</span> de la façon suivante <span class="math display">\[
+\tens{G} = \tilde{\tens{G}} \circ \point{f}^{-1} \quad \text{soit} \quad \tens{G}(\point{m}) = \tilde{\tens{G}}(ξ, η) \quad \text{pour} \quad \point{m} = \point{f}(ξ, η).
+\]</span></p>
+<p>On a ainsi mis la variation <span class="math inline">\(\D \tens{T}\)</span> sous la forme intrinsèque suivante <span class="math display">\[
+\D \tens{T} = \tens{T}(\point{m} + \D \altvec{\point{m}}) - \tens{T}(\point{m}) = \tens{G}(\point{m}) ⋅ \D \altvec{\point{m}}.\]</span></p>
+<p>On reconnaît la définition usuelle d’un gradient~: le champ <span class="math inline">\(\tens{G}\)</span> ainsi défini est le <strong>gradient surfacique</strong> de <span class="math inline">\(\tens{T}\)</span> ; on le note <span class="math inline">\(\tgrad\tens{T}\)</span> <span class="math display">\[
+\tgrad \tens{T}(\point{m}) = ∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^ξ + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^η
+\quad \text{avec},
+\]</span> où <span class="math inline">\(\vec{a}^ξ\)</span>, <span class="math inline">\(\vec{a}^η\)</span>, <span class="math inline">\(\tens{T} \circ \point{f}\)</span> et ses dérivées sont implicitement évalués en <span class="math inline">\((ξ, η)\)</span> tels que <span class="math inline">\(\point{f}(ξ, η) = \point{m}\)</span>. Si <span class="math inline">\(\tens{T}\)</span> est un champ de tenseurs d’ordre <span class="math inline">\(n\)</span>, alors <span class="math inline">\(\tgrad \tens{T}\)</span> est un champ de tenseurs d’ordre <span class="math inline">\(n + 1\)</span>. On a de plus toujours, par construction <span class="math display">\[
+\tgrad{\tens{T}} ⋅ \vec{n} = \tens{0}.
+\]</span></p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Remarque
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La définition précédente du gradient fait intervenir un paramétrage particulier <span class="math inline">\((ξ, η) ↦ \point{f}(ξ, η)\)</span> de la surface. Pour autant, le champ <span class="math inline">\(\tgrad \tens{T}\)</span> ainsi construit est bien intrinsèque. Ainsi, on peut vérifier que si <span class="math inline">\((φ, ψ) ↦ \point{g}(φ, ψ)\)</span> désigne un second paramétrage de la surface, alors <span class="math display">\[
+∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^ξ + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^η
+= ∂_φ \bigl( \tens{T} \circ \point{g} \bigr) ⊗ \vec{a}^φ + ∂_ψ \bigl( \tens{T} \circ \point{g} \bigr) ⊗ \vec{a}^ψ,
+\]</span> où <span class="math inline">\(\vec{a}^ξ\)</span>, <span class="math inline">\(\vec{a}^η\)</span>, <span class="math inline">\(\tens{T} \circ \point{f}\)</span> et ses dérivées sont implicitement évalués en <span class="math inline">\((ξ, η)\)</span>, tandis que <span class="math inline">\(\vec{a}^φ\)</span>, <span class="math inline">\(\vec{a}^ψ\)</span>, <span class="math inline">\(\tens{T} \circ \point{g}\)</span> et ses dérivées sont implicitement évalués en <span class="math inline">\((φ, ψ)\)</span> tels que <span class="math inline">\(\point{f}(ξ, η) = \point{g}(φ, ψ) = \point{m}\)</span>.</p>
+</div>
+</div>
+<p>L’opérateur gradient ainsi défini est un <strong>opérateur linéaire</strong> dont les propriétés sont proches de celles du gradient usuel. On peut également définir la <strong>divergence surfacique</strong> d’un champ de tenseurs <span class="math inline">\(\tens{T}\)</span> d’ordre <span class="math inline">\(n ≥ 1\)</span> <span class="math display">\[
+\tdiv \tens{T} = \tgrad \tens{T} \dbldot \tens{a},
+\]</span> c’est un champ de tenseurs d’ordre <span class="math inline">\(n - 1\)</span>.</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Remarque importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Les développements précédents permettent d’assurer que la définition du gradient proposée est intrinsèque. En pratique néanmoins, il sera commode de travailler directement avec le champ surfacique <span class="math inline">\(\tens{T} \circ \point{f}\)</span> qui est alors une fonction des fonctions des paramètres <span class="math inline">\(ξ\)</span> et <span class="math inline">\(η\)</span> (plutôt que comme une fonction du point <span class="math inline">\(\point{m} ∈ ς\)</span>). Par abus de langage, on écrira, comme c’est l’habitude, <span class="math inline">\(\tens{T}(ξ, η)\)</span> plutôt que <span class="math inline">\(\tens{T} \circ \point{f}(ξ, η)\)</span>. En revanche, on écrira explicitement <span class="math inline">\(∂_α\tens{T} ⊗ \vec{a}^α\)</span> et <span class="math inline">\(∂_α\tens{T} ⋅ \vec{a}^α\)</span> plutôt que <span class="math inline">\(\tgrad \tens{T}\)</span> et <span class="math inline">\(\tdiv \tens{T}\)</span> (noter l’utilisation de la convention d’Einstein, possible car l’indice <span class="math inline">\(α\)</span> apparaît une fois en position inférieure et une fois en position supérieure).</p>
+</div>
+</div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+À faire
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Proposer les propriétés du gradient en exercice.</p>
+</div>
+</div>
+</section>
+<section id="lien-avec-la-courbure" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="lien-avec-la-courbure"><span class="header-section-number">5.3</span> Lien avec la courbure</h2>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+À faire
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copié");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copié");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./transformations_d_une_coque.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformations d’une coque</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./membranes.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Membranes</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.2.313">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./membranes.html" rel="next">
+<link href="./derivation_et_integration_sur_une_surface.html" rel="next">
 <link href="./courbure_des_surfaces.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -116,17 +116,22 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./membranes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Membranes</span></a>
+  <a href="./derivation_et_integration_sur_une_surface.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dérivation et intégration sur une surface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./coques_en_equilibre_membranaire.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Coques en équilibre membranaire</span></a>
+  <a href="./membranes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Membranes</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./coques_en_flexion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Coques en flexion</span></a>
+  <a href="./coques_en_equilibre_membranaire.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Coques en équilibre membranaire</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./coques_en_flexion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Coques en flexion</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -308,31 +313,16 @@ Note
 <p>Nous n’utiliserons pas cette convention, ni les notations associées dans le présent cours.</p>
 </div>
 </div>
-<p>On peut montrer les relations suivantes <span id="eq-20230302061921"><span class="math display">\[
-\vec{A}_\xi^\ast = \lVert \vec{A}_\xi \times \vec{A}_\eta \rVert^{-1} \, \bigl( \vec{A}_\eta \times \vec{N}\bigr),
-\tag{4.4}\]</span></span> <span id="eq-20230302062030"><span class="math display">\[
-\vec{A}_\eta^\ast = -\lVert \vec{A}_\xi \times \vec{A}_\eta \rVert^{-1} \, \bigl( \vec{A}_\xi \times \vec{N}\bigr),
-\tag{4.5}\]</span></span> <span id="eq-20230302062218"><span class="math display">\[
-\tens{A}
-= \vec{A}_\xi^\ast \otimes \vec{A}_\xi + \vec{A}_\eta^\ast \otimes \vec{A}_\eta
-= \vec{A}_\xi \otimes \vec{A}_\xi^\ast +\vec{A}_\eta \otimes \vec{A}_\eta^\ast,
-\tag{4.6}\]</span></span> <span id="eq-20230302062229"><span class="math display">\[
-\begin{aligned}[b]
-\tens{E}
-&amp;= \lVert \vec{A}_\xi \times \vec{A}_\eta \rVert \, \bigl( \vec{A}_\xi^\ast \otimes \vec{A}_\eta^\ast - \vec{A}_\eta^\ast \otimes \vec{A}_\xi^\ast \bigr)\\
-&amp;= \lVert \vec{A}_\xi \times \vec{A}_\eta \rVert^{-1} \, \bigl( \vec{A}_\xi \otimes \vec{A}_\eta - \vec{A}_\eta \otimes \vec{A}_\xi \bigr).
-\end{aligned}
-\tag{4.7}\]</span></span></p>
 <p>En combinant les relations (<a href="#eq-20230301170119"><span>4.2</span></a>) et (<a href="#eq-20230301165727"><span>4.3</span></a>), on obtient alors les expressions <span id="eq-20230301170457"><span class="math display">\[
 \D \xi = \vec{A}_\xi^\ast \cdot \D \altvec{\point{M}} \quad \text{et} \quad \D \eta = \vec{A}_\eta^\ast \cdot \D \altvec{\point{M}},
-\tag{4.8}\]</span></span> qui montrent l’intérêt de la base duale. L’expression (<a href="#eq-20230301170119"><span>4.2</span></a>) est par ailleurs vraie également dans la configuration actuelle, où le vecteur matériel correspond alors au vecteur géométrique <span class="math display">\[
+\tag{4.4}\]</span></span> qui montrent l’intérêt de la base duale. L’expression (<a href="#eq-20230301170119"><span>4.2</span></a>) est par ailleurs vraie également dans la configuration actuelle, où le vecteur matériel correspond alors au vecteur géométrique <span class="math display">\[
 \D \altvec{\point{m}} = \vec{a}_\xi \, \D \xi + \vec{a}_\eta \, \D \eta,
-\]</span> soit, en introduisant les relations (<a href="#eq-20230301170457"><span>4.8</span></a>) <span id="eq-20230301171229"><span class="math display">\[
+\]</span> soit, en introduisant les relations (<a href="#eq-20230301170457"><span>4.4</span></a>) <span id="eq-20230301171229"><span class="math display">\[
 \D \altvec{\point{m}} = \vec{a}_\xi \, \bigl( \vec{A}_\xi^\ast \cdot \D \altvec{\point{M}} \bigr) + \vec{a}_\eta \, \bigl( \vec{A}_\eta^\ast \cdot \D \altvec{\point{M}} \bigr) = \tens{F} \cdot \D \altvec{\point{M}},
-\tag{4.9}\]</span></span> où <strong>l’application linéaire tangente <span class="math inline">\(\tens{F}\)</span></strong> est définie de la façon suivante <span id="eq-20230314094713"><span class="math display">\[
+\tag{4.5}\]</span></span> où <strong>l’application linéaire tangente <span class="math inline">\(\tens{F}\)</span></strong> est définie de la façon suivante <span id="eq-20230314094713"><span class="math display">\[
 \tens{F} = \vec{a}_\xi \otimes \vec{A}_\xi^\ast + \vec{a}_\eta \otimes \vec{A}_\eta^\ast.
-\tag{4.10}\]</span></span></p>
-<p>L’application linéaire tangente <span class="math inline">\(\tens{F}\)</span> permet d’exprimer le transport d’un vecteur matériel entre les configurations initiale et actuelle à l’aide de la relation (<a href="#eq-20230301171229"><span>4.9</span></a>). Il joue donc le même rôle que le tenseur du même nom de la mécanique des milieux continus. On prendra garde néanmoins au fait que <span class="math inline">\(\tens{F}\)</span> n’est pas un tenseur inversible de l’espace. En effet <span class="math display">\[
+\tag{4.6}\]</span></span></p>
+<p>L’application linéaire tangente <span class="math inline">\(\tens{F}\)</span> permet d’exprimer le transport d’un vecteur matériel entre les configurations initiale et actuelle à l’aide de la relation (<a href="#eq-20230301171229"><span>4.5</span></a>). Il joue donc le même rôle que le tenseur du même nom de la mécanique des milieux continus. On prendra garde néanmoins au fait que <span class="math inline">\(\tens{F}\)</span> n’est pas un tenseur inversible de l’espace. En effet <span class="math display">\[
 \tens{F} \cdot \vec{N} = \vec{n} \cdot \tens{F} = \vec{0},
 \]</span> ce qui montre que <span class="math inline">\(\tens{F}\)</span> représente un endomorphisme du plan tangent <span class="math inline">\(\mathcal{T}(\point{M}, \Sigma)\)</span> vers le plan tangent <span class="math inline">\(\mathcal{T}(\point{m}, \varsigma)\)</span>.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -370,7 +360,7 @@ Note
 \quad \text{et} \quad
 \D\altvec{\point{m}}_2 = \vec{a}_\xi \, \D \xi_2 + \vec{a}_\eta \, \D \eta_2.
 \]</span></p>
-<p>La relation de transport (<a href="#eq-20230301171229"><span>4.9</span></a>) permet alors d’exprimer la variation du produit scalaire de ces deux vecteurs matériels <span class="math display">\[
+<p>La relation de transport (<a href="#eq-20230301171229"><span>4.5</span></a>) permet alors d’exprimer la variation du produit scalaire de ces deux vecteurs matériels <span class="math display">\[
 \begin{aligned}[b]
 \D\altvec{\point{m}}_1 \cdot \D\altvec{\point{m}}_2 - \D\altvec{\point{M}}_1 \cdot \D\altvec{\point{M}}_2
 &amp;= \bigl(\tens{F} \cdot \D\altvec{\point{M}}_1 \bigr) \cdot \bigl(\tens{F} \cdot \D\altvec{\point{M}}_2 \bigr) - \D\altvec{\point{M}}_1 \cdot \D\altvec{\point{M}}_2\\
@@ -382,7 +372,7 @@ Note
 \]</span></p>
 <p>On introduit alors le <strong>tenseur des déformations membranaires</strong> <span id="eq-20230301174444"><span class="math display">\[
 \tens{E} = \tfrac{1}{2} \bigl( \tens{F}^\transpose \cdot \tens{F} - \tens{A} \bigr),
-\tag{4.11}\]</span></span> de sorte que <span class="math display">\[
+\tag{4.7}\]</span></span> de sorte que <span class="math display">\[
 \D\altvec{\point{M}}_1 \cdot \tens{E} \cdot \D\altvec{\point{M}}_2 = \tfrac{1}{2} \bigl( \D\altvec{\point{m}}_1 \cdot \D\altvec{\point{m}}_2 - \D\altvec{\point{M}}_1 \cdot \D\altvec{\point{M}}_2 \bigr).
 \]</span></p>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -549,8 +539,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./membranes.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Membranes</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./derivation_et_integration_sur_une_surface.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dérivation et intégration sur une surface</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

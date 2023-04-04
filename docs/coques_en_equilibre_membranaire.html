@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.2.313">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Théorie des coques élastiques - 6&nbsp; Coques en équilibre membranaire</title>
+<title>Théorie des coques élastiques - 7&nbsp; Coques en équilibre membranaire</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Coques en équilibre membranaire</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Coques en équilibre membranaire</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -116,17 +116,22 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./membranes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Membranes</span></a>
+  <a href="./derivation_et_integration_sur_une_surface.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dérivation et intégration sur une surface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./coques_en_equilibre_membranaire.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Coques en équilibre membranaire</span></a>
+  <a href="./membranes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Membranes</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./coques_en_flexion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Coques en flexion</span></a>
+  <a href="./coques_en_equilibre_membranaire.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Coques en équilibre membranaire</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./coques_en_flexion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Coques en flexion</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -158,9 +163,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#équilibre-membranaire-des-coques" id="toc-équilibre-membranaire-des-coques" class="nav-link active" data-scroll-target="#équilibre-membranaire-des-coques"><span class="toc-section-number">6.1</span>  Équilibre membranaire des coques</a></li>
-  <li><a href="#équilibre-membranaire-des-coques-axisymétriques" id="toc-équilibre-membranaire-des-coques-axisymétriques" class="nav-link" data-scroll-target="#équilibre-membranaire-des-coques-axisymétriques"><span class="toc-section-number">6.2</span>  Équilibre membranaire des coques axisymétriques</a></li>
-  <li><a href="#déformations-des-coques-en-équilibre-membranaire" id="toc-déformations-des-coques-en-équilibre-membranaire" class="nav-link" data-scroll-target="#déformations-des-coques-en-équilibre-membranaire"><span class="toc-section-number">6.3</span>  Déformations des coques en équilibre membranaire</a></li>
+  <li><a href="#équilibre-membranaire-des-coques" id="toc-équilibre-membranaire-des-coques" class="nav-link active" data-scroll-target="#équilibre-membranaire-des-coques"><span class="toc-section-number">7.1</span>  Équilibre membranaire des coques</a></li>
+  <li><a href="#équilibre-membranaire-des-coques-axisymétriques" id="toc-équilibre-membranaire-des-coques-axisymétriques" class="nav-link" data-scroll-target="#équilibre-membranaire-des-coques-axisymétriques"><span class="toc-section-number">7.2</span>  Équilibre membranaire des coques axisymétriques</a></li>
+  <li><a href="#déformations-des-coques-en-équilibre-membranaire" id="toc-déformations-des-coques-en-équilibre-membranaire" class="nav-link" data-scroll-target="#déformations-des-coques-en-équilibre-membranaire"><span class="toc-section-number">7.3</span>  Déformations des coques en équilibre membranaire</a></li>
   </ul>
 </nav>
     </div>
@@ -169,7 +174,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Coques en équilibre membranaire</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Coques en équilibre membranaire</span></h1>
 </div>
 
 
@@ -219,11 +224,11 @@ ul.task-list li input[type="checkbox"] {
 <p>Bien qu’elle ne soit pas toujours vérifiée, il est fréquent en phase initiale d’un projet de faire l’hypothèse d’un équilibre membranaire, qui permet d’estimer aisément les efforts intérieurs et d’obtenir ainsi un prédimensionnement. Il convient ensuite de vérifier que cette hypothèse est valide. Dans un grand nombre de situations pratiques, on constate que cette hypothèse n’est violée que <strong>localement</strong>&nbsp;: dans les phases suivantes du projet, la coque est alors renforcée dans ces zones uniquement afin de reprendre les efforts de flexion qui s’y développent.</p>
 <p>Dans ce chapitre, on présente les équations des coques en équilibre membranaires, ainsi que quelques exemples d’application.</p>
 <p>On rappelle que la théorie des coques en équilibre membranaire est formulée dans le cadre de l’hypothèse des petites perturbations. Il n’y a donc pas lieu de distinguer les configurations initiale <span class="math inline">\(\Sigma\)</span> et actuelle <span class="math inline">\(\varsigma\)</span> (toutes deux désignées par <span class="math inline">\(\Sigma\)</span> dans ce qui suit), ni les contraintes généralisées <span class="math inline">\(\tens{N}^\KL\)</span> et <span class="math inline">\(\tens{N}^\kl\)</span> (toutes deux désignées par <span class="math inline">\(\tens{N}\)</span> dans ce qui suit). De même, on ne distingue pas les opérateurs différentiels <span class="math inline">\(\Div\)</span> et <span class="math inline">\(\div\)</span>, <span class="math inline">\(\Grad\)</span> et <span class="math inline">\(\grad\)</span>.</p>
-<section id="équilibre-membranaire-des-coques" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="équilibre-membranaire-des-coques"><span class="header-section-number">6.1</span> Équilibre membranaire des coques</h2>
+<section id="équilibre-membranaire-des-coques" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="équilibre-membranaire-des-coques"><span class="header-section-number">7.1</span> Équilibre membranaire des coques</h2>
 <p>Dans l’hypothèse d’un équilibre membranaire, les équations d’équilibre d’une coque ont été établies au chapitre précédent sur la configuration <strong>actuelle</strong>. Puisqu’on confond ici configurations initiale et actuelle, ces équations d’équilibre s’écrivent simplement <span id="eq-20230320105306"><span class="math display">\[
 \div \tens{N} + \vec{p} = \vec{0},
-\tag{6.1}\]</span></span> où <span class="math inline">\(\vec{p}\)</span> désigne la densité surfacique de forces (par unité de surface de la coque). Le tenseur <span class="math inline">\(\tens{N}\)</span> est le tenseur des efforts membranaires&nbsp;; c’est un tenseur symétrique du plan tangent, dont on rappelle l’interprétation physique.</p>
+\tag{7.1}\]</span></span> où <span class="math inline">\(\vec{p}\)</span> désigne la densité surfacique de forces (par unité de surface de la coque). Le tenseur <span class="math inline">\(\tens{N}\)</span> est le tenseur des efforts membranaires&nbsp;; c’est un tenseur symétrique du plan tangent, dont on rappelle l’interprétation physique.</p>
 <div class="callout-warning callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -247,22 +252,22 @@ Interprétation physique des contraintes membranaires
 <li>Les forces exercées au bord de la coque sont nécessairement contenues dans le plan tangent.</li>
 <li>Un point régulier de la coque ne peut équilibrer une force ponctuelle.</li>
 </ol>
-<p>La projection selon la normale <span class="math inline">\(\vec{n}\)</span> de l’équation aux dérivées partielles (<a href="#eq-20230320105306"><span>6.1</span></a>) conduit à une équation algébrique, dite <strong>équation d’équilibre normal</strong> <span class="math display">\[
+<p>La projection selon la normale <span class="math inline">\(\vec{n}\)</span> de l’équation aux dérivées partielles (<a href="#eq-20230320105306"><span>7.1</span></a>) conduit à une équation algébrique, dite <strong>équation d’équilibre normal</strong> <span class="math display">\[
 \tens{b} \dbldot \tens{N} + \vec{p} \cdot \vec{n} = 0,
 \]</span> où <span class="math inline">\(\tens{b}\)</span> est le tenseur de courbure de la coque.</p>
 <p>En résumé, l’équilibre membranaire d’une coque se met en équation de la façon suivante</p>
 <p><span id="eq-20230320112037"><span class="math display">\[
 \tens{a} \cdot \div \tens{N} + \tens{a} \cdot \vec{p} = \vec{0} \qquad (\Sigma),
-\tag{6.2}\]</span></span> <span id="eq-20230320112043"><span class="math display">\[
+\tag{7.2}\]</span></span> <span id="eq-20230320112043"><span class="math display">\[
 \tens{b} \dbldot \tens{N} + \vec{p} \cdot \vec{n} = 0 \qquad (\Sigma),
-\tag{6.3}\]</span></span> <span id="eq-20230320112048"><span class="math display">\[
+\tag{7.3}\]</span></span> <span id="eq-20230320112048"><span class="math display">\[
 \tens{N} \cdot \vec{g} = \vec{q} \qquad (\partial \Sigma).
-\tag{6.4}\]</span></span></p>
-<p>En général, la géométrie <span class="math inline">\(\Sigma\)</span> de la coque et son chargement <span class="math inline">\(\vec{p}\)</span> étant fixés, il est toujours possible de trouver une solution au système précédent. Par ailleurs, on évite lorsque c’est possible de résoudre l’équation aux dérivées partielles (<a href="#eq-20230320112037"><span>6.2</span></a>) en écrivant plutôt l’équilibre de sous-systèmes bien choisis.</p>
+\tag{7.4}\]</span></span></p>
+<p>En général, la géométrie <span class="math inline">\(\Sigma\)</span> de la coque et son chargement <span class="math inline">\(\vec{p}\)</span> étant fixés, il est toujours possible de trouver une solution au système précédent. Par ailleurs, on évite lorsque c’est possible de résoudre l’équation aux dérivées partielles (<a href="#eq-20230320112037"><span>7.2</span></a>) en écrivant plutôt l’équilibre de sous-systèmes bien choisis.</p>
 </section>
-<section id="équilibre-membranaire-des-coques-axisymétriques" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="équilibre-membranaire-des-coques-axisymétriques"><span class="header-section-number">6.2</span> Équilibre membranaire des coques axisymétriques</h2>
-<p>On considère la coque axisymétrique dont la génératrice est représentée ci-après (voir <a href="#fig-20230320112648">Figure&nbsp;<span>6.1</span></a>). On rappelle l’expression du tenseur des courbures <span class="math display">\[
+<section id="équilibre-membranaire-des-coques-axisymétriques" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="équilibre-membranaire-des-coques-axisymétriques"><span class="header-section-number">7.2</span> Équilibre membranaire des coques axisymétriques</h2>
+<p>On considère la coque axisymétrique dont la génératrice est représentée ci-après (voir <a href="#fig-20230320112648">Figure&nbsp;<span>7.1</span></a>). On rappelle l’expression du tenseur des courbures <span class="math display">\[
 \tens{b} = b_{tt} \, \vec{t} \otimes \vec{t} - \frac{\cos \psi}{r} \, \vec{e}_\theta \otimes \vec{e}_\theta,
 \]</span> où <span class="math inline">\(b_{tt}\)</span> désigne la courbure de la génératrice (vue comme une courbe plane). On suppose que les chargements surfacique <span class="math inline">\(\vec{p}\)</span> et linéique <span class="math inline">\(\vec{q}\)</span> sont axisymétriques et n’ont pas de composante orthoradiale <span class="math display">\[
 \vec{p} = p_t(s) \, \vec{t} + p_n(s) \, \vec{n} \quad \text{et} \quad
@@ -271,7 +276,7 @@ Interprétation physique des contraintes membranaires
 <div id="fig-20230320112648" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="croquis/fig20230307165827.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.1: Génératrice de la coque axisymétrique considérée.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;7.1: Génératrice de la coque axisymétrique considérée.</figcaption><p></p>
 </figure>
 </div>
 <p>Soit <span class="math inline">\(\Pi\)</span> un plan horizontal à l’altitude <span class="math inline">\(z\)</span> fixée. On considère le sous-système <span class="math inline">\(\Sigma'\)</span> constitué par la partie de la coque située <strong>au-dessus</strong> du plan <span class="math inline">\(\Pi\)</span>. Les moments étant évalués par rapport à un point de l’axe de révolution, on s’intéresse au torseur des efforts extérieurs (résultante&nbsp;: <span class="math inline">\(\vec{R}_\external'\)</span>&nbsp;; moment&nbsp;: <span class="math inline">\(\vec{M}_\external'\)</span>) et intérieurs (résultante&nbsp;: <span class="math inline">\(\vec{R}_\internal'\)</span>&nbsp;; moment&nbsp;: <span class="math inline">\(\vec{M}_\internal'\)</span>) exercés sur ce sous-système. L’équilibre du sous-système considéré conduit à <span class="math display">\[
@@ -294,12 +299,12 @@ Interprétation physique des contraintes membranaires
 \]</span> soit <span class="math display">\[
 N_{tt} = \frac{\vec{R}_\external' \cdot \vec{e}_z}{2\pi \, r \, \cos \psi}.
 \]</span></p>
-<p>La résultante <span class="math inline">\(\vec{R}_\external'\)</span> dépend de l’application et doit être évaluée au cas par cas. On en déduit alors l’expression de <span class="math inline">\(N_{tt}\)</span> par la relation précédente. Finalement, on utilise l’équation d’équilibre normal (<a href="#eq-20230320112043"><span>6.3</span></a>) pour déterminer <span class="math inline">\(N_{\theta\theta}\)</span> <span class="math display">\[
+<p>La résultante <span class="math inline">\(\vec{R}_\external'\)</span> dépend de l’application et doit être évaluée au cas par cas. On en déduit alors l’expression de <span class="math inline">\(N_{tt}\)</span> par la relation précédente. Finalement, on utilise l’équation d’équilibre normal (<a href="#eq-20230320112043"><span>7.3</span></a>) pour déterminer <span class="math inline">\(N_{\theta\theta}\)</span> <span class="math display">\[
 N_{\theta\theta} = \frac{r}{\cos \psi} \bigl( b_{tt} \, N_{tt} + \vec{p} \cdot \vec{n} \bigr).
 \]</span></p>
 </section>
-<section id="déformations-des-coques-en-équilibre-membranaire" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="déformations-des-coques-en-équilibre-membranaire"><span class="header-section-number">6.3</span> Déformations des coques en équilibre membranaire</h2>
+<section id="déformations-des-coques-en-équilibre-membranaire" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="déformations-des-coques-en-équilibre-membranaire"><span class="header-section-number">7.3</span> Déformations des coques en équilibre membranaire</h2>
 <p>Dans l’hypothèse des petites perturbations, on peut linéariser l’expression des déformations membranaires en fonction du champ des déplacements <span class="math display">\[
 \tens{E} \simeq \tens{\varepsilon} = \sym \bigl( \tens{a} \cdot \grad \vec{u} \bigr).
 \]</span></p>
@@ -455,12 +460,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./membranes.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Membranes</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Membranes</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./coques_en_flexion.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Coques en flexion</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Coques en flexion</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
