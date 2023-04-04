@@ -9,7 +9,7 @@ draw(Sigma.s[0].vequals(eta), BLUE + THICK, L=Label("$\eta = \mathrm{Cte}$", pos
 
 triple m2 = Sigma.s[0].point(xi, eta);
 dot(m2);
-label("$\mathsf{M} = \mathsf{f}(\xi, \eta)$", m2, align=NW);
+label("$\mathsf{m} = \mathsf{f}(\xi, \eta)$", m2, align=NW);
 
 triple p1 = (2 * xi, 0, 0);
 triple p3 = (0, 2 * eta, 0);

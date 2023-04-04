@@ -21,7 +21,7 @@ draw(Gamma_eta, color_eta + THICK);
 real alpha = 0.8;
 path3 T_m = plane(2 * alpha * a_xi, 2 * alpha * a_eta, m - alpha * (a_xi + a_eta));
 draw(surface(T_m), RED + opacity(0.20));
-label("$\mathcal T(\mathsf{m}, \Sigma)$", point(T_m, 1.0), align=NW);
+label("$\mathcal T(\mathsf{m}, \varsigma)$", point(T_m, 1.0), align=NW);
 
 draw(m -- (m + a_xi), color_eta, arrow=Arrow3(HookHead2, emissive(color_eta)), L=Label("$\vec{a}_\xi$", position=EndPoint, align=E));
 draw(m -- (m + a_eta), color_xi, arrow=Arrow3(HookHead2, emissive(color_xi)), L=Label("$\vec{a}_\eta$", position=EndPoint, align=E));

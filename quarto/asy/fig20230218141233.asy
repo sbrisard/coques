@@ -31,4 +31,4 @@ path3 Gamma = graph(x, y, z, 0, 2pi, operator..);
 draw(Gamma, THICK + BLUE);
 label("$\mathsf{f}[X(t), Y(t)]$", Sigma.s[0].point(X(6), Y(6)), align=NE, BLUE);
 
-label("$\Gamma$", Sigma.s[0].point(X0, Y0), BLUE, align=N);
+label("$\gamma$", Sigma.s[0].point(X0, Y0), BLUE, align=N);

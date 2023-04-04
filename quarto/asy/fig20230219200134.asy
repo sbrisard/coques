@@ -39,8 +39,8 @@ surface Pi1 = surface(plane(2alpha * a_x, 2alpha * n, m - alpha * (a_x + n)));
 draw(m -- (m + a_x), BLUE, arrow=Arrow3(HookHead2, emissive(BLUE)), L=Label("$\vec{t}_1$", position=EndPoint, align=W));
 draw(Gamma1, BLUE + THICK);
 draw(Pi1, BLUE + opacity(0.3));
-label("$\Pi_1$", m + alpha * (n - a_x), BLUE, align=NE);
-label("$\Gamma_1$", g1(-0.75a), BLUE, align=N);
+label("$\pi_1$", m + alpha * (n - a_x), BLUE, align=NE);
+label("$\gamma_1$", g1(-0.75a), BLUE, align=N);
 
 triple g2(real t) { return (_m.x, t, f((_m.x, t))); }
 path3 Gamma2 = graph(g2, -b, b, operator..);
@@ -49,7 +49,7 @@ surface Pi2 = surface(plane(2alpha * a_y, 2alpha * n, m - alpha * (a_y + n)));
 draw(m -- (m + a_y), GREEN, arrow=Arrow3(HookHead2, emissive(GREEN)), L=Label("$\vec{t}_2$", position=EndPoint, align=E));
 draw(Gamma2, GREEN + THICK);
 draw(Pi2, GREEN + opacity(0.3));
-label("$\Pi_2$", m + alpha * (n - a_y), GREEN, align=NW);
-label("$\Gamma_2$", g2(-b), GREEN, align=N);
+label("$\pi_2$", m + alpha * (n - a_y), GREEN, align=NW);
+label("$\gamma_2$", g2(-b), GREEN, align=N);
 
 draw(m -- (m + n), RED, arrow=Arrow3(HookHead2, emissive(RED)), L=Label("$\vec{n}$", position=EndPoint, align=N));

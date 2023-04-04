@@ -1,8 +1,5 @@
-settings.prc = false;
-settings.render = 8;
-import three;
-
 include _config;
+include _config3d;
 
 currentlight=light(specularfactor=3, (-1, 0.2, 1));
 currentprojection=orthographic((1, 1, 1));
@@ -24,4 +21,4 @@ draw_xyz_frame((-0.15a, 0.55b, -c));
 draw_xi_eta_axes((0.9a, 0.2b, -0.1c));
 */
 
-label("$\Sigma$", Sigma.s[0].point(0.98, 0.98), align=NW);
+label("$\varsigma$", Sigma.s[0].point(0.98, 0.98), align=NW);
