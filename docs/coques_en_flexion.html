@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Théorie des coques élastiques - 7&nbsp; Coques en flexion</title>
+<title>Théorie des coques élastiques - 8&nbsp; Coques en flexion</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./rappels_de_geometrie_differentielle.html" rel="next">
+<link href="./equations_d_equilibre_incrementales.html" rel="next">
 <link href="./coques_en_equilibre_membranaire.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Coques en flexion</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Coques en flexion</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -116,17 +116,27 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./membranes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Membranes</span></a>
+  <a href="./derivation_et_integration_sur_une_surface.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dérivation et intégration sur une surface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./coques_en_equilibre_membranaire.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Coques en équilibre membranaire</span></a>
+  <a href="./membranes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Membranes</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./coques_en_flexion.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Coques en flexion</span></a>
+  <a href="./coques_en_equilibre_membranaire.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Coques en équilibre membranaire</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./coques_en_flexion.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Coques en flexion</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./equations_d_equilibre_incrementales.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Équations d’équilibre incrémentales</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -158,19 +168,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#sec-20230330121445" id="toc-sec-20230330121445" class="nav-link active" data-scroll-target="#sec-20230330121445"><span class="toc-section-number">7.1</span>  L’hypothèse de Kirchhoff–Love</a></li>
-  <li><a href="#sec-20230328153349" id="toc-sec-20230328153349" class="nav-link" data-scroll-target="#sec-20230328153349"><span class="toc-section-number">7.2</span>  Tenseur des variations des courbures</a></li>
-  <li><a href="#sec-20230330121852" id="toc-sec-20230330121852" class="nav-link" data-scroll-target="#sec-20230330121852"><span class="toc-section-number">7.3</span>  Construction du modèle par les puissances virtuelles</a>
+  <li><a href="#sec-20230330121445" id="toc-sec-20230330121445" class="nav-link active" data-scroll-target="#sec-20230330121445"><span class="toc-section-number">8.1</span>  L’hypothèse de Kirchhoff–Love</a></li>
+  <li><a href="#sec-20230328153349" id="toc-sec-20230328153349" class="nav-link" data-scroll-target="#sec-20230328153349"><span class="toc-section-number">8.2</span>  Tenseur des variations des courbures</a></li>
+  <li><a href="#sec-20230330121852" id="toc-sec-20230330121852" class="nav-link" data-scroll-target="#sec-20230330121852"><span class="toc-section-number">8.3</span>  Construction du modèle par les puissances virtuelles</a>
   <ul class="collapse">
-  <li><a href="#sec-20230328153516" id="toc-sec-20230328153516" class="nav-link" data-scroll-target="#sec-20230328153516"><span class="toc-section-number">7.3.1</span>  Puissance virtuelle des efforts intérieurs</a></li>
-  <li><a href="#sec-20230329114426" id="toc-sec-20230329114426" class="nav-link" data-scroll-target="#sec-20230329114426"><span class="toc-section-number">7.3.2</span>  Puissance virtuelle des efforts extérieurs</a></li>
-  <li><a href="#équations-déquilibre" id="toc-équations-déquilibre" class="nav-link" data-scroll-target="#équations-déquilibre"><span class="toc-section-number">7.3.3</span>  Équations d’équilibre</a></li>
+  <li><a href="#sec-20230328153516" id="toc-sec-20230328153516" class="nav-link" data-scroll-target="#sec-20230328153516"><span class="toc-section-number">8.3.1</span>  Puissance virtuelle des efforts intérieurs</a></li>
+  <li><a href="#sec-20230329114426" id="toc-sec-20230329114426" class="nav-link" data-scroll-target="#sec-20230329114426"><span class="toc-section-number">8.3.2</span>  Puissance virtuelle des efforts extérieurs</a></li>
+  <li><a href="#équations-déquilibre" id="toc-équations-déquilibre" class="nav-link" data-scroll-target="#équations-déquilibre"><span class="toc-section-number">8.3.3</span>  Équations d’équilibre</a></li>
   </ul></li>
-  <li><a href="#sec-20230330135827" id="toc-sec-20230330135827" class="nav-link" data-scroll-target="#sec-20230330135827"><span class="toc-section-number">7.4</span>  Comportement des coques de Kirchhoff–Love</a></li>
-  <li><a href="#sec-20230330140022" id="toc-sec-20230330140022" class="nav-link" data-scroll-target="#sec-20230330140022"><span class="toc-section-number">7.5</span>  Équilibre élastique des coques de Kirchhoff–Love</a>
+  <li><a href="#sec-20230330135827" id="toc-sec-20230330135827" class="nav-link" data-scroll-target="#sec-20230330135827"><span class="toc-section-number">8.4</span>  Comportement des coques de Kirchhoff–Love</a></li>
+  <li><a href="#sec-20230330140022" id="toc-sec-20230330140022" class="nav-link" data-scroll-target="#sec-20230330140022"><span class="toc-section-number">8.5</span>  Équilibre élastique des coques de Kirchhoff–Love</a>
   <ul class="collapse">
-  <li><a href="#équations-générales" id="toc-équations-générales" class="nav-link" data-scroll-target="#équations-générales"><span class="toc-section-number">7.5.1</span>  Équations générales</a></li>
-  <li><a href="#équations-dans-lhypothèse-des-petites-perturbations" id="toc-équations-dans-lhypothèse-des-petites-perturbations" class="nav-link" data-scroll-target="#équations-dans-lhypothèse-des-petites-perturbations"><span class="toc-section-number">7.5.2</span>  Équations dans l’hypothèse des petites perturbations</a></li>
+  <li><a href="#équations-générales" id="toc-équations-générales" class="nav-link" data-scroll-target="#équations-générales"><span class="toc-section-number">8.5.1</span>  Équations générales</a></li>
+  <li><a href="#équations-dans-lhypothèse-des-petites-perturbations" id="toc-équations-dans-lhypothèse-des-petites-perturbations" class="nav-link" data-scroll-target="#équations-dans-lhypothèse-des-petites-perturbations"><span class="toc-section-number">8.5.2</span>  Équations dans l’hypothèse des petites perturbations</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -180,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Coques en flexion</span></h1>
+<h1 class="title"><span id="sec-20230411093311" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Coques en flexion</span></span></h1>
 </div>
 
 
@@ -203,6 +213,7 @@ ul.task-list li input[type="checkbox"] {
 \newcommand{\dbldot}{\mathbin{\mathord{:}}}
 \let\div\undefined
 \newcommand{\div}{\operatorname{div}}
+\newcommand{\tdiv}{\operatorname{\symbfsf{div}}}
 \newcommand{\Div}{\operatorname{Div}}
 \newcommand{\external}{\mathrm{ext}}
 \newcommand{\Eta}{\mathrm{H}}
@@ -225,13 +236,13 @@ ul.task-list li input[type="checkbox"] {
 \renewcommand{\vec}[1]{\symbf{#1}}
 \]</span></p>
 </div>
-<p>Dans ce chapitre, on présente le modèle de Kirchhoff–Love. C’est le modèle de coques le plus simple qui permette de rendre compte de couplages membrane-flexion. Le modèle de membrane a été formulé au <a href="membranes.html"><span>Chapitre&nbsp;5</span></a> sous les hypothèses suivantes&nbsp;: (1) seuls les degrés de liberté de translation des points de la coque interviennent dans l’expression de la puissance des efforts extérieurs et (2) la puissance des efforts intérieurs est une forme linéaire du seul tenseur des déformations membranaires. Ces hypothèses très restrictives conduisent à un modèle qui n’a pas de raideur en flexion. On lève successivement ces deux hypothèses dans le présent chapitre, organisé comme suit. L’hypothèse de Kirchhoff–Love est introduite au <a href="#sec-20230330121445"><span>§&nbsp;7.1</span></a>. Cette hypothèse permet de définir une rotation sans introduire de degrés de libertés supplémentaires, et donc de prendre en compte des moments extérieurs. On introduit ensuite au paragraphe <a href="#sec-20230328153349"><span>§&nbsp;7.2</span></a> le tenseur des variations des courbures, qui complète le tenseur des déformations membranaires&nbsp;: à eux deux, ils caractérisent les mouvements de corps rigides. Le modèle de Kirchhoff–Love est construit par la méthode des puissances virtuelles au <a href="#sec-20230330121852"><span>§&nbsp;7.3</span></a>. Il est complété au <a href="#sec-20230330135827"><span>§&nbsp;7.4</span></a> par les relations de comportement pour un matériau constitutif de Kirchhoff–Saint-Venant. Finalement, une synthèse des équations du modèle est présentée au <a href="#sec-20230330140022"><span>§&nbsp;7.5</span></a>.</p>
-<section id="sec-20230330121445" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="sec-20230330121445"><span class="header-section-number">7.1</span> L’hypothèse de Kirchhoff–Love</h2>
+<p>Dans ce chapitre, on présente le modèle de Kirchhoff–Love. C’est le modèle de coques le plus simple qui permette de rendre compte de couplages membrane-flexion. Le modèle de membrane a été formulé au <a href="membranes.html"><span>Chapitre&nbsp;6</span></a> sous les hypothèses suivantes&nbsp;: (1) seuls les degrés de liberté de translation des points de la coque interviennent dans l’expression de la puissance des efforts extérieurs et (2) la puissance des efforts intérieurs est une forme linéaire du seul tenseur des déformations membranaires. Ces hypothèses très restrictives conduisent à un modèle qui n’a pas de raideur en flexion. On lève successivement ces deux hypothèses dans le présent chapitre, organisé comme suit. L’hypothèse de Kirchhoff–Love est introduite au <a href="#sec-20230330121445"><span>§&nbsp;8.1</span></a>. Cette hypothèse permet de définir une rotation sans introduire de degrés de libertés supplémentaires, et donc de prendre en compte des moments extérieurs. On introduit ensuite au paragraphe <a href="#sec-20230328153349"><span>§&nbsp;8.2</span></a> le tenseur des variations des courbures, qui complète le tenseur des déformations membranaires&nbsp;: à eux deux, ils caractérisent les mouvements de corps rigides. Le modèle de Kirchhoff–Love est construit par la méthode des puissances virtuelles au <a href="#sec-20230330121852"><span>§&nbsp;8.3</span></a>. Il est complété au <a href="#sec-20230330135827"><span>§&nbsp;8.4</span></a> par les relations de comportement pour un matériau constitutif de Kirchhoff–Saint-Venant. Finalement, une synthèse des équations du modèle est présentée au <a href="#sec-20230330140022"><span>§&nbsp;8.5</span></a>.</p>
+<section id="sec-20230330121445" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="sec-20230330121445"><span class="header-section-number">8.1</span> L’hypothèse de Kirchhoff–Love</h2>
 <p>Dans le modèle de Kirchhoff–Love, les points matériels n’ont par construction que <strong>trois degrés de liberté</strong> de translation. Afin de rendre compte de phénomènes de flexion dans la coque, il est nécessaire de faire travailler les moments contre une <strong>rotation</strong>. Celle-ci est nécessairement <strong>liée à la translation</strong>, afin de ne pas introduire de nouveaux degrés de liberté. On se place ici dans l’hypothèse de Kirchhoff–Love&nbsp;: <strong>la rotation des points matériels coïncide avec celle de la normale</strong>.</p>
-<p>Dans ce paragraphe, on établit donc l’expression de la vitesse de rotation instantanée de la normale. Celle-ci interviendra dans l’expression de la puissance des moments extérieurs (voir <a href="#sec-20230329114426"><span>§&nbsp;7.3.2</span></a>). Le point de départ du calcul de cette vitesse instantanée de rotation est l’expression suivante de la dérivée temporelle de la normale <span class="math inline">\(\dot{\vec{n}}\)</span> <span id="eq-20230329065926"><span class="math display">\[
+<p>Dans ce paragraphe, on établit donc l’expression de la vitesse de rotation instantanée de la normale. Celle-ci interviendra dans l’expression de la puissance des moments extérieurs (voir <a href="#sec-20230329114426"><span>§&nbsp;8.3.2</span></a>). Le point de départ du calcul de cette vitesse instantanée de rotation est l’expression suivante de la dérivée temporelle de la normale <span class="math inline">\(\dot{\vec{n}}\)</span> <span id="eq-20230329065926"><span class="math display">\[
 \dot{\vec{n}} = - \mathring{\vec{ϕ}}, \quad \text{avec} \quad \mathring{\vec{ϕ}} = \vec{n} ⋅ \tgrad{\dot{\vec{u}}}.
-\tag{7.1}\]</span></span></p>
+\tag{8.1}\]</span></span></p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -251,7 +262,7 @@ Démonstration
 \dot{\vec{n}} ⋅ \D \altvec{\point{m}} = - \vec{n} ⋅ \D\dot{\altvec{\point{m}}} = -\vec{n} ⋅ \tgrad{\dot{\vec{u}}} ⋅ \D \altvec{\point{m}} = -\mathring{\vec{ϕ}} ⋅ \D \altvec{\point{m}},
 \quad \text{soit} \quad
 \dot{\vec{n}} ⋅ \vec{v} = - \mathring{\vec{ϕ}} ⋅ \vec{v},
-\]</span> <strong>pour tout vecteur <span class="math inline">\(\vec{v}\)</span> du plan tangent à <span class="math inline">\(ς\)</span>.</strong> Puisque <span class="math inline">\(\dot{\vec{n}}\)</span> et <span class="math inline">\(\mathring{\vec{ϕ}}\)</span> sont tous deux des vecteurs du plan tangent (<span class="math inline">\(\dot{\vec{n}} ⋅ \vec{n} = 0\)</span> et <span class="math inline">\(\tgrad \ldots ⋅ \vec{n} = 0\)</span>), on obtient bien l’expression (<a href="#eq-20230329065926"><span>7.1</span></a>).</p>
+\]</span> <strong>pour tout vecteur <span class="math inline">\(\vec{v}\)</span> du plan tangent à <span class="math inline">\(ς\)</span>.</strong> Puisque <span class="math inline">\(\dot{\vec{n}}\)</span> et <span class="math inline">\(\mathring{\vec{ϕ}}\)</span> sont tous deux des vecteurs du plan tangent (<span class="math inline">\(\dot{\vec{n}} ⋅ \vec{n} = 0\)</span> et <span class="math inline">\(\tgrad \ldots ⋅ \vec{n} = 0\)</span>), on obtient bien l’expression (<a href="#eq-20230329065926"><span>8.1</span></a>).</p>
 </div>
 </div>
 </div>
@@ -264,8 +275,8 @@ Démonstration
 \hat{\vec{ϕ}} = \vec{n} ⋅ \tgrad{\hat{\vec{u}}}.
 \]</span></p>
 </section>
-<section id="sec-20230328153349" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="sec-20230328153349"><span class="header-section-number">7.2</span> Tenseur des variations des courbures</h2>
+<section id="sec-20230328153349" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="sec-20230328153349"><span class="header-section-number">8.2</span> Tenseur des variations des courbures</h2>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -292,7 +303,7 @@ Exemple
 \dot{\tens{K}} = \tens{F}^\transpose ⋅ \mathring{\tens{κ}} ⋅ \tens{F},
 \quad \text{avec} \quad
 \mathring{\tens{κ}} = \tgrad^\transpose{\dot{\vec{u}}} ⋅ \tens{b} + \tens{a} ⋅ \tgrad{\mathring{\vec{ϕ}}}.
-\tag{7.2}\]</span></span></p>
+\tag{8.2}\]</span></span></p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -324,13 +335,13 @@ Démonstration
 \]</span></p>
 <p>Dans l’expression précédente, <span class="math inline">\(\tgrad^\transpose{\dot{\vec{u}}} ⋅ \tens{b}\)</span> est un tenseur du plan tangent à la configuration actuelle, mais pas <span class="math inline">\(\tgrad{\dot{\vec{n}}}\)</span>. Néanmoins, compte-tenu de la contraction à gauche avec <span class="math inline">\(\tens{F}\)</span>, on peut remplacer <span class="math inline">\(\tgrad{\dot{\vec{n}}}\)</span> par <span class="math inline">\(\tens{a} ⋅ \tgrad{\dot{\vec{n}}}\)</span> <span class="math display">\[
 \mathring{\tens{κ}} = \tgrad^\transpose{\dot{\vec{u}}} ⋅ \tens{b} - \tens{a} ⋅ \tgrad{\dot{\vec{n}}}
-\]</span> et on déduit&nbsp;(<a href="#eq-20230329064705"><span>7.2</span></a>) de (<a href="#eq-20230329065926"><span>7.1</span></a>).</p>
+\]</span> et on déduit&nbsp;(<a href="#eq-20230329064705"><span>8.2</span></a>) de (<a href="#eq-20230329065926"><span>8.1</span></a>).</p>
 </div>
 </div>
 </div>
 <p>Le tenseur <span class="math inline">\(\mathring{\tens{κ}}\)</span> ainsi introduit est le <strong>tenseur des taux eulériens des variations des courbures</strong>. Il peut également être mis sous la forme suivante <span id="eq-20230329082951"><span class="math display">\[
 \mathring{\tens{κ}} = \tens{a} ⋅ \bigl( \vec{n} ⋅ \tgrad \tgrad \dot{\vec{u}} \bigr).
-\tag{7.3}\]</span></span></p>
+\tag{8.3}\]</span></span></p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -343,9 +354,9 @@ Démonstration
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>En combinant les relations&nbsp;(<a href="#eq-20230329064705"><span>7.2</span></a>) et (<a href="#eq-20230329065926"><span>7.1</span></a>) (qui sera démontrée au <a href="#sec-20230329114426"><span>§&nbsp;7.3.2</span></a>) on obtient <span id="eq-20230329082744"><span class="math display">\[
+<p>En combinant les relations&nbsp;(<a href="#eq-20230329064705"><span>8.2</span></a>) et (<a href="#eq-20230329065926"><span>8.1</span></a>) (qui sera démontrée au <a href="#sec-20230329114426"><span>§&nbsp;8.3.2</span></a>) on obtient <span id="eq-20230329082744"><span class="math display">\[
 \mathring{\tens{κ}} = \tgrad^\transpose{\dot{\vec{u}}} ⋅ \tens{b} + \tens{a} ⋅ \tgrad \bigl( \vec{n} ⋅ \tgrad{\dot{\vec{u}}} \bigr),
-\tag{7.4}\]</span></span> puis, par définition de l’opérateur <span class="math inline">\(\tgrad\)</span>, <span id="eq-20230329082636"><span class="math display">\[
+\tag{8.4}\]</span></span> puis, par définition de l’opérateur <span class="math inline">\(\tgrad\)</span>, <span id="eq-20230329082636"><span class="math display">\[
 \begin{aligned}[b]
 \tgrad \bigl( \vec{n} ⋅ \tgrad{\dot{\vec{u}}} \bigr)
 &amp;= \sum_α ∂_α \bigl( \vec{n} ⋅ \tgrad{\dot{\vec{u}}} \bigr) ⊗ \vec{a}_α^\ast\\
@@ -353,40 +364,40 @@ Démonstration
 &amp;= \sum_α \bigl( \tgrad^\transpose{\dot{\vec{u}}} ⋅ ∂_α \vec{n} \bigr) ⊗ \vec{a}_α^\ast + \vec{n} ⋅ ∑_α ∂_α \tgrad{\dot{\vec{u}}} ⊗ \vec{a}_α^\ast\\
 &amp;= \sum_α \bigl( \tgrad^\transpose{\dot{\vec{u}}} ⋅ ∂_α \vec{n} \bigr) ⊗ \vec{a}_α^\ast + \vec{n} ⋅ \tgrad \tgrad \dot{\vec{u}}
 \end{aligned}
-\tag{7.5}\]</span></span> et en utilisant la formule de Weingarten <strong>RÉFÉRENCE</strong> <span id="eq-20230329082559"><span class="math display">\[
+\tag{8.5}\]</span></span> et en utilisant la formule de Weingarten <strong>RÉFÉRENCE</strong> <span id="eq-20230329082559"><span class="math display">\[
 \begin{aligned}[b]
 \sum_α \bigl( \tgrad^\transpose{\dot{\vec{u}}} ⋅ ∂_α \vec{n} \bigr) ⊗ \vec{a}_α^\ast
 &amp;= -\sum_α \bigl( \tgrad^\transpose{\dot{\vec{u}}} ⋅ \tens{b} ⋅ \vec{a}_α \bigr) ⊗ \vec{a}_α^\ast\\
 &amp;= - \tgrad^\transpose{\dot{\vec{u}}} ⋅ \tens{b} ⋅ \sum_α \vec{a}_α ⊗ \vec{a}_α^\ast\\
 &amp;= - \tgrad^\transpose{\dot{\vec{u}}} ⋅ \tens{b} ⋅ \tens{a} = - \tgrad^\transpose{\dot{\vec{u}}} ⋅ \tens{b}.
 \end{aligned}
-\tag{7.6}\]</span></span></p>
-<p>La relation (<a href="#eq-20230329082951"><span>7.3</span></a>) est finalement obtenue en combinant (<a href="#eq-20230329082744"><span>7.4</span></a>), (<a href="#eq-20230329082636"><span>7.5</span></a>) et (<a href="#eq-20230329082559"><span>7.6</span></a>).</p>
+\tag{8.6}\]</span></span></p>
+<p>La relation (<a href="#eq-20230329082951"><span>8.3</span></a>) est finalement obtenue en combinant (<a href="#eq-20230329082744"><span>8.4</span></a>), (<a href="#eq-20230329082636"><span>8.5</span></a>) et (<a href="#eq-20230329082559"><span>8.6</span></a>).</p>
 </div>
 </div>
 </div>
-<p>Une conséquence importante de l’expression (<a href="#eq-20230329082951"><span>7.3</span></a>) est que le tenseur des taux eulériens des variations des courbures est un <strong>tenseur symétrique du plan tangent à la configuration actuelle</strong>.</p>
+<p>Une conséquence importante de l’expression (<a href="#eq-20230329082951"><span>8.3</span></a>) est que le tenseur des taux eulériens des variations des courbures est un <strong>tenseur symétrique du plan tangent à la configuration actuelle</strong>.</p>
 <p>Pour un champ <span class="math inline">\(\hat{\vec{u}}\)</span> de vitesses virtuelles, on peut également définir les taux virtuels lagrangien <span class="math inline">\(\hat{\tens{K}}\)</span> et eulérien <span class="math inline">\(\hat{\tens{κ}}\)</span> de la façon suivante <span id="eq-20230329110842"><span class="math display">\[
 \hat{\tens{K}} = \tens{F}^\transpose ⋅ \hat{\tens{κ}} ⋅ \tens{F},
-\tag{7.7}\]</span></span> avec <span class="math display">\[
+\tag{8.7}\]</span></span> avec <span class="math display">\[
 \hat{\tens{κ}}  = \tgrad^\transpose \hat{\vec{u}} ⋅ \tens{b} + \tens{a} ⋅ \tgrad \hat{\vec{ϕ}} = \tens{a} ⋅ \bigl( \vec{n} ⋅ \tgrad \tgrad \hat{\vec{u}} \bigr).
 \]</span></p>
 </section>
-<section id="sec-20230330121852" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="sec-20230330121852"><span class="header-section-number">7.3</span> Construction du modèle par les puissances virtuelles</h2>
-<section id="sec-20230328153516" class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="sec-20230328153516"><span class="header-section-number">7.3.1</span> Puissance virtuelle des efforts intérieurs</h3>
+<section id="sec-20230330121852" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="sec-20230330121852"><span class="header-section-number">8.3</span> Construction du modèle par les puissances virtuelles</h2>
+<section id="sec-20230328153516" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="sec-20230328153516"><span class="header-section-number">8.3.1</span> Puissance virtuelle des efforts intérieurs</h3>
 <p>Les déformations de la coque sont caractérisées par les tenseurs <span class="math inline">\(\tens{E}\)</span> et <span class="math inline">\(\tens{K}\)</span>. On postule donc que la puissance virtuelle des efforts intérieurs est une forme linéaire des taux virtuels de ces deux tenseurs <span class="math display">\[
 \mathcal{P}_\internal(\hat{\vec{u}}) = -∫_Σ \bigl( \tens{N}^\KL \dbldot \hat{\tens{E}} + \tens{M}^\KL \dbldot \hat{\tens{K}} \bigr) \, \D A,
 \]</span> où les contraintes généralisées duales <span class="math inline">\(\tens{N}^\KL\)</span> et <span class="math inline">\(\tens{M}^\KL\)</span> sont le <strong>tenseur des efforts membranaires</strong> et le <strong>tenseur des moments fléchissants</strong>, respectivement. Comme <span class="math inline">\(\hat{\tens{E}}\)</span> et <span class="math inline">\(\hat{\tens{K}}\)</span> sont des tenseurs symétriques du plan tangent à la configuration initiale, les tenseurs <span class="math inline">\(\tens{N}^\KL\)</span> et <span class="math inline">\(\tens{M}^\KL\)</span> sont également des <strong>tenseurs symétriques du plan tangent à la configuration initiale</strong> (on ne saurait pas faire travailler des composantes hors-plan ou antisymétriques de ces tenseurs).</p>
 <p>Les composantes du tenseur des efforts membranaires sont homogènes à une force par unité de longueur, tandis que les composantes du tenseur des moments fléchissants sont homogènes à un moment par unité de longueur (c’est-à-dire, une force). Ces tenseurs permettent d’écrire la puissance des efforts intérieurs sur la configuration initiale&nbsp;: ils jouent donc le même rôle que le <strong>tenseur de Piola–Kirchhoff de seconde espèce</strong> de la mécanique des milieux continus.</p>
 <p>Exprimée sur la configuration actuelle, la puissance des efforts intérieurs s’écrit également comme suit <span id="eq-20230329144253"><span class="math display">\[
 \mathcal{P}_\internal = -∫_ς \bigl( \tens{N}^\kl \dbldot \hat{\tens{ε}} + \tens{M}^\KL \dbldot \hat{\tens{κ}} \bigr) \, \D a,
-\tag{7.8}\]</span></span> où les tenseurs <span class="math inline">\(\tens{N}^\kl\)</span> et <span class="math inline">\(\tens{M}^\kl\)</span> sont des <strong>tenseurs symétriques du plan tangent à la configuration actuelle</strong> et jouent le même rôle (du point de vue de la puissance des efforts intérieurs, pas du point de vue des efforts intérieurs eux-mêmes) que le <strong>tenseur de Cauchy</strong> de la mécanique des milieux continus. Leur expression est donnée par les formules suivantes <span id="eq-20230329092641"><span class="math display">\[
+\tag{8.8}\]</span></span> où les tenseurs <span class="math inline">\(\tens{N}^\kl\)</span> et <span class="math inline">\(\tens{M}^\kl\)</span> sont des <strong>tenseurs symétriques du plan tangent à la configuration actuelle</strong> et jouent le même rôle (du point de vue de la puissance des efforts intérieurs, pas du point de vue des efforts intérieurs eux-mêmes) que le <strong>tenseur de Cauchy</strong> de la mécanique des milieux continus. Leur expression est donnée par les formules suivantes <span id="eq-20230329092641"><span class="math display">\[
 \tens{N}^\kl = J^{-1} \, \tens{F} ⋅ \tens{N}^\KL ⋅ \tens{F}^\transpose
 \quad \text{et} \quad
 \tens{M}^\kl = J^{-1} \, \tens{F} ⋅ \tens{M}^\KL ⋅ \tens{F}^\transpose.
-\tag{7.9}\]</span></span></p>
+\tag{8.9}\]</span></span></p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -399,10 +410,10 @@ Démonstration
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>On utilise la formule de transport de l’élément d’aire <strong>RÉFÉRENCE</strong> ainsi que les expressions <strong>RÉFÉRENCE</strong> et (<a href="#eq-20230329110842"><span>7.7</span></a>)</p>
+<p>On utilise la formule de transport de l’élément d’aire <strong>RÉFÉRENCE</strong> ainsi que les expressions <strong>RÉFÉRENCE</strong> et (<a href="#eq-20230329110842"><span>8.7</span></a>)</p>
 <p><span class="math display">\[
 \mathcal{P}_\internal = -∫_ς \bigl[ \tens{N}^\KL \dbldot \bigl( \tens{F}^\transpose ⋅ \hat{\tens{ε}} ⋅ \tens{F} \bigr)  + \tens{M}^\KL \dbldot \bigl( \tens{F}^\transpose ⋅ \hat{\tens{κ}} ⋅ \tens{F} \bigr) \bigr] \, J^{-1} \, \D a,
-\]</span> d’où l’on déduit les expressions (<a href="#eq-20230329092641"><span>7.9</span></a>) en appliquant l’identité <span class="math display">\[
+\]</span> d’où l’on déduit les expressions (<a href="#eq-20230329092641"><span>8.9</span></a>) en appliquant l’identité <span class="math display">\[
 \tens{A} \dbldot \bigl( \tens{B} \cdot \tens{C} \bigr) = \bigl( \tens{A} \cdot \tens{C}^\transpose \bigr) \dbldot \tens{B} = \bigl( \tens{B}^\transpose \cdot \tens{A} \bigr) \dbldot \tens{C}.
 \]</span></p>
 </div>
@@ -410,8 +421,8 @@ Démonstration
 </div>
 <p>Dans la théorie de Kirchhoff–Love des coques, il est difficile de donner une interprétation physique aux tenseurs <span class="math inline">\(\tens{N}^\kl\)</span> et <span class="math inline">\(\tens{M}^\kl\)</span>, qui, contrairement aux membranes, ne donnent pas directement accés aux résultantes et aux moments s’exerçant sur une facette orientée. On retiendra néanmoins que <span class="math inline">\(\tens{N}^\kl ⋅ \vec{g} \, \D s\)</span> correspond «&nbsp;à peu près&nbsp;» à la composante dans le plan de la résultante des efforts intérieurs exercés sur la facette <span class="math inline">\(\vec{g} \, \D s\)</span>, tandis <span class="math inline">\(\tens{M}^\kl ⋅ \vec{g} \, \D s\)</span> correspond «&nbsp;à peu près&nbsp;» au moment des efforts intérieurs exercés sur cette facette.</p>
 </section>
-<section id="sec-20230329114426" class="level3" data-number="7.3.2">
-<h3 data-number="7.3.2" class="anchored" data-anchor-id="sec-20230329114426"><span class="header-section-number">7.3.2</span> Puissance virtuelle des efforts extérieurs</h3>
+<section id="sec-20230329114426" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="sec-20230329114426"><span class="header-section-number">8.3.2</span> Puissance virtuelle des efforts extérieurs</h3>
 <p>La coque est soumise aux efforts suivants</p>
 <ul>
 <li>forces surfaciques appliquées à <span class="math inline">\(ς\)</span>, de densité <span class="math inline">\(\vec{p}\)</span>,</li>
@@ -423,17 +434,17 @@ Démonstration
 \mathcal{P}_\external(\hat{\vec{u}})=
 ∫_ς \bigl[ \vec{p} ⋅ \hat{\vec{u}} + \vec{c} ⋅ \bigl( \hat{\vec{ϕ}} \wedge \vec{n} \bigr) \bigr] \, \D a
 + ∫_{∂ς} \bigl[ \vec{q} ⋅ \hat{\vec{u}} + \vec{m} ⋅ \bigl( \hat{\vec{ϕ}} \wedge \vec{n} \bigr) \bigr] \, \D s.
-\tag{7.10}\]</span></span></p>
+\tag{8.10}\]</span></span></p>
 </section>
-<section id="équations-déquilibre" class="level3" data-number="7.3.3">
-<h3 data-number="7.3.3" class="anchored" data-anchor-id="équations-déquilibre"><span class="header-section-number">7.3.3</span> Équations d’équilibre</h3>
+<section id="équations-déquilibre" class="level3" data-number="8.3.3">
+<h3 data-number="8.3.3" class="anchored" data-anchor-id="équations-déquilibre"><span class="header-section-number">8.3.3</span> Équations d’équilibre</h3>
 <p>On obtient les équations d’équilibre portant sur les contraintes généralisées <span class="math inline">\(\tens{N}^\kl\)</span> et <span class="math inline">\(\tens{M}^\kl\)</span> en écrivant le principe des puissances virtuelles <strong>sur la configuration actuelle</strong> <span class="math display">\[
 \mathcal{P}_\internal(\hat{\vec{u}}) + \mathcal{P}_\external(\hat{\vec{u}}) = 0 \quad \text{pour tout mouvement virtuel } \hat{\vec{u}},
-\]</span> où les puissances virtuelles des efforts intérieurs et extérieurs sont données par les expressions (<a href="#eq-20230329144253"><span>7.8</span></a>) et (<a href="#eq-20230329144447"><span>7.10</span></a>), respectivement. En procédant aux nécessaires intégrations par parties, on peut en principe en déduire la forme forte des équations d’équilibre. Néanmoins, ces équations sont peu commodes à manipuler et ne permettent pas (contrairement aux membranes par exemple) de déterminer la signification physique précise des contraintes généralisées <span class="math inline">\(\tens{N}^\kl\)</span> et <span class="math inline">\(\tens{M}^\kl\)</span>. Dans le présent cours, on renoncera donc à établir ces équations d’équilibre. Ainsi, pour tout problème de flexion d’une coque, on devra écrire le principe des puissances virtuelles pour déterminer l’ensemble des champs de contraintes généralisées statiquement admissibles.</p>
+\]</span> où les puissances virtuelles des efforts intérieurs et extérieurs sont données par les expressions (<a href="#eq-20230329144253"><span>8.8</span></a>) et (<a href="#eq-20230329144447"><span>8.10</span></a>), respectivement. En procédant aux nécessaires intégrations par parties, on peut en principe en déduire la forme forte des équations d’équilibre. Néanmoins, ces équations sont peu commodes à manipuler et ne permettent pas (contrairement aux membranes par exemple) de déterminer la signification physique précise des contraintes généralisées <span class="math inline">\(\tens{N}^\kl\)</span> et <span class="math inline">\(\tens{M}^\kl\)</span>. Dans le présent cours, on renoncera donc à établir ces équations d’équilibre. Ainsi, pour tout problème de flexion d’une coque, on devra écrire le principe des puissances virtuelles pour déterminer l’ensemble des champs de contraintes généralisées statiquement admissibles.</p>
 </section>
 </section>
-<section id="sec-20230330135827" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="sec-20230330135827"><span class="header-section-number">7.4</span> Comportement des coques de Kirchhoff–Love</h2>
+<section id="sec-20230330135827" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="sec-20230330135827"><span class="header-section-number">8.4</span> Comportement des coques de Kirchhoff–Love</h2>
 <p>Dans l’approche bidimensionnelle suivie ici, il n’est pas possible d’établir les relations de comportement de la coque. Une analyse tridimensionnelle est nécessaire pour faire le lien entre contraintes de Cauchy et contraintes généralisées de Kirchhoff–Love. Nous admettrons dans ce cours les relations de comportement suivantes, valables pour une <strong>coque mince, en grandes transformations mais petites déformations</strong> <span class="math display">\[
 \tens{N}^\KL = K \bigl[ \bigl( 1 - \nu \bigr) \, \tens{E} + \nu \, \bigl( \tr \tens{E} \bigr) \, \tens{A} \bigr]
 \quad \text{et} \quad
@@ -456,11 +467,11 @@ Note
 </div>
 </div>
 </section>
-<section id="sec-20230330140022" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="sec-20230330140022"><span class="header-section-number">7.5</span> Équilibre élastique des coques de Kirchhoff–Love</h2>
+<section id="sec-20230330140022" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="sec-20230330140022"><span class="header-section-number">8.5</span> Équilibre élastique des coques de Kirchhoff–Love</h2>
 <p>On s’intéresse ici au problème de l’équilibre d’une coque de Kirchhoff–Love élastique. Cette coque est soumise à un chargement <span class="math inline">\(\vec{p}\)</span>, <span class="math inline">\(\vec{q}\)</span>, <span class="math inline">\(\vec{c}\)</span> et <span class="math inline">\(\vec{m}\)</span> ainsi qu’à des conditions aux limites cinématiques au bord. On souhaite alors déterminer la <strong>figure d’équilibre</strong> (c’est-à-dire, la configuration déformée –&nbsp;les déplacements suffisent) ainsi que l’<strong>état de contraintes</strong> de la coque. On présente dans ce paragraphe une synthèse de toutes les équations nécessaires à la résolution de ce problème. On supposera que la densité surfacique de couples <span class="math inline">\(\vec{c}\)</span> est nulle.</p>
-<section id="équations-générales" class="level3" data-number="7.5.1">
-<h3 data-number="7.5.1" class="anchored" data-anchor-id="équations-générales"><span class="header-section-number">7.5.1</span> Équations générales</h3>
+<section id="équations-générales" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="équations-générales"><span class="header-section-number">8.5.1</span> Équations générales</h3>
 <p>On obtient les équations d’équilibre en écrivant le PPV <strong>sur la configuration actuelle</strong> <span class="math display">\[
 ∫_ς \bigl( -\tens{N}^\kl \dbldot \hat{\tens{ε}} - \tens{M}^\kl \dbldot \hat{\tens{κ}} + \vec{p} ⋅ \hat{\vec{u}} \bigr) \, \D a + ∫_{∂ς} \bigl[ \vec{q} ⋅ \hat{\vec{u}} + \vec{m} ⋅ \bigl( \hat{\vec{ϕ}}  \wedge \vec{n} \bigr) \bigr] \, \D s = 0,
 \]</span> avec <span class="math display">\[
@@ -483,8 +494,8 @@ Note
 \]</span></p>
 <p>Contrairement aux équations d’équilibre, établies par le PPV sur la configuration actuelle, ces relations de comportement sont écrites sur la configuration initiale et font intervenir les grandeurs lagrangiennes <span class="math inline">\(\tens{E}\)</span>, <span class="math inline">\(\tens{K}\)</span>, <span class="math inline">\(\tens{N}^\KL\)</span> et <span class="math inline">\(\tens{M}^\KL\)</span>.</p>
 </section>
-<section id="équations-dans-lhypothèse-des-petites-perturbations" class="level3" data-number="7.5.2">
-<h3 data-number="7.5.2" class="anchored" data-anchor-id="équations-dans-lhypothèse-des-petites-perturbations"><span class="header-section-number">7.5.2</span> Équations dans l’hypothèse des petites perturbations</h3>
+<section id="équations-dans-lhypothèse-des-petites-perturbations" class="level3" data-number="8.5.2">
+<h3 data-number="8.5.2" class="anchored" data-anchor-id="équations-dans-lhypothèse-des-petites-perturbations"><span class="header-section-number">8.5.2</span> Équations dans l’hypothèse des petites perturbations</h3>
 <p>Dans l’hypothèse des petites perturbations, le déplacement et les déformations sont «&nbsp;petits&nbsp;». On linéarise toutes les expressions vis-à-vis du dépacement <span class="math inline">\(\vec{u}\)</span>. Il n’y a alors plus lieu de distinguer les configurations initiale ou actuelle, ni les contraintes généralisées lagrangiennes (<span class="math inline">\(\tens{N}^\KL\)</span>, <span class="math inline">\(\tens{M}^\KL\)</span>) ou eulériennes (<span class="math inline">\(\tens{N}^\kl\)</span>, <span class="math inline">\(\tens{M}^\kl\)</span>). Les équations précédentes se simplifient de la façon suivante</p>
 <p><span class="math display">\[
 ∫_ς \bigl( -\tens{N} \dbldot \hat{\tens{ε}} - \tens{M} \dbldot \hat{\tens{κ}} + \vec{p} ⋅ \hat{\vec{u}} \bigr) \, \D a + ∫_{∂ς} \bigl[ \vec{q} ⋅ \hat{\vec{u}} + \vec{m} ⋅ \bigl( \hat{\vec{ϕ}}  \wedge \vec{n} \bigr) \bigr] \, \D s = 0,
@@ -645,12 +656,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./coques_en_equilibre_membranaire.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Coques en équilibre membranaire</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Coques en équilibre membranaire</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./rappels_de_geometrie_differentielle.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Rappels de géométrie différentielle</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./equations_d_equilibre_incrementales.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Équations d’équilibre incrémentales</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
