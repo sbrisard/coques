@@ -1,4 +1,4 @@
-# Coques en flexion
+# Coques en flexion {#sec-20230411093311}
 
 ::: {.content-visible when-format="html"}
 {{< include macros_html.tex >}}
