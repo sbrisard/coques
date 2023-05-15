@@ -1,0 +1,206 @@
+# Équations d'équilibre incrémentales
+
+::: {.content-visible when-format="html"}
+{{< include macros_html.tex >}}
+:::
+
+On s'intéresse dans ce chapitre à la variation de l'état de contraintes d'une coques, lorsque le chargement est modifié de façon infinitésimale. On peut alors écrire **sur la configuration actuelle** des équations d'équilibre dites **linéarisées au voisinage d'une position d'équilibre**. Sur le plan théorique, ces équations permettent par exemple de détecter les éventuelles bifurcations d'un système mécanique. En pratique, elles sont aussi très utilisées en mécanique numérique.
+
+Dans ce chapitre, on introduit explicitement le temps, qui apparaît ici comme un simple paramètre de chargement (puisque les effets d'inertie ne sont pas pris en compte). Lorsque c'est nécessaire, l'instant considéré est rappelé en indice.
+
+## Principe du calcul
+
+On considère une coque soumise à un chargement quasi-statique dépendant du temps $t$. À $t = 0$, le chargement est nul et la coque au repos occupe sa configuration initiale $Σ ⊂ ℝ^3$. À l'instant $t$, la coque est en équilibre avec son chargement, que l'on désigne symboliquement $Q_t$ ; elle occupe la configuration $ς ⊂ ℝ^3$. À l'instant $t' = t + δt$, le chargement vaut $Q' = Q + \dot{Q} \, δt$ et la figure d'équilibre de la coque est maintenant $ς' ⊂ ℝ^3$ ; $ς'$ est « proche » de $ς$: le déplacement entre ces deux configurations s'écrit
+$$
+\altvec{\point{m}\point{m}'} = \altvec{\point{Mm'}} - \altvec{\point{Mm}} = \vec{u}' - \vec{u} = \dot{\vec{u}} \, δt.
+$$
+
+Le principe des puissances virtuelles est satisfait à chaque instant, soit
+$$
+\power_{\internal}(\hat{\vec{u}}) + \power_{\external}(\hat{\vec{u}}) = 0 \quad \text{pour tous } t \text{ et } \hat{\vec{u}}.
+$$
+
+En utilisant **le même champ des vitesses virtuelles** à $t$ et $t + δt$, on peut dériver l'expression précédente : on obtient alors le PPV sous forme incrémentale
+$$
+\dot{\power}_{\internal}(\hat{\vec{u}}) + \dot{\power}_{\external}(\hat{\vec{u}}) = 0 \quad \text{pour tout } \hat{\vec{u}}.
+$$
+
+On doit donc calculer les dérivées temporelles des puissances virtuelles $\power{\internal}$ et $\power{\external}$. En ce qui concerne la dérivée de la puissance virtuelle des efforts intérieurs, le calcul est développé au paragraphe @sec-20230411103049. L'expression de la puissance virtuelle des actions extérieures dépend de l'application considérée, et on présentera quelques exemples dans le @sec-20230411103120. On cherchera à écrire $\dot{\power}_\internal$ et $\dot{\power}_\external$ sur la **configuration actuelle** (à $t$). Cependant, les dérivations par rapport au temps seront d'abord effectuées sur la configuration initiale (**en représentation Lagrangienne**).
+
+## Taux de puissance virtuelle des efforts intérieurs {#sec-20230411103049}
+
+L'expression **lagrangienne** de la puissance virtuelle des efforts intérieurs à l'instant $t$ est
+$$
+\power_{\internal}(\hat{\vec{u}}) = - ∫_Σ \bigl( \tens{N}^\KL \dbldot \hat{\tens{E}} + \tens{M}^\KL \dbldot \hat{\tens{K}} \bigr) \, \D A,
+$$
+soit, en dérivant par rapport au temps (la configuration $Σ$ étant **fixe**)
+$$
+\begin{aligned}[b]
+\dot{\power}_{\internal}(\hat{\vec{u}})
+={}& - ∫_Σ \bigl( \dot{\tens{N}}^\KL \dbldot \hat{\tens{E}} + \dot{\tens{M}}^\KL \dbldot \hat{\tens{K}} \bigr) \, \D A\\
+&- ∫_Σ \bigl( \tens{N}^\KL \dbldot \dot{\hat{\tens{E}}} + \tens{M}^\KL \dbldot \dot{\hat{\tens{K}}} \bigr) \, \D A.
+\end{aligned}
+$$ {#eq-20230411094016}
+
+Comme au @sec-20230411093311, le premier terme peut être mis sous la forme d'une intégrale sur la **configuration actuelle**
+$$
+∫_Σ \bigl( \dot{\tens{N}}^\KL \dbldot \hat{\tens{E}} + \dot{\tens{M}}^\KL \dbldot \hat{\tens{K}} \bigr) \, \D A = ∫_ς \bigl( \mathring{\tens{N}}^\kl \dbldot \hat{\tens{ε}} + \mathring{\tens{M}}^\kl \dbldot \hat{\tens{κ}} \bigr) \, \D a,
+$$
+en posant
+$$
+\mathring{\tens{N}}^\kl = J^{-1} \, \tens{F} ⋅ \dot{\tens{N}}^\KL ⋅ \tens{F}^\transpose
+\quad \text{et} \quad
+\mathring{\tens{M}}^\kl = J^{-1} \, \tens{F} ⋅ \dot{\tens{M}}^\KL ⋅ \tens{F}^\transpose.
+$$
+
+Les tenseurs $\mathring{\tens{N}}^\kl$ et $\mathring{\tens{M}}^\kl$ sont des **tenseurs symétriques du plan tangent à la configuration actuelle**. Ils sont homogènes à des taux de variations de contraintes généralisées, mais **ce ne sont pas les dérivées temporelles des contraintes généralisées eulériennes**. On rappelle que
+$$
+\tens{\hat{ε}} = \sym \bigl( \tens{a} ⋅ \tgrad \hat{\vec{u}} \bigr), \quad
+\hat{\tens{κ}} = \tgrad^\transpose \hat{\vec{u}} ⋅ \tens{b} + \tens{a} ⋅ \tgrad \hat{\vec{ϕ}}
+\quad \text{et} \quad
+\hat{\vec{ϕ}} = \vec{n} ⋅ \tgrad \hat{\vec{u}}.
+$$
+
+Le second terme de l'équation @eq-20230411094016 fait intervenir les contraintes généralisées $\tens{N}^\kl$ et $\tens{M}^\kl$ à l'instant $t$. Ces contraintes généralisées sont supposées être connues (leurs « incréments » $\mathring{\tens{N}}^\kl$ et $\mathring{\tens{M}}^\kl$ sont quant à eux inconnus). Ce terme est nommé **raideur géométrique** : on verra qu'il traduit le fait qu'une précontrainte peut raidir (ou assouplir) un système. Par exemple, la fréquence propre fondamentale d'une corde de guitare croît avec la tension : elle apparaît donc comme « plus raide » lorsqu'elle est tendue (même si son matériau constitutif, et donc sa **raideur matérielle**, ne change pas). Les raideurs géométriques associées aux efforts membranaires et aux moments fléchissants sont calculées au @sec-20230411102954 et au @sec-20230411103013.
+
+## Raideur géométrique associée aux efforts membranaires {#sec-20230411102954}
+
+On s'intéresse ici au terme suivant
+$$
+∫_Σ \tens{N}^\KL \dbldot \dot{\hat{\tens{E}}} \, \D A
+$$
+
+On calcule tout d'abord $\dot{\hat{\tens{E}}}$. Par définition du tenseur des taux virtuels des déformations membranaires, on a
+$$
+\hat{\tens{E}} = \tfrac{1}{2} \bigl( \tGrad \hat{\vec{u}}^\transpose ⋅ \tens{F} + \tens{F}^\transpose ⋅ \tGrad \hat{\vec{u}} \bigr)
+$$
+et, puisque le champs des vitesses virtuelles $\hat{\vec{u}}$ est **indépendant du temps $t$**
+$$
+\dot{\hat{\tens{E}}} = \tfrac{1}{2} \bigl( \tGrad \hat{\vec{u}}^\transpose ⋅ \dot{\tens{F}} + \dot{\tens{F}}^\transpose ⋅ \tGrad \hat{\vec{u}} \bigr) = \tfrac{1}{2} \bigl( \tGrad \hat{\vec{u}}^\transpose ⋅ \tGrad \dot{\vec{u}} + \tGrad^\transpose \dot{\vec{u}} ⋅ \tGrad \hat{\vec{u}} \bigr),
+$$
+soit (puisque $\tens{N}^\KL$ est symétrique)
+$$
+\tens{N}^\KL \dbldot \dot{\hat{\tens{E}}} = \tens{N}^\KL \dbldot \bigl( \tGrad^\transpose \dot{\vec{u}} ⋅ \tGrad \hat{\vec{u}} \bigr) = \bigl( \tGrad \dot{\vec{u}} ⋅ \tens{N}^\KL \bigr) \dbldot \tGrad \hat{\vec{u}}
+$$
+et, en utilisant la formule de transport du gradient @eq-
+$$
+\begin{aligned}
+\tens{N}^\KL \dbldot \dot{\hat{\tens{E}}} &= \bigl( \tgrad \dot{\vec{u}} ⋅ \tens{F} ⋅ \tens{N}^\KL \bigr) \dbldot \bigl( \tgrad \hat{\vec{u}} ⋅ \tens{F} \bigr)\\
+&= \bigl( \tgrad \dot{\vec{u}} ⋅ \tens{F} ⋅ \tens{N}^\KL ⋅ \tens{F}^\transpose \bigr) \dbldot \tgrad \hat{\vec{u}}\\
+&= J \, \bigl( \tgrad \dot{\vec{u}} ⋅ \tens{N}^\kl \bigr) \dbldot \tgrad \hat{\vec{u}}.
+\end{aligned}
+$$
+
+Finalement, en reconnaissant la formule de transport des aires $\D a = J \, \D A$, on obtient l'expression
+$$
+∫_Σ \tens{N}^\KL \dbldot \dot{\hat{\tens{E}}} \, \D A = ∫_ς \bigl( \tgrad \dot{\vec{u}} ⋅ \tens{N}^\kl \bigr) \dbldot \tgrad \hat{\vec{u}} \, \D a.
+$$
+
+## Raideur géométrique associée aux moments fléchissants {#sec-20230411103013}
+
+On se restreindra dans ce cours aux situations où la coque n'est pas fléchie à $t$, c'est-à-dire que $\tens{M}^\kl = \tens{M}^\KL = \tens{0}$. La raideur géométrique associée aux moments fléchissants est donc nulle.
+
+## Taux de puissance virtuelle des efforts extérieurs {#sec-20230411103120}
+
+L'expression de la dérivée par rapport au temps de la puissance virtuelle des efforts extérieurs dépend du problème considéré. Elle doit être établie avec soin, en tenant notamment compte du fait que **la surface de la coque varie entre $t$ et $t'$**. On écrira $\dot{\power}_\external$ sur la configuration actuelle $ς$, sous la forme générale suivante
+$$
+\dot{\mathcal{P}}_\external(\hat{\vec{u}})=
+∫_ς \bigl[ \mathring{\vec{p}} ⋅ \hat{\vec{u}} + \mathring{\vec{c}} ⋅ \bigl( \hat{\vec{ϕ}} \wedge \vec{n} \bigr) \bigr] \, \D a
++ ∫_{∂ς} \bigl[ \mathring{\vec{q}} ⋅ \hat{\vec{u}} + \mathring{\vec{m}} ⋅ \bigl( \hat{\vec{ϕ}} \wedge \vec{n} \bigr) \bigr] \, \D s.
+$$
+où $\mathring{\vec{p}}$ et $\mathring{\vec{q}}$ sont des taux de densités (surfacique, linéique) de forces, tandis que $\mathring{\vec{c}}$ et $\mathring{\vec{m}}$ sont des taux de densités (surfacique, linéique) de moments. Ces densités ne sont en général pas la dérivée par rapport au temps des densistés $\vec{p}$, $\vec{q}$, $\vec{c}$ et $\vec{m}$.
+
+::: {.callout-note}
+## Exemple: ballon sphérique sous pression
+
+On considère un ballon sous pression $p(t)$, de rayon $r(t) = λ(t) \, R$, où $R$ est le rayon initial. Le champ des déplacements est $\vec{u} = (r - R) \, \vec{N}$, soit $\dot{\vec{u}} = \dot{λ} \, R \, \vec{N}$ (puisque le vecteur normal ne change pas de direction). Le champ des vitesses virtuelles est purement radial : $\hat{u} = \hat{w} \, \vec{N}$. Alors
+$$
+\power_\external(\hat{\vec{u}}) = ∫_ς p \, \hat{w} \, \D a = ∫_Σ \bigl( p \, J \bigr) \, \hat{w} \, \D A,
+$$
+soit
+$$
+\begin{aligned}[b]
+\dot{\power}_\external(\hat{\vec{u}}) &= ∫_Σ \bigl( \dot{p} \, J + p \, \dot{J} \bigr) \, \hat{w} \, \D A = ∫_Σ \bigl(\dot{p} + p \, J^{-1} \, \dot{J} \bigr) \, \hat{w} \, J \, \D A\\
+&= ∫_ς \bigl(\dot{p} + p \, J^{-1} \, \dot{J} \bigr) \, \hat{w} \, \D a = ∫_ς \mathring{\vec{p}} ⋅ \hat{\vec{u}} \, \D a,
+\end{aligned}
+$$
+en posant
+$$
+\mathring{\vec{p}} = \bigl(\dot{p} + p \, J^{-1} \, \dot{J} \bigr) \, \vec{N} = \dot{\vec{p}} + J^{-1} \, \dot{J} \, \vec{p}.
+$$
+
+Le second terme (qu'il ne faut pas oublier !) rend compte des changements d'aire du ballon au cours du chargement.
+:::
+
+::: {.callout-note}
+## Exemple: coque cylindrique en compression axiale
+
+On considère une coque cylindrique d'axe $\vec{e}_z$, de rayon initial $R$ et de longueur initiale $L$. Elle repose sans frottement sur un plateau inférieur indéformable, horizontal. Une charge verticale $-Q \, \vec{e}_z$ lui est appliquée sans frottement par l'intermédiaire d'un piston fixé à un plateau rigide. On suppose que la transformation est axisymétrique, c'est-à-dire que
+$$
+\vec{u} = u(z) \, \vec{e}_z + w(z) \, \vec{e}_r
+\quad \text{et} \quad
+\hat{\vec{u}} = \hat{u}(z) \, \vec{e}_z + \hat{w}(z) \, \vec{e}_r.
+$$
+
+La puissance des efforts extérieurs a alors pour expression
+$$
+\power_\external(\hat{u}, \hat{w}) = \int_γ \vec{q} ⋅ \hat{\vec{u}} \, \D s = \int_γ \bigl( q_z \, \hat{u} + q_r \, \hat{w} \bigr) \, \D s,
+$$
+où $\vec{q}$ désigne la densité linéique des efforts exercés par le plateau sur la partie supérieure $γ$ du cylindre. Cette densité est exprimée par unité de longueur de la configuration actuelle. En l'absence de frottement, on a $q_r = 0$ et (puisque $\hat{u}$ est indépendant de $θ$)
+$$
+\power_\external(\hat{u}, \hat{w}) = \hat{u} \, \int_γ q_z \, \D s = Q \, \hat{u},
+$$
+soit finalement
+$$
+\dot{\power}_\external(\hat{u}, \hat{w}) = \dot{Q} \, \hat{u}.
+$$
+
+:::
+
+## Forme incrémentale du principe des puissances virtuelles
+
+En rassemblant les résultats précédents, on trouve donc finalement
+$$
+\dot{\power}_{\internal}(\hat{\vec{u}}) = - ∫_ς \bigl[ \mathring{\tens{N}}^\kl \dbldot \hat{\tens{ε}} + \mathring{\tens{M}}^\kl \dbldot \hat{\tens{κ}} + \bigl( \tgrad \dot{\vec{u}} ⋅ \tens{N}^\kl \bigr) \dbldot \tgrad \hat{\vec{u}} \bigr] \, \D a
+$$
+et
+$$
+\dot{\mathcal{P}}_\external(\hat{\vec{u}})=
+∫_ς \bigl[ \mathring{\vec{p}} ⋅ \hat{\vec{u}} + \mathring{\vec{c}} ⋅ \bigl( \hat{\vec{ϕ}} \wedge \vec{n} \bigr) \bigr] \, \D a
++ ∫_{∂ς} \bigl[ \mathring{\vec{q}} ⋅ \hat{\vec{u}} + \mathring{\vec{m}} ⋅ \bigl( \hat{\vec{ϕ}} \wedge \vec{n} \bigr) \bigr] \, \D s.
+$$
+
+On obtiendra alors les équations d'équilibre incrémentales, portant sur $\mathring{\tens{N}}^\kl$ et $\mathring{\tens{M}}^\kl$ (les contraintes généralisées $\tens{N}^\kl$ et $\tens{M}^\kl$ étant connues), en écrivant le principe des puissances virtuelles sous forme incrémentale
+$$
+\dot{\power}_{\internal}(\hat{\vec{u}}) + \dot{\power}_{\external}(\hat{\vec{u}}) = 0 \quad \text{pour tout } \hat{\vec{u}}.
+$$
+
+## Relations de comportement incrémentales
+
+On suppose que la coque obéit aux lois de comportement élastiques, linéaires, découplées, suivantes
+$$
+\tens{N}^\KL = \tens{C}_{EE} \dbldot \tens{E}
+\quad \text{et} \quad
+\tens{M}^\KL = \tens{C}_{KK} \dbldot \tens{K}.
+$$
+
+En dérivant par rapport au temps, on a alors
+$$
+\dot{\tens{N}}^\KL = \tens{C}_{EE} \dbldot \dot{\tens{E}}
+\quad \text{et} \quad
+\dot{\tens{M}}^\KL = \tens{C}_{KK} \dbldot \dot{\tens{K}},
+$$
+soit
+$$
+\mathring{\tens{N}}^\kl = J^{-1} \tens{F} ⋅ \bigl[ \tens{C}_{EE} \dbldot \bigl( \tens{F}^\transpose ⋅ \mathring{\tens{ε}} ⋅ \tens{F} \bigr) \bigr] ⋅ \tens{F}^\transpose = \tens{C}_{εε} \dbldot \mathring{\tens{ε}}
+$$
+et
+$$
+\mathring{\tens{M}}^\kl = J^{-1} \tens{F} ⋅ \bigl[ \tens{C}_{KK} \dbldot \bigl( \tens{F}^\transpose ⋅ \mathring{\tens{κ}} ⋅ \tens{F} \bigr) \bigr] ⋅ \tens{F}^\transpose = \tens{C}_{κκ} \dbldot \mathring{\tens{κ}},
+$$
+en posant
+$$
+C_{εε, ijkl} = F_{iI} \, F_{jJ} \, F_{kK} \, F_{lL} \, C_{EE, IJKL}
+\quad \text{et} \quad
+C_{κκ, ijkl} = F_{iI} \, F_{jJ} \, F_{kK} \, F_{lL} \, C_{KK, IJKL}.
+$$

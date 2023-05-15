@@ -17,6 +17,7 @@ book:
     - membranes.qmd
     - coques_en_equilibre_membranaire.qmd
     - coques_en_flexion.qmd
+    - equations_d_equilibre_incrementales.qmd
   appendices:
     - rappels_de_geometrie_differentielle.qmd
     - complements_d_algebre_lineaire.qmd
