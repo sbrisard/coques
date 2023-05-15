@@ -29,7 +29,7 @@ $$ {#eq-20230404144735}
 Les vecteurs suivants satisfont bien cette relation et on peut vérifier que ce sont les seuls
 $$
 \vec{a}^ξ = \frac{ \vec{a}_η \wedge \vec{n} }{ \lVert \vec{a}_ξ \wedge \vec{a}_η \rVert}, \quad
-\vec{a}^η = - \frac{ \bigl( \vec{a}_ξ \wedge \vec{n} }{ \lVert \vec{a}_ξ \wedge \vec{a}_η \rVert}
+\vec{a}^η = - \frac{ \vec{a}_ξ \wedge \vec{n} }{ \lVert \vec{a}_ξ \wedge \vec{a}_η \rVert}
 \quad \text{et} \quad \vec{n}^* = \vec{n}.
 $$ {#eq-20230404160223}
 
@@ -64,17 +64,17 @@ Ces relations définissent de manière unique les vecteurs $\vec{a}^ξ$, $\vec{a
 Une démonstration plus générale est possible (en dimension quelconque), en considérant l'isomorphisme canonique qui existe entre un espace euclidien et son dual.
 :::
 
-On peut montrer que les vecteurs $\vec{a}^1$, $\vec{a}^2$ et $\vec{n}^*$ **linéairement indépendants** et forment une base, nommée **base duale de la base locale naturelle**.
+On peut montrer que les vecteurs $\vec{a}^\xi$, $\vec{a}^\eta$ et $\vec{n}$ sont **linéairement indépendants** et forment une base, nommée **base duale de la base locale naturelle**.
 
 ::: {.callout-tip collapse="true"}
 ## Démonstration
 
-Soit $V = \Span(\vec{a}^ξ, \vec{a}^η, \vec{a^3}) ⊂ ℝ^3$ le sous-espace engendré par les vecteurs $\vec{a}^ξ$, $\vec{a}^η$ et $\vec{n}^*$. On considère $\vec{v} ∈ V^\perp$, c'est-à-dire que $\vec{v} ⋅ \vec{a}^ξ = \vec{v} ⋅ \vec{a}^η = \vec{v} ⋅ \vec{n}^* = \vec{0}$. En appliquant la relation (@eq-20230404144735), supposée vraie, on trouve que nécessairement $\vec{v} = \vec{0}$. L'orthogonal de $V$ est donc réduit au vecteur-nul, c'est-à-dire que $V = ℝ^3$. Donc $V$ est de dimension 3 ; comme par construction, $V$ est engendré par trois vecteurs, ceux-ci sont linéairement indépendants.
+Soit $V = \Span(\vec{a}^ξ, \vec{a}^η, \vec{n}) ⊂ ℝ^3$ le sous-espace engendré par les vecteurs $\vec{a}^ξ$, $\vec{a}^η$ et $\vec{n}^* = \vec{n}$. On considère $\vec{v} ∈ V^\perp$, c'est-à-dire que $\vec{v} ⋅ \vec{a}^ξ = \vec{v} ⋅ \vec{a}^η = \vec{v} ⋅ \vec{n} = 0$. En appliquant la relation (@eq-20230404144735), supposée vraie, on trouve que nécessairement $\vec{v} = \vec{0}$. L'orthogonal de $V$ est donc réduit au vecteur-nul, c'est-à-dire que $V = ℝ^3$. Donc $V$ est de dimension 3 ; comme par construction, $V$ est engendré par trois vecteurs, ceux-ci sont linéairement indépendants.
 :::
 
 La relation (@eq-20230404144735) permet également d'obtenir la relation symétrique suivante, vraie pour tout $\vec{v} ∈ ℝ^3$
 $$
-\vec{v} = \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) \, \vec{a}^ξ + \bigl( \vec{v} ⋅ \vec{a}_η \bigr) \, \vec{a}^η + \bigl( \vec{v} ⋅ \vec{n} \bigr) \, \vec{n}^*.
+\vec{v} = \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) \, \vec{a}^ξ + \bigl( \vec{v} ⋅ \vec{a}_η \bigr) \, \vec{a}^η + \bigl( \vec{v} ⋅ \vec{n} \bigr) \, \vec{n}.
 $$ {#eq-20230404154755}
 
 ::: {.callout-tip collapse="true"}
@@ -121,8 +121,16 @@ Il est important de ne jamais sommer sur deux indices répétés dans la même p
 $$
 \vec{a}_ξ ⊗ \vec{a}_ξ + \vec{a}_η ⊗ \vec{a}_η ≠ \vec{a}'_ξ ⊗ \vec{a}'_ξ + \vec{a}'_η ⊗ \vec{a}'_η
 \quad \text{et} \quad
-\vec{a}^ξ ⊗ \vec{a}^ξ + \vec{a}^η ⊗ \vec{a}^η ≠ \vec{a}'^ξ ⊗ \vec{a}'^ξ + \vec{a}'^η ⊗ \vec{a}'^η
+\vec{a}^ξ ⊗ \vec{a}^ξ + \vec{a}^η ⊗ \vec{a}^η ≠ \vec{a}'^ξ ⊗ \vec{a}'^ξ + \vec{a}'^η ⊗ \vec{a}'^η.
 $$
+
+En revanche, on a bien
+$$
+\vec{a}_α ⊗ \vec{a}^α = \vec{a}'_β ⊗ \vec{a}'^β
+\quad \text{et} \quad
+\vec{a}^α ⊗ \vec{a}_α = \vec{a}'^β ⊗ \vec{a}'_β.
+$$
+
 :::
 
 ::: {.callout-warning}
@@ -144,7 +152,7 @@ $$
 
 En reconnaissant les vecteurs de la base locale naturelle, et en utilisant la relation (@eq-20230404144735), on obtient donc
 $$
-\D \altvec{\point{m}} = \vec{a}_ξ \, \D ξ + \vec{a}_η \, \D η, \quad \text{soit} \quad \D ξ = \vec{a}^ξ ⋅ \D \altvec{\point{m}} \quad \text{et} \quad \D η = \vec{a}^η ⋅ \D \altvec{\point{m}}
+\D \altvec{\point{m}} = \vec{a}_ξ \, \D ξ + \vec{a}_η \, \D η, \quad \text{soit} \quad \D ξ = \vec{a}^ξ ⋅ \D \altvec{\point{m}} \quad \text{et} \quad \D η = \vec{a}^η ⋅ \D \altvec{\point{m}}.
 $$ {#eq-20230404183949}
 
 Soit alors $\tens{T}(\point{m})$ un champ de tenseurs d'ordre quelconque, défini sur la surface $ς$. En composant par la représentation paramétrique $\point{f}$ de la surface, on définit une application $(ξ, η) ↦ \tens{T} \circ \point{f}(ξ, η)$ définie sur l'espace des paramètres $\mathcal{D}$. On souhaite évaluer la variation $\D \tens{T}$ du champ $\tens{T}$ entre les points $\point{m}$ et $\point{m}' = \point{m} + \D \altvec{\point{m}}$
@@ -171,7 +179,7 @@ On a ainsi mis la variation $\D \tens{T}$ sous la forme intrinsèque suivante
 $$
 \D \tens{T} = \tens{T}(\point{m} + \D \altvec{\point{m}}) - \tens{T}(\point{m}) = \tens{G}(\point{m}) ⋅ \D \altvec{\point{m}}.$$
 
-On reconnaît la définition usuelle d'un gradient~: le champ $\tens{G}$ ainsi défini est le **gradient surfacique** de $\tens{T}$ ; on le note $\tgrad\tens{T}$
+On reconnaît la définition usuelle d'un gradient : le champ $\tens{G}$ ainsi défini est le **gradient surfacique** de $\tens{T}$ ; on le note $\tgrad\tens{T}$
 $$
 \tgrad \tens{T}(\point{m}) = ∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^ξ + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^η
 \quad \text{avec},
