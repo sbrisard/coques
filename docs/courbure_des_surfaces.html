@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./transformations_d_une_coque.html" rel="next">
+<link href="./derivation_et_integration_sur_une_surface.html" rel="next">
 <link href="./introduction.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -111,12 +111,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./transformations_d_une_coque.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformations d’une coque</span></a>
+  <a href="./derivation_et_integration_sur_une_surface.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dérivation et intégration sur une surface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./derivation_et_integration_sur_une_surface.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dérivation et intégration sur une surface</span></a>
+  <a href="./transformations_d_une_coque.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Transformations d’une coque</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -182,7 +182,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#extension-aux-surfaces-des-notions-introduites-au-sec-20230214053442" id="toc-extension-aux-surfaces-des-notions-introduites-au-sec-20230214053442" class="nav-link" data-scroll-target="#extension-aux-surfaces-des-notions-introduites-au-sec-20230214053442"><span class="toc-section-number">3.2.5</span>  Extension aux surfaces des notions introduites au <span>§&nbsp;3.1</span></a></li>
   <li><a href="#représentation-cartésienne-locale-dune-surface" id="toc-représentation-cartésienne-locale-dune-surface" class="nav-link" data-scroll-target="#représentation-cartésienne-locale-dune-surface"><span class="toc-section-number">3.2.6</span>  Représentation cartésienne locale d’une surface</a></li>
   </ul></li>
-  <li><a href="#courbure-des-surfaces" id="toc-courbure-des-surfaces" class="nav-link" data-scroll-target="#courbure-des-surfaces"><span class="toc-section-number">3.3</span>  Courbure des surfaces</a>
+  <li><a href="#sec-20230515105841" id="toc-sec-20230515105841" class="nav-link" data-scroll-target="#sec-20230515105841"><span class="toc-section-number">3.3</span>  Courbure des surfaces</a>
   <ul class="collapse">
   <li><a href="#tenseur-de-courbure" id="toc-tenseur-de-courbure" class="nav-link" data-scroll-target="#tenseur-de-courbure"><span class="toc-section-number">3.3.1</span>  Tenseur de courbure</a></li>
   <li><a href="#courbures-principales-et-classification-des-points-réguliers" id="toc-courbures-principales-et-classification-des-points-réguliers" class="nav-link" data-scroll-target="#courbures-principales-et-classification-des-points-réguliers"><span class="toc-section-number">3.3.2</span>  Courbures principales et classification des points réguliers</a></li>
@@ -526,8 +526,8 @@ g(x, y) = \vec{e}_z ⋅ \altvec{\point{mm}'}, \quad \text{avec} \quad \point{m}'
 </div>
 </section>
 </section>
-<section id="courbure-des-surfaces" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="courbure-des-surfaces"><span class="header-section-number">3.3</span> Courbure des surfaces</h2>
+<section id="sec-20230515105841" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="sec-20230515105841"><span class="header-section-number">3.3</span> Courbure des surfaces</h2>
 <section id="tenseur-de-courbure" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="tenseur-de-courbure"><span class="header-section-number">3.3.1</span> Tenseur de courbure</h3>
 <p>Soient <span class="math inline">\(\point{m}\)</span> un point régulier d’une surface <span class="math inline">\(ς\)</span> et <span class="math inline">\(\vec{t}\)</span> un vecteur unitaire, tangent à <span class="math inline">\(ς\)</span> en <span class="math inline">\(\point{m}\)</span>. Le point <span class="math inline">\(\point{m}\)</span> et les vecteurs <span class="math inline">\(\vec{t}\)</span> et <span class="math inline">\(\vec{n}(\point{m})\)</span> définissent un plan <span class="math inline">\(π\)</span> qui rencontre la surface <span class="math inline">\(ς\)</span> le long de la courbe <span class="math inline">\(γ\)</span> (voir <a href="#fig-20230219200134">Figure&nbsp;<span>3.4</span></a>). Cette courbe est une courbe plane, puisqu’elle est par construction contenue dans le plan <span class="math inline">\(π\)</span>. Sa courbure en <span class="math inline">\(\point{m}\)</span> est donc une notion connue (voir <a href="rappels_de_geometrie_differentielle.html#sec-20230214055209"><span>§&nbsp;A.2</span></a>).</p>
@@ -774,8 +774,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./transformations_d_une_coque.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformations d’une coque</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./derivation_et_integration_sur_une_surface.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dérivation et intégration sur une surface</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
