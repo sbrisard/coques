@@ -12,8 +12,8 @@ book:
     - index.qmd
     - introduction.qmd
     - courbure_des_surfaces.qmd
-    - transformations_d_une_coque.qmd
     - derivation_et_integration_sur_une_surface.qmd
+    - transformations_d_une_coque.qmd
     - membranes.qmd
     - coques_en_equilibre_membranaire.qmd
     - coques_en_flexion.qmd
