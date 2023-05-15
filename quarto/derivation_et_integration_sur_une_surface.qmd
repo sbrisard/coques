@@ -64,7 +64,7 @@ Ces relations définissent de manière unique les vecteurs $\vec{a}^ξ$, $\vec{a
 Une démonstration plus générale est possible (en dimension quelconque), en considérant l'isomorphisme canonique qui existe entre un espace euclidien et son dual.
 :::
 
-On peut montrer que les vecteurs $\vec{a}^\xi$, $\vec{a}^\eta$ et $\vec{n}$ sont **linéairement indépendants** et forment une base, nommée **base duale de la base locale naturelle**.
+On peut montrer que les vecteurs $\vec{a}^\xi$, $\vec{a}^η$ et $\vec{n}$ sont **linéairement indépendants** et forment une base, nommée **base duale de la base locale naturelle**.
 
 ::: {.callout-tip collapse="true"}
 ## Démonstration
@@ -181,9 +181,8 @@ $$
 
 On reconnaît la définition usuelle d'un gradient : le champ $\tens{G}$ ainsi défini est le **gradient surfacique** de $\tens{T}$ ; on le note $\tgrad\tens{T}$
 $$
-\tgrad \tens{T}(\point{m}) = ∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^ξ + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^η
-\quad \text{avec},
-$$
+\tgrad \tens{T}(\point{m}) = ∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^ξ + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^η,
+$$ {#eq-20230515125118}
 où $\vec{a}^ξ$, $\vec{a}^η$, $\tens{T} \circ \point{f}$ et ses dérivées sont implicitement évalués en $(ξ, η)$ tels que $\point{f}(ξ, η) = \point{m}$. Si $\tens{T}$ est un champ de tenseurs d'ordre $n$, alors $\tgrad \tens{T}$ est un champ de tenseurs d'ordre $n + 1$. On a de plus toujours, par construction
 $$
 \tgrad{\tens{T}} ⋅ \vec{n} = \tens{0}.
@@ -219,8 +218,127 @@ Les développements précédents permettent d'assurer que la définition du grad
 Proposer les propriétés du gradient en exercice.
 :::
 
-## Lien avec la courbure
+## Dérivation et courbure -- Relations de Weingarten
 
-::: {.callout-warning}
-## À faire
+La courbure introduite au chapitre précédent est intimement liée à la notion de gradient défini ci-dessus. On peut en effet établir les relations de Weingarten (**première forme**)
+$$
+\vec{a}_α ⋅ \tens{b} ⋅ \vec{a}_β = \vec{n} ⋅ ∂_α \vec{a}_β = \vec{n} ⋅ ∂_β \vec{a}_α,
+$$
+d'où l'on déduit la **deuxième forme**
+$$
+\vec{a}_α ⋅ \tens{b} ⋅ \vec{a}_β = -∂_α \vec{n} ⋅ \vec{a}_β = -∂_β \vec{n} ⋅ \vec{a}_α,
+$$
+en observant que
+$$
+\vec{n} ⋅ ∂_α \vec{a}_β = ∂_α \bigl( \vec{n} ⋅ \vec{a}_β \bigr) - ∂_α \vec{n} ⋅ \vec{a}_β = - ∂_α \vec{n} ⋅ \vec{a}_β.
+$$
+
+::: {.callout-tip collapse="true"}
+# Démonstration
+
+On considère ici un point fixe $\point{m}_0$ de $\varsigma$. Pour simplifier, on supposera que le paramétrage est choisi de façon à ce que les coordonnées curvilignes du point $\point{m}_0$ soient $ξ = η = 0$ : $\point{m}_0 = \point{f}(0, 0)$.
+
+Soient $\vec{n}_0$ la normale à $\varsigma$ en $\point{m}_0$ et $\vec{t}_0$ un vecteur tangent à $\varsigma$ en $\point{m}_0$. Le point $\point{m}_0$ et les vecteur $\vec{t}_0$ et $\vec{n}_0$ définissent le plan $\pi$, qui rencontre la surface $\varsigma$ le long de la courbe $\gamma$ (plane).
+
+L'orientation étant donnée par le vecteur $\vec{t}_0$, on note $s$ l'abscisse sur la courbe $\gamma$ et $s \mapsto \point{g}(s)$ le paramétrage de $\gamma$. L'origine $s = 0$ est placée en $\point{m}_0$. On note alors $\vec{t}$ le vecteur tangent unitaire à $\gamma$ au point d'abscisse curviligne $s$, et $\vec{n}$ la normale unitaire. Celle-ci est orientée de façon à coïncider avec $\vec{n}_0$ en $s = 0$.
+
+Par définition du tenseur de courbure (voir @sec-20230515105841), la courbure $\kappa_0$ de $\gamma$ en $\point{m}_0$ est égale à $\vec{t}_0 ⋅ \tens{b}_0 ⋅ \vec{t}_0$. Puisque $\gamma$ est une courbe plane, les formules de Frénet s'appliquent
+$$
+\frac{\D \vec{t}}{\D s} \biggr \rvert_{s = 0} = \kappa_0 \, \vec{n}_0
+\quad \text{et} \quad
+\vec{n}_0 ⋅ \frac{\D \vec{t}}{\D s} \biggr \rvert_{s=0} = κ_0 = \vec{t}_0 ⋅ \tens{b}_0 ⋅ \vec{t}_0.
+$$ {#eq-20230307154016}
+
+La courbe $\gamma$ est une courbe tracée sur $ς$. On peut donc trouver deux fonctions $\overlineξ(s)$ et $\overlineη(s)$ telles que $\point{g}(s) = \point{f}[\overlineξ(s), \overlineη(s)]$. Alors, en dérivant la fonction composée
+$$
+\begin{aligned}[b]
+\vec{t} &= \frac{\D\point{g}}{\D s} = \frac{∂\point{f}}{∂ξ}[\overlineξ(s), \overlineη(s)] \, \frac{\D\overlineξ}{\D s}(s) + \frac{∂\point{f}}{∂η}[\overlineξ(s), \overlineη(s)] \, \frac{\D\overlineη}{\D s}(s)\\
+&= \frac{\D\overlineξ}{\D s}(s) \, \vec{a}_ξ[\overlineξ(s), \overlineη(s)] + \frac{\D\overlineη}{\D s}(s) \, \vec{a}_η[\overlineξ(s), \overlineη(s)],
+\end{aligned}
+$$ {#eq-20230307150056}
+pour toute valeur de $s$. En particulier, en $s = 0$
+$$
+\vec{t}_0 = t_0^ξ \, \vec{a}_ξ(0, 0)
++ t_0^η \, \vec{a}_η(0, 0),
+\quad \text{avec} \quad
+t_0^ξ = \frac{\D\overlineξ}{\D s} \biggr \rvert_{s = 0}
+\quad \text{et} \quad
+t_0^η = \frac{\D\overlineη}{\D s} \biggr \rvert_{s = 0}.
+$$ {#eq-20230307152146}
+
+En dérivant une nouvelle fois par rapport à $s$ la relation (@eq-20230307150056)
+$$
+\begin{aligned}[b]
+\frac{\D \vec{t}}{\D s} (s)
+={} & \frac{\D^2\overlineξ}{\D s^2}(s) \, \vec{a}_ξ[\overlineξ(s), \overlineη(s)]
++ \frac{\D^2\overlineη}{\D s^2}(s) \, \vec{a}_η[\overlineξ(s), \overlineη(s)]\\
+&+ \frac{\D\overlineξ}{\D s}(s) \, \biggl\{
+\frac{\D\overlineξ}{\D s}(s) \, ∂_ξ \vec{a}_ξ[\overlineξ(s), \overlineη(s)]
++ \frac{\D\overlineη}{\D s}(s) \, ∂_η \vec{a}_ξ[\overlineξ(s), \overlineη(s)] \biggr\}\\
+&+ \frac{\D\overlineη}{\D s}(s) \, \biggl \{
+\frac{\D\overlineξ}{\D s}(s) \, ∂_ξ \vec{a}_η[\overlineξ(s), \overlineη(s)]
++ \frac{\D\overlineη}{\D s}(s) \, ∂_η \vec{a}_η[\overlineξ(s), \overlineη(s)] \biggr \},
+\end{aligned}
+$$
+soit, en $s = 0$ \[en utilisant les relations (@eq-20230307152146)\]
+$$
+\begin{aligned}[b]
+\frac{\D \vec{t}}{\D s} \biggr \rvert_{s = 0}
+={} & \frac{\D^2\overlineξ}{\D s^2} \biggr \rvert_{s = 0} \, \vec{a}_ξ(0, 0)
++ \frac{\D^2\overlineη}{\D s^2} \biggr \rvert_{s = 0} \, \vec{a}_η(0, 0)\\
+&+ t_0^ξ \, \bigl[ t_0^ξ \, ∂_ξ \vec{a}_ξ(0, 0) + t_0^η \, ∂_η \vec{a}_ξ(0, 0) \bigr]\\
+&+ t_0^η \, \bigl [ t_0^ξ \, ∂_ξ \vec{a}_η(0, 0) + t_0^η \, ∂_η \vec{a}_η(0, 0) \bigr ],
+\end{aligned}
+$$
+d'où l'on déduit la relation suivante, en développant et en observant que $\vec{n}_0 ⋅ \vec{a}_ξ (0, 0) = \vec{n}_0 ⋅ \vec{a}_η (0, 0) = 0$.
+$$
+\begin{aligned}
+\vec{n}_0 ⋅ \frac{\D \vec{t}}{\D s} \biggr \rvert_{s = 0}
+={} & (t_0^ξ)^2 \, \vec{n}_0 ⋅ ∂_ξ\vec{a}_ξ(0, 0) + (t_0^η)^2 \, \vec{n}_0 ⋅ ∂_η\vec{a}_η(0, 0)\\
+&+ t_0^ξ \, t_0^η \, \bigl[ \vec{n}_0 ⋅ ∂_ξ\vec{a}_η(0, 0) + \vec{n}_0 ⋅ ∂_η \vec{a}_ξ(0, 0) \bigr].
+\end{aligned}
+$$
+
+En combinant les relations (@eq-20230307154016) et (@eq-20230307152146), on trouve que
+$$
+\begin{aligned}
+\vec{t}_0 ⋅ \tens{b}_0 ⋅ \vec{t}_0
+={} & (t_0^ξ)^2 \, \vec{n}_0 ⋅ ∂_ξ\vec{a}_ξ(0, 0) + (t_0^η)^2 \, \vec{n}_0 ⋅ ∂_η\vec{a}_η(0, 0)\\
+&+ t_0^ξ \, t_0^η \, \bigl[ \vec{n}_0 ⋅ ∂_ξ\vec{a}_η(0, 0) + \vec{n}_0 ⋅ ∂_η \vec{a}_ξ(0, 0) \bigr].
+\end{aligned}
+$$
+
+Le point $\point{m}_0$ de la surface, et le vecteur tangent $\vec{t}_0$ en $\point{m}_0$ étant quelconque, on peut omettre les indices 0 dans ce qui suit
+$$
+\vec{t} ⋅ \tens{b} ⋅ \vec{t} = (t^ξ)^2 \, \vec{n} ⋅ ∂_ξ\vec{a}_ξ + t^ξ \, t^η \, \bigl( \vec{n} ⋅ ∂_ξ\vec{a}_η + \vec{n} ⋅ ∂_η \vec{a}_ξ \bigr) + (t^η)^2 \, \vec{n} ⋅ ∂_η\vec{a}_η,
+$$
+pour tout vecteur unitaire tangent $\vec{t}$ à $\varsigma$ en $\point{m}$. En écrivant que $\vec{t} = t^ξ \, \vec{a}_ξ + t^η \, \vec{a}_η$, on a par ailleurs l'expression générale
+$$
+\begin{aligned}[b]
+\vec{t} ⋅ \tens{b} ⋅ \vec{t}
+={} & \bigl( t^ξ \, \vec{a}_ξ + t^η \, \vec{a}_η \bigr) ⋅ \tens{b} ⋅ \bigl( t^ξ \, \vec{a}_ξ + t^η \, \vec{a}_η \bigr)\\
+={} & (t^ξ)^2 \, \vec{a}_ξ ⋅ \tens{b} ⋅ \vec{a}_ξ + t^ξ \, t^η \, \vec{a}_ξ ⋅ \tens{b} ⋅ \vec{a}_η + (t^η)^2 \, \vec{a}_η ⋅ \tens{b} ⋅ \vec{a}_η.
+\end{aligned}
+$$
+On obtient les relations annoncées en comparant terme à terme les deux dernières égalités et en observant que
+$$
+∂_ξ \vec{a}_η = ∂_ξ \bigl( ∂_η \point{f} \bigr) = ∂_{ξη}^2 \point{f} = ∂_η \bigl( ∂_ξ \point{f} \bigr) = ∂_η \vec{a}_ξ.
+$$
 :::
+
+Les relations de Weingarten ci-dessus permettent d'écrire pour $α ∈ \{ξ, η\}$ fixé
+$$
+\bigl(\tens{b} ⋅ \vec{a}_α \bigr) ⋅ \vec{a}_β = -∂_α\vec{n} ⋅ \vec{a}_β \quad \text{ pour tout }β ∈ \{ξ, η\}
+\quad \text{donc} \quad
+\tens{b} ⋅ \vec{a}_α = -∂_α \vec n.
+$$
+La relation étant vraie pour tout $α ∈ \{ξ, η\}$, on en déduit que
+$$
+\tens{b} = -∂_α \vec{n} \otimes \vec{a}^α.
+$$ {#eq-20230307160832}
+ou, sous forme intrinsèque (voir Éq. (@eq-20230515125118))
+$$
+\tens{b} = -\tgrad \vec{n}.
+$$
+
+Le tenseur de courbure $\tens{b}$ apparaît donc comme **l'opposé du gradient de la normale**. Ce résultat est à comparer avec la deuxième relation de Frénet pour les courbes planes : $\vec{n}' = -\kappa \, \vec{t}$.

@@ -268,7 +268,7 @@ $$
 Les vecteurs $\vec{a}_x(0, 0)$ et $\vec{a}_y(0, 0)$ sont tangents à $ς$ en $\point{m}$ : ils sont donc contenus dans le plan tangent en $\point{m}$, et leur composante selon $\vec{e}_z$ est nulle.
 :::
 
-## Courbure des surfaces
+## Courbure des surfaces {#sec-20230515105841}
 
 ### Tenseur de courbure
 
