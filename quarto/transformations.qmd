@@ -1,0 +1,271 @@
+# Transformations d'une coque
+
+::: {.content-visible when-format="html"}
+{{< include macros_html.tex >}}
+:::
+
+## Introduction
+
+## 🔧 Outils mathématiques : Plans de l'espace {#sec-20230214053442}
+
+Les plans constituent un cas particulier de surfaces de l'espace. Ils jouent un rôle central dans la théorie des coques, puisque les déformations et contraintes généralisées sont des tenseurs du **plan tangent**. C'est pourquoi on consacre un paragraphe aux simples plans (on trouvera des compléments à ce paragraphe au @sec-20230213110532). On considère ici un plan $π ⊂ ℝ^3$ de l'espace.
+
+On peut définir deux normales unitaires au plan $π$ : on en choisit une, que l'on note $\vec{n}$. Ce choix oriente le plan. En effet, une base orthonormée $(\vec{l}, \vec{m})$ du plan $π$ sera dite **directe** si la base $(\vec{l}, \vec{m}, \vec{n})$ est elle-même une base orthonormée directe de l'espace. Le tenseur $\tens{a} = \tens{I} - \vec{n} ⊗ \vec{n}$ définit alors l'opérateur de **projection orthogonale** sur le plan $π$. C'est un **tenseur d'ordre deux, symétrique**.
+
+Un tenseur $\tens{T}$ d'ordre quelconque est dit **tenseur du plan $π$** si toutes ses composantes sont dans le plan $π$. Le tenseur $\tens{a}$ défini ci-dessus est bien un tenseur du plan $π$, puisque $\tens{a} ⋅ \vec{n} = \vec{n} ⋅ \tens{a} = \vec{0}$. De plus, on a $\tens{a} ⋅ \vec{v} = \vec{v}$ pour tout $\vec{v} ∈ π$ : le tenseur $\tens{a}$ sera appelé dans ce cours **identité du plan tangent**.
+
+On introduit maintenant le **tenseur antisymétrique fondamental $\tens{e}$**, très utile pour calculer des produits vectoriels dans le plan $π$. On observe tout d'abord que l'application linéaire $\vec{v} \mapsto \vec{v} \wedge \vec{n}$ est un **endomorphisme de l'espace**. Soit $\tens{e}$ le tenseur associé, défini par la relation
+$$
+\tens{e} ⋅ \vec{v} = \vec{v} \wedge \vec{n} \quad \text{pour tout } \vec{v} ∈ ℝ^3.
+$$ {#eq-20230214051407}
+
+Le tenseur $\tens{e}$ ainsi défini est un **tenseur du plan, antisymétrique**
+$$
+\tens{e} ⋅ \vec{n} = \vec{n} ⋅ \tens{e} = \vec{0}, \quad
+\tens{e}^\transpose = -\tens{e} \quad \text{et} \quad
+\tens{e} ⋅ \tens{e} = -\tens{a}.
+$$.
+
+::: {.callout-tip collapse="true"}
+
+## Démonstration
+
+On considère tout d'abord deux vecteurs quelconques de l'espace $\vec{v}, \vec{w} ∈ ℝ^3$
+$$
+\vec{u} ⋅ \bigl( \tens{e} ⋅ \vec{v} \bigr) = \vec{u} ⋅ \bigl( \vec{v} \wedge \vec{n} \bigr) = - \vec{v} ⋅ \bigl( \vec{u} \wedge \vec{n} \bigr) = - \bigl( \tens{e} ⋅ \vec{u} \bigr) ⋅ \vec{v},
+$$
+et $\tens{e}$ est donc bien un tenseur antisymétrique. On montre ensuite qu'il s'agit d'un tenseur du plan $π$. Par définition \[voir Éq. (@eq-20230214051407)\]
+$$
+\tens{e} ⋅ \vec{n} = \vec{n} \wedge \vec{n} = \vec{0},
+$$
+puis, en utilisant la propriété d'antisymétrie démontrée ci-dessus
+$$
+\vec{n} ⋅ \tens{e} = \tens{e}^\transpose ⋅ \vec{n} = -\tens{e} ⋅ \vec{n} = \vec{0},
+$$
+ce qui montre que $\tens{e}$ est bien un tenseur du plan $π$. Enfin, la propriété $\tens{e} ⋅ \tens{e} = -\tens{a}$ résulte de la formule du double produit vectoriel. Pour prouver cette formule, on considère tout d'abord un vecteur $\vec{v}$ du plan $π$ ($\vec{v} ⋅ \vec{n} = \vec{0}$). Alors
+$$
+\bigl( \tens{e} ⋅ \tens{e} \bigr) ⋅ \vec{v} = \tens{e} ⋅ \bigl( \tens{e} ⋅ \vec{v} \bigr) = \bigl( \vec{v} \wedge \vec{n} \bigr) \wedge \vec{n} = \bigl( \vec{v} ⋅ \vec{n} \bigl) \, \vec{n} - \bigl( \vec{n} ⋅ \vec{n} \bigr) \, \vec{v} = -\vec{v}.
+$$
+
+Comme par ailleurs, $\bigl( \tens{e} ⋅ \tens{e} \bigr) ⋅ \vec{n} = \vec{0}$, on en déduit bien la relation annoncée pour tout vecteur de l'espace.
+
+:::
+
+Dans une base orthonormée directe $(\vec{e}_1, \vec{e}_2)$ du plan $π$, les composantes $e_{αβ}$ du tenseur antisymétrique fondamental sont
+$$
+e_{αβ} = \vec{e}_α ⋅ \tens{e} ⋅ \vec{e}_β
+= \vec{e}_α ⋅ \bigl( \vec{e}_β \wedge \vec{n} \bigr)
+= \vec{n} ⋅ \bigl( \vec{e}_α \wedge \vec{e}_β \bigr),
+\quad\text{soit}\quad
+e_{αβ}=\begin{bmatrix}0&1\\-1&0\end{bmatrix}.
+$$
+
+En conséquence, pour tout tenseur $\tens{T}$ d'ordre 2 du plan $π$, $\tens{T} \dbldot \tens{e} = T_{αβ} \, e_{αβ} = T_{12} - T_{21}$, soit
+$$
+\asym\tens{T} =\tfrac12 \bigl( \tens{T} - \tens{T}^\transpose \bigr)
+= \tfrac12 \bigl( \tens{T} \dbldot \tens{e} \bigr) \, \tens{e},
+$$ {#eq-20230210104820}
+d'où l'on déduit en particulier que **$\tens{T}$ est symétrique si, et seulement si $\tens{T} \dbldot \tens{e} = 0$**. Inversement, si $\tens{T}$ est antisymétrique, il coïncide avec sa partie antisymétrique, et l'équation (@eq-20230210104820) montre que **$\tens{T}$ est proportionnel à $\tens{e}$**.
+
+Finalement, la formule suivante est valable pour tous vecteurs $\vec{v}$ et $\vec{w}$ de l'espace
+$$
+\vec{v} \wedge \vec{w} = \bigl( \vec{v} ⋅ \tens{e} ⋅ \vec{w} \bigr) \vec{n}
++ \bigl( \vec{w} ⋅ \vec{n} \bigr) \, \bigl( \tens{e} ⋅ \vec{v} \bigr)
+- \bigl( \vec{v} ⋅ \vec{n} \bigr) \, \bigl(\tens{e} ⋅ \vec{w}\bigr).
+$$ {#eq-20230210105758}
+
+::: {.callout-tip collapse="true"}
+
+## Démonstration
+
+On considère tout d'abord deux vecteurs $\vec{v}$ et $\vec{w}$ du plan $π$ ; leur produit vectoriel est perpendiculaire à $π$. En d'autres termes, $\vec{v} \wedge \vec{w}$ est porté par la normale $\vec{n}$, donc
+$$
+\vec{v} \wedge \vec{w} = \bigl[ \vec{n} ⋅ \bigl( \vec{v} \wedge \vec{w} \bigr) \bigr] \vec{n}
+= \bigl[ \vec{v} ⋅ \bigl( \vec{w} \wedge \vec{n} \bigr) \bigr] \vec{n}
+= \bigl[ \vec{v} ⋅ \bigl( \tens{e} ⋅ \vec{w} \bigr) \bigr] \vec{n}
+= \bigl( \vec{v} ⋅ \tens{e} ⋅ \vec{w} \bigr) \vec{n}.
+$$
+
+La relation générale (@eq-20230210105758) est alors obtenue en écrivant les vecteurs quelconques $\vec{v}$ et $\vec{w}$ comme la somme de leurs composantes dans le plan et hors-plan
+$$
+\vec{v} = \tens{a} ⋅ \vec{v} + \bigl( \vec{v} ⋅ \vec{n} \bigr) \, \vec{n}
+\quad \text{et} \quad
+\vec{w} = \tens{a} ⋅ \vec{w} + \bigl( \vec{w} ⋅ \vec{n} \bigr) \, \vec{n}.
+$$
+
+:::
+
+[🔧 Prochain outil mathématique : § @sec-20230906085507]
+
+## 🔧 Outils mathématiques : surfaces paramétrées {#sec-20230906085507}
+
+### Définition
+
+Une surface paramétrée $ς$ de l'espace $ℝ^3$ est l'ensemble des points $\point{m} = \point{f}(ξ, η)$ de $ℝ^3$ images par l'application $\point{f} \colon \mathcal{D} \longrightarrow ℝ^3$
+$$
+ς = \point{f}(\mathcal{D}) = \bigl\{ \point{m} ∈ ℝ^d | \exists (ξ, η) ∈ \mathcal{D}: \point{m} = \point{f}(ξ, η) \bigr\}.
+$$
+(voir figure @fig-20230218105342).
+
+Dans la définition ci-dessus, $\mathcal{D} ⊂ ℝ^2$ est un ouvert de **l'espace des paramètres $ξ$ et $η$**. On supposera dans ce qui suit l'application $\point{f}$ suffisamment régulière pour que toutes les relations faisant intervenir $\point{f}$ et ses dérivées partielles aient un sens.
+
+![La surface paramétrée $ς$](asy/fig20230218105342){#fig-20230218105342}
+
+::: {.callout-warning}
+## Exemples à traiter en classe
+
+Cylindre, cône, sphère. Bien préciser les paramètres et leur domaine de définition.
+:::
+
+### Courbes tracées sur une surface
+
+Une courbe de l'espace est généralement définie par un paramétrage $t ∈ ]a, b[ \mapsto \point{g}(t)$ (voir @sec-20230213121713). L'intervalle $]a, b[$ étant ici fixé, on se donne deux applications $X, Y \colon ]a, b[ \longrightarrow ℝ$, telles que
+$$
+[X(t), Y(t)] ∈ \mathcal{D} \quad \text{pour tout }t ∈ ]a, b[.
+$$
+
+Le paramétrage $t \mapsto \point{g}(t)$ suivant définit alors une courbe $\gamma = \point{g}(]a, b[)$ de l'espace (voir @fig-20230218141233)
+$$
+\point{g}(t) = \point{f}[X(t), Y(t)].
+$$
+
+Pour tout $t ∈ ]a, b[$, le point $\point{g}(t)$ est par construction contenu dans la surface $ς$. On dit que **la courbe $γ$ est tracée sur la surface $ς$**.
+
+![Courbe tracée sur la surface $ς$](asy/fig20230218141233){#fig-20230218141233}
+
+### Plan tangent
+
+La notion de plan tangent est essentielle en théorie des coques, puisque la plupart des objets tensoriels que nous considèrerons vivent dans le plan tangent à la configuration initiale ou actuelle. Le plan tangent est défini comme le plan engendré par l'ensemble des vecteurs tangents à la surface en un point donné de celle-ci. On voit qu'il faut donc d'abord définir la notion de vecteur tangent.
+
+Soient $\point{m} = \point{f}(ξ, η)$ un point de la surface $ς$ et $\vec{v} ∈ ℝ^3$ un vecteur. On dit que le vecteur $\vec{v}$ est **tangent à la surface $ς$ au point $\point{m}$** s'il existe une courbe $γ$ tracée sur $ς$ et passant par $\point{m}$, telle que $\vec{v}$ soit tangent à la courbe $γ$ au point $\point{m}$. On peut alors montrer que l'ensemble $\mathcal{T}(\point{m}, ς)$ formé par les vecteurs tangents en $\point{m}$ à $ς$ est le plan engendré par les vecteurs $\vec{a}_ξ$ et $\vec{a}_η$ suivants  (voir @fig-20230219133503)
+$$
+\vec{a}_ξ(ξ, η) = ∂_ξ \point{f}(ξ, η)
+\quad \text{et} \quad
+\vec{a}_η(ξ, η) = ∂_η \point{f}(ξ, η).
+$$
+
+![Le plan tangent en $\point{m}$ est engendré par les vecteurs $\vec{a}_ξ$ et $\vec{a}_η$. Il contient tous les vecteurs tangents en $\point{m}$ à des courbes tracées sur la surface $ς$.](asy/fig20230219133503){#fig-20230219133503}
+
+::: {.callout-tip collapse="true"}
+## Démonstration
+
+Soit $\vec{v} ∈ \mathcal{T}(\point{m}, ς)$ l'un de ces vecteurs. Alors par définition, il existe $a < b$ et $X, Y \colon [a, b] \longrightarrow ℝ$ tels que le vecteur $\vec{v}$ soit tangent au point $\point{m}$ à la courbe $\Gamma$, définie par le paramétrage $t \mapsto \point{g}(t) = \point{f}[X(t), Y(t)]$. Quitte à changer de paramètre $t$, on peut toujours supposer que $a = -ϵ < 0$, $b = ϵ > 0$ et que $γ$ passe par $\point{m}$ en $t = 0$
+$$
+X(0) = ξ, \quad Y(0) = η \quad \text{et} \quad \point{g}(0) = \point{f}(ξ, η) = \point{m}.
+$$
+
+La direction tangente à $γ$ en $\point{m}$ est alors donnée par $\dot{\point{g}}(0)$, soit en utilisant la règle de dérivation des fonctions composées
+$$
+\begin{aligned}
+\dot{\point{g}}(0)
+&= \dot{X}(0) \, ∂_ξ\point{f}[X(0), Y(0)] + \dot{Y}(0) \, ∂_η\point{f}[X(0), Y(0)]\\
+&= \dot{X}(0) \, ∂_ξ\point{f}(ξ, η) + \dot{Y}(0) \, ∂_η\point{f}(ξ, η).
+\end{aligned}
+$$
+
+Puisque $\vec{v}$ est tangent à $γ$ en $\point{m}$, il est proportionnel au vecteur précédent et on a montré que **tout vecteur tangent en $\point{m}$ à $ς$ est une combinaison linéaire des vecteurs $\vec{a}_ξ$ et $\vec{a}_η$** : $\mathcal{T}(\point{m}, ς) ⊂ \Span(\vec{a}_ξ, \vec{a}_η)$.
+
+Inversement, soit $\vec{v} = λ \, \vec{a}_ξ + μ \, \vec{a}_η$ une combinaison linéaire de ces deux vecteurs.  On définit alors $[X(t), Y(t)] = (ξ + t \, λ, η + t \, λ)$. Le domaine $\mathcal{D}$ étant ouvert, on peut trouver $ϵ > 0$ tel que $[X(t), Y(t)] ∈ \mathcal{D}$ pour tout $t ∈ ]-ϵ, ϵ[$. En d'autres termes, $X$ et $Y$ définissent une courbe tracée sur $γ$, passant par $\point{m} = \point{f}(ξ, η)$ en $t = 0$. De plus, la direction tangente à $γ$ en $\point{m}$ est
+$$
+\dot{g}(0) = λ \, \vec{a}_ξ + μ \, \vec{a}_η = \vec{v}.
+$$
+
+On a donc tracé sur $ς$ une courbe $γ$ telle que $\vec{v}$ soit tangent à $γ$ en $\point{m}$ : $\vec{v}$ est bien **tangent** à $ς$ et **toute combinaison linéaire de $\vec{a}_ξ$ et $\vec{a}_η$ est un vecteur tangent en $\point{m}$ à $ς$** : $\Span(\vec{a}_ξ, \vec{a}_η) ⊂ \mathcal{T}(\point{m}, ς)$. CQFD.
+:::
+
+Le point $\point{m}$ est un **point régulier** de $ς$ si ces deux vecteurs sont linéairement indépendants ($\vec{a}_ξ \wedge \vec{a}_η = \vec{0}$). Dans ce cas, $\mathcal{T}(\point{m}, ς)$ est le **plan tangent** à $ς$ en $\point{m}$ et les vecteurs $\vec{a}_ξ$ et $\vec{a}_η$ forment la **base locale naturelle** associée au paramétrage $(ξ, η) \mapsto \point{f}(ξ, η)$.
+
+Si ces deux vecteurs sont colinéaires ($\vec{a}_ξ \wedge \vec{a}_η = \vec{0}$), le point $\point{m}$ est un **point singulier**. Le plan tangent n'existe pas en un tel point.
+
+::: {.callout-note}
+On peut montrer que le plan tangent ainsi mis en évidence ne dépend pas du choix du paramétrage : il est **intrinsèque**. L'écriture $\mathcal{T}(\point{m}, ς)$ [plutôt que $\mathcal{T}(ξ, η, ς)$] est donc légitime.
+:::
+
+### Vecteur normal
+
+En un point $\point{m} = \point{f}(ξ, η)$ régulier de la surface $ς$, le vecteur $\vec{a}_ξ \wedge \vec{a}_η$ est perpendiculaire au plan tangent $\mathcal{T}(\point{m}, ς)$ (voir @fig-20230219133503). On définit la **normale unitaire à $ς$** de la façon suivante
+$$
+\vec{n}(ξ, η) = \frac{\vec{a}_ξ(ξ, η) \wedge \vec{a}_η(ξ, η)}{\lVert \vec{a}_ξ(ξ, η) \wedge \vec{a}_η(ξ, η) \rVert},
+$$ {#eq-20230214053253}
+où le dénominateur n'est pas nul puisque le point $\point{m}$ est régulier.
+
+::: {.callout-note}
+La normale $\vec{n}$ oriente localement la surface puisqu'elle oriente son plan tangent $\mathcal{T}(\point{m}, ς)$ (au sens du @sec-20230213144828). Cette orientation est néanmoins **arbitraire**. En effet, permuter l'ordre de $ξ$ et $η$ aurait conduit à une inversion du sens de $\vec{n}$ et donc de l'orientation du plan tangent.
+:::
+
+::: {.callout-note}
+Puisque le plan tangent est une caractéristique intrinsèque de la surface, la direction normale l'est également. Bien que le vecteur normal $\vec{n}$ apparaisse dans l'éq. (@eq-20230214053253) comme une fonction de $ξ$ et $η$, on préfèrera dans ce qui suit la notation $\vec{n}(\point{m})$.
+:::
+
+### Extension aux surfaces des notions introduites au @sec-20230214053442
+
+À chaque point $\point{m}$ de la surface est associé un unique plan tangent, $\mathcal{T}(\point{m}, ς)$. Dans ce plan, on peut définir, comme au @sec-20230214053442, l'identité du plan tangent $\tens{a}$ et le tenseur antisymétrique fondamental $\tens{e}$. Ces deux tenseurs sont des champs (ils dépendent du point d'observation $\point{m}$ sur la surface $ς$) **intrinsèques** (ils ne dépendent pas du choix de la représentation paramétrique de cette surface)
+
+$$
+\tens{a}(\point{m}) = \tens{I} - \vec{n}(\point{m}) ⊗ \vec{n}(\point{m})
+\quad \text{et} \quad
+\tens{e}(\point{m}) ⋅ \vec{v} = \vec{v} \wedge \vec{n}(\point{m}) \quad \text{pour tout } \vec{v} ∈ ℝ^3.
+$$
+
+Ces champs de tenseurs ont bien sûr les mêmes propriétés que leurs homologues introduits sur un plan fixe.
+
+### Représentation cartésienne locale d'une surface
+
+Soit $\point{m} ∈ ς$ un point régulier de la surface $ς$ et $(\vec{e}_x, \vec{e}_y)$ une base orthonormée de son plan tangent $\mathcal{T}(\point{m}, ς)$. En posant $\vec{e}_z = \vec{n}(\point{m})$, on construit ainsi un repère cartésien orthonormé de l'espace $(\point{m}, \vec{e}_x, \vec{e}_y, \vec{e}_z)$. Dans ce repère, il existe une fonction $g(x, y)$, définie et dérivable au voisinage de l'origine $\point{m} ($x = 0$, $y = 0$), telle que l'équation cartésienne de la surface $ς$ s'écrive, au voisinage de $\point{m}$
+$$
+z = g(x, y) \quad \text{avec} \quad g(0, 0) = 0 \quad \text{et} \quad ∂_xg(0, 0) = ∂_yg(0, 0) = 0.
+$$
+
+::: {.callout-tip collapse="true"}
+## Démonstration
+Soit $(ξ, η) \mapsto \point{f}(ξ, η)$ un paramétrage de la surface $ς$. On peut toujours supposer que $\point{m} = \point{f}(0, 0)$. Soient $φ_x$ et $φ_y$ les fonctions définies de la façon suivante
+$$
+φ_x(ξ, η) = \vec{e}_x ⋅ \tens{a}(\point{m}) ⋅ \altvec{\point{mm}'} \quad \text{et} \quad φ_y(ξ, η) = \vec{e}_y ⋅ \tens{a}(\point{m}) ⋅ \altvec{\point{mm}'}
+$$
+où $\point{m'} = \point{f}(ξ, η)$ désigne un point voisin de $\point{m}$ sur la surface $ς$ et $\tens{a}$ est l'identité du plan tangent en $\point{m}$. La base $(\vec{e}_x, \vec{e}_y, \vec{e}_z)$ étant orthonormée, on remarque que
+$$
+\tens{a} = \tens{I} - \vec{n} ⊗ \vec{n} = \vec{e}_x ⊗ \vec{e}_x + \vec{e}_y ⊗ \vec{e}_y + \vec{e}_z ⊗ \vec{e}_z - \vec{n} ⊗ \vec{n} = \vec{e}_x ⊗ \vec{e}_x + \vec{e}_y ⊗ \vec{e}_y,
+$$
+puisque $\vec{e}_z = \vec{n}$ par construction. On définit alors la fonction $φ$
+$$
+φ(ξ, η) = \bigl[φ_x(ξ, η), φ_y(ξ, η)\bigr],
+$$
+qui extrait les coordonnées dans le repère $(\point m, \vec e_x, \vec e_y)$ de la projection orthogonale du point courant $\point{m}'=\point{f}(ξ, η)$ sur le plan tangent $\mathcal{T}(\point{m}, ς)$. Le jacobien de $φ$ vaut
+$$
+\begin{vmatrix}
+\vec{e}_x ⋅ \tens{a} ⋅ \vec{a}_{ξ}(ξ, η) & \vec{e}_x ⋅ \tens{a} ⋅ \vec{a}_{η}(ξ, η)\\
+\vec{e}_y ⋅ \tens{a} ⋅ \vec{a}_{ξ}(ξ, η) & \vec{e}_y ⋅ \tens{a} ⋅ \vec{a}_{η}(ξ, η)
+\end{vmatrix}
+= \vec{e}_z ⋅ \bigl[ \bigl( \tens{a} ⋅ \vec{a}_ξ(ξ, η) \bigr) \wedge \bigl( \tens{a} ⋅ \vec{a}_η(ξ, η) \bigr) \bigr]
+$$
+
+En $(ξ, η) = (0, 0)$, on a $\tens{a} ⋅ \vec{a}_ξ(0, 0) = \vec{a}_ξ(0, 0)$ et $\tens{a} ⋅ \vec{a}_η(0, 0) = \vec{a}_η(0, 0)$. Le jacobien vaut donc $\lVert \vec{a}_ξ(0, 0) \wedge \vec{a}_η(0, 0) \rVert$, qui est non-nul puisque $\point{m}$ est un point régulier. La différentielle de $φ$ est donc inversible en $(0, 0)$. Le théorème d'inversion locale garantit alors qu'on peut inverser localement au voisinage de $(ξ = 0, η = 0)$ la fonction $φ$. Soit $ψ$ son inverse ; on a alors, pour tous $(x, y)$ suffisamment petits : $φ[ψ(x, y)] = (x, y)$. En d'autres termes
+$$
+\tens{a} ⋅ \altvec{\point{mm}'} = x \, \vec{e}_x + y \, \vec{e}_y, \quad \text{avec} \quad \point m' = \point{f}[ψ(x, y)].
+$$
+
+On définit alors la fonction $g(x, y)$
+$$
+g(x, y) = \vec{e}_z ⋅ \altvec{\point{mm}'}, \quad \text{avec} \quad \point{m}'= \point{f}[ψ(x, y)].
+$$
+
+Comme $\tens{a} + \vec{e}_z ⊗ \vec{e}_z = \tens I$, on obtient
+$$
+\altvec{\point{mm}'} = x \, \vec{e}_x + y \, \vec{e}_y + g(x, y) \, \vec{e}_z,
+$$
+pour tout point $\point{m}'$ de $ς$, suffisamment proche de $\point{m}$. On a donc bien construit localement une représentation cartésienne de la surface $ς$. Bien sûr, lorsque $x = y = 0$, le point $\point{m}'$ coïncide avec $\point{m}$, donc $g(0, 0) = 0$. Par ailleurs, puisque le plan tangent en $\point{m}$ à $ς$ est le plan $(\point{m}, \vec{e}_x, \vec{e}_y)$, on a également $∂_x g(0, 0) = ∂_y g(0, 0) = 0$. Pour le voir, il suffit d'observer que l'on peut considérer les coordonnées $(x, y)$ comme un paramétrage de la surface $ς$. Ainsi, $\point{g}(x, y)$ est un point de $ς$ pour tous $x, y$ suffisamment petits, en posant
+$$
+\point{g}(x, y)=\point{m} + x \, \vec{e}_x + y \, \vec{e}_y + g(x, y) \, \vec{e}_z.
+$$
+
+La base locale naturelle associée est
+$$
+\vec{a}_x(x, y) = \vec{e}_x + ∂_x g(x, y) \, \vec{e}_z \quad \text{et} \quad \vec{a}_y(x, y) = \vec{e}_y + ∂_y g(x, y) \, \vec{e}_z.
+$$
+
+Les vecteurs $\vec{a}_x(0, 0)$ et $\vec{a}_y(0, 0)$ sont tangents à $ς$ en $\point{m}$ : ils sont donc contenus dans le plan tangent en $\point{m}$, et leur composante selon $\vec{e}_z$ est nulle.
+:::
+
+## Transformations d'une surface
+
+## Transformations d'une coque ?
