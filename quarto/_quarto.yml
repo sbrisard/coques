@@ -11,6 +11,8 @@ book:
   chapters:
     - index.qmd
     - introduction.qmd
+    - outils.qmd
+    - transformations.qmd
     - courbure_des_surfaces.qmd
     - derivation_et_integration_sur_une_surface.qmd
     - transformations_d_une_coque.qmd

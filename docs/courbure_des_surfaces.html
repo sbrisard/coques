@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Théorie des coques élastiques - 3&nbsp; Courbure des surfaces</title>
+<title>Théorie des coques élastiques - 5&nbsp; Courbure des surfaces</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./derivation_et_integration_sur_une_surface.html" rel="next">
-<link href="./introduction.html" rel="prev">
+<link href="./transformations.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -57,10 +57,12 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "correspondances de plus dans ce document",
     "search-clear-button-title": "Effacer",
     "search-detached-cancel-button-title": "Annuler",
-    "search-submit-button-title": "Envoyer"
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -69,11 +71,16 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Courbure des surfaces</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./courbure_des_surfaces.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Courbure des surfaces</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -81,80 +88,104 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Théorie des coques élastiques</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="Recherche"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Bienvenue</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Bienvenue</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  <a href="./introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./courbure_des_surfaces.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Courbure des surfaces</span></a>
+  <a href="./outils.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">🔧 Outils mathématiques</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./derivation_et_integration_sur_une_surface.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dérivation et intégration sur une surface</span></a>
+  <a href="./transformations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformations d’une coque</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./transformations_d_une_coque.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Transformations d’une coque</span></a>
+  <a href="./courbure_des_surfaces.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Courbure des surfaces</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./membranes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Membranes</span></a>
+  <a href="./derivation_et_integration_sur_une_surface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Dérivation et intégration sur une surface</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./coques_en_equilibre_membranaire.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Coques en équilibre membranaire</span></a>
+  <a href="./transformations_d_une_coque.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Transformations d’une coque</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./coques_en_flexion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Coques en flexion</span></a>
+  <a href="./membranes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Membranes</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./equations_d_equilibre_incrementales.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Équations d’équilibre incrémentales</span></a>
+  <a href="./coques_en_equilibre_membranaire.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Coques en équilibre membranaire</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./coques_en_flexion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Coques en flexion</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./equations_d_equilibre_incrementales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Équations d’équilibre incrémentales</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Annexes</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Annexes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Basculer la section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rappels_de_geometrie_differentielle.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Rappels de géométrie différentielle</span></a>
+  <a href="./rappels_de_geometrie_differentielle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Rappels de géométrie différentielle</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./complements_d_algebre_lineaire.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Compléments d’algèbre linéaire</span></a>
+  <a href="./complements_d_algebre_lineaire.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Compléments d’algèbre linéaire</span></span></a>
   </div>
 </li>
       </ul>
@@ -162,31 +193,20 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#sec-20230214053442" id="toc-sec-20230214053442" class="nav-link active" data-scroll-target="#sec-20230214053442"><span class="toc-section-number">3.1</span>  Plans de l’espace</a>
+  <li><a href="#plans-de-lespace" id="toc-plans-de-lespace" class="nav-link active" data-scroll-target="#plans-de-lespace"><span class="header-section-number">5.1</span> Plans de l’espace</a></li>
+  <li><a href="#surfaces-paramétrées" id="toc-surfaces-paramétrées" class="nav-link" data-scroll-target="#surfaces-paramétrées"><span class="header-section-number">5.2</span> Surfaces paramétrées</a></li>
+  <li><a href="#sec-20230515105841" id="toc-sec-20230515105841" class="nav-link" data-scroll-target="#sec-20230515105841"><span class="header-section-number">5.3</span> Courbure des surfaces</a>
   <ul class="collapse">
-  <li><a href="#sec-20230213144828" id="toc-sec-20230213144828" class="nav-link" data-scroll-target="#sec-20230213144828"><span class="toc-section-number">3.1.1</span>  Normale, identité du plan tangent</a></li>
-  <li><a href="#tenseur-antisymétrique-fondamental" id="toc-tenseur-antisymétrique-fondamental" class="nav-link" data-scroll-target="#tenseur-antisymétrique-fondamental"><span class="toc-section-number">3.1.2</span>  Tenseur antisymétrique fondamental</a></li>
-  </ul></li>
-  <li><a href="#surfaces-paramétrées" id="toc-surfaces-paramétrées" class="nav-link" data-scroll-target="#surfaces-paramétrées"><span class="toc-section-number">3.2</span>  Surfaces paramétrées</a>
-  <ul class="collapse">
-  <li><a href="#définition" id="toc-définition" class="nav-link" data-scroll-target="#définition"><span class="toc-section-number">3.2.1</span>  Définition</a></li>
-  <li><a href="#courbes-tracées-sur-une-surface" id="toc-courbes-tracées-sur-une-surface" class="nav-link" data-scroll-target="#courbes-tracées-sur-une-surface"><span class="toc-section-number">3.2.2</span>  Courbes tracées sur une surface</a></li>
-  <li><a href="#plan-tangent" id="toc-plan-tangent" class="nav-link" data-scroll-target="#plan-tangent"><span class="toc-section-number">3.2.3</span>  Plan tangent</a></li>
-  <li><a href="#vecteur-normal" id="toc-vecteur-normal" class="nav-link" data-scroll-target="#vecteur-normal"><span class="toc-section-number">3.2.4</span>  Vecteur normal</a></li>
-  <li><a href="#extension-aux-surfaces-des-notions-introduites-au-sec-20230214053442" id="toc-extension-aux-surfaces-des-notions-introduites-au-sec-20230214053442" class="nav-link" data-scroll-target="#extension-aux-surfaces-des-notions-introduites-au-sec-20230214053442"><span class="toc-section-number">3.2.5</span>  Extension aux surfaces des notions introduites au <span>§&nbsp;3.1</span></a></li>
-  <li><a href="#représentation-cartésienne-locale-dune-surface" id="toc-représentation-cartésienne-locale-dune-surface" class="nav-link" data-scroll-target="#représentation-cartésienne-locale-dune-surface"><span class="toc-section-number">3.2.6</span>  Représentation cartésienne locale d’une surface</a></li>
-  </ul></li>
-  <li><a href="#sec-20230515105841" id="toc-sec-20230515105841" class="nav-link" data-scroll-target="#sec-20230515105841"><span class="toc-section-number">3.3</span>  Courbure des surfaces</a>
-  <ul class="collapse">
-  <li><a href="#tenseur-de-courbure" id="toc-tenseur-de-courbure" class="nav-link" data-scroll-target="#tenseur-de-courbure"><span class="toc-section-number">3.3.1</span>  Tenseur de courbure</a></li>
-  <li><a href="#courbures-principales-et-classification-des-points-réguliers" id="toc-courbures-principales-et-classification-des-points-réguliers" class="nav-link" data-scroll-target="#courbures-principales-et-classification-des-points-réguliers"><span class="toc-section-number">3.3.2</span>  Courbures principales et classification des points réguliers</a></li>
-  <li><a href="#courbure-moyenne-courbure-gaussienne" id="toc-courbure-moyenne-courbure-gaussienne" class="nav-link" data-scroll-target="#courbure-moyenne-courbure-gaussienne"><span class="toc-section-number">3.3.3</span>  Courbure moyenne, courbure gaussienne</a></li>
+  <li><a href="#tenseur-de-courbure" id="toc-tenseur-de-courbure" class="nav-link" data-scroll-target="#tenseur-de-courbure"><span class="header-section-number">5.3.1</span> Tenseur de courbure</a></li>
+  <li><a href="#courbures-principales-et-classification-des-points-réguliers" id="toc-courbures-principales-et-classification-des-points-réguliers" class="nav-link" data-scroll-target="#courbures-principales-et-classification-des-points-réguliers"><span class="header-section-number">5.3.2</span> Courbures principales et classification des points réguliers</a></li>
+  <li><a href="#courbure-moyenne-courbure-gaussienne" id="toc-courbure-moyenne-courbure-gaussienne" class="nav-link" data-scroll-target="#courbure-moyenne-courbure-gaussienne"><span class="header-section-number">5.3.3</span> Courbure moyenne, courbure gaussienne</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -196,7 +216,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Courbure des surfaces</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Courbure des surfaces</span></h1>
 </div>
 
 
@@ -211,7 +231,6 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div>
 <p><span class="math display">\[
 \DeclareMathOperator{\asym}{\symbfsf{asym}}
 \newcommand{\altvec}[1]{\overrightarrow{#1}}
@@ -241,314 +260,36 @@ ul.task-list li input[type="checkbox"] {
 \newcommand{\transpose}{\mathsf{T}}
 \renewcommand{\vec}[1]{\symbf{#1}}
 \]</span></p>
-</div>
 <p>Dans ce chapitre, on introduit les notions fondamentales suivantes&nbsp;: surface paramétrée, base locale naturelle, vecteur normal, tenseur identité du plan tangent, tenseur antisymétrique fondamental, tenseur de courbure. Ces notions seront utilisées dans les chapitres suivants pour construire la théorie des coques de Kirchhoff–Love.</p>
-<section id="sec-20230214053442" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="sec-20230214053442"><span class="header-section-number">3.1</span> Plans de l’espace</h2>
-<p>Les plans constituent un cas particulier de surfaces de l’espace. Ils jouent un rôle central dans la théorie des coques, puisque les déformations et contraintes généralisées sont des tenseurs du <strong>plan tangent</strong>. C’est pourquoi on consacre en introduction à la théorie des surfaces un paragraphe aux simples plans (on trouvera des compléments à ce paragraphe au <a href="complements_d_algebre_lineaire.html#sec-20230213110532"><span>§&nbsp;B.1</span></a>). On considère donc ici un plan <span class="math inline">\(π ⊂ ℝ^3\)</span> de l’espace.</p>
-<section id="sec-20230213144828" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="sec-20230213144828"><span class="header-section-number">3.1.1</span> Normale, identité du plan tangent</h3>
-<p>On peut définir deux normales unitaires au plan <span class="math inline">\(π\)</span>&nbsp;: on en choisit une, que l’on note <span class="math inline">\(\vec{n}\)</span>. Ce choix oriente le plan. En effet, une base orthonormée <span class="math inline">\((\vec{l}, \vec{m})\)</span> du plan <span class="math inline">\(π\)</span> sera dite <strong>directe</strong> si la base <span class="math inline">\((\vec{l}, \vec{m}, \vec{n})\)</span> est elle-même une base orthonormée directe de l’espace. Le tenseur <span class="math inline">\(\tens{a} = \tens{I} - \vec{n} ⊗ \vec{n}\)</span> définit alors l’opérateur de <strong>projection orthogonale</strong> sur le plan <span class="math inline">\(π\)</span>. C’est un <strong>tenseur d’ordre deux, symétrique</strong>.</p>
-<p>Un tenseur <span class="math inline">\(\tens{T}\)</span> d’ordre quelconque est dit <strong>tenseur du plan <span class="math inline">\(π\)</span></strong> si toutes ses composantes sont dans le plan <span class="math inline">\(π\)</span>. Le tenseur <span class="math inline">\(\tens{a}\)</span> défini ci-dessus est bien un tenseur du plan <span class="math inline">\(π\)</span>, puisque <span class="math inline">\(\tens{a} ⋅ \vec{n} = \vec{n} ⋅ \tens{a} = \vec{0}\)</span>. De plus, on a <span class="math inline">\(\tens{a} ⋅ \vec{v} = \vec{v}\)</span> pour tout <span class="math inline">\(\vec{v} ∈ π\)</span>&nbsp;: le tenseur <span class="math inline">\(\tens{a}\)</span> sera appelé dans ce cours <strong>identité du plan tangent</strong>.</p>
+<section id="plans-de-lespace" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="plans-de-lespace"><span class="header-section-number">5.1</span> Plans de l’espace</h2>
 </section>
-<section id="tenseur-antisymétrique-fondamental" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="tenseur-antisymétrique-fondamental"><span class="header-section-number">3.1.2</span> Tenseur antisymétrique fondamental</h3>
-<p>On introduit maintenant le <strong>tenseur antisymétrique fondamental <span class="math inline">\(\tens{e}\)</span></strong>, très utile pour calculer des produits vectoriels dans le plan <span class="math inline">\(π\)</span>. On observe tout d’abord que l’application linéaire <span class="math inline">\(\vec{v} \mapsto \vec{v} \wedge \vec{n}\)</span> est un <strong>endomorphisme de l’espace</strong>. Soit <span class="math inline">\(\tens{e}\)</span> le tenseur associé, défini par la relation <span id="eq-20230214051407"><span class="math display">\[
-\tens{e} ⋅ \vec{v} = \vec{v} \wedge \vec{n} \quad \text{pour tout } \vec{v} ∈ ℝ^3.
-\tag{3.1}\]</span></span></p>
-<p>Le tenseur <span class="math inline">\(\tens{e}\)</span> ainsi défini est un <strong>tenseur du plan, antisymétrique</strong> <span class="math display">\[
-\tens{e} ⋅ \vec{n} = \vec{n} ⋅ \tens{e} = \vec{0}, \quad
-\tens{e}^\transpose = -\tens{e} \quad \text{et} \quad
-\tens{e} ⋅ \tens{e} = -\tens{a}.
-\]</span>.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<section id="surfaces-paramétrées" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="surfaces-paramétrées"><span class="header-section-number">5.2</span> Surfaces paramétrées</h2>
+</section>
+<section id="sec-20230515105841" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="sec-20230515105841"><span class="header-section-number">5.3</span> Courbure des surfaces</h2>
+<section id="tenseur-de-courbure" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="tenseur-de-courbure"><span class="header-section-number">5.3.1</span> Tenseur de courbure</h3>
+<p>Soient <span class="math inline">\(\point{m}\)</span> un point régulier d’une surface <span class="math inline">\(ς\)</span> et <span class="math inline">\(\vec{t}\)</span> un vecteur unitaire, tangent à <span class="math inline">\(ς\)</span> en <span class="math inline">\(\point{m}\)</span>. Le point <span class="math inline">\(\point{m}\)</span> et les vecteurs <span class="math inline">\(\vec{t}\)</span> et <span class="math inline">\(\vec{n}(\point{m})\)</span> définissent un plan <span class="math inline">\(π\)</span> qui rencontre la surface <span class="math inline">\(ς\)</span> le long de la courbe <span class="math inline">\(γ\)</span> (voir <a href="#fig-20230219200134">Figure&nbsp;<span>5.1</span></a>). Cette courbe est une courbe plane, puisqu’elle est par construction contenue dans le plan <span class="math inline">\(π\)</span>. Sa courbure en <span class="math inline">\(\point{m}\)</span> est donc une notion connue (voir <a href="rappels_de_geometrie_differentielle.html#sec-20230214055209"><span>§&nbsp;A.2</span></a>).</p>
+<div id="fig-20230219200134" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="asy/fig20230219200134.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;5.1: Le plan <span class="math inline">\(π\)</span>, passant par <span class="math inline">\(\point{m} ∈ ς\)</span> et contenant la normale <span class="math inline">\(\vec n(\point{m})\)</span> ainsi que le vecteur <span class="math inline">\(\vec{t} ∈ \mathcal{T}(\point{m}, ς)\)</span> donné, rencontre la surface <span class="math inline">\(ς\)</span> le long de la courbe <span class="math inline">\(γ\)</span>. La courbure de <span class="math inline">\(γ\)</span> en <span class="math inline">\(\point{m}\)</span> est <span class="math inline">\(\vec{t} ⋅ \tens{b} ⋅ \vec{t}\)</span>.</figcaption>
+</figure>
+</div>
+<p>Si la surface <span class="math inline">\(ς\)</span> est suffisamment régulière en <span class="math inline">\(\point{m}\)</span>, alors on il existe un tenseur <span class="math inline">\(\tens{b}(\point{m})\)</span> tel que la courbure de <span class="math inline">\(γ\)</span> au point <span class="math inline">\(\point{m}\)</span> soit donnée par l’expression&nbsp;: <span class="math inline">\(\vec{t} ⋅ \tens{b}(\point{m}) ⋅ \vec{t}\)</span>. Le tenseur <span class="math inline">\(\tens{b}(\point{m})\)</span> ainsi introduit est le <strong>tenseur de courbure de la surface <span class="math inline">\(ς\)</span> au point <span class="math inline">\(\point{m}\)</span></strong>. C’est un tenseur du plan tangent en <span class="math inline">\(\point{m}\)</span>, symétrique.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Démonstration
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>On considère tout d’abord deux vecteurs quelconques de l’espace <span class="math inline">\(\vec{v}, \vec{w} ∈ ℝ^3\)</span> <span class="math display">\[
-\vec{u} ⋅ \bigl( \tens{e} ⋅ \vec{v} \bigr) = \vec{u} ⋅ \bigl( \vec{v} \wedge \vec{n} \bigr) = - \vec{v} ⋅ \bigl( \vec{u} \wedge \vec{n} \bigr) = - \bigl( \tens{e} ⋅ \vec{u} \bigr) ⋅ \vec{v},
-\]</span> et <span class="math inline">\(\tens{e}\)</span> est donc bien un tenseur antisymétrique. On montre ensuite qu’il s’agit d’un tenseur du plan <span class="math inline">\(π\)</span>. Par définition [voir Éq.&nbsp;(<a href="#eq-20230214051407"><span>3.1</span></a>)] <span class="math display">\[
-\tens{e} ⋅ \vec{n} = \vec{n} \wedge \vec{n} = \vec{0},
-\]</span> puis, en utilisant la propriété d’antisymétrie démontrée ci-dessus <span class="math display">\[
-\vec{n} ⋅ \tens{e} = \tens{e}^\transpose ⋅ \vec{n} = -\tens{e} ⋅ \vec{n} = \vec{0},
-\]</span> ce qui montre que <span class="math inline">\(\tens{e}\)</span> est bien un tenseur du plan <span class="math inline">\(π\)</span>. Enfin, la propriété <span class="math inline">\(\tens{e} ⋅ \tens{e} = -\tens{a}\)</span> résulte de la formule du double produit vectoriel. Pour prouver cette formule, on considère tout d’abord un vecteur <span class="math inline">\(\vec{v}\)</span> du plan <span class="math inline">\(π\)</span> (<span class="math inline">\(\vec{v} ⋅ \vec{n} = \vec{0}\)</span>). Alors <span class="math display">\[
-\bigl( \tens{e} ⋅ \tens{e} \bigr) ⋅ \vec{v} = \tens{e} ⋅ \bigl( \tens{e} ⋅ \vec{v} \bigr) = \bigl( \vec{v} \wedge \vec{n} \bigr) \wedge \vec{n} = \bigl( \vec{v} ⋅ \vec{n} \bigl) \, \vec{n} - \bigl( \vec{n} ⋅ \vec{n} \bigr) \, \vec{v} = -\vec{v}.
-\]</span></p>
-<p>Comme par ailleurs, <span class="math inline">\(\bigl( \tens{e} ⋅ \tens{e} \bigr) ⋅ \vec{n} = \vec{0}\)</span>, on en déduit bien la relation annoncée pour tout vecteur de l’espace.</p>
-</div>
-</div>
-</div>
-<p>Dans une base orthonormée directe <span class="math inline">\((\vec{e}_1, \vec{e}_2)\)</span> du plan <span class="math inline">\(π\)</span>, les composantes <span class="math inline">\(e_{αβ}\)</span> du tenseur antisymétrique fondamental sont <span class="math display">\[
-e_{αβ} = \vec{e}_α ⋅ \tens{e} ⋅ \vec{e}_β
-= \vec{e}_α ⋅ \bigl( \vec{e}_β \wedge \vec{n} \bigr)
-= \vec{n} ⋅ \bigl( \vec{e}_α \wedge \vec{e}_β \bigr),
-\quad\text{soit}\quad
-e_{αβ}=\begin{bmatrix}0&amp;1\\-1&amp;0\end{bmatrix}.
-\]</span></p>
-<p>En conséquence, pour tout tenseur <span class="math inline">\(\tens{T}\)</span> d’ordre 2 du plan <span class="math inline">\(π\)</span>, <span class="math inline">\(\tens{T} \dbldot \tens{e} = T_{αβ} \, e_{αβ} = T_{12} - T_{21}\)</span>, soit <span id="eq-20230210104820"><span class="math display">\[
-\asym\tens{T} =\tfrac12 \bigl( \tens{T} - \tens{T}^\transpose \bigr)
-= \tfrac12 \bigl( \tens{T} \dbldot \tens{e} \bigr) \, \tens{e},
-\tag{3.2}\]</span></span> d’où l’on déduit en particulier que <strong><span class="math inline">\(\tens{T}\)</span> est symétrique si, et seulement si <span class="math inline">\(\tens{T} \dbldot \tens{e} = 0\)</span></strong>. Inversement, si <span class="math inline">\(\tens{T}\)</span> est antisymétrique, il coïncide avec sa partie antisymétrique, et l’équation (<a href="#eq-20230210104820"><span>3.2</span></a>) montre que <strong><span class="math inline">\(\tens{T}\)</span> est proportionnel à <span class="math inline">\(\tens{e}\)</span></strong>.</p>
-<p>Finalement, la formule suivante est valable pour tous vecteurs <span class="math inline">\(\vec{v}\)</span> et <span class="math inline">\(\vec{w}\)</span> de l’espace <span id="eq-20230210105758"><span class="math display">\[
-\vec{v} \wedge \vec{w} = \bigl( \vec{v} ⋅ \tens{e} ⋅ \vec{w} \bigr) \vec{n}
-+ \bigl( \vec{w} ⋅ \vec{n} \bigr) \, \bigl( \tens{e} ⋅ \vec{v} \bigr)
-- \bigl( \vec{v} ⋅ \vec{n} \bigr) \, \bigl(\tens{e} ⋅ \vec{w}\bigr).
-\tag{3.3}\]</span></span></p>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Démonstration
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>On considère tout d’abord deux vecteurs <span class="math inline">\(\vec{v}\)</span> et <span class="math inline">\(\vec{w}\)</span> du plan <span class="math inline">\(π\)</span>&nbsp;; leur produit vectoriel est perpendiculaire à <span class="math inline">\(π\)</span>. En d’autres termes, <span class="math inline">\(\vec{v} \wedge \vec{w}\)</span> est porté par la normale <span class="math inline">\(\vec{n}\)</span>, donc <span class="math display">\[
-\vec{v} \wedge \vec{w} = \bigl[ \vec{n} ⋅ \bigl( \vec{v} \wedge \vec{w} \bigr) \bigr] \vec{n}
-= \bigl[ \vec{v} ⋅ \bigl( \vec{w} \wedge \vec{n} \bigr) \bigr] \vec{n}
-= \bigl[ \vec{v} ⋅ \bigl( \tens{e} ⋅ \vec{w} \bigr) \bigr] \vec{n}
-= \bigl( \vec{v} ⋅ \tens{e} ⋅ \vec{w} \bigr) \vec{n}.
-\]</span></p>
-<p>La relation générale (<a href="#eq-20230210105758"><span>3.3</span></a>) est alors obtenue en écrivant les vecteurs quelconques <span class="math inline">\(\vec{v}\)</span> et <span class="math inline">\(\vec{w}\)</span> comme la somme de leurs composantes dans le plan et hors-plan <span class="math display">\[
-\vec{v} = \tens{a} ⋅ \vec{v} + \bigl( \vec{v} ⋅ \vec{n} \bigr) \, \vec{n}
-\quad \text{et} \quad
-\vec{w} = \tens{a} ⋅ \vec{w} + \bigl( \vec{w} ⋅ \vec{n} \bigr) \, \vec{n}.
-\]</span></p>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="surfaces-paramétrées" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="surfaces-paramétrées"><span class="header-section-number">3.2</span> Surfaces paramétrées</h2>
-<section id="définition" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="définition"><span class="header-section-number">3.2.1</span> Définition</h3>
-<p>Une surface paramétrée <span class="math inline">\(ς\)</span> de l’espace <span class="math inline">\(ℝ^3\)</span> est l’ensemble des points <span class="math inline">\(\point{m} = \point{f}(ξ, η)\)</span> de <span class="math inline">\(ℝ^3\)</span> images par l’application <span class="math inline">\(\point{f} \colon \mathcal{D} \longrightarrow ℝ^3\)</span> <span class="math display">\[
-ς = \point{f}(\mathcal{D}) = \bigl\{ \point{m} ∈ ℝ^d | \exists (ξ, η) ∈ \mathcal{D}: \point{m} = \point{f}(ξ, η) \bigr\}.
-\]</span> (voir figure <a href="#fig-20230218105342">Figure&nbsp;<span>3.1</span></a>).</p>
-<p>Dans la définition ci-dessus, <span class="math inline">\(\mathcal{D} ⊂ ℝ^2\)</span> est un ouvert de <strong>l’espace des paramètres <span class="math inline">\(ξ\)</span> et <span class="math inline">\(η\)</span></strong>. On supposera dans ce qui suit l’application <span class="math inline">\(\point{f}\)</span> suffisamment régulière pour que toutes les relations faisant intervenir <span class="math inline">\(\point{f}\)</span> et ses dérivées partielles aient un sens.</p>
-<div id="fig-20230218105342" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="asy/fig20230218105342.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3.1: La surface paramétrée <span class="math inline">\(ς\)</span></figcaption><p></p>
-</figure>
-</div>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Exemples à traiter en classe
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Cylindre, cône, sphère. Bien préciser les paramètres et leur domaine de définition.</p>
-</div>
-</div>
-</section>
-<section id="courbes-tracées-sur-une-surface" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="courbes-tracées-sur-une-surface"><span class="header-section-number">3.2.2</span> Courbes tracées sur une surface</h3>
-<p>Une courbe de l’espace est généralement définie par un paramétrage <span class="math inline">\(t ∈ ]a, b[ \mapsto \point{g}(t)\)</span> (voir <a href="rappels_de_geometrie_differentielle.html"><span>Annexe&nbsp;A</span></a>). L’intervalle <span class="math inline">\(]a, b[\)</span> étant ici fixé, on se donne deux applications <span class="math inline">\(X, Y \colon ]a, b[ \longrightarrow ℝ\)</span>, telles que <span class="math display">\[
-[X(t), Y(t)] ∈ \mathcal{D} \quad \text{pour tout }t ∈ ]a, b[.
-\]</span></p>
-<p>Le paramétrage <span class="math inline">\(t \mapsto \point{g}(t)\)</span> suivant définit alors une courbe <span class="math inline">\(\gamma = \point{g}(]a, b[)\)</span> de l’espace (voir <a href="#fig-20230218141233">Figure&nbsp;<span>3.2</span></a>) <span class="math display">\[
-\point{g}(t) = \point{f}[X(t), Y(t)].
-\]</span></p>
-<p>Pour tout <span class="math inline">\(t ∈ ]a, b[\)</span>, le point <span class="math inline">\(\point{g}(t)\)</span> est par construction contenu dans la surface <span class="math inline">\(ς\)</span>. On dit que <strong>la courbe <span class="math inline">\(γ\)</span> est tracée sur la surface <span class="math inline">\(ς\)</span></strong>.</p>
-<div id="fig-20230218141233" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="asy/fig20230218141233.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3.2: Courbe tracée sur la surface <span class="math inline">\(ς\)</span></figcaption><p></p>
-</figure>
-</div>
-</section>
-<section id="plan-tangent" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="plan-tangent"><span class="header-section-number">3.2.3</span> Plan tangent</h3>
-<p>La notion de plan tangent est essentielle en théorie des coques, puisque la plupart des objets tensoriels que nous considèrerons vivent dans le plan tangent à la configuration initiale ou actuelle. Le plan tangent est défini comme le plan engendré par l’ensemble des vecteurs tangents à la surface en un point donné de celle-ci. On voit qu’il faut donc d’abord définir la notion de vecteur tangent.</p>
-<p>Soient <span class="math inline">\(\point{m} = \point{f}(ξ, η)\)</span> un point de la surface <span class="math inline">\(ς\)</span> et <span class="math inline">\(\vec{v} ∈ ℝ^3\)</span> un vecteur. On dit que le vecteur <span class="math inline">\(\vec{v}\)</span> est <strong>tangent à la surface <span class="math inline">\(ς\)</span> au point <span class="math inline">\(\point{m}\)</span></strong> s’il existe une courbe <span class="math inline">\(γ\)</span> tracée sur <span class="math inline">\(ς\)</span> et passant par <span class="math inline">\(\point{m}\)</span>, telle que <span class="math inline">\(\vec{v}\)</span> soit tangent à la courbe <span class="math inline">\(γ\)</span> au point <span class="math inline">\(\point{m}\)</span>. On peut alors montrer que l’ensemble <span class="math inline">\(\mathcal{T}(\point{m}, ς)\)</span> formé par les vecteurs tangents en <span class="math inline">\(\point{m}\)</span> à <span class="math inline">\(ς\)</span> est le plan engendré par les vecteurs <span class="math inline">\(\vec{a}_ξ\)</span> et <span class="math inline">\(\vec{a}_η\)</span> suivants (voir <a href="#fig-20230219133503">Figure&nbsp;<span>3.3</span></a>) <span class="math display">\[
-\vec{a}_ξ(ξ, η) = ∂_ξ \point{f}(ξ, η)
-\quad \text{et} \quad
-\vec{a}_η(ξ, η) = ∂_η \point{f}(ξ, η).
-\]</span></p>
-<div id="fig-20230219133503" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="asy/fig20230219133503.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3.3: Le plan tangent en <span class="math inline">\(\point{m}\)</span> est engendré par les vecteurs <span class="math inline">\(\vec{a}_ξ\)</span> et <span class="math inline">\(\vec{a}_η\)</span>. Il contient tous les vecteurs tangents en <span class="math inline">\(\point{m}\)</span> à des courbes tracées sur la surface <span class="math inline">\(ς\)</span>.</figcaption><p></p>
-</figure>
-</div>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Démonstration
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Soit <span class="math inline">\(\vec{v} ∈ \mathcal{T}(\point{m}, ς)\)</span> l’un de ces vecteurs. Alors par définition, il existe <span class="math inline">\(a &lt; b\)</span> et <span class="math inline">\(X, Y \colon [a, b] \longrightarrow ℝ\)</span> tels que le vecteur <span class="math inline">\(\vec{v}\)</span> soit tangent au point <span class="math inline">\(\point{m}\)</span> à la courbe <span class="math inline">\(\Gamma\)</span>, définie par le paramétrage <span class="math inline">\(t \mapsto \point{g}(t) = \point{f}[X(t), Y(t)]\)</span>. Quitte à changer de paramètre <span class="math inline">\(t\)</span>, on peut toujours supposer que <span class="math inline">\(a = -ϵ &lt; 0\)</span>, <span class="math inline">\(b = ϵ &gt; 0\)</span> et que <span class="math inline">\(γ\)</span> passe par <span class="math inline">\(\point{m}\)</span> en <span class="math inline">\(t = 0\)</span> <span class="math display">\[
-X(0) = ξ, \quad Y(0) = η \quad \text{et} \quad \point{g}(0) = \point{f}(ξ, η) = \point{m}.
-\]</span></p>
-<p>La direction tangente à <span class="math inline">\(γ\)</span> en <span class="math inline">\(\point{m}\)</span> est alors donnée par <span class="math inline">\(\dot{\point{g}}(0)\)</span>, soit en utilisant la règle de dérivation des fonctions composées <span class="math display">\[
-\begin{aligned}
-\dot{\point{g}}(0)
-&amp;= \dot{X}(0) \, ∂_ξ\point{f}[X(0), Y(0)] + \dot{Y}(0) \, ∂_η\point{f}[X(0), Y(0)]\\
-&amp;= \dot{X}(0) \, ∂_ξ\point{f}(ξ, η) + \dot{Y}(0) \, ∂_η\point{f}(ξ, η).
-\end{aligned}
-\]</span></p>
-<p>Puisque <span class="math inline">\(\vec{v}\)</span> est tangent à <span class="math inline">\(γ\)</span> en <span class="math inline">\(\point{m}\)</span>, il est proportionnel au vecteur précédent et on a montré que <strong>tout vecteur tangent en <span class="math inline">\(\point{m}\)</span> à <span class="math inline">\(ς\)</span> est une combinaison linéaire des vecteurs <span class="math inline">\(\vec{a}_ξ\)</span> et <span class="math inline">\(\vec{a}_η\)</span></strong>&nbsp;: <span class="math inline">\(\mathcal{T}(\point{m}, ς) ⊂ \Span(\vec{a}_ξ, \vec{a}_η)\)</span>.</p>
-<p>Inversement, soit <span class="math inline">\(\vec{v} = λ \, \vec{a}_ξ + μ \, \vec{a}_η\)</span> une combinaison linéaire de ces deux vecteurs. On définit alors <span class="math inline">\([X(t), Y(t)] = (ξ + t \, λ, η + t \, λ)\)</span>. Le domaine <span class="math inline">\(\mathcal{D}\)</span> étant ouvert, on peut trouver <span class="math inline">\(ϵ &gt; 0\)</span> tel que <span class="math inline">\([X(t), Y(t)] ∈ \mathcal{D}\)</span> pour tout <span class="math inline">\(t ∈ ]-ϵ, ϵ[\)</span>. En d’autres termes, <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span> définissent une courbe tracée sur <span class="math inline">\(γ\)</span>, passant par <span class="math inline">\(\point{m} = \point{f}(ξ, η)\)</span> en <span class="math inline">\(t = 0\)</span>. De plus, la direction tangente à <span class="math inline">\(γ\)</span> en <span class="math inline">\(\point{m}\)</span> est <span class="math display">\[
-\dot{g}(0) = λ \, \vec{a}_ξ + μ \, \vec{a}_η = \vec{v}.
-\]</span></p>
-<p>On a donc tracé sur <span class="math inline">\(ς\)</span> une courbe <span class="math inline">\(γ\)</span> telle que <span class="math inline">\(\vec{v}\)</span> soit tangent à <span class="math inline">\(γ\)</span> en <span class="math inline">\(\point{m}\)</span>&nbsp;: <span class="math inline">\(\vec{v}\)</span> est bien <strong>tangent</strong> à <span class="math inline">\(ς\)</span> et <strong>toute combinaison linéaire de <span class="math inline">\(\vec{a}_ξ\)</span> et <span class="math inline">\(\vec{a}_η\)</span> est un vecteur tangent en <span class="math inline">\(\point{m}\)</span> à <span class="math inline">\(ς\)</span></strong>&nbsp;: <span class="math inline">\(\Span(\vec{a}_ξ, \vec{a}_η) ⊂ \mathcal{T}(\point{m}, ς)\)</span>. CQFD.</p>
-</div>
-</div>
-</div>
-<p>Le point <span class="math inline">\(\point{m}\)</span> est un <strong>point régulier</strong> de <span class="math inline">\(ς\)</span> si ces deux vecteurs sont linéairement indépendants (<span class="math inline">\(\vec{a}_ξ \wedge \vec{a}_η = \vec{0}\)</span>). Dans ce cas, <span class="math inline">\(\mathcal{T}(\point{m}, ς)\)</span> est le <strong>plan tangent</strong> à <span class="math inline">\(ς\)</span> en <span class="math inline">\(\point{m}\)</span> et les vecteurs <span class="math inline">\(\vec{a}_ξ\)</span> et <span class="math inline">\(\vec{a}_η\)</span> forment la <strong>base locale naturelle</strong> associée au paramétrage <span class="math inline">\((ξ, η) \mapsto \point{f}(ξ, η)\)</span>.</p>
-<p>Si ces deux vecteurs sont colinéaires (<span class="math inline">\(\vec{a}_ξ \wedge \vec{a}_η = \vec{0}\)</span>), le point <span class="math inline">\(\point{m}\)</span> est un <strong>point singulier</strong>. Le plan tangent n’existe pas en un tel point.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>On peut montrer que le plan tangent ainsi mis en évidence ne dépend pas du choix du paramétrage&nbsp;: il est <strong>intrinsèque</strong>. L’écriture <span class="math inline">\(\mathcal{T}(\point{m}, ς)\)</span> [plutôt que <span class="math inline">\(\mathcal{T}(ξ, η, ς)\)</span>] est donc légitime.</p>
-</div>
-</div>
-</section>
-<section id="vecteur-normal" class="level3" data-number="3.2.4">
-<h3 data-number="3.2.4" class="anchored" data-anchor-id="vecteur-normal"><span class="header-section-number">3.2.4</span> Vecteur normal</h3>
-<p>En un point <span class="math inline">\(\point{m} = \point{f}(ξ, η)\)</span> régulier de la surface <span class="math inline">\(ς\)</span>, le vecteur <span class="math inline">\(\vec{a}_ξ \wedge \vec{a}_η\)</span> est perpendiculaire au plan tangent <span class="math inline">\(\mathcal{T}(\point{m}, ς)\)</span> (voir <a href="#fig-20230219133503">Figure&nbsp;<span>3.3</span></a>). On définit la <strong>normale unitaire à <span class="math inline">\(ς\)</span></strong> de la façon suivante <span id="eq-20230214053253"><span class="math display">\[
-\vec{n}(ξ, η) = \frac{\vec{a}_ξ(ξ, η) \wedge \vec{a}_η(ξ, η)}{\lVert \vec{a}_ξ(ξ, η) \wedge \vec{a}_η(ξ, η) \rVert},
-\tag{3.4}\]</span></span> où le dénominateur n’est pas nul puisque le point <span class="math inline">\(\point{m}\)</span> est régulier.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>La normale <span class="math inline">\(\vec{n}\)</span> oriente localement la surface puisqu’elle oriente son plan tangent <span class="math inline">\(\mathcal{T}(\point{m}, ς)\)</span> (au sens du <a href="#sec-20230213144828"><span>§&nbsp;3.1.1</span></a>). Cette orientation est néanmoins <strong>arbitraire</strong>. En effet, permuter l’ordre de <span class="math inline">\(ξ\)</span> et <span class="math inline">\(η\)</span> aurait conduit à une inversion du sens de <span class="math inline">\(\vec{n}\)</span> et donc de l’orientation du plan tangent.</p>
-</div>
-</div>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Puisque le plan tangent est une caractéristique intrinsèque de la surface, la direction normale l’est également. Bien que le vecteur normal <span class="math inline">\(\vec{n}\)</span> apparaisse dans l’éq.&nbsp;(<a href="#eq-20230214053253"><span>3.4</span></a>) comme une fonction de <span class="math inline">\(ξ\)</span> et <span class="math inline">\(η\)</span>, on préfèrera dans ce qui suit la notation <span class="math inline">\(\vec{n}(\point{m})\)</span>.</p>
-</div>
-</div>
-</section>
-<section id="extension-aux-surfaces-des-notions-introduites-au-sec-20230214053442" class="level3" data-number="3.2.5">
-<h3 data-number="3.2.5" class="anchored" data-anchor-id="extension-aux-surfaces-des-notions-introduites-au-sec-20230214053442"><span class="header-section-number">3.2.5</span> Extension aux surfaces des notions introduites au <a href="#sec-20230214053442"><span>§&nbsp;3.1</span></a></h3>
-<p>À chaque point <span class="math inline">\(\point{m}\)</span> de la surface est associé un unique plan tangent, <span class="math inline">\(\mathcal{T}(\point{m}, ς)\)</span>. Dans ce plan, on peut définir, comme au <a href="#sec-20230214053442"><span>§&nbsp;3.1</span></a>, l’identité du plan tangent <span class="math inline">\(\tens{a}\)</span> et le tenseur antisymétrique fondamental <span class="math inline">\(\tens{e}\)</span>. Ces deux tenseurs sont des champs (ils dépendent du point d’observation <span class="math inline">\(\point{m}\)</span> sur la surface <span class="math inline">\(ς\)</span>) <strong>intrinsèques</strong> (ils ne dépendent pas du choix de la représentation paramétrique de cette surface)</p>
-<p><span class="math display">\[
-\tens{a}(\point{m}) = \tens{I} - \vec{n}(\point{m}) ⊗ \vec{n}(\point{m})
-\quad \text{et} \quad
-\tens{e}(\point{m}) ⋅ \vec{v} = \vec{v} \wedge \vec{n}(\point{m}) \quad \text{pour tout } \vec{v} ∈ ℝ^3.
-\]</span></p>
-<p>Ces champs de tenseurs ont bien sûr les mêmes propriétés que leurs homologues introduits sur un plan fixe.</p>
-</section>
-<section id="représentation-cartésienne-locale-dune-surface" class="level3" data-number="3.2.6">
-<h3 data-number="3.2.6" class="anchored" data-anchor-id="représentation-cartésienne-locale-dune-surface"><span class="header-section-number">3.2.6</span> Représentation cartésienne locale d’une surface</h3>
-<p>Soit <span class="math inline">\(\point{m} ∈ ς\)</span> un point régulier de la surface <span class="math inline">\(ς\)</span> et <span class="math inline">\((\vec{e}_x, \vec{e}_y)\)</span> une base orthonormée de son plan tangent <span class="math inline">\(\mathcal{T}(\point{m}, ς)\)</span>. En posant <span class="math inline">\(\vec{e}_z = \vec{n}(\point{m})\)</span>, on construit ainsi un repère cartésien orthonormé de l’espace <span class="math inline">\((\point{m}, \vec{e}_x, \vec{e}_y, \vec{e}_z)\)</span>. Dans ce repère, il existe une fonction <span class="math inline">\(g(x, y)\)</span>, définie et dérivable au voisinage de l’origine <span class="math inline">\(\point{m} (\)</span>x = 0$, <span class="math inline">\(y = 0\)</span>), telle que l’équation cartésienne de la surface <span class="math inline">\(ς\)</span> s’écrive, au voisinage de <span class="math inline">\(\point{m}\)</span> <span class="math display">\[
-z = g(x, y) \quad \text{avec} \quad g(0, 0) = 0 \quad \text{et} \quad ∂_xg(0, 0) = ∂_yg(0, 0) = 0.
-\]</span></p>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Démonstration
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Soit <span class="math inline">\((ξ, η) \mapsto \point{f}(ξ, η)\)</span> un paramétrage de la surface <span class="math inline">\(ς\)</span>. On peut toujours supposer que <span class="math inline">\(\point{m} = \point{f}(0, 0)\)</span>. Soient <span class="math inline">\(φ_x\)</span> et <span class="math inline">\(φ_y\)</span> les fonctions définies de la façon suivante <span class="math display">\[
-φ_x(ξ, η) = \vec{e}_x ⋅ \tens{a}(\point{m}) ⋅ \altvec{\point{mm}'} \quad \text{et} \quad φ_y(ξ, η) = \vec{e}_y ⋅ \tens{a}(\point{m}) ⋅ \altvec{\point{mm}'}
-\]</span> où <span class="math inline">\(\point{m'} = \point{f}(ξ, η)\)</span> désigne un point voisin de <span class="math inline">\(\point{m}\)</span> sur la surface <span class="math inline">\(ς\)</span> et <span class="math inline">\(\tens{a}\)</span> est l’identité du plan tangent en <span class="math inline">\(\point{m}\)</span>. La base <span class="math inline">\((\vec{e}_x, \vec{e}_y, \vec{e}_z)\)</span> étant orthonormée, on remarque que <span class="math display">\[
-\tens{a} = \tens{I} - \vec{n} ⊗ \vec{n} = \vec{e}_x ⊗ \vec{e}_x + \vec{e}_y ⊗ \vec{e}_y + \vec{e}_z ⊗ \vec{e}_z - \vec{n} ⊗ \vec{n} = \vec{e}_x ⊗ \vec{e}_x + \vec{e}_y ⊗ \vec{e}_y,
-\]</span> puisque <span class="math inline">\(\vec{e}_z = \vec{n}\)</span> par construction. On définit alors la fonction <span class="math inline">\(φ\)</span> <span class="math display">\[
-φ(ξ, η) = \bigl[φ_x(ξ, η), φ_y(ξ, η)\bigr],
-\]</span> qui extrait les coordonnées dans le repère <span class="math inline">\((\point m, \vec e_x, \vec e_y)\)</span> de la projection orthogonale du point courant <span class="math inline">\(\point{m}'=\point{f}(ξ, η)\)</span> sur le plan tangent <span class="math inline">\(\mathcal{T}(\point{m}, ς)\)</span>. Le jacobien de <span class="math inline">\(φ\)</span> vaut <span class="math display">\[
-\begin{vmatrix}
-\vec{e}_x ⋅ \tens{a} ⋅ \vec{a}_{ξ}(ξ, η) &amp; \vec{e}_x ⋅ \tens{a} ⋅ \vec{a}_{η}(ξ, η)\\
-\vec{e}_y ⋅ \tens{a} ⋅ \vec{a}_{ξ}(ξ, η) &amp; \vec{e}_y ⋅ \tens{a} ⋅ \vec{a}_{η}(ξ, η)
-\end{vmatrix}
-= \vec{e}_z ⋅ \bigl[ \bigl( \tens{a} ⋅ \vec{a}_ξ(ξ, η) \bigr) \wedge \bigl( \tens{a} ⋅ \vec{a}_η(ξ, η) \bigr) \bigr]
-\]</span></p>
-<p>En <span class="math inline">\((ξ, η) = (0, 0)\)</span>, on a <span class="math inline">\(\tens{a} ⋅ \vec{a}_ξ(0, 0) = \vec{a}_ξ(0, 0)\)</span> et <span class="math inline">\(\tens{a} ⋅ \vec{a}_η(0, 0) = \vec{a}_η(0, 0)\)</span>. Le jacobien vaut donc <span class="math inline">\(\lVert \vec{a}_ξ(0, 0) \wedge \vec{a}_η(0, 0) \rVert\)</span>, qui est non-nul puisque <span class="math inline">\(\point{m}\)</span> est un point régulier. La différentielle de <span class="math inline">\(φ\)</span> est donc inversible en <span class="math inline">\((0, 0)\)</span>. Le théorème d’inversion locale garantit alors qu’on peut inverser localement au voisinage de <span class="math inline">\((ξ = 0, η = 0)\)</span> la fonction <span class="math inline">\(φ\)</span>. Soit <span class="math inline">\(ψ\)</span> son inverse&nbsp;; on a alors, pour tous <span class="math inline">\((x, y)\)</span> suffisamment petits&nbsp;: <span class="math inline">\(φ[ψ(x, y)] = (x, y)\)</span>. En d’autres termes <span class="math display">\[
-\tens{a} ⋅ \altvec{\point{mm}'} = x \, \vec{e}_x + y \, \vec{e}_y, \quad \text{avec} \quad \point m' = \point{f}[ψ(x, y)].
-\]</span></p>
-<p>On définit alors la fonction <span class="math inline">\(g(x, y)\)</span> <span class="math display">\[
-g(x, y) = \vec{e}_z ⋅ \altvec{\point{mm}'}, \quad \text{avec} \quad \point{m}'= \point{f}[ψ(x, y)].
-\]</span></p>
-<p>Comme <span class="math inline">\(\tens{a} + \vec{e}_z ⊗ \vec{e}_z = \tens I\)</span>, on obtient <span class="math display">\[
-\altvec{\point{mm}'} = x \, \vec{e}_x + y \, \vec{e}_y + g(x, y) \, \vec{e}_z,
-\]</span> pour tout point <span class="math inline">\(\point{m}'\)</span> de <span class="math inline">\(ς\)</span>, suffisamment proche de <span class="math inline">\(\point{m}\)</span>. On a donc bien construit localement une représentation cartésienne de la surface <span class="math inline">\(ς\)</span>. Bien sûr, lorsque <span class="math inline">\(x = y = 0\)</span>, le point <span class="math inline">\(\point{m}'\)</span> coïncide avec <span class="math inline">\(\point{m}\)</span>, donc <span class="math inline">\(g(0, 0) = 0\)</span>. Par ailleurs, puisque le plan tangent en <span class="math inline">\(\point{m}\)</span> à <span class="math inline">\(ς\)</span> est le plan <span class="math inline">\((\point{m}, \vec{e}_x, \vec{e}_y)\)</span>, on a également <span class="math inline">\(∂_x g(0, 0) = ∂_y g(0, 0) = 0\)</span>. Pour le voir, il suffit d’observer que l’on peut considérer les coordonnées <span class="math inline">\((x, y)\)</span> comme un paramétrage de la surface <span class="math inline">\(ς\)</span>. Ainsi, <span class="math inline">\(\point{g}(x, y)\)</span> est un point de <span class="math inline">\(ς\)</span> pour tous <span class="math inline">\(x, y\)</span> suffisamment petits, en posant <span class="math display">\[
-\point{g}(x, y)=\point{m} + x \, \vec{e}_x + y \, \vec{e}_y + g(x, y) \, \vec{e}_z.
-\]</span></p>
-<p>La base locale naturelle associée est <span class="math display">\[
-\vec{a}_x(x, y) = \vec{e}_x + ∂_x g(x, y) \, \vec{e}_z \quad \text{et} \quad \vec{a}_y(x, y) = \vec{e}_y + ∂_y g(x, y) \, \vec{e}_z.
-\]</span></p>
-<p>Les vecteurs <span class="math inline">\(\vec{a}_x(0, 0)\)</span> et <span class="math inline">\(\vec{a}_y(0, 0)\)</span> sont tangents à <span class="math inline">\(ς\)</span> en <span class="math inline">\(\point{m}\)</span>&nbsp;: ils sont donc contenus dans le plan tangent en <span class="math inline">\(\point{m}\)</span>, et leur composante selon <span class="math inline">\(\vec{e}_z\)</span> est nulle.</p>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="sec-20230515105841" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="sec-20230515105841"><span class="header-section-number">3.3</span> Courbure des surfaces</h2>
-<section id="tenseur-de-courbure" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="tenseur-de-courbure"><span class="header-section-number">3.3.1</span> Tenseur de courbure</h3>
-<p>Soient <span class="math inline">\(\point{m}\)</span> un point régulier d’une surface <span class="math inline">\(ς\)</span> et <span class="math inline">\(\vec{t}\)</span> un vecteur unitaire, tangent à <span class="math inline">\(ς\)</span> en <span class="math inline">\(\point{m}\)</span>. Le point <span class="math inline">\(\point{m}\)</span> et les vecteurs <span class="math inline">\(\vec{t}\)</span> et <span class="math inline">\(\vec{n}(\point{m})\)</span> définissent un plan <span class="math inline">\(π\)</span> qui rencontre la surface <span class="math inline">\(ς\)</span> le long de la courbe <span class="math inline">\(γ\)</span> (voir <a href="#fig-20230219200134">Figure&nbsp;<span>3.4</span></a>). Cette courbe est une courbe plane, puisqu’elle est par construction contenue dans le plan <span class="math inline">\(π\)</span>. Sa courbure en <span class="math inline">\(\point{m}\)</span> est donc une notion connue (voir <a href="rappels_de_geometrie_differentielle.html#sec-20230214055209"><span>§&nbsp;A.2</span></a>).</p>
-<div id="fig-20230219200134" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="asy/fig20230219200134.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3.4: Le plan <span class="math inline">\(π\)</span>, passant par <span class="math inline">\(\point{m} ∈ ς\)</span> et contenant la normale <span class="math inline">\(\vec n(\point{m})\)</span> ainsi que le vecteur <span class="math inline">\(\vec{t} ∈ \mathcal{T}(\point{m}, ς)\)</span> donné, rencontre la surface <span class="math inline">\(ς\)</span> le long de la courbe <span class="math inline">\(γ\)</span>. La courbure de <span class="math inline">\(γ\)</span> en <span class="math inline">\(\point{m}\)</span> est <span class="math inline">\(\vec{t} ⋅ \tens{b} ⋅ \vec{t}\)</span>.</figcaption><p></p>
-</figure>
-</div>
-<p>Si la surface <span class="math inline">\(ς\)</span> est suffisamment régulière en <span class="math inline">\(\point{m}\)</span>, alors on il existe un tenseur <span class="math inline">\(\tens{b}(\point{m})\)</span> tel que la courbure de <span class="math inline">\(γ\)</span> au point <span class="math inline">\(\point{m}\)</span> soit donnée par l’expression&nbsp;: <span class="math inline">\(\vec{t} ⋅ \tens{b}(\point{m}) ⋅ \vec{t}\)</span>. Le tenseur <span class="math inline">\(\tens{b}(\point{m})\)</span> ainsi introduit est le <strong>tenseur de courbure de la surface <span class="math inline">\(ς\)</span> au point <span class="math inline">\(\point{m}\)</span></strong>. C’est un tenseur du plan tangent en <span class="math inline">\(\point{m}\)</span>, symétrique.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Démonstration
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Pour établir l’existence du tenseur <span class="math inline">\(\tens{b}\)</span> au point <span class="math inline">\(\point{m} ∈ ς\)</span>, on considère une représentation cartésienne locale <span class="math inline">\((x, y) \mapsto g(x, y)\)</span> de la surface au voisinage de <span class="math inline">\(\point{m}\)</span>. Ainsi tout point <span class="math inline">\(\point{m}'\)</span> suffisamment proche de <span class="math inline">\(\point{m}\)</span> sur <span class="math inline">\(ς\)</span> s’écrit <span class="math display">\[
 \point{m}' = \point{m} + x \, \vec{e}_x + y \, \vec{e}_y + g(x, y) \, \vec{e}_z ∈ ς,
@@ -558,11 +299,11 @@ Démonstration
 x = r \, t_x, \quad y = r \, t_y \quad \text{et} z = g(r \, t_x, r \, t_y),
 \]</span> où le (petit) paramètre est <span class="math inline">\(r\)</span>. Les dérivées premières de <span class="math inline">\(g\)</span> étant nulles, on obtient à l’ordre le plus bas en r <span id="eq-20230214084729"><span class="math display">\[
 z = g(r \, t_x, r \, t_y) = \frac{r^2}{2} \, \bigl[ t_x^2 \, ∂_{xx}^2 g(0, 0) +2t_x \, t_y \, ∂_{xy}^2g(0, 0) + t_y^2 \, ∂_{yy}^2g(0, 0) \bigr] + o\bigl( r^2 \bigr).
-\tag{3.5}\]</span></span></p>
+\tag{5.1}\]</span></span></p>
 <p>Soit <span class="math inline">\(\tens{b}\)</span> la <strong>hessienne</strong> de <span class="math inline">\(g\)</span> à l’origine <span class="math display">\[
 \tens{b} = ∂_{αβ}^2 g(0, 0) \, \vec{e}_α ⊗ \vec{e}_β.
 \]</span></p>
-<p>Le tenseur <span class="math inline">\(\tens{b}\)</span> ainsi défini est un tenseur du plan tangent <span class="math inline">\(\mathcal{T}(\point{m}, ς)\)</span>, symétrique. De plus, l’équation (<a href="#eq-20230214084729"><span>3.5</span></a>) se met sous la forme <span class="math display">\[
+<p>Le tenseur <span class="math inline">\(\tens{b}\)</span> ainsi défini est un tenseur du plan tangent <span class="math inline">\(\mathcal{T}(\point{m}, ς)\)</span>, symétrique. De plus, l’équation (<a href="#eq-20230214084729"><span>5.1</span></a>) se met sous la forme <span class="math display">\[
 z = \frac{r^2}{2} \, \vec{t} ⋅ \tens{b} ⋅ \vec{t} + o\bigl( r^2 \bigr).
 \]</span></p>
 <p>On reconnaît, dans la base cartésienne <span class="math inline">\((\vec{t}, \vec{e}_z)\)</span> du plan <span class="math inline">\(π\)</span>, l’équation d’une parabole et le terme en <span class="math inline">\(r^2 / 2\)</span> correspond à la courbure au sommet de cette parabole (soit, au point <span class="math inline">\(\point{m}\)</span>). On a donc bien mis la courbure de <span class="math inline">\(γ\)</span> en <span class="math inline">\(\point{m}\)</span> sous la forme <span class="math inline">\(\vec{t} ⋅ \tens{b} ⋅ \vec{t}\)</span>, où <span class="math inline">\(\tens{b}\)</span> est la hessienne de <span class="math inline">\(g\)</span> à l’origine.</p>
@@ -571,20 +312,20 @@ z = \frac{r^2}{2} \, \vec{t} ⋅ \tens{b} ⋅ \vec{t} + o\bigl( r^2 \bigr).
 </div>
 </div>
 </section>
-<section id="courbures-principales-et-classification-des-points-réguliers" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="courbures-principales-et-classification-des-points-réguliers"><span class="header-section-number">3.3.2</span> Courbures principales et classification des points réguliers</h3>
+<section id="courbures-principales-et-classification-des-points-réguliers" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="courbures-principales-et-classification-des-points-réguliers"><span class="header-section-number">5.3.2</span> Courbures principales et classification des points réguliers</h3>
 <p>Le tenseur de courbure <span class="math inline">\(\tens{b}\)</span> étant symétrique, il est diagonalisable dans une base orthonormée du plan tangent <span class="math inline">\(\mathcal{T}(\point{m}, ς)\)</span> et on peut introduire les <strong>courbures principales</strong> <span class="math inline">\(b_{\mathrm{I}}\)</span> et <span class="math inline">\(b_{\mathrm{II}}\)</span>, qui sont les valeurs propres de ce tenseur. On conviendra d’ordonner ces valeurs propres de façon à ce que <span class="math inline">\(b_{\mathrm{I}} \leq b_{\mathrm{II}}\)</span>. Les courbures principales sont les valeurs extrêmes de la courbure en <span class="math inline">\(\point{m}\)</span> de la courbe plane <span class="math inline">\(γ\)</span> introduite ci-dessus.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Démonstration
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Pour montrer ce résultat, on introduit les directions principales de courbure <span class="math inline">\(\vec{t}_{\mathrm{I}}\)</span> et <span class="math inline">\(\vec{t}_{\mathrm{II}}\)</span> (vecteurs unitaires orthogonaux), de sorte que <span class="math display">\[
 \tens{b} = b_{\mathrm{I}} \, \vec{t}_{\mathrm{I}} ⊗ \vec{t}_{\mathrm{I}} + b_{\mathrm{II}} \, \vec{t}_{\mathrm{II}} ⊗ \vec{t}_{\mathrm{II}}.
@@ -596,12 +337,12 @@ Démonstration
 </div>
 </div>
 <p>Comme pour une courbe plane, le signe des courbures principales <strong>dépend de l’orientation de <span class="math inline">\(ς\)</span></strong> (de la normale <span class="math inline">\(\vec{n}\)</span>). Les produits <span class="math inline">\(b_{\mathrm{I}} \, \vec{n}\)</span> et <span class="math inline">\(b_{\mathrm{II}} \, \vec{n}\)</span> sont quant à eux intrinsèques et indiquent de quel côté la surface oriente sa courbure. En effet les deux centres de courbure associés aux courbures principales sont situé en <span class="math inline">\(\point{m} + \vec{n} / b_{\mathrm{I}}\)</span> et <span class="math inline">\(\point{m} + \vec{n} / b_{\mathrm{II}}\)</span>.</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Exemples à traiter en classe
 </div>
 </div>
@@ -618,8 +359,8 @@ Exemples à traiter en classe
 <li>Si les deux courbures principales sont égales et non-nulles, le tenseur de courbure est diagonal et la courbure de la courbe <span class="math inline">\(γ\)</span> est indépendante du vecteur <span class="math inline">\(\vec{t}\)</span>&nbsp;; le point <span class="math inline">\(\point{m}\)</span> est un point <strong>ombilic</strong>.</li>
 </ul>
 </section>
-<section id="courbure-moyenne-courbure-gaussienne" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="courbure-moyenne-courbure-gaussienne"><span class="header-section-number">3.3.3</span> Courbure moyenne, courbure gaussienne</h3>
+<section id="courbure-moyenne-courbure-gaussienne" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="courbure-moyenne-courbure-gaussienne"><span class="header-section-number">5.3.3</span> Courbure moyenne, courbure gaussienne</h3>
 <p>Les courbures <strong>moyenne <span class="math inline">\(h\)</span></strong> et <strong>gaussienne <span class="math inline">\(k\)</span></strong> de la surface sont définies à partir des courbures principales <span class="math inline">\(b_{\mathrm{I}}\)</span> et <span class="math inline">\(b_{\mathrm{II}}\)</span> <span class="math display">\[
 h = \tfrac{1}{2} \, \bigl( b_{\mathrm{I}} + b_{\mathrm{II}} \bigr) \quad \text{et} \quad k = b_{\mathrm{I}} \, {b_\mathrm{II}}.
 \]</span></p>
@@ -661,9 +402,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -728,6 +483,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -769,13 +610,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./introduction.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      <a href="./transformations.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Transformations d’une coque</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./derivation_et_integration_sur_une_surface.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dérivation et intégration sur une surface</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Dérivation et intégration sur une surface</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

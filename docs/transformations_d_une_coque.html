@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -57,10 +57,12 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "correspondances de plus dans ce document",
     "search-clear-button-title": "Effacer",
     "search-detached-cancel-button-title": "Annuler",
-    "search-submit-button-title": "Envoyer"
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -69,11 +71,16 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Transformations d’une coque</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./transformations_d_une_coque.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Transformations d'une coque</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -81,80 +88,92 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Théorie des coques élastiques</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+        <div id="quarto-search" class="" title="Recherche"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Bienvenue</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Bienvenue</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  <a href="./introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./courbure_des_surfaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Courbure des surfaces</span></a>
+  <a href="./courbure_des_surfaces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Courbure des surfaces</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./derivation_et_integration_sur_une_surface.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dérivation et intégration sur une surface</span></a>
+  <a href="./derivation_et_integration_sur_une_surface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dérivation et intégration sur une surface</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./transformations_d_une_coque.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Transformations d’une coque</span></a>
+  <a href="./transformations_d_une_coque.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Transformations d’une coque</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./membranes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Membranes</span></a>
+  <a href="./membranes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Membranes</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./coques_en_equilibre_membranaire.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Coques en équilibre membranaire</span></a>
+  <a href="./coques_en_equilibre_membranaire.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Coques en équilibre membranaire</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./coques_en_flexion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Coques en flexion</span></a>
+  <a href="./coques_en_flexion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Coques en flexion</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./equations_d_equilibre_incrementales.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Équations d’équilibre incrémentales</span></a>
+  <a href="./equations_d_equilibre_incrementales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Équations d’équilibre incrémentales</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Annexes</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Annexes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Basculer la section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rappels_de_geometrie_differentielle.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Rappels de géométrie différentielle</span></a>
+  <a href="./rappels_de_geometrie_differentielle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Rappels de géométrie différentielle</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./complements_d_algebre_lineaire.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Compléments d’algèbre linéaire</span></a>
+  <a href="./complements_d_algebre_lineaire.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Compléments d’algèbre linéaire</span></span></a>
   </div>
 </li>
       </ul>
@@ -162,17 +181,18 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#points-matériels-2d" id="toc-points-matériels-2d" class="nav-link active" data-scroll-target="#points-matériels-2d"><span class="toc-section-number">5.1</span>  Points matériels 2D</a></li>
-  <li><a href="#coordonnées-matérielles-des-points-de-la-coque" id="toc-coordonnées-matérielles-des-points-de-la-coque" class="nav-link" data-scroll-target="#coordonnées-matérielles-des-points-de-la-coque"><span class="toc-section-number">5.2</span>  Coordonnées matérielles des points de la coque</a></li>
-  <li><a href="#déplacement" id="toc-déplacement" class="nav-link" data-scroll-target="#déplacement"><span class="toc-section-number">5.3</span>  Déplacement</a></li>
-  <li><a href="#transport-dun-vecteur-matériel" id="toc-transport-dun-vecteur-matériel" class="nav-link" data-scroll-target="#transport-dun-vecteur-matériel"><span class="toc-section-number">5.4</span>  Transport d’un vecteur matériel</a></li>
-  <li><a href="#déformations-membranaires-de-la-coque" id="toc-déformations-membranaires-de-la-coque" class="nav-link" data-scroll-target="#déformations-membranaires-de-la-coque"><span class="toc-section-number">5.5</span>  Déformations membranaires de la coque</a></li>
+  <li><a href="#points-matériels-2d" id="toc-points-matériels-2d" class="nav-link active" data-scroll-target="#points-matériels-2d"><span class="header-section-number">5.1</span> Points matériels 2D</a></li>
+  <li><a href="#coordonnées-matérielles-des-points-de-la-coque" id="toc-coordonnées-matérielles-des-points-de-la-coque" class="nav-link" data-scroll-target="#coordonnées-matérielles-des-points-de-la-coque"><span class="header-section-number">5.2</span> Coordonnées matérielles des points de la coque</a></li>
+  <li><a href="#déplacement" id="toc-déplacement" class="nav-link" data-scroll-target="#déplacement"><span class="header-section-number">5.3</span> Déplacement</a></li>
+  <li><a href="#transport-dun-vecteur-matériel" id="toc-transport-dun-vecteur-matériel" class="nav-link" data-scroll-target="#transport-dun-vecteur-matériel"><span class="header-section-number">5.4</span> Transport d’un vecteur matériel</a></li>
+  <li><a href="#déformations-membranaires-de-la-coque" id="toc-déformations-membranaires-de-la-coque" class="nav-link" data-scroll-target="#déformations-membranaires-de-la-coque"><span class="header-section-number">5.5</span> Déformations membranaires de la coque</a></li>
   </ul>
 </nav>
     </div>
@@ -181,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-20230314085944" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Transformations d’une coque</span></span></h1>
+<h1 class="title"><span id="sec-20230314085944" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Transformations d’une coque</span></span></h1>
 </div>
 
 
@@ -196,7 +216,6 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div>
 <p><span class="math display">\[
 \DeclareMathOperator{\asym}{\symbfsf{asym}}
 \newcommand{\altvec}[1]{\overrightarrow{#1}}
@@ -226,7 +245,6 @@ ul.task-list li input[type="checkbox"] {
 \newcommand{\transpose}{\mathsf{T}}
 \renewcommand{\vec}[1]{\symbf{#1}}
 \]</span></p>
-</div>
 <p>Une coque est une structure dont l’une des dimensions (<strong>l’épaisseur</strong>) est grande devant les deux autres. Il est alors naturel de chercher à décrire l’état de la coque par un ensemble de champs construits sur son <strong>feuillet de référence</strong> seulement. On construit ainsi une théorie surfacique de coque. La plus simple de ces théories est la théorie de Kirchhoff–Love, dans laquelle on suppose que l’état mécanique de la coque est complètement défini par les changements de géométrie de son feuillet de référence. Dans ce chapitre, on définit donc des grandeurs tensorielles permettant de mesurer ces changements de géométrie. On veillera à ce que les <strong>déformations généralisées</strong> ainsi définies permettent bien d’identifier les mouvements de corps solides.</p>
 <section id="points-matériels-2d" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="points-matériels-2d"><span class="header-section-number">5.1</span> Points matériels 2D</h2>
@@ -237,7 +255,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="fig-20230302052722" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="croquis/blanc.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;5.1: Un point matériel 2D correspond à un ensemble de points matériels 3D, tous situés initialement sur la même fibre. Le mouvement d’ensemble des points matériels 3D définit la translation du point matériel 2D&nbsp;; leur mouvement relatif définit deux rotations du point matériel 2D.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;5.1: Un point matériel 2D correspond à un ensemble de points matériels 3D, tous situés initialement sur la même fibre. Le mouvement d’ensemble des points matériels 3D définit la translation du point matériel 2D&nbsp;; leur mouvement relatif définit deux rotations du point matériel 2D.</figcaption>
 </figure>
 </div>
 </section>
@@ -257,7 +275,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="fig-20230302053622" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="croquis/blanc.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;5.2: On utilise les mêmes coordonnées curvilignes <span class="math inline">\(\xi\)</span> et <span class="math inline">\(\eta\)</span> pour paramétrer les configurations initiale <span class="math inline">\(\Sigma\)</span> et actuelle <span class="math inline">\(\varsigma\)</span>. Ces coordonnées curvilignes sont des coordonnées <strong>matérielles</strong>.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;5.2: On utilise les mêmes coordonnées curvilignes <span class="math inline">\(\xi\)</span> et <span class="math inline">\(\eta\)</span> pour paramétrer les configurations initiale <span class="math inline">\(\Sigma\)</span> et actuelle <span class="math inline">\(\varsigma\)</span>. Ces coordonnées curvilignes sont des coordonnées <strong>matérielles</strong>.</figcaption>
 </figure>
 </div>
 </section>
@@ -302,12 +320,12 @@ ul.task-list li input[type="checkbox"] {
 \tag{5.3}\]</span></span> ainsi que <span class="math display">\[
 \vec{A}_\xi^\ast \cdot \vec{N} = \vec{A}_\eta^\ast \cdot \vec{N} = 0.
 \]</span></p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -331,12 +349,12 @@ Note
 <p>L’application linéaire tangente <span class="math inline">\(\tens{F}\)</span> permet d’exprimer le transport d’un vecteur matériel entre les configurations initiale et actuelle à l’aide de la relation (<a href="#eq-20230301171229"><span>5.5</span></a>). Il joue donc le même rôle que le tenseur du même nom de la mécanique des milieux continus. On prendra garde néanmoins au fait que <span class="math inline">\(\tens{F}\)</span> n’est pas un tenseur inversible de l’espace. En effet <span class="math display">\[
 \tens{F} \cdot \vec{N} = \vec{n} \cdot \tens{F} = \vec{0},
 \]</span> ce qui montre que <span class="math inline">\(\tens{F}\)</span> représente un endomorphisme du plan tangent <span class="math inline">\(\mathcal{T}(\point{M}, \Sigma)\)</span> vers le plan tangent <span class="math inline">\(\mathcal{T}(\point{m}, \varsigma)\)</span>.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -347,7 +365,7 @@ Note
 <div id="fig-20230302054334" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="croquis/blanc.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;5.3: L’application linéaire tangente <span class="math inline">\(\tens{F}\)</span> transporte le vecteur matériel <span class="math inline">\((\D\xi, \D\eta)\)</span> de la configuration initiale (<span class="math inline">\(\D\altvec{\point{M}}\)</span>) vers la configuration actuelle (<span class="math inline">\(\D\altvec{\point{m}}\)</span>).</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;5.3: L’application linéaire tangente <span class="math inline">\(\tens{F}\)</span> transporte le vecteur matériel <span class="math inline">\((\D\xi, \D\eta)\)</span> de la configuration initiale (<span class="math inline">\(\D\altvec{\point{M}}\)</span>) vers la configuration actuelle (<span class="math inline">\(\D\altvec{\point{m}}\)</span>).</figcaption>
 </figure>
 </div>
 </section>
@@ -381,12 +399,12 @@ Note
 \tag{5.7}\]</span></span> de sorte que <span class="math display">\[
 \D\altvec{\point{M}}_1 \cdot \tens{E} \cdot \D\altvec{\point{M}}_2 = \tfrac{1}{2} \bigl( \D\altvec{\point{m}}_1 \cdot \D\altvec{\point{m}}_2 - \D\altvec{\point{M}}_1 \cdot \D\altvec{\point{M}}_2 \bigr).
 \]</span></p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -397,7 +415,7 @@ Note
 <div id="fig-20230302055151" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="croquis/blanc.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;5.4: Le transport de deux vecteurs matériels construits au même point permet de définir le tenseur des déformations membranaires.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;5.4: Le transport de deux vecteurs matériels construits au même point permet de définir le tenseur des déformations membranaires.</figcaption>
 </figure>
 </div>
 
@@ -432,9 +450,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -499,6 +531,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
