@@ -9,7 +9,6 @@
   numbers=noendperiod]{scrreprt}
 
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -19,6 +18,10 @@
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
   \setmainfont[]{TeX Gyre Pagella}
   \setmathfont[]{Asana Math}
 \fi
@@ -107,7 +110,7 @@
 }
 \KOMAoption{captions}{tableheading}
 \makeatletter
-\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
 \@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
 \definecolor{quarto-callout-color}{HTML}{909090}
 \definecolor{quarto-callout-note-color}{HTML}{0758E5}
@@ -167,10 +170,12 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 \makeatletter
-\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
 \makeatother
 \makeatletter
 \@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
 \makeatother
 \makeatletter
 \makeatother
@@ -202,11 +207,11 @@
 
 \title{Théorie des coques élastiques}
 \author{Sébastien Brisard}
-\date{11/04/2023}
+\date{2023-09-06}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, frame hidden, sharp corners, breakable, borderline west={3pt}{0pt}{shadecolor}, enhanced, boxrule=0pt]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, enhanced, frame hidden, borderline west={3pt}{0pt}{shadecolor}, interior hidden, boxrule=0pt, sharp corners]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table des matières}
 {
@@ -230,29 +235,37 @@ visit \url{http://creativecommons.org/licenses/by/4.0/}.
 
 \bookmarksetup{startatroot}
 
-\hypertarget{courbure-des-surfaces}{%
-\chapter{Courbure des surfaces}\label{courbure-des-surfaces}}
+\hypertarget{outils-mathuxe9matiques}{%
+\chapter{🔧 Outils mathématiques}\label{outils-mathuxe9matiques}}
 
-Dans ce chapitre, on introduit les notions fondamentales suivantes~:
-surface paramétrée, base locale naturelle, vecteur normal, tenseur
-identité du plan tangent, tenseur antisymétrique fondamental, tenseur de
-courbure. Ces notions seront utilisées dans les chapitres suivants pour
-construire la théorie des coques de Kirchhoff--Love.
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{@sec-20230214053442}{Plans de l'espace}
+\item
+  \href{@sec-20230906085507}{Surfaces paramétrées}
+\end{enumerate}
+
+\bookmarksetup{startatroot}
+
+\hypertarget{transformations-dune-coque}{%
+\chapter{Transformations d'une coque}\label{transformations-dune-coque}}
+
+\hypertarget{introduction-1}{%
+\section{Introduction}\label{introduction-1}}
 
 \hypertarget{sec-20230214053442}{%
-\section{Plans de l'espace}\label{sec-20230214053442}}
+\section{🔧 Outils mathématiques~: Plans de
+l'espace}\label{sec-20230214053442}}
 
 Les plans constituent un cas particulier de surfaces de l'espace. Ils
 jouent un rôle central dans la théorie des coques, puisque les
 déformations et contraintes généralisées sont des tenseurs du
-\textbf{plan tangent}. C'est pourquoi on consacre en introduction à la
-théorie des surfaces un paragraphe aux simples plans (on trouvera des
-compléments à ce paragraphe au §~\ref{sec-20230213110532}). On considère
-donc ici un plan \(π ⊂ ℝ^3\) de l'espace.
-
-\hypertarget{sec-20230213144828}{%
-\subsection{Normale, identité du plan
-tangent}\label{sec-20230213144828}}
+\textbf{plan tangent}. C'est pourquoi on consacre un paragraphe aux
+simples plans (on trouvera des compléments à ce paragraphe au
+§~\ref{sec-20230213110532}). On considère ici un plan \(π ⊂ ℝ^3\) de
+l'espace.
 
 On peut définir deux normales unitaires au plan \(π\)~: on en choisit
 une, que l'on note \(\vec{n}\). Ce choix oriente le plan. En effet, une
@@ -271,10 +284,6 @@ on a \(\tens{a} ⋅ \vec{v} = \vec{v}\) pour tout \(\vec{v} ∈ π\)~: le
 tenseur \(\tens{a}\) sera appelé dans ce cours \textbf{identité du plan
 tangent}.
 
-\hypertarget{tenseur-antisymuxe9trique-fondamental}{%
-\subsection{Tenseur antisymétrique
-fondamental}\label{tenseur-antisymuxe9trique-fondamental}}
-
 On introduit maintenant le \textbf{tenseur antisymétrique fondamental
 \(\tens{e}\)}, très utile pour calculer des produits vectoriels dans le
 plan \(π\). On observe tout d'abord que l'application linéaire
@@ -291,7 +300,7 @@ antisymétrique} \[
 \tens{e} ⋅ \tens{e} = -\tens{a}.
 \].
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, colframe=quarto-callout-tip-color-frame, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 On considère tout d'abord deux vecteurs quelconques de l'espace
 \(\vec{v}, \vec{w} ∈ ℝ^3\) \[
@@ -346,7 +355,7 @@ Finalement, la formule suivante est valable pour tous vecteurs
 - \bigl( \vec{v} ⋅ \vec{n} \bigr) \, \bigl(\tens{e} ⋅ \vec{w}\bigr).
 }\label{eq-20230210105758}\end{equation}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, colframe=quarto-callout-tip-color-frame, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 On considère tout d'abord deux vecteurs \(\vec{v}\) et \(\vec{w}\) du
 plan \(π\)~; leur produit vectoriel est perpendiculaire à \(π\). En
@@ -368,8 +377,11 @@ somme de leurs composantes dans le plan et hors-plan \[
 
 \end{tcolorbox}
 
-\hypertarget{surfaces-paramuxe9truxe9es}{%
-\section{Surfaces paramétrées}\label{surfaces-paramuxe9truxe9es}}
+🔧 Prochain outil mathématique : §~\ref{sec-20230906085507}
+
+\hypertarget{sec-20230906085507}{%
+\section{🔧 Outils mathématiques~: surfaces
+paramétrées}\label{sec-20230906085507}}
 
 \hypertarget{duxe9finition}{%
 \subsection{Définition}\label{duxe9finition}}
@@ -388,7 +400,7 @@ partielles aient un sens.
 
 \begin{figure}
 
-{\centering \includegraphics{./asy/fig20230218105342.pdf}
+{\centering \includegraphics{asy/fig20230218105342.pdf}
 
 }
 
@@ -396,7 +408,7 @@ partielles aient un sens.
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Exemples à traiter en classe}, colbacktitle=quarto-callout-warning-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, colframe=quarto-callout-warning-color-frame, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Exemples à traiter en classe}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 Cylindre, cône, sphère. Bien préciser les paramètres et leur domaine de
 définition.
@@ -427,7 +439,7 @@ tracée sur la surface \(ς\)}.
 
 \begin{figure}
 
-{\centering \includegraphics{./asy/fig20230218141233.pdf}
+{\centering \includegraphics{asy/fig20230218141233.pdf}
 
 }
 
@@ -461,7 +473,7 @@ Figure~\ref{fig-20230219133503}) \[
 
 \begin{figure}
 
-{\centering \includegraphics{./asy/fig20230219133503.pdf}
+{\centering \includegraphics{asy/fig20230219133503.pdf}
 
 }
 
@@ -472,7 +484,7 @@ surface \(ς\).}
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, colframe=quarto-callout-tip-color-frame, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 Soit \(\vec{v} ∈ \mathcal{T}(\point{m}, ς)\) l'un de ces vecteurs. Alors
 par définition, il existe \(a < b\) et
@@ -533,7 +545,7 @@ Si ces deux vecteurs sont colinéaires
 un \textbf{point singulier}. Le plan tangent n'existe pas en un tel
 point.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 On peut montrer que le plan tangent ainsi mis en évidence ne dépend pas
 du choix du paramétrage~: il est \textbf{intrinsèque}. L'écriture
@@ -555,18 +567,18 @@ Figure~\ref{fig-20230219133503}). On définit la \textbf{normale unitaire
 }\label{eq-20230214053253}\end{equation} où le dénominateur n'est pas
 nul puisque le point \(\point{m}\) est régulier.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 La normale \(\vec{n}\) oriente localement la surface puisqu'elle oriente
 son plan tangent \(\mathcal{T}(\point{m}, ς)\) (au sens du
-§~\ref{sec-20230213144828}). Cette orientation est néanmoins
+\textbf{?@sec-20230213144828}). Cette orientation est néanmoins
 \textbf{arbitraire}. En effet, permuter l'ordre de \(ξ\) et \(η\) aurait
 conduit à une inversion du sens de \(\vec{n}\) et donc de l'orientation
 du plan tangent.
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 Puisque le plan tangent est une caractéristique intrinsèque de la
 surface, la direction normale l'est également. Bien que le vecteur
@@ -616,7 +628,7 @@ cartésienne de la surface \(ς\) s'écrive, au voisinage de \(\point{m}\)
 z = g(x, y) \quad \text{avec} \quad g(0, 0) = 0 \quad \text{et} \quad ∂_xg(0, 0) = ∂_yg(0, 0) = 0.
 \]
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, colframe=quarto-callout-tip-color-frame, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 Soit \((ξ, η) \mapsto \point{f}(ξ, η)\) un paramétrage de la surface
 \(ς\). On peut toujours supposer que \(\point{m} = \point{f}(0, 0)\).
@@ -684,8 +696,33 @@ Les vecteurs \(\vec{a}_x(0, 0)\) et \(\vec{a}_y(0, 0)\) sont tangents à
 
 \end{tcolorbox}
 
-\hypertarget{courbure-des-surfaces-1}{%
-\section{Courbure des surfaces}\label{courbure-des-surfaces-1}}
+\hypertarget{transformations-dune-surface}{%
+\section{Transformations d'une
+surface}\label{transformations-dune-surface}}
+
+\hypertarget{transformations-dune-coque-1}{%
+\section{Transformations d'une
+coque~?}\label{transformations-dune-coque-1}}
+
+\bookmarksetup{startatroot}
+
+\hypertarget{courbure-des-surfaces}{%
+\chapter{Courbure des surfaces}\label{courbure-des-surfaces}}
+
+Dans ce chapitre, on introduit les notions fondamentales suivantes~:
+surface paramétrée, base locale naturelle, vecteur normal, tenseur
+identité du plan tangent, tenseur antisymétrique fondamental, tenseur de
+courbure. Ces notions seront utilisées dans les chapitres suivants pour
+construire la théorie des coques de Kirchhoff--Love.
+
+\hypertarget{plans-de-lespace}{%
+\section{Plans de l'espace}\label{plans-de-lespace}}
+
+\hypertarget{surfaces-paramuxe9truxe9es}{%
+\section{Surfaces paramétrées}\label{surfaces-paramuxe9truxe9es}}
+
+\hypertarget{sec-20230515105841}{%
+\section{Courbure des surfaces}\label{sec-20230515105841}}
 
 \hypertarget{tenseur-de-courbure}{%
 \subsection{Tenseur de courbure}\label{tenseur-de-courbure}}
@@ -702,7 +739,7 @@ courbure en \(\point{m}\) est donc une notion connue (voir
 
 \begin{figure}
 
-{\centering \includegraphics{./asy/fig20230219200134.pdf}
+{\centering \includegraphics{asy/fig20230219200134.pdf}
 
 }
 
@@ -722,7 +759,7 @@ on il existe un tenseur \(\tens{b}(\point{m})\) tel que la courbure de
 courbure de la surface \(ς\) au point \(\point{m}\)}. C'est un tenseur
 du plan tangent en \(\point{m}\), symétrique.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, colframe=quarto-callout-tip-color-frame, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 Pour établir l'existence du tenseur \(\tens{b}\) au point
 \(\point{m} ∈ ς\), on considère une représentation cartésienne locale
@@ -788,7 +825,7 @@ conviendra d'ordonner ces valeurs propres de façon à ce que
 les valeurs extrêmes de la courbure en \(\point{m}\) de la courbe plane
 \(γ\) introduite ci-dessus.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, colframe=quarto-callout-tip-color-frame, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 Pour montrer ce résultat, on introduit les directions principales de
 courbure \(\vec{t}_{\mathrm{I}}\) et \(\vec{t}_{\mathrm{II}}\) (vecteurs
@@ -817,7 +854,7 @@ centres de courbure associés aux courbures principales sont situé en
 \(\point{m} + \vec{n} / b_{\mathrm{I}}\) et
 \(\point{m} + \vec{n} / b_{\mathrm{II}}\).
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Exemples à traiter en classe}, colbacktitle=quarto-callout-warning-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, colframe=quarto-callout-warning-color-frame, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Exemples à traiter en classe}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 Sphère, cylindre.
 
@@ -878,6 +915,434 @@ ailleurs, le théorème de Cayley--Hamilton permet d'écrire que
 
 \bookmarksetup{startatroot}
 
+\hypertarget{duxe9rivation-et-intuxe9gration-sur-une-surface}{%
+\chapter{Dérivation et intégration sur une
+surface}\label{duxe9rivation-et-intuxe9gration-sur-une-surface}}
+
+On considère dans ce chapitre une surface \(ς\) et sa représentation
+paramétrique \((ξ, η) ∈ \mathcal{D} ⊂ ℝ^2 ↦ \point{f}(ξ, η) ∈ ℝ^3\). La
+base locale naturelle \((\vec{a}_ξ, \vec{a}_η)\) et la normale
+\(\vec{n}\) ont été introduites au chapitre précédent \[
+\vec{a}_ξ(ξ, η) = ∂_ξ \point{f}(ξ, η), \quad \vec{a}_η(ξ, η) = ∂_η \point{f}(ξ, η) \quad \text{et} \quad \vec{n} = \vec{n}(ξ, η) = \frac{\vec{a}_ξ(ξ, η) \wedge \vec{a}_η(ξ, η)}{\lVert \vec{a}_ξ(ξ, η) \wedge \vec{a}_η(ξ, η) \rVert}.
+\]
+
+\hypertarget{base-duale-et-notations-de-ricci}{%
+\section{Base duale et notations de
+Ricci}\label{base-duale-et-notations-de-ricci}}
+
+Dans une base cartésienne otrhonormée
+\((\vec{e}_1, \vec{e}_2, \vec{e}_3)\), le produit scalaire avec les
+vecteurs de la base permet d'extraire les coordonnées d'un vecteur.
+Ainsi, pour tout vecteur \(\vec{v} ∈ ℝ^3\) \[
+\vec{v} = \bigl( \vec{v} ⋅ \vec{e}_1 \bigr) \, \vec{e}_2 + \bigl( \vec{v} ⋅ \vec{e}_2 \bigr) \, \vec{e}_2 + \bigl( \vec{v} ⋅ \vec{e}_3 \bigr) \, \vec{e}_3.
+\]
+
+La base locale naturelle n'est en général \textbf{ni orthogonale, ni
+normée} et \textbf{la relation précédente ne s'applique pas} \[
+\vec{v} ≠ \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) \, \vec{a}_ξ + \bigl( \vec{v} ⋅ \vec{a}_η \bigr) \, \vec{a}_η + \bigl( \vec{v} ⋅ \vec{n} \bigr) \, \vec{n}.
+\]
+
+On souhaite construire trois vecteurs \(\vec{a}^ξ\), \(\vec{a}^η\) et
+\(\vec{n}^*\) (attention à la position des indices~!), tels que la
+relation suivante soit, elle, vraie pour tout \(\vec{v} ∈ ℝ^3\)
+\begin{equation}\protect\hypertarget{eq-20230404144735}{}{
+\vec{v} = \bigl( \vec{v} ⋅ \vec{a}^ξ \bigr) \, \vec{a}_ξ + \bigl( \vec{v} ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{v} ⋅ \vec{n}^* \bigr) \, \vec{n}.
+}\label{eq-20230404144735}\end{equation}
+
+Les vecteurs suivants satisfont bien cette relation et on peut vérifier
+que ce sont les seuls
+\begin{equation}\protect\hypertarget{eq-20230404160223}{}{
+\vec{a}^ξ = \frac{ \vec{a}_η \wedge \vec{n} }{ \lVert \vec{a}_ξ \wedge \vec{a}_η \rVert}, \quad
+\vec{a}^η = - \frac{ \vec{a}_ξ \wedge \vec{n} }{ \lVert \vec{a}_ξ \wedge \vec{a}_η \rVert}
+\quad \text{et} \quad \vec{n}^* = \vec{n}.
+}\label{eq-20230404160223}\end{equation}
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, colframe=quarto-callout-tip-color-frame, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
+
+On raisonne par analyse et synthèse, en supposant que les vecteurs
+cherchés existent. On écrit alors la relation (\ref{eq-20230404144735})
+successivement pour \(\vec{v} = \vec{a}_ξ\), puis
+\(\vec{v} = \vec{a}_η\), enfin \(\vec{v} = \vec{n}\). On obtient ainsi
+\[
+\left\{
+\begin{aligned}
+\vec{a}_ξ &= \bigl( \vec{a}_ξ ⋅ \vec{a}^ξ \bigr) \, \vec{a}_ξ + \bigl( \vec{a}_ξ ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{a}_ξ ⋅ \vec{n}^* \bigr) \, \vec{n},\\
+\vec{a}_η &= \bigl( \vec{a}_η ⋅ \vec{a}^ξ \bigr) \, \vec{a}_η + \bigl( \vec{a}_η ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{a}_η ⋅ \vec{n}^* \bigr) \, \vec{n},\\
+\vec{n} &= \bigl( \vec{n} ⋅ \vec{a}^ξ \bigr) \, \vec{n} + \bigl( \vec{n} ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{n} ⋅ \vec{n}^* \bigr) \, \vec{n}
+\end{aligned}
+\right.
+\] et, puisque les vecteurs \(\vec{a}_ξ\), \(\vec{a}_η\) et \(\vec{n}\)
+forment une base \[
+\begin{aligned}
+\vec{a}_ξ ⋅ \vec{a}^ξ &= 1, & \vec{a}_ξ ⋅ \vec{a}^η &= 0, & \vec{a}_ξ ⋅ \vec{n}^* &= 0,\\
+\vec{a}_η ⋅ \vec{a}^ξ &= 0, & \vec{a}_η ⋅ \vec{a}^η &= 1, & \vec{a}_η ⋅ \vec{n}^* &= 0,\\
+\vec{n}   ⋅ \vec{a}^ξ &= 0, & \vec{n}   ⋅ \vec{a}^η &= 0, & \vec{n}   ⋅ \vec{n}^* &= 1.
+\end{aligned}
+\]
+
+Ces relations définissent de manière unique les vecteurs \(\vec{a}^ξ\),
+\(\vec{a}^η\) et \(\vec{n}^*\) (le vérifier~!). Inversement, on vérifie
+que les vecteurs donnés par la relation (\ref{eq-20230404160223})
+satisfont bien la relation (\ref{eq-20230404144735}).
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, colframe=quarto-callout-warning-color-frame, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Remarque}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
+
+Une démonstration plus générale est possible (en dimension quelconque),
+en considérant l'isomorphisme canonique qui existe entre un espace
+euclidien et son dual.
+
+\end{tcolorbox}
+
+On peut montrer que les vecteurs \(\vec{a}^\xi\), \(\vec{a}^η\) et
+\(\vec{n}\) sont \textbf{linéairement indépendants} et forment une base,
+nommée \textbf{base duale de la base locale naturelle}.
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, colframe=quarto-callout-tip-color-frame, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
+
+Soit \(V = \Span(\vec{a}^ξ, \vec{a}^η, \vec{n}) ⊂ ℝ^3\) le sous-espace
+engendré par les vecteurs \(\vec{a}^ξ\), \(\vec{a}^η\) et
+\(\vec{n}^* = \vec{n}\). On considère \(\vec{v} ∈ V^\perp\),
+c'est-à-dire que
+\(\vec{v} ⋅ \vec{a}^ξ = \vec{v} ⋅ \vec{a}^η = \vec{v} ⋅ \vec{n} = 0\).
+En appliquant la relation (\ref{eq-20230404144735}), supposée vraie, on
+trouve que nécessairement \(\vec{v} = \vec{0}\). L'orthogonal de \(V\)
+est donc réduit au vecteur-nul, c'est-à-dire que \(V = ℝ^3\). Donc \(V\)
+est de dimension 3~; comme par construction, \(V\) est engendré par
+trois vecteurs, ceux-ci sont linéairement indépendants.
+
+\end{tcolorbox}
+
+La relation (\ref{eq-20230404144735}) permet également d'obtenir la
+relation symétrique suivante, vraie pour tout \(\vec{v} ∈ ℝ^3\)
+\begin{equation}\protect\hypertarget{eq-20230404154755}{}{
+\vec{v} = \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) \, \vec{a}^ξ + \bigl( \vec{v} ⋅ \vec{a}_η \bigr) \, \vec{a}^η + \bigl( \vec{v} ⋅ \vec{n} \bigr) \, \vec{n}.
+}\label{eq-20230404154755}\end{equation}
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, colframe=quarto-callout-tip-color-frame, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
+
+Soient \(\vec{v} ∈ ℝ^3\) quelconques, et
+\(\tilde{\vec{v}} = ( \vec{v} ⋅ \vec{a}_ξ ) \, \vec{a}^ξ + ( \vec{v} ⋅ \vec{a}_η ) \, \vec{a}^η + ( \vec{v} ⋅ \vec{n} ) \, \vec{n}^*\).
+On souhaite montrer que \(\tilde{\vec{v}} = \vec{v}\). Il suffit de
+montrer que \(\tilde{\vec{v}} ⋅ \vec{w} = \vec{v} ⋅ \vec{w}\) pour tout
+\(\vec{w} ∈ ℝ^3\). L'identité (\ref{eq-20230404144735}) s'écrit, pour
+\(\vec{w}\) arbitraire \[
+\vec{w} = \bigl( \vec{w} ⋅ \vec{a}^ξ \bigr) \, \vec{a}_ξ + \bigl( \vec{w} ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{w} ⋅ \vec{n}^* \bigr) \, \vec{n},
+\] soit, en prenant le produit scalaire avec \(\vec{v}\) \[
+\begin{aligned}
+\vec{w} ⋅ \vec{v} &= \bigl( \vec{w} ⋅ \vec{a}^ξ \bigr) \, \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) + \bigl( \vec{w} ⋅ \vec{a}^η \bigr) \, \bigl( \vec{v} ⋅ \vec{a}_η \bigr) + \bigl( \vec{w} ⋅ \vec{n}^* \bigr) \, \bigl( \vec{v} ⋅ \vec{n} \bigr)\\
+&= \bigl( \vec{w} ⋅ \vec{a}^ξ \bigr) \, \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) + \bigl( \vec{w} ⋅ \vec{a}^η \bigr) \, \bigl( \vec{v} ⋅ \vec{a}_η \bigr) + \bigl( \vec{w} ⋅ \vec{n}^* \bigr) \, \bigl( \vec{v} ⋅ \vec{n} \bigr)\\
+&= \vec{w} ⋅ \bigl[ \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) \, \vec{a}^ξ + \bigl( \vec{v} ⋅ \vec{a}_η \bigr) \, \vec{a}^η + \bigl( \vec{v} ⋅ \vec{n} \bigr) \, \vec{n}^* \bigr]\\
+&= \vec{w} ⋅ \tilde{\vec{v}} \qquad \text{CQFD.}
+\end{aligned}
+\]
+
+\end{tcolorbox}
+
+On déduit des relations (\ref{eq-20230404144735}) et
+(\ref{eq-20230404154755}) que \[
+\tens{I} = \vec{a}^ξ ⊗ \vec{a}_ξ + \vec{a}^η ⊗ \vec{a}_η + \vec{n} ⊗ \vec{n} = \vec{a}_ξ ⊗ \vec{a}^ξ + \vec{a}_η ⊗ \vec{a}^η + \vec{n} ⊗ \vec{n},
+\] soit \begin{equation}\protect\hypertarget{eq-20230302062218}{}{
+\tens{a} = \tens{I} - \vec{n} ⊗ \vec{n} = \vec{a}^ξ ⊗ \vec{a}_ξ + \vec{a}^η ⊗ \vec{a}_η = \vec{a}_ξ ⊗ \vec{a}^ξ + \vec{a}_η ⊗ \vec{a}^η,
+}\label{eq-20230302062218}\end{equation}
+
+En convenant dans le reste de ce livre que les indices muets grecs
+(\(α\), \(β\), \ldots) parcourent l'ensemble \(\{ξ, η\}\), les relations
+(\ref{eq-20230302062218}) s'écrivent \[
+\tens{a} = \sum_α \vec{a}^α ⊗ \vec{a}_α = \sum_α \vec{a}_α ⊗ \vec{a}^α.
+\]
+
+Dans l'expression ci-dessus, on s'aperçoit que l'indice muet \(α\)
+apparaît \textbf{exactement deux fois}, et dans des \textbf{positions
+différentes}~: une fois en position inférieure, une fois en position
+supérieure. \textbf{Lorsque ces deux conditions sont remplies}, et
+uniquement dans ce cas, on pourra utiliser la convention de sommation
+d'Einstein \[
+\tens{a} = \vec{a}^α ⊗ \vec{a}_α = \vec{a}_α ⊗ \vec{a}^α.
+\]
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, colframe=quarto-callout-warning-color-frame, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Remarque importante}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
+
+Il est important de ne jamais sommer sur deux indices répétés dans la
+même position (on parle d'indices de \textbf{même variance}). Ainsi, les
+expressions \(\vec{a}_α ⊗ \vec{a}_α\) et \(\vec{a}^α ⊗ \vec{a}^α\) n'ont
+pas de sens, car elles ne sont \textbf{pas invariantes par changement de
+base}. Plus précisément, soient \((\vec{a}_ξ', \vec{a}_η')\) une autre
+base du plan tangent et \((\vec{a}'^ξ, \vec{a}'^η)\) la base duale
+associée. Alors, en général \[
+\vec{a}_ξ ⊗ \vec{a}_ξ + \vec{a}_η ⊗ \vec{a}_η ≠ \vec{a}'_ξ ⊗ \vec{a}'_ξ + \vec{a}'_η ⊗ \vec{a}'_η
+\quad \text{et} \quad
+\vec{a}^ξ ⊗ \vec{a}^ξ + \vec{a}^η ⊗ \vec{a}^η ≠ \vec{a}'^ξ ⊗ \vec{a}'^ξ + \vec{a}'^η ⊗ \vec{a}'^η.
+\]
+
+En revanche, on a bien \[
+\vec{a}_α ⊗ \vec{a}^α = \vec{a}'_β ⊗ \vec{a}'^β
+\quad \text{et} \quad
+\vec{a}^α ⊗ \vec{a}_α = \vec{a}'^β ⊗ \vec{a}'_β.
+\]
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, colframe=quarto-callout-warning-color-frame, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{À faire}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
+
+Expression du tenseur antisymétrique fondamental ?
+
+\end{tcolorbox}
+
+\hypertarget{gradient-dun-champ-de-tenseurs}{%
+\section{Gradient d'un champ de
+tenseurs}\label{gradient-dun-champ-de-tenseurs}}
+
+Soient \(\point{m} = \point{f}(ξ, η)\) et
+\(\point{m'} = \point{f}(ξ + \D ξ, η + \D η)\) deux points infiniment
+proches de la surface \(ς\), de sorte que \[
+\begin{aligned}[b]
+\D \altvec{\point{m}}
+&= \altvec{\point{mm}'} = \point{m}' - \point{m} = \point{f}(ξ + \D ξ, η + \D η) - \point{f}(ξ, η)\\
+&= ∂_ξ \point{f}(ξ, η) \, \D ξ + ∂_η \point{f}(ξ, η) \, \D η.
+\end{aligned}
+\]
+
+En reconnaissant les vecteurs de la base locale naturelle, et en
+utilisant la relation (\ref{eq-20230404144735}), on obtient donc
+\begin{equation}\protect\hypertarget{eq-20230404183949}{}{
+\D \altvec{\point{m}} = \vec{a}_ξ \, \D ξ + \vec{a}_η \, \D η, \quad \text{soit} \quad \D ξ = \vec{a}^ξ ⋅ \D \altvec{\point{m}} \quad \text{et} \quad \D η = \vec{a}^η ⋅ \D \altvec{\point{m}}.
+}\label{eq-20230404183949}\end{equation}
+
+Soit alors \(\tens{T}(\point{m})\) un champ de tenseurs d'ordre
+quelconque, défini sur la surface \(ς\). En composant par la
+représentation paramétrique \(\point{f}\) de la surface, on définit une
+application \((ξ, η) ↦ \tens{T} \circ \point{f}(ξ, η)\) définie sur
+l'espace des paramètres \(\mathcal{D}\). On souhaite évaluer la
+variation \(\D \tens{T}\) du champ \(\tens{T}\) entre les points
+\(\point{m}\) et \(\point{m}' = \point{m} + \D \altvec{\point{m}}\) \[
+\begin{aligned}[b]
+\D \tens{T} &= \tens{T}(\point{m} + \D\altvec{\point{m}}) - \tens{T}(\point{m}) = \tens{T} \circ \point{f}(ξ + \D ξ, η + \D η) - \tens{T} \circ \point{f}(ξ, η)\\
+&= ∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) \, \D ξ + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) \, \D η,
+\end{aligned}
+\] soit, en utilisant les relations (\ref{eq-20230404183949}) \[
+\D \tens{T} = ∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) \, \bigl( \vec{a}^ξ ⋅ \D \altvec{\point{m}} \bigr) + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) \, \bigl( \vec{a}^η ⋅ \D \altvec{\point{m}} \bigr) = \tilde{\tens{G}}(ξ, η) ⋅ \D \altvec{\point{m}},
+\] en posant \[
+\tilde{\tens{G}} = ∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^ξ + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^η,
+\] où on remarque que l'application \((ξ, η) ↦ \tilde{\tens{G}}\) est
+\textbf{définie sur l'espace des paramètres \(\mathcal{D}\)}. On définit
+alors le champ de tenseurs \(\tens{G}\) sur \(ς\) de la façon suivante
+\[
+\tens{G} = \tilde{\tens{G}} \circ \point{f}^{-1} \quad \text{soit} \quad \tens{G}(\point{m}) = \tilde{\tens{G}}(ξ, η) \quad \text{pour} \quad \point{m} = \point{f}(ξ, η).
+\]
+
+On a ainsi mis la variation \(\D \tens{T}\) sous la forme intrinsèque
+suivante \[
+\D \tens{T} = \tens{T}(\point{m} + \D \altvec{\point{m}}) - \tens{T}(\point{m}) = \tens{G}(\point{m}) ⋅ \D \altvec{\point{m}}.\]
+
+On reconnaît la définition usuelle d'un gradient~: le champ \(\tens{G}\)
+ainsi défini est le \textbf{gradient surfacique} de \(\tens{T}\) ; on le
+note \(\tgrad\tens{T}\)
+\begin{equation}\protect\hypertarget{eq-20230515125118}{}{
+\tgrad \tens{T}(\point{m}) = ∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^ξ + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^η,
+}\label{eq-20230515125118}\end{equation} où \(\vec{a}^ξ\),
+\(\vec{a}^η\), \(\tens{T} \circ \point{f}\) et ses dérivées sont
+implicitement évalués en \((ξ, η)\) tels que
+\(\point{f}(ξ, η) = \point{m}\). Si \(\tens{T}\) est un champ de
+tenseurs d'ordre \(n\), alors \(\tgrad \tens{T}\) est un champ de
+tenseurs d'ordre \(n + 1\). On a de plus toujours, par construction \[
+\tgrad{\tens{T}} ⋅ \vec{n} = \tens{0}.
+\]
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Remarque}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
+
+La définition précédente du gradient fait intervenir un paramétrage
+particulier \((ξ, η) ↦ \point{f}(ξ, η)\) de la surface. Pour autant, le
+champ \(\tgrad \tens{T}\) ainsi construit est bien intrinsèque. Ainsi,
+on peut vérifier que si \((φ, ψ) ↦ \point{g}(φ, ψ)\) désigne un second
+paramétrage de la surface, alors \[
+∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^ξ + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^η
+= ∂_φ \bigl( \tens{T} \circ \point{g} \bigr) ⊗ \vec{a}^φ + ∂_ψ \bigl( \tens{T} \circ \point{g} \bigr) ⊗ \vec{a}^ψ,
+\] où \(\vec{a}^ξ\), \(\vec{a}^η\), \(\tens{T} \circ \point{f}\) et ses
+dérivées sont implicitement évalués en \((ξ, η)\), tandis que
+\(\vec{a}^φ\), \(\vec{a}^ψ\), \(\tens{T} \circ \point{g}\) et ses
+dérivées sont implicitement évalués en \((φ, ψ)\) tels que
+\(\point{f}(ξ, η) = \point{g}(φ, ψ) = \point{m}\).
+
+\end{tcolorbox}
+
+L'opérateur gradient ainsi défini est un \textbf{opérateur linéaire}
+dont les propriétés sont proches de celles du gradient usuel. On peut
+également définir la \textbf{divergence surfacique} d'un champ de
+tenseurs \(\tens{T}\) d'ordre \(n ≥ 1\) \[
+\tdiv \tens{T} = \tgrad \tens{T} \dbldot \tens{a},
+\] c'est un champ de tenseurs d'ordre \(n - 1\).
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, colframe=quarto-callout-warning-color-frame, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Remarque importante}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
+
+Les développements précédents permettent d'assurer que la définition du
+gradient proposée est intrinsèque. En pratique néanmoins, il sera
+commode de travailler directement avec le champ surfacique
+\(\tens{T} \circ \point{f}\) qui est alors une fonction des fonctions
+des paramètres \(ξ\) et \(η\) (plutôt que comme une fonction du point
+\(\point{m} ∈ ς\)). Par abus de langage, on écrira, comme c'est
+l'habitude, \(\tens{T}(ξ, η)\) plutôt que
+\(\tens{T} \circ \point{f}(ξ, η)\). En revanche, on écrira explicitement
+\(∂_α\tens{T} ⊗ \vec{a}^α\) et \(∂_α\tens{T} ⋅ \vec{a}^α\) plutôt que
+\(\tgrad \tens{T}\) et \(\tdiv \tens{T}\) (noter l'utilisation de la
+convention d'Einstein, possible car l'indice \(α\) apparaît une fois en
+position inférieure et une fois en position supérieure).
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, colframe=quarto-callout-warning-color-frame, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{À faire}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
+
+Proposer les propriétés du gradient en exercice.
+
+\end{tcolorbox}
+
+\hypertarget{duxe9rivation-et-courbure-relations-de-weingarten}{%
+\section{Dérivation et courbure -- Relations de
+Weingarten}\label{duxe9rivation-et-courbure-relations-de-weingarten}}
+
+La courbure introduite au chapitre précédent est intimement liée à la
+notion de gradient défini ci-dessus. On peut en effet établir les
+relations de Weingarten (\textbf{première forme}) \[
+\vec{a}_α ⋅ \tens{b} ⋅ \vec{a}_β = \vec{n} ⋅ ∂_α \vec{a}_β = \vec{n} ⋅ ∂_β \vec{a}_α,
+\] d'où l'on déduit la \textbf{deuxième forme} \[
+\vec{a}_α ⋅ \tens{b} ⋅ \vec{a}_β = -∂_α \vec{n} ⋅ \vec{a}_β = -∂_β \vec{n} ⋅ \vec{a}_α,
+\] en observant que \[
+\vec{n} ⋅ ∂_α \vec{a}_β = ∂_α \bigl( \vec{n} ⋅ \vec{a}_β \bigr) - ∂_α \vec{n} ⋅ \vec{a}_β = - ∂_α \vec{n} ⋅ \vec{a}_β.
+\]
+
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, colframe=quarto-callout-tip-color-frame, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
+
+On considère ici un point fixe \(\point{m}_0\) de \(\varsigma\). Pour
+simplifier, on supposera que le paramétrage est choisi de façon à ce que
+les coordonnées curvilignes du point \(\point{m}_0\) soient
+\(ξ = η = 0\)~: \(\point{m}_0 = \point{f}(0, 0)\).
+
+Soient \(\vec{n}_0\) la normale à \(\varsigma\) en \(\point{m}_0\) et
+\(\vec{t}_0\) un vecteur tangent à \(\varsigma\) en \(\point{m}_0\). Le
+point \(\point{m}_0\) et les vecteur \(\vec{t}_0\) et \(\vec{n}_0\)
+définissent le plan \(\pi\), qui rencontre la surface \(\varsigma\) le
+long de la courbe \(\gamma\) (plane).
+
+L'orientation étant donnée par le vecteur \(\vec{t}_0\), on note \(s\)
+l'abscisse sur la courbe \(\gamma\) et \(s \mapsto \point{g}(s)\) le
+paramétrage de \(\gamma\). L'origine \(s = 0\) est placée en
+\(\point{m}_0\). On note alors \(\vec{t}\) le vecteur tangent unitaire à
+\(\gamma\) au point d'abscisse curviligne \(s\), et \(\vec{n}\) la
+normale unitaire. Celle-ci est orientée de façon à coïncider avec
+\(\vec{n}_0\) en \(s = 0\).
+
+Par définition du tenseur de courbure (voir §~\ref{sec-20230515105841}),
+la courbure \(\kappa_0\) de \(\gamma\) en \(\point{m}_0\) est égale à
+\(\vec{t}_0 ⋅ \tens{b}_0 ⋅ \vec{t}_0\). Puisque \(\gamma\) est une
+courbe plane, les formules de Frénet s'appliquent
+\begin{equation}\protect\hypertarget{eq-20230307154016}{}{
+\frac{\D \vec{t}}{\D s} \biggr \rvert_{s = 0} = \kappa_0 \, \vec{n}_0
+\quad \text{et} \quad
+\vec{n}_0 ⋅ \frac{\D \vec{t}}{\D s} \biggr \rvert_{s=0} = κ_0 = \vec{t}_0 ⋅ \tens{b}_0 ⋅ \vec{t}_0.
+}\label{eq-20230307154016}\end{equation}
+
+La courbe \(\gamma\) est une courbe tracée sur \(ς\). On peut donc
+trouver deux fonctions \(\overlineξ(s)\) et \(\overlineη(s)\) telles que
+\(\point{g}(s) = \point{f}[\overlineξ(s), \overlineη(s)]\). Alors, en
+dérivant la fonction composée
+\begin{equation}\protect\hypertarget{eq-20230307150056}{}{
+\begin{aligned}[b]
+\vec{t} &= \frac{\D\point{g}}{\D s} = \frac{∂\point{f}}{∂ξ}[\overlineξ(s), \overlineη(s)] \, \frac{\D\overlineξ}{\D s}(s) + \frac{∂\point{f}}{∂η}[\overlineξ(s), \overlineη(s)] \, \frac{\D\overlineη}{\D s}(s)\\
+&= \frac{\D\overlineξ}{\D s}(s) \, \vec{a}_ξ[\overlineξ(s), \overlineη(s)] + \frac{\D\overlineη}{\D s}(s) \, \vec{a}_η[\overlineξ(s), \overlineη(s)],
+\end{aligned}
+}\label{eq-20230307150056}\end{equation} pour toute valeur de \(s\). En
+particulier, en \(s = 0\)
+\begin{equation}\protect\hypertarget{eq-20230307152146}{}{
+\vec{t}_0 = t_0^ξ \, \vec{a}_ξ(0, 0)
++ t_0^η \, \vec{a}_η(0, 0),
+\quad \text{avec} \quad
+t_0^ξ = \frac{\D\overlineξ}{\D s} \biggr \rvert_{s = 0}
+\quad \text{et} \quad
+t_0^η = \frac{\D\overlineη}{\D s} \biggr \rvert_{s = 0}.
+}\label{eq-20230307152146}\end{equation}
+
+En dérivant une nouvelle fois par rapport à \(s\) la relation
+(\ref{eq-20230307150056}) \[
+\begin{aligned}[b]
+\frac{\D \vec{t}}{\D s} (s)
+={} & \frac{\D^2\overlineξ}{\D s^2}(s) \, \vec{a}_ξ[\overlineξ(s), \overlineη(s)]
++ \frac{\D^2\overlineη}{\D s^2}(s) \, \vec{a}_η[\overlineξ(s), \overlineη(s)]\\
+&+ \frac{\D\overlineξ}{\D s}(s) \, \biggl\{
+\frac{\D\overlineξ}{\D s}(s) \, ∂_ξ \vec{a}_ξ[\overlineξ(s), \overlineη(s)]
++ \frac{\D\overlineη}{\D s}(s) \, ∂_η \vec{a}_ξ[\overlineξ(s), \overlineη(s)] \biggr\}\\
+&+ \frac{\D\overlineη}{\D s}(s) \, \biggl \{
+\frac{\D\overlineξ}{\D s}(s) \, ∂_ξ \vec{a}_η[\overlineξ(s), \overlineη(s)]
++ \frac{\D\overlineη}{\D s}(s) \, ∂_η \vec{a}_η[\overlineξ(s), \overlineη(s)] \biggr \},
+\end{aligned}
+\] soit, en \(s = 0\) {[}en utilisant les relations
+(\ref{eq-20230307152146}){]} \[
+\begin{aligned}[b]
+\frac{\D \vec{t}}{\D s} \biggr \rvert_{s = 0}
+={} & \frac{\D^2\overlineξ}{\D s^2} \biggr \rvert_{s = 0} \, \vec{a}_ξ(0, 0)
++ \frac{\D^2\overlineη}{\D s^2} \biggr \rvert_{s = 0} \, \vec{a}_η(0, 0)\\
+&+ t_0^ξ \, \bigl[ t_0^ξ \, ∂_ξ \vec{a}_ξ(0, 0) + t_0^η \, ∂_η \vec{a}_ξ(0, 0) \bigr]\\
+&+ t_0^η \, \bigl [ t_0^ξ \, ∂_ξ \vec{a}_η(0, 0) + t_0^η \, ∂_η \vec{a}_η(0, 0) \bigr ],
+\end{aligned}
+\] d'où l'on déduit la relation suivante, en développant et en observant
+que \(\vec{n}_0 ⋅ \vec{a}_ξ (0, 0) = \vec{n}_0 ⋅ \vec{a}_η (0, 0) = 0\).
+\[
+\begin{aligned}
+\vec{n}_0 ⋅ \frac{\D \vec{t}}{\D s} \biggr \rvert_{s = 0}
+={} & (t_0^ξ)^2 \, \vec{n}_0 ⋅ ∂_ξ\vec{a}_ξ(0, 0) + (t_0^η)^2 \, \vec{n}_0 ⋅ ∂_η\vec{a}_η(0, 0)\\
+&+ t_0^ξ \, t_0^η \, \bigl[ \vec{n}_0 ⋅ ∂_ξ\vec{a}_η(0, 0) + \vec{n}_0 ⋅ ∂_η \vec{a}_ξ(0, 0) \bigr].
+\end{aligned}
+\]
+
+En combinant les relations (\ref{eq-20230307154016}) et
+(\ref{eq-20230307152146}), on trouve que \[
+\begin{aligned}
+\vec{t}_0 ⋅ \tens{b}_0 ⋅ \vec{t}_0
+={} & (t_0^ξ)^2 \, \vec{n}_0 ⋅ ∂_ξ\vec{a}_ξ(0, 0) + (t_0^η)^2 \, \vec{n}_0 ⋅ ∂_η\vec{a}_η(0, 0)\\
+&+ t_0^ξ \, t_0^η \, \bigl[ \vec{n}_0 ⋅ ∂_ξ\vec{a}_η(0, 0) + \vec{n}_0 ⋅ ∂_η \vec{a}_ξ(0, 0) \bigr].
+\end{aligned}
+\]
+
+Le point \(\point{m}_0\) de la surface, et le vecteur tangent
+\(\vec{t}_0\) en \(\point{m}_0\) étant quelconque, on peut omettre les
+indices 0 dans ce qui suit \[
+\vec{t} ⋅ \tens{b} ⋅ \vec{t} = (t^ξ)^2 \, \vec{n} ⋅ ∂_ξ\vec{a}_ξ + t^ξ \, t^η \, \bigl( \vec{n} ⋅ ∂_ξ\vec{a}_η + \vec{n} ⋅ ∂_η \vec{a}_ξ \bigr) + (t^η)^2 \, \vec{n} ⋅ ∂_η\vec{a}_η,
+\] pour tout vecteur unitaire tangent \(\vec{t}\) à \(\varsigma\) en
+\(\point{m}\). En écrivant que
+\(\vec{t} = t^ξ \, \vec{a}_ξ + t^η \, \vec{a}_η\), on a par ailleurs
+l'expression générale \[
+\begin{aligned}[b]
+\vec{t} ⋅ \tens{b} ⋅ \vec{t}
+={} & \bigl( t^ξ \, \vec{a}_ξ + t^η \, \vec{a}_η \bigr) ⋅ \tens{b} ⋅ \bigl( t^ξ \, \vec{a}_ξ + t^η \, \vec{a}_η \bigr)\\
+={} & (t^ξ)^2 \, \vec{a}_ξ ⋅ \tens{b} ⋅ \vec{a}_ξ + t^ξ \, t^η \, \vec{a}_ξ ⋅ \tens{b} ⋅ \vec{a}_η + (t^η)^2 \, \vec{a}_η ⋅ \tens{b} ⋅ \vec{a}_η.
+\end{aligned}
+\] On obtient les relations annoncées en comparant terme à terme les
+deux dernières égalités et en observant que \[
+∂_ξ \vec{a}_η = ∂_ξ \bigl( ∂_η \point{f} \bigr) = ∂_{ξη}^2 \point{f} = ∂_η \bigl( ∂_ξ \point{f} \bigr) = ∂_η \vec{a}_ξ.
+\]
+
+\end{tcolorbox}
+
+Les relations de Weingarten ci-dessus permettent d'écrire pour
+\(α ∈ \{ξ, η\}\) fixé \[
+\bigl(\tens{b} ⋅ \vec{a}_α \bigr) ⋅ \vec{a}_β = -∂_α\vec{n} ⋅ \vec{a}_β \quad \text{ pour tout }β ∈ \{ξ, η\}
+\quad \text{donc} \quad
+\tens{b} ⋅ \vec{a}_α = -∂_α \vec n.
+\] La relation étant vraie pour tout \(α ∈ \{ξ, η\}\), on en déduit que
+\begin{equation}\protect\hypertarget{eq-20230307160832}{}{
+\tens{b} = -∂_α \vec{n} \otimes \vec{a}^α.
+}\label{eq-20230307160832}\end{equation} ou, sous forme intrinsèque
+(voir Éq. (\ref{eq-20230515125118})) \[
+\tens{b} = -\tgrad \vec{n}.
+\]
+
+Le tenseur de courbure \(\tens{b}\) apparaît donc comme \textbf{l'opposé
+du gradient de la normale}. Ce résultat est à comparer avec la deuxième
+relation de Frénet pour les courbes planes~:
+\(\vec{n}' = -\kappa \, \vec{t}\).
+
+\bookmarksetup{startatroot}
+
 \hypertarget{sec-20230314085944}{%
 \chapter{Transformations d'une coque}\label{sec-20230314085944}}
 
@@ -921,7 +1386,7 @@ liberté en rotation selon la normale au feuillet de référence.
 
 \begin{figure}
 
-{\centering \includegraphics{./croquis/blanc.pdf}
+{\centering \includegraphics{croquis/blanc.pdf}
 
 }
 
@@ -973,7 +1438,7 @@ actuelle (voir Figure~\ref{fig-20230302053622}).
 
 \begin{figure}
 
-{\centering \includegraphics{./croquis/blanc.pdf}
+{\centering \includegraphics{croquis/blanc.pdf}
 
 }
 
@@ -1060,7 +1525,7 @@ base locale naturelle, définie par les relations suivantes
 \vec{A}_\xi^\ast \cdot \vec{N} = \vec{A}_\eta^\ast \cdot \vec{N} = 0.
 \]
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 Les relations (\ref{eq-20230301165727}) définissent bien de manière
 unique deux vecteurs \(\vec{A}_\xi^\ast\) et \(\vec{A}_\eta^\ast\), dont
@@ -1107,7 +1572,7 @@ un tenseur inversible de l'espace. En effet \[
 tangent \(\mathcal{T}(\point{M}, \Sigma)\) vers le plan tangent
 \(\mathcal{T}(\point{m}, \varsigma)\).
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 Ainsi définie, \(\tens{F}\) apparaît comme une fonction des coordonnées
 matérielles \(\xi\) et \(\eta\)~: \(\tens{F}(\xi, \eta)\). On peut
@@ -1119,7 +1584,7 @@ en représentation lagrangienne, \(\tens{F}(\point{M})\).
 
 \begin{figure}
 
-{\centering \includegraphics{./croquis/blanc.pdf}
+{\centering \includegraphics{croquis/blanc.pdf}
 
 }
 
@@ -1179,7 +1644,7 @@ On introduit alors le \textbf{tenseur des déformations membranaires}
 \D\altvec{\point{M}}_1 \cdot \tens{E} \cdot \D\altvec{\point{M}}_2 = \tfrac{1}{2} \bigl( \D\altvec{\point{m}}_1 \cdot \D\altvec{\point{m}}_2 - \D\altvec{\point{M}}_1 \cdot \D\altvec{\point{M}}_2 \bigr).
 \]
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 Le tenseur ainsi introduit joue le même rôle que le tenseur de
 Green--Lagrange de la mécanique des milieux continus. L'interprétation
@@ -1189,7 +1654,7 @@ de ses coefficients est identique (dans le plan tangent).
 
 \begin{figure}
 
-{\centering \includegraphics{./croquis/blanc.pdf}
+{\centering \includegraphics{croquis/blanc.pdf}
 
 }
 
@@ -1198,294 +1663,6 @@ matériels construits au même point permet de définir le tenseur des
 déformations membranaires.}
 
 \end{figure}
-
-\bookmarksetup{startatroot}
-
-\hypertarget{duxe9rivation-et-intuxe9gration-sur-une-surface}{%
-\chapter{Dérivation et intégration sur une
-surface}\label{duxe9rivation-et-intuxe9gration-sur-une-surface}}
-
-On considère dans ce chapitre une surface \(ς\) et sa représentation
-paramétrique \((ξ, η) ∈ \mathcal{D} ⊂ ℝ^2 ↦ \point{f}(ξ, η) ∈ ℝ^3\). La
-base locale naturelle \((\vec{a}_ξ, \vec{a}_η)\) et la normale
-\(\vec{n}\) ont été introduites au chapitre précédent \[
-\vec{a}_ξ(ξ, η) = ∂_ξ \point{f}(ξ, η), \quad \vec{a}_η(ξ, η) = ∂_η \point{f}(ξ, η) \quad \text{et} \quad \vec{n} = \vec{n}(ξ, η) = \frac{\vec{a}_ξ(ξ, η) \wedge \vec{a}_η(ξ, η)}{\lVert \vec{a}_ξ(ξ, η) \wedge \vec{a}_η(ξ, η) \rVert}.
-\]
-
-\hypertarget{base-duale-et-notations-de-ricci}{%
-\section{Base duale et notations de
-Ricci}\label{base-duale-et-notations-de-ricci}}
-
-Dans une base cartésienne otrhonormée
-\((\vec{e}_1, \vec{e}_2, \vec{e}_3)\), le produit scalaire avec les
-vecteurs de la base permet d'extraire les coordonnées d'un vecteur.
-Ainsi, pour tout vecteur \(\vec{v} ∈ ℝ^3\) \[
-\vec{v} = \bigl( \vec{v} ⋅ \vec{e}_1 \bigr) \, \vec{e}_2 + \bigl( \vec{v} ⋅ \vec{e}_2 \bigr) \, \vec{e}_2 + \bigl( \vec{v} ⋅ \vec{e}_3 \bigr) \, \vec{e}_3.
-\]
-
-La base locale naturelle n'est en général \textbf{ni orthogonale, ni
-normée} et \textbf{la relation précédente ne s'applique pas} \[
-\vec{v} ≠ \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) \, \vec{a}_ξ + \bigl( \vec{v} ⋅ \vec{a}_η \bigr) \, \vec{a}_η + \bigl( \vec{v} ⋅ \vec{n} \bigr) \, \vec{n}.
-\]
-
-On souhaite construire trois vecteurs \(\vec{a}^ξ\), \(\vec{a}^η\) et
-\(\vec{n}^*\) (attention à la position des indices~!), tels que la
-relation suivante soit, elle, vraie pour tout \(\vec{v} ∈ ℝ^3\)
-\begin{equation}\protect\hypertarget{eq-20230404144735}{}{
-\vec{v} = \bigl( \vec{v} ⋅ \vec{a}^ξ \bigr) \, \vec{a}_ξ + \bigl( \vec{v} ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{v} ⋅ \vec{n}^* \bigr) \, \vec{n}.
-}\label{eq-20230404144735}\end{equation}
-
-Les vecteurs suivants satisfont bien cette relation et on peut vérifier
-que ce sont les seuls
-\begin{equation}\protect\hypertarget{eq-20230404160223}{}{
-\vec{a}^ξ = \frac{ \vec{a}_η \wedge \vec{n} }{ \lVert \vec{a}_ξ \wedge \vec{a}_η \rVert}, \quad
-\vec{a}^η = - \frac{ \bigl( \vec{a}_ξ \wedge \vec{n} }{ \lVert \vec{a}_ξ \wedge \vec{a}_η \rVert}
-\quad \text{et} \quad \vec{n}^* = \vec{n}.
-}\label{eq-20230404160223}\end{equation}
-
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Astuce}, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
-
-\bookmarksetup{startatroot}
-
-\hypertarget{duxe9monstration-6}{%
-\chapter{Démonstration}\label{duxe9monstration-6}}
-
-On raisonne par analyse et synthèse, en supposant que les vecteurs
-cherchés existent. On écrit alors la relation (\ref{eq-20230404144735})
-successivement pour \(\vec{v} = \vec{a}_ξ\), puis
-\(\vec{v} = \vec{a}_η\), enfin \(\vec{v} = \vec{n}\). On obtient ainsi
-\[
-\left\{
-\begin{aligned}
-\vec{a}_ξ &= \bigl( \vec{a}_ξ ⋅ \vec{a}^ξ \bigr) \, \vec{a}_ξ + \bigl( \vec{a}_ξ ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{a}_ξ ⋅ \vec{n}^* \bigr) \, \vec{n},\\
-\vec{a}_η &= \bigl( \vec{a}_η ⋅ \vec{a}^ξ \bigr) \, \vec{a}_η + \bigl( \vec{a}_η ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{a}_η ⋅ \vec{n}^* \bigr) \, \vec{n},\\
-\vec{n} &= \bigl( \vec{n} ⋅ \vec{a}^ξ \bigr) \, \vec{n} + \bigl( \vec{n} ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{n} ⋅ \vec{n}^* \bigr) \, \vec{n}
-\end{aligned}
-\right.
-\] et, puisque les vecteurs \(\vec{a}_ξ\), \(\vec{a}_η\) et \(\vec{n}\)
-forment une base \[
-\begin{aligned}
-\vec{a}_ξ ⋅ \vec{a}^ξ &= 1, & \vec{a}_ξ ⋅ \vec{a}^η &= 0, & \vec{a}_ξ ⋅ \vec{n}^* &= 0,\\
-\vec{a}_η ⋅ \vec{a}^ξ &= 0, & \vec{a}_η ⋅ \vec{a}^η &= 1, & \vec{a}_η ⋅ \vec{n}^* &= 0,\\
-\vec{n}   ⋅ \vec{a}^ξ &= 0, & \vec{n}   ⋅ \vec{a}^η &= 0, & \vec{n}   ⋅ \vec{n}^* &= 1.
-\end{aligned}
-\]
-
-Ces relations définissent de manière unique les vecteurs \(\vec{a}^ξ\),
-\(\vec{a}^η\) et \(\vec{n}^*\) (le vérifier~!). Inversement, on vérifie
-que les vecteurs donnés par la relation (\ref{eq-20230404160223})
-satisfont bien la relation (\ref{eq-20230404144735}).
-
-\end{tcolorbox}
-
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Remarque}, colbacktitle=quarto-callout-warning-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
-
-Une démonstration plus générale est possible (en dimension quelconque),
-en considérant l'isomorphisme canonique qui existe entre un espace
-euclidien et son dual.
-
-\end{tcolorbox}
-
-On peut montrer que les vecteurs \(\vec{a}^1\), \(\vec{a}^2\) et
-\(\vec{n}^*\) \textbf{linéairement indépendants} et forment une base,
-nommée \textbf{base duale de la base locale naturelle}.
-
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
-
-Soit \(V = \Span(\vec{a}^ξ, \vec{a}^η, \vec{a^3}) ⊂ ℝ^3\) le sous-espace
-engendré par les vecteurs \(\vec{a}^ξ\), \(\vec{a}^η\) et \(\vec{n}^*\).
-On considère \(\vec{v} ∈ V^\perp\), c'est-à-dire que
-\(\vec{v} ⋅ \vec{a}^ξ = \vec{v} ⋅ \vec{a}^η = \vec{v} ⋅ \vec{n}^* = \vec{0}\).
-En appliquant la relation (\ref{eq-20230404144735}), supposée vraie, on
-trouve que nécessairement \(\vec{v} = \vec{0}\). L'orthogonal de \(V\)
-est donc réduit au vecteur-nul, c'est-à-dire que \(V = ℝ^3\). Donc \(V\)
-est de dimension 3~; comme par construction, \(V\) est engendré par
-trois vecteurs, ceux-ci sont linéairement indépendants.
-
-\end{tcolorbox}
-
-La relation (\ref{eq-20230404144735}) permet également d'obtenir la
-relation symétrique suivante, vraie pour tout \(\vec{v} ∈ ℝ^3\)
-\begin{equation}\protect\hypertarget{eq-20230404154755}{}{
-\vec{v} = \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) \, \vec{a}^ξ + \bigl( \vec{v} ⋅ \vec{a}_η \bigr) \, \vec{a}^η + \bigl( \vec{v} ⋅ \vec{n} \bigr) \, \vec{n}^*.
-}\label{eq-20230404154755}\end{equation}
-
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
-
-Soient \(\vec{v} ∈ ℝ^3\) quelconques, et
-\(\tilde{\vec{v}} = ( \vec{v} ⋅ \vec{a}_ξ ) \, \vec{a}^ξ + ( \vec{v} ⋅ \vec{a}_η ) \, \vec{a}^η + ( \vec{v} ⋅ \vec{n} ) \, \vec{n}^*\).
-On souhaite montrer que \(\tilde{\vec{v}} = \vec{v}\). Il suffit de
-montrer que \(\tilde{\vec{v}} ⋅ \vec{w} = \vec{v} ⋅ \vec{w}\) pour tout
-\(\vec{w} ∈ ℝ^3\). L'identité (\ref{eq-20230404144735}) s'écrit, pour
-\(\vec{w}\) arbitraire \[
-\vec{w} = \bigl( \vec{w} ⋅ \vec{a}^ξ \bigr) \, \vec{a}_ξ + \bigl( \vec{w} ⋅ \vec{a}^η \bigr) \, \vec{a}_η + \bigl( \vec{w} ⋅ \vec{n}^* \bigr) \, \vec{n},
-\] soit, en prenant le produit scalaire avec \(\vec{v}\) \[
-\begin{aligned}
-\vec{w} ⋅ \vec{v} &= \bigl( \vec{w} ⋅ \vec{a}^ξ \bigr) \, \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) + \bigl( \vec{w} ⋅ \vec{a}^η \bigr) \, \bigl( \vec{v} ⋅ \vec{a}_η \bigr) + \bigl( \vec{w} ⋅ \vec{n}^* \bigr) \, \bigl( \vec{v} ⋅ \vec{n} \bigr)\\
-&= \bigl( \vec{w} ⋅ \vec{a}^ξ \bigr) \, \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) + \bigl( \vec{w} ⋅ \vec{a}^η \bigr) \, \bigl( \vec{v} ⋅ \vec{a}_η \bigr) + \bigl( \vec{w} ⋅ \vec{n}^* \bigr) \, \bigl( \vec{v} ⋅ \vec{n} \bigr)\\
-&= \vec{w} ⋅ \bigl[ \bigl( \vec{v} ⋅ \vec{a}_ξ \bigr) \, \vec{a}^ξ + \bigl( \vec{v} ⋅ \vec{a}_η \bigr) \, \vec{a}^η + \bigl( \vec{v} ⋅ \vec{n} \bigr) \, \vec{n}^* \bigr]\\
-&= \vec{w} ⋅ \tilde{\vec{v}} \qquad \text{CQFD.}
-\end{aligned}
-\]
-
-\end{tcolorbox}
-
-On déduit des relations (\ref{eq-20230404144735}) et
-(\ref{eq-20230404154755}) que \[
-\tens{I} = \vec{a}^ξ ⊗ \vec{a}_ξ + \vec{a}^η ⊗ \vec{a}_η + \vec{n} ⊗ \vec{n} = \vec{a}_ξ ⊗ \vec{a}^ξ + \vec{a}_η ⊗ \vec{a}^η + \vec{n} ⊗ \vec{n},
-\] soit \begin{equation}\protect\hypertarget{eq-20230302062218}{}{
-\tens{a} = \tens{I} - \vec{n} ⊗ \vec{n} = \vec{a}^ξ ⊗ \vec{a}_ξ + \vec{a}^η ⊗ \vec{a}_η = \vec{a}_ξ ⊗ \vec{a}^ξ + \vec{a}_η ⊗ \vec{a}^η,
-}\label{eq-20230302062218}\end{equation}
-
-En convenant dans le reste de ce livre que les indices muets grecs
-(\(α\), \(β\), \ldots) parcourent l'ensemble \(\{ξ, η\}\), les relations
-(\ref{eq-20230302062218}) s'écrivent \[
-\tens{a} = \sum_α \vec{a}^α ⊗ \vec{a}_α = \sum_α \vec{a}_α ⊗ \vec{a}^α.
-\]
-
-Dans l'expression ci-dessus, on s'aperçoit que l'indice muet \(α\)
-apparaît \textbf{exactement deux fois}, et dans des \textbf{positions
-différentes}~: une fois en position inférieure, une fois en position
-supérieure. \textbf{Lorsque ces deux conditions sont remplies}, et
-uniquement dans ce cas, on pourra utiliser la convention de sommation
-d'Einstein \[
-\tens{a} = \vec{a}^α ⊗ \vec{a}_α = \vec{a}_α ⊗ \vec{a}^α.
-\]
-
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Remarque importante}, colbacktitle=quarto-callout-warning-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
-
-Il est important de ne jamais sommer sur deux indices répétés dans la
-même position (on parle d'indices de \textbf{même variance}). Ainsi, les
-expressions \(\vec{a}_α ⊗ \vec{a}_α\) et \(\vec{a}^α ⊗ \vec{a}^α\) n'ont
-pas de sens, car elles ne sont \textbf{pas invariantes par changement de
-base}. Plus précisément, soient \((\vec{a}_ξ', \vec{a}_η')\) une autre
-base du plan tangent et \((\vec{a}'^ξ, \vec{a}'^η)\) la base duale
-associée. Alors, en général \[
-\vec{a}_ξ ⊗ \vec{a}_ξ + \vec{a}_η ⊗ \vec{a}_η ≠ \vec{a}'_ξ ⊗ \vec{a}'_ξ + \vec{a}'_η ⊗ \vec{a}'_η
-\quad \text{et} \quad
-\vec{a}^ξ ⊗ \vec{a}^ξ + \vec{a}^η ⊗ \vec{a}^η ≠ \vec{a}'^ξ ⊗ \vec{a}'^ξ + \vec{a}'^η ⊗ \vec{a}'^η
-\]
-
-\end{tcolorbox}
-
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{À faire}, colbacktitle=quarto-callout-warning-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
-
-Expression du tenseur antisymétrique fondamental ?
-
-\end{tcolorbox}
-
-\hypertarget{gradient-dun-champ-de-tenseurs}{%
-\section{Gradient d'un champ de
-tenseurs}\label{gradient-dun-champ-de-tenseurs}}
-
-Soient \(\point{m} = \point{f}(ξ, η)\) et
-\(\point{m'} = \point{f}(ξ + \D ξ, η + \D η)\) deux points infiniment
-proches de la surface \(ς\), de sorte que \[
-\begin{aligned}[b]
-\D \altvec{\point{m}}
-&= \altvec{\point{mm}'} = \point{m}' - \point{m} = \point{f}(ξ + \D ξ, η + \D η) - \point{f}(ξ, η)\\
-&= ∂_ξ \point{f}(ξ, η) \, \D ξ + ∂_η \point{f}(ξ, η) \, \D η.
-\end{aligned}
-\]
-
-En reconnaissant les vecteurs de la base locale naturelle, et en
-utilisant la relation (\ref{eq-20230404144735}), on obtient donc
-\begin{equation}\protect\hypertarget{eq-20230404183949}{}{
-\D \altvec{\point{m}} = \vec{a}_ξ \, \D ξ + \vec{a}_η \, \D η, \quad \text{soit} \quad \D ξ = \vec{a}^ξ ⋅ \D \altvec{\point{m}} \quad \text{et} \quad \D η = \vec{a}^η ⋅ \D \altvec{\point{m}}
-}\label{eq-20230404183949}\end{equation}
-
-Soit alors \(\tens{T}(\point{m})\) un champ de tenseurs d'ordre
-quelconque, défini sur la surface \(ς\). En composant par la
-représentation paramétrique \(\point{f}\) de la surface, on définit une
-application \((ξ, η) ↦ \tens{T} \circ \point{f}(ξ, η)\) définie sur
-l'espace des paramètres \(\mathcal{D}\). On souhaite évaluer la
-variation \(\D \tens{T}\) du champ \(\tens{T}\) entre les points
-\(\point{m}\) et \(\point{m}' = \point{m} + \D \altvec{\point{m}}\) \[
-\begin{aligned}[b]
-\D \tens{T} &= \tens{T}(\point{m} + \D\altvec{\point{m}}) - \tens{T}(\point{m}) = \tens{T} \circ \point{f}(ξ + \D ξ, η + \D η) - \tens{T} \circ \point{f}(ξ, η)\\
-&= ∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) \, \D ξ + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) \, \D η,
-\end{aligned}
-\] soit, en utilisant les relations (\ref{eq-20230404183949}) \[
-\D \tens{T} = ∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) \, \bigl( \vec{a}^ξ ⋅ \D \altvec{\point{m}} \bigr) + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) \, \bigl( \vec{a}^η ⋅ \D \altvec{\point{m}} \bigr) = \tilde{\tens{G}}(ξ, η) ⋅ \D \altvec{\point{m}},
-\] en posant \[
-\tilde{\tens{G}} = ∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^ξ + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^η,
-\] où on remarque que l'application \((ξ, η) ↦ \tilde{\tens{G}}\) est
-\textbf{définie sur l'espace des paramètres \(\mathcal{D}\)}. On définit
-alors le champ de tenseurs \(\tens{G}\) sur \(ς\) de la façon suivante
-\[
-\tens{G} = \tilde{\tens{G}} \circ \point{f}^{-1} \quad \text{soit} \quad \tens{G}(\point{m}) = \tilde{\tens{G}}(ξ, η) \quad \text{pour} \quad \point{m} = \point{f}(ξ, η).
-\]
-
-On a ainsi mis la variation \(\D \tens{T}\) sous la forme intrinsèque
-suivante \[
-\D \tens{T} = \tens{T}(\point{m} + \D \altvec{\point{m}}) - \tens{T}(\point{m}) = \tens{G}(\point{m}) ⋅ \D \altvec{\point{m}}.\]
-
-On reconnaît la définition usuelle d'un gradient\textasciitilde: le
-champ \(\tens{G}\) ainsi défini est le \textbf{gradient surfacique} de
-\(\tens{T}\) ; on le note \(\tgrad\tens{T}\) \[
-\tgrad \tens{T}(\point{m}) = ∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^ξ + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^η
-\quad \text{avec},
-\] où \(\vec{a}^ξ\), \(\vec{a}^η\), \(\tens{T} \circ \point{f}\) et ses
-dérivées sont implicitement évalués en \((ξ, η)\) tels que
-\(\point{f}(ξ, η) = \point{m}\). Si \(\tens{T}\) est un champ de
-tenseurs d'ordre \(n\), alors \(\tgrad \tens{T}\) est un champ de
-tenseurs d'ordre \(n + 1\). On a de plus toujours, par construction \[
-\tgrad{\tens{T}} ⋅ \vec{n} = \tens{0}.
-\]
-
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Remarque}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
-
-La définition précédente du gradient fait intervenir un paramétrage
-particulier \((ξ, η) ↦ \point{f}(ξ, η)\) de la surface. Pour autant, le
-champ \(\tgrad \tens{T}\) ainsi construit est bien intrinsèque. Ainsi,
-on peut vérifier que si \((φ, ψ) ↦ \point{g}(φ, ψ)\) désigne un second
-paramétrage de la surface, alors \[
-∂_ξ \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^ξ + ∂_η \bigl( \tens{T} \circ \point{f} \bigr) ⊗ \vec{a}^η
-= ∂_φ \bigl( \tens{T} \circ \point{g} \bigr) ⊗ \vec{a}^φ + ∂_ψ \bigl( \tens{T} \circ \point{g} \bigr) ⊗ \vec{a}^ψ,
-\] où \(\vec{a}^ξ\), \(\vec{a}^η\), \(\tens{T} \circ \point{f}\) et ses
-dérivées sont implicitement évalués en \((ξ, η)\), tandis que
-\(\vec{a}^φ\), \(\vec{a}^ψ\), \(\tens{T} \circ \point{g}\) et ses
-dérivées sont implicitement évalués en \((φ, ψ)\) tels que
-\(\point{f}(ξ, η) = \point{g}(φ, ψ) = \point{m}\).
-
-\end{tcolorbox}
-
-L'opérateur gradient ainsi défini est un \textbf{opérateur linéaire}
-dont les propriétés sont proches de celles du gradient usuel. On peut
-également définir la \textbf{divergence surfacique} d'un champ de
-tenseurs \(\tens{T}\) d'ordre \(n ≥ 1\) \[
-\tdiv \tens{T} = \tgrad \tens{T} \dbldot \tens{a},
-\] c'est un champ de tenseurs d'ordre \(n - 1\).
-
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Remarque importante}, colbacktitle=quarto-callout-warning-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
-
-Les développements précédents permettent d'assurer que la définition du
-gradient proposée est intrinsèque. En pratique néanmoins, il sera
-commode de travailler directement avec le champ surfacique
-\(\tens{T} \circ \point{f}\) qui est alors une fonction des fonctions
-des paramètres \(ξ\) et \(η\) (plutôt que comme une fonction du point
-\(\point{m} ∈ ς\)). Par abus de langage, on écrira, comme c'est
-l'habitude, \(\tens{T}(ξ, η)\) plutôt que
-\(\tens{T} \circ \point{f}(ξ, η)\). En revanche, on écrira explicitement
-\(∂_α\tens{T} ⊗ \vec{a}^α\) et \(∂_α\tens{T} ⋅ \vec{a}^α\) plutôt que
-\(\tgrad \tens{T}\) et \(\tdiv \tens{T}\) (noter l'utilisation de la
-convention d'Einstein, possible car l'indice \(α\) apparaît une fois en
-position inférieure et une fois en position supérieure).
-
-\end{tcolorbox}
-
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{À faire}, colbacktitle=quarto-callout-warning-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
-
-Proposer les propriétés du gradient en exercice.
-
-\end{tcolorbox}
-
-\hypertarget{lien-avec-la-courbure}{%
-\section{Lien avec la courbure}\label{lien-avec-la-courbure}}
-
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{À faire}, colbacktitle=quarto-callout-warning-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
-
-\end{tcolorbox}
 
 \bookmarksetup{startatroot}
 
@@ -1564,7 +1741,7 @@ tenseur \(\tens{N}\) est le tenseur des efforts membranaires~; c'est un
 tenseur symétrique du plan tangent, dont on rappelle l'interprétation
 physique.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Interprétation physique des contraintes membranaires}, colbacktitle=quarto-callout-warning-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, colframe=quarto-callout-warning-color-frame, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Interprétation physique des contraintes membranaires}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 La résultante des efforts intérieurs exercés sur la facette \(\D s\) de
 normale unitaire \(\vec{g}\) est \[
@@ -1637,7 +1814,7 @@ l'angle \(\theta\).
 
 \begin{figure}
 
-{\centering \includegraphics{./croquis/fig20230307165827.pdf}
+{\centering \includegraphics{croquis/fig20230307165827.pdf}
 
 }
 
@@ -1784,7 +1961,7 @@ temporelle de la normale \(\dot{\vec{n}}\)
 \dot{\vec{n}} = - \mathring{\vec{ϕ}}, \quad \text{avec} \quad \mathring{\vec{ϕ}} = \vec{n} ⋅ \tgrad{\dot{\vec{u}}}.
 }\label{eq-20230329065926}\end{equation}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, colframe=quarto-callout-tip-color-frame, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 Soit un point matériel \((ξ, η)\) de la coque, occupant la position
 \(\point{m}\) sur la configuration actuelle \(ς\). On considère le
@@ -1827,7 +2004,7 @@ normale est \(\hat{\vec{ϕ}} \wedge \vec{n}\), avec \[
 \section{Tenseur des variations des
 courbures}\label{sec-20230328153349}}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Exemple}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Exemple}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 Considérons la transformation d'une feuille de papier, initialement
 plane, en un cylindre. On peut vérifier expérimentalement que dans cette
@@ -1885,7 +2062,7 @@ suivante \begin{equation}\protect\hypertarget{eq-20230329064705}{}{
 \mathring{\tens{κ}} = \tgrad^\transpose{\dot{\vec{u}}} ⋅ \tens{b} + \tens{a} ⋅ \tgrad{\mathring{\vec{ϕ}}}.
 }\label{eq-20230329064705}\end{equation}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, colframe=quarto-callout-tip-color-frame, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 En utilisant la formule de transport du gradient \[
 \tens{K} = \tens{F}^\transpose ⋅ \tens{b} ⋅ \tens{F} - \tens{B} = -\tens{F}^\transpose ⋅ \tgrad{\vec{n}} ⋅ \tens{F} - \tens{B} = -\tens{F}^\transpose ⋅ \tGrad{\vec{n}} - \tens{B},
@@ -1927,7 +2104,7 @@ peut également être mis sous la forme suivante
 \mathring{\tens{κ}} = \tens{a} ⋅ \bigl( \vec{n} ⋅ \tgrad \tgrad \dot{\vec{u}} \bigr).
 }\label{eq-20230329082951}\end{equation}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, colframe=quarto-callout-tip-color-frame, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 En combinant les relations~(\ref{eq-20230329064705}) et
 (\ref{eq-20230329065926}) (qui sera démontrée au
@@ -2022,7 +2199,7 @@ donnée par les formules suivantes
 \tens{M}^\kl = J^{-1} \, \tens{F} ⋅ \tens{M}^\KL ⋅ \tens{F}^\transpose.
 }\label{eq-20230329092641}\end{equation}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, colframe=quarto-callout-tip-color-frame, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Démonstration}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 On utilise la formule de transport de l'élément d'aire
 \textbf{RÉFÉRENCE} ainsi que les expressions \textbf{RÉFÉRENCE} et
@@ -2121,7 +2298,7 @@ K = \frac{E \, h}{1 - \nu^2} \quad \text{et} \quad D = \frac{E \, h^3}{12 \, \bi
 Ces relations négligent les \textbf{couplages flexion-membrane} et ne
 sont donc valables en toute rigueur que pour des coques très minces.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 La coque est en \textbf{grandes transformations et petites
 déformations}. En particulier, les déplacements ne sont pas
@@ -2381,7 +2558,7 @@ densités (surfacique, linéique) de moments. Ces densités ne sont en
 général pas la dérivée par rapport au temps des densistés \(\vec{p}\),
 \(\vec{q}\), \(\vec{c}\) et \(\vec{m}\).
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Exemple: ballon sphérique sous pression}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Exemple: ballon sphérique sous pression}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 On considère un ballon sous pression \(p(t)\), de rayon
 \(r(t) = λ(t) \, R\), où \(R\) est le rayon initial. Le champ des
@@ -2404,7 +2581,7 @@ changements d'aire du ballon au cours du chargement.
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Exemple: coque cylindrique en compression axiale}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Exemple: coque cylindrique en compression axiale}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 On considère une coque cylindrique d'axe \(\vec{e}_z\), de rayon initial
 \(R\) et de longueur initiale \(L\). Elle repose sans frottement sur un
@@ -2476,8 +2653,10 @@ C_{εε, ijkl} = F_{iI} \, F_{jJ} \, F_{kK} \, F_{lL} \, C_{EE, IJKL}
 C_{κκ, ijkl} = F_{iI} \, F_{jJ} \, F_{kK} \, F_{lL} \, C_{KK, IJKL}.
 \]
 
-\appendix
+\cleardoublepage
+\phantomsection
 \addcontentsline{toc}{part}{Annexes}
+\appendix
 
 \hypertarget{sec-20230213121713}{%
 \chapter{Rappels de géométrie différentielle}\label{sec-20230213121713}}
@@ -2498,7 +2677,7 @@ Une courbe paramétrée \(\Gamma\) du plan \(\reals^2\) ou de l'espace
 
 \begin{figure}
 
-{\centering \includegraphics{./asy/fig20230207150452.pdf}
+{\centering \includegraphics{asy/fig20230207150452.pdf}
 
 }
 
@@ -2524,7 +2703,7 @@ croissante et régulière permet de définir le nouveau paramétrage
 \(\point{f} \circ \Phi\) de la courbe \(\Gamma\). Dans ce changement de
 paramètre, l'orientation de la courbe est préservée.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 Dans le plan (\(d = 2\)) et dans l'espace (\(d = 3\)), respectivement,
 l'application \(\point{f}\) est définie par les \emph{équations
@@ -2555,7 +2734,7 @@ vecteur \(\dot{\point{f}}(t)\) est donc un vecteur tangent au point
 
 \begin{figure}
 
-{\centering \includegraphics{./asy/fig20230207155607.pdf}
+{\centering \includegraphics{asy/fig20230207155607.pdf}
 
 }
 
@@ -2564,14 +2743,14 @@ courbe \(\Gamma\) au point \(\point{M}\).}
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 On vérifie aisément que la droite tangente ainsi définie est invariante
 par changement de paramètre.
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 Les coordonnées du vecteur tangent, sont en dimensions 2 et 3,
 respectivement \[
@@ -2600,7 +2779,7 @@ polygonale est (voir Figure~\ref{fig-20230207181908})
 
 \begin{figure}
 
-{\centering \includegraphics{./asy/fig20230207181908.pdf}
+{\centering \includegraphics{asy/fig20230207181908.pdf}
 
 }
 
@@ -2624,7 +2803,7 @@ la courbe \(\Gamma\)
 \mathcal{L} _ \Gamma(\point{A}, \point{B}) = \int _ {a} ^ {b} \bigl \lVert  \dot{\point{f}}(t) \bigr \rVert \, \D t.
 }\label{eq-20230207112239}\end{equation}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 On vérifie aisément que cette expression est invariante par changement
 de paramètre.
@@ -2646,7 +2825,7 @@ elle est inversible : \(t = \Phi(s)\). L'application
 par l'abscisse curviligne \(s\). On dit qu'on a \emph{rectifié} la
 courbe \(\Gamma\).
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 La définition (\ref{eq-20230207112239}) est \emph{algébrique}. Plus
 précisément, si on choisit pour origine des abscisses curvilignes le
@@ -2669,7 +2848,7 @@ On suppose la courbe \(\Gamma\) rectifiée, et on note
 
 \begin{figure}
 
-{\centering \includegraphics{./asy/fig20230207190019.pdf}
+{\centering \includegraphics{asy/fig20230207190019.pdf}
 
 }
 
@@ -2708,7 +2887,7 @@ Le vecteur tangent \(\vec t\) unitaire étant défini en tout point de la
 courbe, on peut également définir le \emph{vecteur normal unitaire}
 \(\vec n\), qui lui est perpendiculaire.
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 Deux orientations sont possibles pour le vecteur \(\vec n\). Il est
 important de remarquer qu'il n'y a pas de choix \emph{canonique} : il
@@ -2737,7 +2916,7 @@ montre en effet que le cercle de centre \(\point{M} + r \, \vec{n}\) et
 de rayon \(\lvert r \rvert\) est celui qui approche le mieux la courbe
 \(\Gamma\) au voisinage de \(\point{M}\) (cercle osculateur).
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 La courbure est une grandeur \emph{algébrique}, dont \textbf{le signe
 n'est pas intrinsèque} : il dépend de l'orientation de la normale
@@ -2834,7 +3013,7 @@ relation suivante, valable pour tous vecteurs
 = \vec N \cdot \bigl( \vec V \times \vec W \bigr) \, \det\bigl( \tens F + \vec n \otimes \vec N \bigr).
 \]
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, colframe=quarto-callout-tip-color-frame, colback=white, toprule=.15mm, rightrule=.15mm, left=2mm, leftrule=.75mm, bottomrule=.15mm, arc=.35mm, breakable]
+\begin{tcolorbox}[enhanced jigsaw, bottomrule=.15mm, toprule=.15mm, colframe=quarto-callout-tip-color-frame, colback=white, breakable, leftrule=.75mm, arc=.35mm, left=2mm, opacityback=0, rightrule=.15mm]
 
 Soient \(\tens{F}^\sharp = \tens{F} + \vec{n} \otimes \vec{N}\) et
 \(\vec{V}\) et \(\vec{W}\) deux vecteurs quelconques de l'espace. Par
@@ -2877,14 +3056,13 @@ linéaire inversible entre les plans \(\Pi\) et \(\pi\). On notera
 \tens{F}^\dagger \cdot \tens{F} = \tens{A} \quad \text{et} \quad \tens{F} \cdot \tens{F}^\dagger = \tens{a}.
 \]
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 Le tenseur \(\tens{F}^\dagger\) n'est pas l'inverse du tenseur (de
 l'espace) \(\tens{F}\). C'est l'extension à tout l'espace de l'inverse
 de la restriction de \(\tens{F}\) aux plans \(\Pi\) (espace de départ)
 et \(\pi\) (espace d'arrivée). On parle alors de
-\textbf{pseudo-inverse}\footnote{\url{https://fr.wikipedia.org/wiki/Pseudo-inverse},
-  visité le 10/02/2023.} de \(\tens{F}\).
+\textbf{pseudo-inverse}\footnotemark{} de \(\tens{F}\).
 
 On peut facilement montrer que \(\tens{F}\) admet une pseudo-inverse si,
 et seulement si, \(\tens{F} + \vec{n} \otimes \vec{N}\) est inversible,
@@ -2896,7 +3074,10 @@ cas, on a \[
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, colframe=quarto-callout-tip-color-frame, colback=white, toprule=.15mm, rightrule=.15mm, left=2mm, leftrule=.75mm, bottomrule=.15mm, arc=.35mm, breakable]
+\footnotetext{\url{https://fr.wikipedia.org/wiki/Pseudo-inverse}, visité
+le 10/02/2023.}
+
+\begin{tcolorbox}[enhanced jigsaw, bottomrule=.15mm, toprule=.15mm, colframe=quarto-callout-tip-color-frame, colback=white, breakable, leftrule=.75mm, arc=.35mm, left=2mm, opacityback=0, rightrule=.15mm]
 
 Il suffit de former les produits suivants \[
 \begin{aligned}
@@ -2914,7 +3095,7 @@ Il suffit de former les produits suivants \[
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomrule=.15mm, arc=.35mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, arc=.35mm, coltitle=black, opacityback=0, leftrule=.75mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, colback=white]
 
 Lorsque les plans \(\Pi\) et \(\pi\) sont confondus, le tenseur
 \(\tens{F}\) peut être vu comme un \emph{endomorphisme} du plan, pour
